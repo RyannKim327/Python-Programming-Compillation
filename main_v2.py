@@ -1,44 +1,53 @@
-# Imports
-from tkinter import Tk, Label, Button, mainloop
-from tkinter import messagebox
+# import
+from tkinter import Label, Button, Entry, Tk, mainloop, messagebox
 
-# Show dialog and text change
-def show_up():
-	print("sample")
-	messagebox.showinfo("Title", "I'm just a noob")
-	label.config(text = "Clicked")
+appName = "My Sample Program"
+pixels = "300x300"
 
-# Main function
+def show_dialog():
+	
+	messagebox.showinfo(appName, "Active window")
+	# checking if entry has value
+	if entry.get() != "":
+		label.config(text = entry.get())
+	else:
+		label.config(text = "No value")
+
 def main():
-
+	
 	# Setting up window
 	window = Tk()
-	window.title("My Simple Code")
-	window.geometry("300x300")
-
-	# Making label (variable) as global
-	# To make it callable from other functions
+	window.title(appName)
+	window.geometry(pixels)
+	
+	# Making label and entry accessible from other functions
 	global label
-
-	# Setting up label
-	label = Label(text="Hello World")
+	global entry
+	
+	# variable declarations
+	label = Label()
+	label.config(text = "Hello World")
 	label.pack()
 
-	# Setting up button
-	button = Button(text="Click me")
-	# Adding configurations with calling function (action)
-	button.config(command=show_up)
+	entry = Entry()
+	entry.config(width = 40)
+	entry.focus_set()
+	entry.pack()
+	
+	button = Button()
+	button.config(text = "Click me")
+	button.config(command = show_dialog)
 	button.pack()
-
+	
 	mainloop()
-
-# Calling main method
+	
+# Calling main function
 main()
 
 '''
-This is just my simple code of python (GUI) using Tkinter
+This is just a simple code of Python GUI using TKinter
 Credits to
-	TutorialsPoint
-	GeeksForGeeks
-	Replit
+- GeeksForGeeks
+- TutorialsPoint
+- Replit
 '''
