@@ -1,2 +1,4 @@
 # FirstTkinter
-My first Tknter program
+My first Tkinter program
+
+For mobile users, try to use replit.
