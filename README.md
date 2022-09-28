@@ -1,4 +1,2 @@
-# FirstTkinter
-My first Tkinter program
-
-For mobile users, try to use replit.
+# It's Py
+Compillation of Python Programs. For mobile users, use Pydroid3.
