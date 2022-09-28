@@ -1,4 +1,4 @@
-from tkinter import Tk, Entry, Button, Frame, mainloop
+from tkinter import X, Tk, Entry, Button, Frame, mainloop
 
 def add(x):
 	s = str(x)
@@ -19,14 +19,16 @@ def main():
 	
 	b = Tk()
 	b.geometry("300x300")
+	b.minsize(height=150, width=150)
 	
-	e = Entry()
-	e.pack()
+	f = Frame(b)
+	f1 = Frame(f)
+	f2 = Frame(f)
+	f3 = Frame(f)
+	f4 = Frame(f)
 	
-	f1 = Frame(b, bd = "1")
-	f2 = Frame(b, bd = "1")
-	f3 = Frame(b)
-	f4 = Frame(b)
+	e = Entry(f)
+	e.pack(fill=X)
 	
 	_1 = Button(f1, text = "1")
 	_1.config(width = "1")
@@ -48,7 +50,7 @@ def main():
 	_p.config(command = lambda: add("+"))
 	_p.pack(side='left')
 	
-	f1.pack(expand = 1)
+	f1.pack()
 	
 	_4 = Button(f2, text = "4")
 	_4.config(width = "1")
@@ -70,7 +72,7 @@ def main():
 	_d.config(command = lambda: add("-"))
 	_d.pack(side = 'left')
 	
-	f2.pack(expand = 1)
+	f2.pack()
 	
 	_7 = Button(f3, text = "7")
 	_7.config(width = "1")
@@ -92,7 +94,7 @@ def main():
 	_m.config(command = lambda: add("*"))
 	_m.pack(side = 'left')
 	
-	f3.pack(expand = 1)
+	f3.pack()
 	
 	_0 = Button(f4, text = "0")
 	_0.config(width = "1")
@@ -114,7 +116,9 @@ def main():
 	_b.config(command = backspace)
 	_b.pack(side = 'left')
 	
-	f4.pack(expand = 1)
+	f4.pack()
+	
+	f.pack(side="bottom")
 	
 	b.mainloop()
 main()
