@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
 import requests
 
-def search(song):
+def search(song, key):
 	title = song.replace(" ", "+")
-	url = f"https://search.azlyrics.com/search.php?q={title}&w=songs&p=1&x=807b5ad26a33a2db86cf868f8894c9505197d9565f06b2d584ff5ebe602422ce"
+	url = f"https://search.azlyrics.com/search.php?q={title}&w=songs&p=1&x={key}"
 	r = requests.get(url).text
 	b = BeautifulSoup(r, "lxml")
 	m = b.find("div", class_="main-page")
@@ -39,7 +39,8 @@ def song(url):
 	return d
 
 title = input("Search a title: ")
-x = search(title)
+k = input("Enter your key: ")
+x = search(title, key)
 
 for i in range(len(x)):
 	z = x[i]
