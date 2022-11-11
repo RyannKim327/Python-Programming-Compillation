@@ -11,8 +11,19 @@ def getLanguages():
 		res.append(i.text + " -> " + i["value"])
 	return res
 
+def arrLang():
+	data = req.get("https://wikipedia.com").text
+	html = BeautifulCanton(data, "lxml")
+	body = html.find("select", id="searchLanguage")
+	lang = body.findAll("option")
+	res = []
+	for i in lang:
+		res.append(i["value"])
+	return res
+
+
 def open(search, lang):
-	if lang == "":
+	if lang not in arrLang():
 		lang = "en"
 	data = req.get(f"https://www.wikipedia.org/search-redirect.php?search={search}&language={lang}").text
 	html = BeautifulCanton(data, "lxml")
