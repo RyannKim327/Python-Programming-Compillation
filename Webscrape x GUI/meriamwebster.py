@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup as soup
+from tkinter import Tk, Label, Entry, Button, Frame, mainloop
 import requests as req
 
 def word(w):
@@ -33,7 +34,7 @@ def word(w):
 				definitions = "null"
 			json = {
 				"result": "200",
-				"word": title,
+				"text": title,
 				"count": num,
 				"parts_of_speech": speech,
 				"syllable": syll,
@@ -46,6 +47,45 @@ def word(w):
 		}]
 	return result
 
-a = input("Enter your word: ")
-b = word(a)
-print(b)
+def go():
+	base.title("Scrapping...")
+	a = word(e.get())[0]
+	if(a["result"] == "200"):
+		b = "Text: " + a["text"] + "\n"
+		b += "Parts of Speech: " + a["parts_of_speech"] + "\n"
+		b += "Syllable: " + a["syllable"] + "\n"
+		b += "Definitions: " + a["def"] + "\n"
+		
+		l.config(text = b)
+	else:
+		l.config(text = "Error")
+	base.title("Webscrape with GUI Merriam Webster")
+
+def main():
+	global l
+	global e
+	global base
+	
+	base = Tk()
+	base.title("Webscrape with GUI Merriam Webster")
+	base.geometry("700x900")
+	
+	f = Frame(base)
+	g = Frame(f)
+	
+	e = Entry(g, width = "10")
+	e.pack()
+	
+	b = Button(g, text = "Search")
+	b.config(command = go)
+	b.pack()
+	
+	g.pack()
+	
+	l = Label(f, wrap = "500")
+	l.pack()
+	
+	f.pack()
+	mainloop()
+
+main()
