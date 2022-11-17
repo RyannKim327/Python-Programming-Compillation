@@ -40,7 +40,7 @@ def song(url):
 
 title = input("Search a title: ")
 k = input("Enter your key: ")
-x = search(title, key)
+x = search(title, k)
 
 for i in range(len(x)):
 	z = x[i]
