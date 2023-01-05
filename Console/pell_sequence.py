@@ -1,11 +1,11 @@
-print("Pell sequence")
+# 0, 1, 2, 5, 12, 29, 70, 169, 408, 985, 2378, 5741, 13860
 
-a = [0, 1]
+lists = [0, 1]
 
-for i in range(len(a) -1, 10):
-	b = a[i - 1]
-	c = a[i]
-	d = c + b
-	a.append(d)
+for i in range(2, 10):
+	x = lists[i - 2]
+	y = lists[i - 1]
+	y += y
+	lists.append(x + y)
 
-print(a)
+print(lists)
