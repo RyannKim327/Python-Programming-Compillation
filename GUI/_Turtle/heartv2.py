@@ -1,4 +1,5 @@
 from turtle import *
+import time
 
 def move(x, y):
 	pu()
@@ -29,3 +30,5 @@ left(45)
 forward(50)
 left(90)
 forward(150)
+
+time.sleep(3)

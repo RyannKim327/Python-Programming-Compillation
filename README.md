@@ -8,4 +8,17 @@
 pip install <package>
 ```
 
-> Where < package > is the python package you want to install. If the package is already installed, you don't need to re-install it. 
+> Where < package > is the python package you want to install. If the package is already installed, you don't need to re-install it.
+---
+### Lists of projects
+* [API](api/)
+* [API x GUI](API%20x%20GUI/)
+* [Console](Console/)
+* [Data Analytics](Data%20Analytics/)
+* [File Handling (read)](File%20Handling/read/)
+* [File Handling (write)](File%20Handling/write/)
+* [Graphical User Interface](GUI/)
+* [Turtle](GUI/_Turtle/)
+* [Object Oriented Programming](ObjectOrientedProgramming/)
+* [Webscraping](WebScraping/)
+* [WebScraping x GUI](Webscrape%20x%20GUI/)
