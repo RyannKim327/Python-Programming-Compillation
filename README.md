@@ -11,7 +11,7 @@ pip install <package>
 > Where < package > is the python package you want to install. If the package is already installed, you don't need to re-install it.
 ---
 ### Lists of projects
-* [API](api/)
+* [API](API/)
 * [API x GUI](API%20x%20GUI/)
 * [Console](Console/)
 * [Data Analytics](Data%20Analytics/)
