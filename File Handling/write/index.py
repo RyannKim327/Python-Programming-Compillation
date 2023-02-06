@@ -1,13 +1,16 @@
 # open(filename, mode)
 # w meaans write
 # r means read
-file = open("samplefile.txt", "w")
 read = open("samplefile.txt", "r")
 
 # to check the text inside
-print(read.read())
+txt = read.read()
+print(txt)
 
-txt = input("Enter something: ")
+
+file = open("samplefile.txt", "w")
+
+txt += input("Enter something: ") + "\n"
 
 # to modify
 file.write(txt)
