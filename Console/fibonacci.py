@@ -1,4 +1,4 @@
-print("Pell sequence")
+print("Fibonacci sequence")
 
 a = [0, 1]
 
