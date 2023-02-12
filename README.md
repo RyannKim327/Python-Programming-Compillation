@@ -23,3 +23,10 @@ pip install <package>
 * [Turtle](GUI/_Turtle/)
 * [Webscraping](WebScraping/)
 * [WebScraping x GUI](Webscrape%20x%20GUI/)
+---
+### Note
+> Not all files (codes) uses the packages mentioned in every ReadMe.md file of each folder, it might be used by some of the files (codes), but not all.
+---
+### Credits
+* Google
+* Stackoverflow
