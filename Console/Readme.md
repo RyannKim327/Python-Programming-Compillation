@@ -11,3 +11,8 @@ pip install random
 ```
 **os**
 **time**
+
+**Regex**
+```Bash
+pip install re
+```
