@@ -12,11 +12,11 @@ reveal = []
 pattern = ""
 
 for i in range(amt):
-	x = random.randint(0, amt // 2)
+	x = random.randint(1, amt // 2)
 	while x in lists and x in copy:
-		x = random.randint(0, amt // 2)
+		x = random.randint(1, amt // 2)
 	while x in lists and i < amt:
-		x = random.randint(0, amt // 2)
+		x = random.randint(1, amt // 2)
 		copy.append(x)
 	lists.append(x)
 	print(lists)
