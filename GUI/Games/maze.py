@@ -18,10 +18,10 @@ pygame.display.set_caption("Maze game")
 
 ingame = True
 
-pos_x = display.get_width() // 2 - 5
-pos_y = display.get_height() // 2 - 5
+pos_x = 90 # display.get_width() // 2 - 5
+pos_y = 90 # display.get_height() // 2 - 5
 
-pattern = [
+'''pattern = [
 	[pos_x, pos_y],
 	[pos_x + 10, pos_y],
 	[pos_x + 10, pos_y + 10],
@@ -84,7 +84,61 @@ pattern = [
 	[pos_x - 60, pos_y - 70],
 	[pos_x - 70, pos_y - 70]
 	
+]'''
+
+'''
+  1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+1     *           * * * * * * * * * * * *
+2 *       * * *         * * * * * * * * *
+3 * * * * * * * * * *   * *             *
+4 * *                   * *   * * * *   *
+5 * *   * * * * * * * * * *   * *       *
+6 * *   * * * * * * * * * *   * *   * * *
+7 *     * *               *   * *   * * *
+8 *   * * *   * * * * *   *   * *       *
+9 *   * * *   * * * * *   *   * * * *   *
+0 *   * * *   * * * * *   *       * *   *
+1 *   *       * *   * *   * * *   * *   *
+2 *       * * * *   * *           * *   *
+3 * * * *           * * * * * * * * *   *
+4 * * * *   * * * * * * * * * * * * *   *
+5 * * * *   * *                 * * *   *
+6 * * * *   * *   * * * * * *   * * *   *
+7 *         * *   *             * * *   *
+8 *   * * * * *   *   * * * * * * * *   *
+9 *               *                     *
+0 * * * * * * * * * * * * * * * * * * * *
+  1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+'''
+
+pattern = []
+xs = [
+	[1, 2, 4, 5, 6, 7, 8],
+	[2, 3, 4, 8, 9, 10, 11],
+	[11, 14, 15, 16, 17, 18, 19],
+	[3, 4, 5, 6, 7, 8, 9, 10, 11, 14, 19],
+	[3, 14, 17, 18, 19],
+	[3, 14, 17],
+	[2, 3, 6, 7, 8, 9, 10, 11, 12, 14, 17],
+	[2, 6, 12, 14, 17, 18, 19],
+	[2, 6, 12, 14, 19],
+	[2, 6, 9, 10, 12, 14, 15, 16, 19],
+	[2, 4, 5, 6, 9, 12, 16, 19],
+	[2, 3, 4, 9, 12, 13, 14, 15, 16, 19],
+	[5, 6, 7, 8, 9, 19],
+	[5, 19],
+	[5, 8, 9, 10, 11, 12, 13, 14, 15, 19],
+	[5, 8, 15, 19],
+	[2, 3, 4, 5, 8, 10, 11, 12, 13, 14, 15, 19],
+	[2, 8, 10, 19],
+	[2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 ]
+
+target = [0, 0]
+
+for y in range(len(xs)):
+	for x in range(len(xs[y])):
+		pattern.append([(int(xs[y][x]) - 1) * block, y * block])
 
 font_style = pygame.font.SysFont("bahnschrift", 25)
 
@@ -119,7 +173,7 @@ while True:
 		for i in pattern:
 			pygame.draw.rect(display, c_white, [i[0], i[1], block, block])
 		
-		if pos_x == pattern[len(pattern) - 1][0] and pos_y == pattern[len(pattern) - 1][1]:
+		if pos_x == target[0] and pos_y == target[1]:
 			message("Congrats")
 		
 		pygame.draw.rect(display, c_blue, [pos_x, pos_y, block, block])
