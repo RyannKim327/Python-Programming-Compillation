@@ -5,12 +5,13 @@ pygame.init()
 c_white = (255, 255, 255)
 c_black = (0, 0, 0)
 c_blue = (0, 0, 255)
+c_green = (0, 150, 0)
 
 block = 10
 movement = 10
 
-g_width = 150
-g_height = 150
+g_width = 200
+g_height = 200
 
 display = pygame.display.set_mode((g_width, g_height))
 pygame.display.set_caption("Maze game")
@@ -85,6 +86,13 @@ pattern = [
 	
 ]
 
+font_style = pygame.font.SysFont("bahnschrift", 25)
+
+def message(msg, color = c_green, w = 3, h = 3):
+	# Mesasge or text in the game
+	mess = font_style.render(msg, True, color)
+	display.blit(mess, [display.get_width() / w, display.get_height() / h])
+
 pygame.draw.rect(display, c_blue, [pos_x, pos_y, block, block])
 while True:
 	for event in pygame.event.get():
@@ -110,6 +118,9 @@ while True:
 		
 		for i in pattern:
 			pygame.draw.rect(display, c_white, [i[0], i[1], block, block])
+		
+		if pos_x == pattern[len(pattern) - 1][0] and pos_y == pattern[len(pattern) - 1][1]:
+			message("Congrats")
 		
 		pygame.draw.rect(display, c_blue, [pos_x, pos_y, block, block])
 		pygame.display.update()
