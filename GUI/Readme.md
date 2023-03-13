@@ -7,5 +7,9 @@
 ```Bash
 pip install tkinter
 ```
+or
+```Bash
+pip install tk
+```
 
 >These console commands, will install python packages such as json and requests, which are used to these program.
