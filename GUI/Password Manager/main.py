@@ -1,4 +1,5 @@
-from tkinter import Tk, Entry, Button, mainloop, messagebox, Listbox, Frame, Label, X, BROWSE
+from tkinter import * # Tk, Entry, Button, mainloop, messagebox, Listbox, Frame, Label, X, BROWSE
+from tkinter import messagebox
 import json
 import base64
 
@@ -17,13 +18,20 @@ def commit(datas: dict):
 		f.write(json.dumps(datas))
 
 def setData(key: str, value):
-	datas = getAllData()
-	datas[encrypt(key)] = encrypt(value)
-	commit(datas)
-	print(key, datas.get(encrypt(key)))
-	if datas.get(encrypt(key)) == "" or datas.get(encrypt(key)) == None:
-		keys = decrypt(list(getAllData().keys())[len(list(getAllData().keys())) - 1])
-		listsbox.insert(len(list(getAllData().keys())) - 1, keys)
+	if key == "" or value == "":
+		messagebox.showerror("Error", "Keys or Value must not be empty")
+	else:
+		datas = getAllData()
+		if datas.get(encrypt(key)) == "" or datas.get(encrypt(key)) == None:
+			listsbox.insert(len(list(getAllData().keys())), key)
+		datas[encrypt(key)] = encrypt(value)
+		commit(datas)
+
+def check():
+	for i in listsbox.curselection():
+		title = listsbox.get(i)
+		datas = getAllData()
+		messagebox.showinfo(title, decrypt(datas[encrypt(title)]))
 
 base = Tk()
 base.title("Password Manager")
@@ -50,9 +58,20 @@ entry_value.pack(fill=X)
 
 frame_value.pack(fill=X)
 
-add = Button(base, text="Add Data")
-add.config(command=lambda: setData(entry_key.get(), entry_value.get()))
-add.pack(fill=X)
+frame_button = Frame(base)
+
+add = Button(frame_button, text="Add Data")
+add.config(command=lambda: setData(entry_key.get(), entry_value.get()), width=20)
+add.pack(side=LEFT)
+
+mod = Button(frame_button, text="Modify Data")
+mod.pack(side=RIGHT)
+
+frame_button.pack(fill=X)
+
+chk = Button(base, text="Check data", command=check)
+chk.config(width=20)
+chk.pack(fill=X)
 
 global listsbox
 
@@ -63,6 +82,6 @@ if len(getAllData().keys()) > 0:
 		key = decrypt(list(getAllData().keys())[i])
 		listsbox.insert(i, key)
 
+listsbox.pack(fill=BOTH)
 
-listsbox.pack()
 base.mainloop()
