@@ -5,7 +5,7 @@ def toBin(s):
 	for i in range(len(s)):
 		c = ord(s[i])
 		x = 1
-		while x < c or x < 129:
+		while x < c or x < 65:
 			x += x
 		while x > 0:
 			o += str(c // x)
