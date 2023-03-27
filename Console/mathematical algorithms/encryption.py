@@ -1,5 +1,5 @@
 def enc(pos):
-	characters = ['i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a']
+	characters = "fghiedcba"
 	res = ""
 	for i in range(len(pos)):
 		if pos[i] == "1":
