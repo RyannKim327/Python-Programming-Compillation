@@ -9,3 +9,6 @@
 ```Bash
 pip install pysqlite
 ```
+---
+### Credits
+> Thank you for [Tutorials Point](https://www.tutorialspoint.com/sqlite/sqlite_python.htm) for the tutorial on how to use the sqlite in python, also to [nicolimo86](https://stackoverflow.com/a/28959692) of stackoverflow for the package we might need to install to use sqlite. Also to [W3schools](https://www.w3schools.com/sql/default.asp) for helping me to learn more about programming, also to [SoloLearn](https://www.sololearn.com/learning/1060) for some helpful courses.
