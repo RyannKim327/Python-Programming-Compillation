@@ -15,6 +15,7 @@ pip install <package>
 * [API x GUI](API%20x%20GUI/)
 * [Console](Console/)
 * [Data Analytics](Data%20Analytics/)
+* [Database (SQL)](Database/)
 * [File Handling (read)](File%20Handling/read/)
 * [File Handling (write)](File%20Handling/write/)
 * [Graphical User Interface](GUI/)
