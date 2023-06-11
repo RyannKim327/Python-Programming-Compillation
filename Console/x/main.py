@@ -43,7 +43,7 @@ print("")
 if bill < total:
 	# sukli
 	total -= bill
-	
+	_total = total
 	if total < 0:
 		total *= -1
 	x = []
@@ -54,7 +54,7 @@ if bill < total:
 			total %= money[i]
 		x.append(y)
 	
-	print(f"Your return is composed of: ")
+	print(f"Your return {_total} is composed of: ")
 	for i in range(len(money)):
 		if x[i] != 0:
 			print(f"{money[i]}\t-\t{x[i]}")
