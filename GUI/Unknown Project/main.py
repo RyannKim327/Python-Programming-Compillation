@@ -12,7 +12,30 @@ class myfile:
 		_file = open("a.json", "w")
 		_file.write(json.dumps(data))
 
+def add(x, _value):
+	insert[x] += 1
+	amt = int(total.cget("text").split(": ")[1])
+	amt -= int(_value)
+	total.config(text=f"Your total cost was: {amt}")
+
+	_1k_.config(text=f"{r['money'][0]}: {insert[0]}")
+	_5h_.config(text=f"{r['money'][1]}: {insert[1]}")
+	_2h_.config(text=f"{r['money'][2]}: {insert[2]}")
+	_1h_.config(text=f"{r['money'][3]}: {insert[3]}")
+	_50p_.config(text=f"{r['money'][4]}: {insert[4]}")
+	_20p_.config(text=f"{r['money'][5]}: {insert[5]}")
+	_10p_.config(text=f"{r['money'][6]}: {insert[6]}")
+	_5p_.config(text=f"{r['money'][7]}: {insert[7]}")
+	_1p_.config(text=f"{r['money'][8]}: {insert[8]}")
+	_25c_.config(text=f"{r['money'][9]}: {insert[9]}")
+	_05c_.config(text=f"{r['money'][10]}: {insert[10]}")
+
 def start():
+	global total, insert, r
+	global _1k_, _5h_, _2h_, _1h_, _50p_, _20p_, _10p_, _5p_, _1p_, _25c_, _05c_
+	
+	amt = 1234
+
 	data = myfile()
 	insert = [
 		0, 0, 0,
@@ -28,12 +51,8 @@ def start():
 	base.title("Monetary System")
 	base.geometry("500x500")
 
-	global total
-
-	money = 1234
-
 	total = Label()
-	total.config(text=f"Your total cost was: {money}", font=('Arial', 25))
+	total.config(text=f"Your total cost was: {amt}", font=('Times New Roman', 25))
 	total.pack(side="top", fill="x", expand=True)
 
 	table1 = Frame(base)
@@ -84,15 +103,15 @@ def start():
 	_line_1 = Frame(base)
 
 	_1k = Button(_line_1)
-	_1k.config(text=f"{r['money'][0]} pesos")
+	_1k.config(text=f"{r['money'][0]} pesos", command=lambda: add(0, r['money'][0]))
 	_1k.pack(side="left", fill="x", expand=True, padx=_padx)
 
 	_5h = Button(_line_1)
-	_5h.config(text=f"{r['money'][1]} pesos")
+	_5h.config(text=f"{r['money'][1]} pesos", command=lambda: add(1, r['money'][1]))
 	_5h.pack(side="left", fill="x", expand=True, padx=_padx)
 
 	_2h = Button(_line_1)
-	_2h.config(text=f"{r['money'][2]} pesos")
+	_2h.config(text=f"{r['money'][2]} pesos", command=lambda: add(2, r['money'][2]))
 	_2h.pack(side="left", fill="x", expand=True, padx=_padx)
 
 	_line_1.pack(fill="x", expand=False, anchor=N, pady=_pady)
@@ -100,15 +119,15 @@ def start():
 	_line_2 = Frame(base)
 
 	_1h = Button(_line_2)
-	_1h.config(text=f"{r['money'][3]} pesos")
+	_1h.config(text=f"{r['money'][3]} pesos", command=lambda: add(3, r['money'][3]))
 	_1h.pack(side="left", fill="x", expand=True, padx=_padx)
 
 	_5t = Button(_line_2)
-	_5t.config(text=f"{r['money'][4]} pesos")
+	_5t.config(text=f"{r['money'][4]} pesos", command=lambda: add(4, r['money'][4]))
 	_5t.pack(side="left", fill="x", expand=True, padx=_padx)
 
 	_2t = Button(_line_2)
-	_2t.config(text=f"{r['money'][5]} pesos")
+	_2t.config(text=f"{r['money'][5]} pesos", command=lambda: add(5, r['money'][5]))
 	_2t.pack(side="left", fill="x", expand=True, padx=_padx)
 
 	_line_2.pack(fill="x", expand=False, anchor=N, pady=_pady)
@@ -116,15 +135,15 @@ def start():
 	_line_3 = Frame(base)
 
 	_1t = Button(_line_3)
-	_1t.config(text=f"{r['money'][6]} pesos")
+	_1t.config(text=f"{r['money'][6]} pesos", command=lambda: add(6, r['money'][6]))
 	_1t.pack(side="left", fill="x", expand=True, padx=_padx)
 
 	_5p = Button(_line_3)
-	_5p.config(text=f"{r['money'][7]} pesos")
+	_5p.config(text=f"{r['money'][7]} pesos", command=lambda: add(7, r['money'][7]))
 	_5p.pack(side="left", fill="x", expand=True, padx=_padx)
 
 	_1p = Button(_line_3)
-	_1p.config(text=f"{r['money'][8]} pesos")
+	_1p.config(text=f"{r['money'][8]} pesos", command=lambda: add(8, r['money'][8]))
 	_1p.pack(side="left", fill="x", expand=True, padx=_padx)
 
 	_line_3.pack(fill="x", expand=False, anchor=N, pady=_pady)
@@ -132,11 +151,11 @@ def start():
 	_line_4 = Frame(base)
 
 	_p25 = Button(_line_4)
-	_p25.config(text=f"{r['money'][9]} pesos")
+	_p25.config(text=f"{r['money'][9]} pesos", command=lambda: add(9, r['money'][9]))
 	_p25.pack(side="left", fill="x", expand=True, padx=_padx)
 
 	_p05 = Button(_line_4)
-	_p05.config(text=f"{r['money'][10]} pesos")
+	_p05.config(text=f"{r['money'][10]} pesos", command=lambda: add(10, r['money'][10]))
 	_p05.pack(side="left", fill="x", expand=True, padx=_padx)
 
 	_done = Button(_line_4)
