@@ -12,6 +12,40 @@ class myfile:
 		_file = open("a.json", "w")
 		_file.write(json.dumps(data))
 
+def done():
+	amt = int(total.cget("text").split(": ")[1])
+	if amt < 0:
+		amt *= - 1
+
+	insert = [
+		0, 0, 0,
+		0, 0, 0, 0,
+		0, 0, 0, 0
+	]
+	
+	total.config(text=f"Your change is: {amt}")
+
+	for i in range(len(r['money'])):
+		y = 0
+		if r['available'][i] != 0:
+			y = int(amt / r['money'][i])
+			amt %= r['money'][i]
+		insert[i] = y
+
+	_1k_.config(text=f"{r['money'][0]}: {insert[0]}")
+	_5h_.config(text=f"{r['money'][1]}: {insert[1]}")
+	_2h_.config(text=f"{r['money'][2]}: {insert[2]}")
+	_1h_.config(text=f"{r['money'][3]}: {insert[3]}")
+	_50p_.config(text=f"{r['money'][4]}: {insert[4]}")
+	_20p_.config(text=f"{r['money'][5]}: {insert[5]}")
+	_10p_.config(text=f"{r['money'][6]}: {insert[6]}")
+	_5p_.config(text=f"{r['money'][7]}: {insert[7]}")
+	_1p_.config(text=f"{r['money'][8]}: {insert[8]}")
+	_25c_.config(text=f"{r['money'][9]}: {insert[9]}")
+	_05c_.config(text=f"{r['money'][10]}: {insert[10]}")
+
+	data.write(r)
+
 def add(x, _value):
 	insert[x] += 1
 	r['available'][x] += 1
@@ -33,8 +67,11 @@ def add(x, _value):
 
 	data.write(r)
 
+	if amt <= 0:
+		_done.config(state="active")
+
 def start():
-	global total, insert, r, data
+	global total, insert, r, data, _done
 	global _1k_, _5h_, _2h_, _1h_, _50p_, _20p_, _10p_, _5p_, _1p_, _25c_, _05c_
 	
 	amt = 1234
@@ -162,7 +199,7 @@ def start():
 	_p05.pack(side="left", fill="x", expand=True, padx=_padx)
 
 	_done = Button(_line_4)
-	_done.config(text=f"    Done   ")
+	_done.config(text=f"    Done   ", state="disable", command=done)
 	_done.pack(side="left", fill="x", expand=True, padx=_padx)
 
 	_line_4.pack(fill="x", expand=False, anchor=N, pady=_pady)
