@@ -14,6 +14,7 @@ class myfile:
 
 def add(x, _value):
 	insert[x] += 1
+	r['available'][x] += 1
 	amt = int(total.cget("text").split(": ")[1])
 	amt -= int(_value)
 	total.config(text=f"Your total cost was: {amt}")
@@ -30,8 +31,10 @@ def add(x, _value):
 	_25c_.config(text=f"{r['money'][9]}: {insert[9]}")
 	_05c_.config(text=f"{r['money'][10]}: {insert[10]}")
 
+	data.write(r)
+
 def start():
-	global total, insert, r
+	global total, insert, r, data
 	global _1k_, _5h_, _2h_, _1h_, _50p_, _20p_, _10p_, _5p_, _1p_, _25c_, _05c_
 	
 	amt = 1234
