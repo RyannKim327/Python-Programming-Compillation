@@ -27,11 +27,11 @@ def main():
 	f3 = Frame(f)
 	f4 = Frame(f)
 	
-	e = Entry(f)
-	e.pack(fill=X)
+	e = Entry(f, font=("Times New Roman", 50))
+	e.pack(fill=X, padx=5, pady=5)
 	
 	_1 = Button(f1, text = "1")
-	_1.config(width = "2")
+	_1.config(width = "5")
 	_1.config(command = lambda: add(1))
 	_1.pack(side='left')
 	

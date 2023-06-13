@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk, messagebox
 import json
 
 class myfile:
@@ -91,7 +92,7 @@ def start():
 	base.title("Monetary System")
 	base.geometry("500x500")
 
-	total = Label()
+	total = Label(base)
 	total.config(text=f"Your total cost was: {amt}", font=('Times New Roman', 25))
 	total.pack(side="top", fill="x", expand=True)
 
