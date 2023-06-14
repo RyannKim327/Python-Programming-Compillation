@@ -21,7 +21,7 @@ def start():
 	root = Tk()
 	root.geometry('600x800')
 	root.title('Calculator')
-	root.config(bg="#131320")
+	root.config(bg=main_bg)
 	
 	wala_kaming = Label(root, text="Calculator", bg=main_bg, fg='#ffffff', font=('Times New Roman', 25))
 	wala_kaming.pack(fill='x')
