@@ -2,6 +2,9 @@ from openpyxl import *
 
 class xl:
 	def __init__(self, filename: str = ""):
+		"""
+			Project initialization, this is to set some files here
+		"""
 		if filename == "":
 			self.filename = "Book2.xlsx"
 		else:
@@ -9,25 +12,46 @@ class xl:
 		self.xl = load_workbook(self.filename)
 	
 	def create_s(self, sheet_name: str = ""):
+		"""
+			Create a sheet, where ID is automatically generated
+		"""
 		self.xl_s = self.xl.active
 		if not sheet_name == "":
 			self.xl_s.title = sheet_name
+		
+		self.xl_s.cell(row = 1, column = 1, value = "ID")
 	
 	def set_column(self, cols: list):
-		self.xl_s.cell(row = 1, column = 1, value = "ID")
+		"""
+			Set some columns or column names
+		"""
 		for a in range(len(cols)):
 			self.xl_s.cell(row = 1, column = a + 2, value = cols[a])
 	
 	def read_data(self, position):
+		"""
+			Reading data
+		"""
 		return self.xl_s[position]
 	
 	def addData(self, data: list = [[]]):
+		"""
+			Add a data thru 2d array like:
+			[
+				[],
+				[],
+				[]
+			]
+		"""
 		for a in range(len(data)):
 			self.xl_s.cell(row = a + 2, column = 1, value = a + 1)
 			for b in range(len(data[a])):
 				self.xl_s.cell(row = a + 2, column = b + 2, value = data[a][b])
 
 	def save_it(self, filename: str = ""):
+		"""
+			Save as xlsx
+		"""
 		if filename == "" or not "." in filename:
 			self.xl.save(self.filename)
 		else:
