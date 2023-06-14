@@ -97,5 +97,3 @@ def start():
 	row4.pack(fill='both', expand=True)
 
 	root.mainloop()
-
-start()
