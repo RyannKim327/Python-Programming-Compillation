@@ -11,7 +11,6 @@ def start():
 	root.config(bg=bgc)
 	root.geometry("300x300")
 	root.title("Calculator")
-	root.resizable(False, False)
 
 	wala_kaming = Label(root, text="Calculator", font=('Times New Roman', 25), justify='center', bg=bgc, fg=fgc)
 	wala_kaming.grid(row=0, column=0, columnspan=5)
