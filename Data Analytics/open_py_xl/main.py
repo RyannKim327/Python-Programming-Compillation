@@ -6,11 +6,14 @@ class xl:
 			Project initialization, this is to set some files here
 		"""
 		if filename == "":
-			self.filename = "Book2.xlsx"
+			self.filename = "Book.xlsx"
 		else:
 			self.filename = filename
-		self.xl = load_workbook(self.filename)
-	
+		try:
+			self.xl = load_workbook(self.filename)
+		except:
+			self.xl = Workbook()
+
 	def create_s(self, sheet_name: str = ""):
 		"""
 			Create a sheet, where ID is automatically generated
@@ -78,4 +81,4 @@ if __name__ == "__main__":
 			"Male"
 		],
 	])
-	data.save_it("Book 4.xlsx")
+	data.save_it("Book.xlsx")
