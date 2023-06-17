@@ -16,10 +16,11 @@ def execute():
 	data.append(name_entry.get())
 	data.append(age_entry.get())
 	data.append(str_sex.get())
-	course = ""
+	course = []
 	for x in course_lists:
-		course += x.get() + ", "
-	data.append(course)
+		if x.get() != "":
+			course.append(x.get())
+	data.append(",".join(course))
 	data.append(year_entry.get())
 	data.append(addr_entry.get())
 	data.append(phone_entry.get())
