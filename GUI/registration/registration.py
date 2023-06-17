@@ -1,8 +1,16 @@
 from tkinter import *
 from tkinter import ttk
+import datetime
+
+def execute():
+	print(str_sex.get())
+	for x in course_lists:
+		print(x.get())
 
 
 def start():
+
+	global name_entry, age_entry, str_sex, str_course, year_entry, addr_entry, phone_entry, desc_entry, course_lists
 
 	root = Tk()
 	root.geometry("600x600")
@@ -80,7 +88,9 @@ def start():
 
 	for x in courses:
 		str_course = StringVar()
-		course_ = Checkbutton(courses_frame, font=("", font_size), justify='left', text=x, variable=str_course)
+		str_course.set(x)
+		course_ = Checkbutton(courses_frame, font=("", font_size), justify='left', onvalue=x, offvalue="", text=x, variable=str_course)
+		course_lists.append(str_course)
 		course_.pack(side='top', fill='x', expand=True)
 
 	courses_frame.pack(side='top', fill="x", expand=True, padx=padh, pady=padv, anchor='ne')
@@ -92,7 +102,12 @@ def start():
 	year_label = Label(year_frame, text="Year:\t", font=("", font_size))
 	year_label.pack(side='left')
 
-	year_entry = Entry(year_frame, font=("", font_size))
+	yrs = IntVar()
+	yr = []
+	for i in range(1903, datetime.date.today().year - 15):
+		yr.append(i)
+
+	year_entry = ttk.Combobox(year_frame, font=("", font_size), values=yr, textvariable=yrs)
 	year_entry.pack(side='right', fill='x', expand=True)
 
 	year_frame.pack(fill="x", expand=True, padx=padh, pady=padv, anchor='n')
@@ -120,14 +135,14 @@ def start():
 	desc_frame = Frame(root)
 
 	desc_label = Label(desc_frame, text="Description: ", font=("", font_size))
-	desc_label.pack(side='left')
+	desc_label.pack(side='left', anchor="n")
 
-	desc_entry = Text(desc_frame, font=("", font_size))
+	desc_entry = Text(desc_frame, font=("", font_size), height=2)
 	desc_entry.pack(side='right', fill='x', expand=True)
 
 	desc_frame.pack(fill="x", expand=True, padx=padh, pady=padv, anchor='n')
 
-	register = Button(root, text="Register", font=("Times New Roman", font_size))
+	register = Button(root, text="Register", font=("Times New Roman", font_size), command=execute)
 	register.pack(fill='x', expand=True, padx=padh, pady=padv)
 
 	root.mainloop()
