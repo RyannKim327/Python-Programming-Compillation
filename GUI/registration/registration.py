@@ -7,10 +7,13 @@ def execute():
 	for x in course_lists:
 		print(x.get())
 
+def changeAge():
+	age_entry.delete(0, END)
+	age_entry.insert(0, datetime.date.today().year - int(yrs.get()))
 
 def start():
 
-	global name_entry, age_entry, str_sex, str_course, year_entry, addr_entry, phone_entry, desc_entry, course_lists
+	global name_entry, age_entry, str_sex, str_course, year_entry, addr_entry, phone_entry, desc_entry, course_lists, yrs
 
 	root = Tk()
 	root.geometry("600x600")
@@ -107,7 +110,7 @@ def start():
 	for i in range(1903, datetime.date.today().year - 15):
 		yr.append(i)
 
-	year_entry = ttk.Combobox(year_frame, font=("", font_size), values=yr, textvariable=yrs)
+	year_entry = ttk.Combobox(year_frame, font=("", font_size), values=yr, textvariable=yrs, validate="focusout", validatecommand=changeAge)
 	year_entry.pack(side='right', fill='x', expand=True)
 
 	year_frame.pack(fill="x", expand=True, padx=padh, pady=padv, anchor='n')
