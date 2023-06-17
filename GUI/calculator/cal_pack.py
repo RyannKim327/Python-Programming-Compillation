@@ -1,9 +1,26 @@
 from tkinter import *
 
 def add(n):
-	if e.get() == "Error sya kapatid":
+	if e.get() == "Error sya Tiger, ERROR!!!":
 		e.delete(0, END)
-	e.insert(END, n)
+	if len(e.get()) > 0:
+		last_char = e.get()[len(e.get()) - 1]
+		lists_of_etc = [
+			'+',
+			'-',
+			'*',
+			'/'
+		]
+		if not last_char in lists_of_etc:
+			e.insert(END, n)
+		elif not n in lists_of_etc:
+			e.insert(END, n)
+		elif n == ".":
+			if not n in e.get():
+				e.insert(END, n)
+		
+	else:
+		e.insert(END, n)
 
 def sum_it_all():
 	try:
@@ -12,10 +29,10 @@ def sum_it_all():
 		e.insert(0, total)
 	except:
 		e.delete(0, END)
-		e.insert(0, "Error sya kapatid")
+		e.insert(0, "Error sya Tiger, ERROR!!!")
 
 def delete_one():
-	if e.get() == "Error sya kapatid":
+	if e.get() == "Error sya Tiger, ERROR!!!":
 		e.delete(0, END)
 	e.delete(len(e.get()) - 1)
 
@@ -24,8 +41,10 @@ def start():
 	global e
 
 	pads = 8
-	main_bg = "#A8BFC8"
+	main_bg = "#B1B4BF"
+	k_bg = ""
 	main_fg = "#293041"
+	
 
 	root = Tk()
 	root.geometry('600x800')

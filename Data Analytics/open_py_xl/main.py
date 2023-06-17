@@ -35,7 +35,7 @@ class xl:
 		"""
 			Reading data
 		"""
-		return self.xl_s[position]
+		return self.xl_s[position].value
 	
 	def addData(self, data: list = [[]]):
 		"""
@@ -69,16 +69,22 @@ if __name__ == "__main__":
 		"Description",
 		"Gender"
 	])
-	data.addData([
-		[
-			"Ryann Kim Sesgundo",
-			"A newbie programmer from Quezon Province",
-			"Male"
-		],
-		[
-			"Ryann Kim Sesgundo",
-			"A newbie programmer from Quezon Province",
-			"Male"
-		],
-	])
-	data.save_it("Book.xlsx")
+	# data.addData([
+	# 	[
+	# 		"Ryann Kim Sesgundo",
+	# 		"A newbie programmer from Quezon Province",
+	# 		"Male"
+	# 	],
+	# 	[
+	# 		"Mark Aljo Quinzoda",
+	# 		"A pro programmer from Quezon Province",
+	# 		"Male"
+	# 	],
+	# 	[
+	# 		"Nicole Patrice Torrero",
+	# 		"A pro programmer from Quezon Province",
+	# 		"Female"
+	# 	]
+	# ])
+	# data.save_it("Book.xlsx")
+	print(data.read_data('B4'))
