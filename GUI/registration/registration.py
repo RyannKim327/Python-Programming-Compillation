@@ -1,33 +1,7 @@
 from tkinter import *
 from tkinter import ttk
-
-import os
-
-import openpyxl as xl
 import datetime
-		
-def createDatabase(data: list):
-	global xls, wb
-
-	if os.path.exists("book.xlsx"):
-		wb = xl.load_workbook("book.xlsx")
-		xls = wb['currentdatabase']
-	else:
-		wb = xl.Workbook()
-		xls = wb.active
-		xls.title = "currentdatabase"
-	
-	xls.cell(row = 1, column = 1, value = "ID")
-	for i in range(0, len(data)):
-		xls.cell(row = 1, column = i + 2, value = data[i])
-
-def addData(data: list):
-	rows = xls.max_row + 1
-	xls.cell(row = rows, column = 1, value = rows - 1)
-	for i in range(0, len(data)):
-		xls.cell(row = rows, column = i + 2, value = data[i])
-	
-	wb.save("book.xlsx")
+import data as dt
 
 def execute():
 	"Name:        "
@@ -51,7 +25,7 @@ def execute():
 	data.append(phone_entry.get())
 	data.append(desc_entry.get("1.0", "end-1c"))
 
-	addData(data)
+	dt.addData(data)
 
 def changeAge():
 	if year_entry.get().isdigit():
@@ -220,5 +194,5 @@ if __name__ == "__main__":
 		"phone",
 		"description"
 	]
-	createDatabase(data)
+	dt.createDatabase(data)
 	start()
