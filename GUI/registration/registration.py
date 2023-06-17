@@ -8,8 +8,21 @@ def execute():
 		print(x.get())
 
 def changeAge():
-	age_entry.delete(0, END)
-	age_entry.insert(0, datetime.date.today().year - int(yrs.get()))
+	if year_entry.get().isdigit():
+		a = datetime.date.today().year - int(yrs.get())
+		if a >= 15:
+			age_entry.delete(0, END)
+			age_entry.insert(0, a)
+		else:
+			age_entry.delete(0, END)
+			age_entry.insert(0, 15)
+			year_entry.delete(0, END)
+			year_entry.insert(0, datetime.date.today().year - a)
+		return True
+	else:
+		age_entry.delete(0, END)
+		age_entry.insert(0, 0)
+		return False
 
 def start():
 
@@ -107,7 +120,7 @@ def start():
 
 	yrs = IntVar()
 	yr = []
-	for i in range(1903, datetime.date.today().year - 15):
+	for i in range(1903, datetime.date.today().year - 14):
 		yr.append(i)
 
 	year_entry = ttk.Combobox(year_frame, font=("", font_size), values=yr, textvariable=yrs, validate="focusout", validatecommand=changeAge)
