@@ -184,7 +184,8 @@ def start():
 
 	root.mainloop()
 
-if __name__ == "__main__":
+
+def show():
 	data = [
 		"name",
 		"age",
