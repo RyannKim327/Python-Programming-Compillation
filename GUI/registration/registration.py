@@ -71,7 +71,7 @@ def start():
 	"Age:         "
 	"Sex:         "
 	"Course:      "
-	"Subject:      "
+	"Subject:     "
 	"Year:        "
 	"Address:     "
 	"Phone:       "
@@ -97,9 +97,10 @@ def start():
 
 	int_age = IntVar()
 	age = []
-	for i in range(15, 71):
+	for i in range(15, 31):
 		age.append(i)
-
+	
+	int_age.set(min(age))
 	age_entry = ttk.Combobox(age_frame, font=("", font_size), values=age, textvariable=int_age)
 	age_entry.pack(side='right', fill='x', expand=True)
 
@@ -111,6 +112,7 @@ def start():
 	sex_label.pack(side='left')
 
 	str_sex = StringVar()
+	str_sex.set('male')
 
 	sex_radio_1 = Radiobutton(sex_frame, text="Female", font=("", font_size), variable=str_sex, value="female")
 	sex_radio_1.pack(side='right', fill='x', expand=True)
@@ -138,7 +140,6 @@ def start():
 	c_frame = Frame(courses_frame)
 	for x in courses:
 		str_course = StringVar()
-		str_course.set(x)
 		course_ = Checkbutton(c_frame, font=("", font_size), justify='left', onvalue=x, offvalue="", text=x, variable=str_course, anchor=W)
 		course_lists.append(str_course)
 		course_.pack(side='left', fill='x', expand=True, anchor='w')
@@ -164,7 +165,6 @@ def start():
 	i = 0
 	for x in subjs:
 		str_subjs = StringVar()
-		str_subjs.set(x)
 		subjs_ = Checkbutton(subjects_frame, font=("", font_size), justify='left', onvalue=x, offvalue="", text=x, variable=str_subjs, anchor=W)
 		subject_lists.append(str_subjs)
 		subjs_.pack(side='left', fill='x', expand=True, anchor='w')
@@ -177,12 +177,18 @@ def start():
 	year_label = Label(year_frame, text="Year:\t", font=("", font_size))
 	year_label.pack(side='left')
 
-	yrs = IntVar()
-	yr = []
-	for i in range(1903, datetime.date.today().year - 14):
-		yr.append(i)
+	yrs = StringVar()
 
-	year_entry = ttk.Combobox(year_frame, font=("", font_size), values=yr, textvariable=yrs, validate="focusout", validatecommand=changeAge)
+	yr = [
+		"First Year",
+		"Second Year",
+		"Third Year",
+		"Four Year"
+	]
+
+	yrs.set(yr[0])
+
+	year_entry = ttk.Combobox(year_frame, font=("", font_size), values=yr, textvariable=yrs)
 	year_entry.pack(side='right', fill='x', expand=True)
 
 	year_frame.pack(fill="x", expand=True, padx=padh, pady=padv, anchor='n')
