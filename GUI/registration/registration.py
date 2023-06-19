@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import ttk
+from tkinter import ttk, messagebox
 import datetime
 import data as dt
 
@@ -8,6 +8,7 @@ def execute():
 	"Age:         "
 	"Sex:         "
 	"Course:      "
+	"Subject:     "
 	"Year:        "
 	"Address:     "
 	"Phone:       "
@@ -17,16 +18,25 @@ def execute():
 	data.append(age_entry.get())
 	data.append(str_sex.get())
 	course = []
+	subjs = []
 	for x in course_lists:
 		if x.get() != "":
 			course.append(x.get())
+	for x in subject_lists:
+		if x.get() != "":
+			subjs.append(x.get())
 	data.append(",".join(course))
+	data.append(",".join(subjs))
 	data.append(year_entry.get())
 	data.append(addr_entry.get())
 	data.append(phone_entry.get())
 	data.append(desc_entry.get("1.0", "end-1c"))
 
 	dt.addData(data)
+
+	messagebox.showinfo("Success", "You're now already registered")
+	root.destroy()
+	start()
 
 def changeAge():
 	if year_entry.get().isdigit():
@@ -47,13 +57,13 @@ def changeAge():
 
 def start():
 
-	global name_entry, age_entry, str_sex, str_course, year_entry, addr_entry, phone_entry, desc_entry, course_lists, yrs
+	global name_entry, age_entry, str_sex, str_course, year_entry, addr_entry, phone_entry, desc_entry, course_lists, yrs, str_subjs, subject_lists, root
 
 	root = Tk()
 	root.geometry("600x600")
 	root.title("Registration Panel")
 
-	font_size = 17
+	font_size = 13
 	padh = 5
 	padv = 5
 
@@ -61,6 +71,7 @@ def start():
 	"Age:         "
 	"Sex:         "
 	"Course:      "
+	"Subject:      "
 	"Year:        "
 	"Address:     "
 	"Phone:       "
@@ -118,21 +129,48 @@ def start():
 
 	course_lists = []
 	courses = [
-		"Mathematics",
-		"Physics",
-		"Programming"
+		"Programming", "Physics",
+		"Data Analytics", "Calculus",
+		"Data Visualization", "Physical Education"
 	]
 
+	i = 1
+	c_frame = Frame(courses_frame)
 	for x in courses:
 		str_course = StringVar()
 		str_course.set(x)
-		course_ = Checkbutton(courses_frame, font=("", font_size), justify='left', onvalue=x, offvalue="", text=x, variable=str_course)
+		course_ = Checkbutton(c_frame, font=("", font_size), justify='left', onvalue=x, offvalue="", text=x, variable=str_course, anchor=W)
 		course_lists.append(str_course)
-		course_.pack(side='top', fill='x', expand=True)
+		course_.pack(side='left', fill='x', expand=True, anchor='w')
+		if i % 3 == 0 and i != 0:
+			c_frame.pack(side='top', fill='x', expand=True)
+			c_frame = Frame(course_frame)
+		i += 1
+	
+	c_frame.pack(side='top', fill='x', expand=True)
 
 	courses_frame.pack(side='top', fill="x", expand=True, padx=padh, pady=padv, anchor='ne')
-
 	course_frame.pack(fill='x', expand=True, padx=padh, pady=padv)
+
+	subjects_frame = Frame(root)
+
+	subj_label = Label(subjects_frame, text="Course:\t", font=("", font_size))
+	subj_label.pack(side='left', anchor='n')
+
+	subject_lists = []
+	subjs = [
+		"Physics", "Mathematics", "Science"
+	]
+	i = 0
+	for x in subjs:
+		str_subjs = StringVar()
+		str_subjs.set(x)
+		subjs_ = Checkbutton(subjects_frame, font=("", font_size), justify='left', onvalue=x, offvalue="", text=x, variable=str_subjs, anchor=W)
+		subject_lists.append(str_subjs)
+		subjs_.pack(side='left', fill='x', expand=True, anchor='w')
+		i += 1
+
+	subjects_frame.pack(side='top', fill='x', expand=True)
 
 	year_frame = Frame(root)
 
@@ -185,12 +223,14 @@ def start():
 	root.mainloop()
 
 
-def show():
+# def show():
+if __name__ == "__main__":
 	data = [
 		"name",
 		"age",
 		"sex",
 		"course",
+		"subject",
 		"year",
 		"address",
 		"phone",
