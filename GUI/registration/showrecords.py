@@ -1,6 +1,7 @@
 from tkinter import *
 from data import *
 
+# if __name__ == "__main__":
 def show():
 	root = Tk()
 	root.geometry("600x600")
@@ -18,3 +19,5 @@ def show():
 		x += 1
 
 	root.mainloop()
+
+show()

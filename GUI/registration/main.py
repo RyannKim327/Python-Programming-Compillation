@@ -2,12 +2,10 @@ from tkinter import *
 
 def regis():
 	import registration
-	registration.show()
 	
 
 def read():
 	import showrecords
-	showrecords.show()
 
 
 def start():

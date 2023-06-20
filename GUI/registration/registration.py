@@ -228,9 +228,8 @@ def start():
 
 	root.mainloop()
 
-
-# def show():
-if __name__ == "__main__":
+def show():
+# if __name__ == "__main__":
 	data = [
 		"name",
 		"age",
@@ -244,3 +243,5 @@ if __name__ == "__main__":
 	]
 	dt.createDatabase(data)
 	start()
+
+show()
