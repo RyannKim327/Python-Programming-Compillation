@@ -9,15 +9,23 @@ def register():
 	skills = text_skills.get("1.0", "end-1c")
 	phone = entry_phone.get()
 	educ = str_educ.get()
-	hobbies = []
-	for x in hobby_lists:
-		if not x.get() == "":
-			hobbies.append(x.get())
-	if len(hobbies) == 0:
-		hobbies.append("No hobbies")
-	
-	message = f"Name: {name}\nAge: {age}\nGender: {gender}\nDescription: {description}\nSkills: {skills}\nPhone: {phone}\nEducation: {educ}\nHobbies: {', '.join(hobbies)}"
-	messagebox.showinfo("Congrats", message)
+
+	if name == "" or not " " in name:
+		messagebox.showerror("Error", "Please fix your name")
+	elif not age.isdigit():
+		messagebox.showerror("Error", "Please fix your age")
+	elif not phone.isdigit() or len(phone) != 11:
+		messagebox.showerror("Error", "This is not a phone number")
+	else:
+		hobbies = []
+		for x in hobby_lists:
+			if not x.get() == "":
+				hobbies.append(x.get())
+		if len(hobbies) == 0:
+			hobbies.append("No hobbies")
+		
+		message = f"Name: {name}\nAge: {age}\nGender: {gender}\nDescription: {description}\nSkills: {skills}\nPhone: {phone}\nEducation: {educ}\nHobbies: {', '.join(hobbies)}"
+		messagebox.showinfo("Congrats", message)
 
 def start():
 
