@@ -1,30 +1,38 @@
 from tkinter import *
 
 def add(n):
+	global equation
+
+	lists_of_etc = [
+		'+',
+		'-',
+		'*',
+		'/'
+	]
+	
 	if e.get() == "Error sya Tiger, ERROR!!!":
 		e.delete(0, END)
 	if len(e.get()) > 0:
 		last_char = e.get()[len(e.get()) - 1]
-		lists_of_etc = [
-			'+',
-			'-',
-			'*',
-			'/'
-		]
-		if not last_char in lists_of_etc:
-			e.insert(END, n)
-		elif not n in lists_of_etc:
-			e.insert(END, n)
-		elif n == ".":
+		# if not last_char in lists_of_etc:
+		# 	e.insert(END, n)
+		# elif not n in lists_of_etc:
+		# 	e.insert(END, n)
+		if n == ".":
 			if not n in e.get():
 				e.insert(END, n)
+		if n in lists_of_etc:
+			equation += e.get() + n
+			e.delete(0, END)
 		
 	else:
-		e.insert(END, n)
+		if(not n in lists_of_etc and e.get() == ""):
+			e.insert(END, n)
 
 def sum_it_all():
+	print(equation + e.get())
 	try:
-		total = eval(e.get())
+		total = eval(equation + e.get())
 		e.delete(0, END)
 		e.insert(0, total)
 	except:
@@ -38,7 +46,8 @@ def delete_one():
 
 def start():
 
-	global e
+	global e, equation
+	equation = ""
 
 	pads = 8
 	main_bg = "#B1B4BF"
