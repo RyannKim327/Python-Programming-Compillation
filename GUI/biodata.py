@@ -76,7 +76,6 @@ def start():
 	gender_female = Radiobutton(root, text="Female", value="female", variable=str_gender)
 	gender_female.grid(row=2, column=3)
 
-
 	label_addr = Label(root, text="Address: ")
 	label_addr.grid(row=3, column=0, sticky='e')
 
@@ -113,7 +112,6 @@ def start():
 
 	label_hobby = Label(root, text="Hobbies: ")
 	label_hobby.grid(row=7, column=0, sticky='e')
-
 
 	hobby_lists = []
 	hobbies = [
