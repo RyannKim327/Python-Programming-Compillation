@@ -5,18 +5,29 @@ def register():
 	name = entry_name.get()
 	age = entry_age.get()
 	gender = str_gender.get()
+	addr = text_addr.get("1.0", "end-1c")
 	description = text_description.get("1.0", "end-1c")
 	skills = text_skills.get("1.0", "end-1c")
 	phone = entry_phone.get()
 	educ = str_educ.get()
 
+	show = True
+	msg = []
+
 	if name == "" or not " " in name:
-		messagebox.showerror("Error", "Please fix your name")
-	elif not age.isdigit():
-		messagebox.showerror("Error", "Please fix your age")
-	elif not phone.isdigit() or len(phone) != 11:
-		messagebox.showerror("Error", "This is not a phone number")
-	else:
+		msg.append("name")
+		show = False
+	if not age.isdigit():
+		msg.append("age")
+		show = False
+	if not phone.isdigit() or len(phone) != 11:
+		msg.append("phone")
+		show = False
+	if addr == "":
+		msg.append("address")
+		show = False
+	
+	if show:
 		hobbies = []
 		for x in hobby_lists:
 			if not x.get() == "":
@@ -26,10 +37,13 @@ def register():
 		
 		message = f"Name: {name}\nAge: {age}\nGender: {gender}\nDescription: {description}\nSkills: {skills}\nPhone: {phone}\nEducation: {educ}\nHobbies: {', '.join(hobbies)}"
 		messagebox.showinfo("Congrats", message)
+	else:
+		messagebox.showerror("Error", f"Please fix your {', '.join(msg)} to proceed.")
+
 
 def start():
 
-	global entry_name, entry_age, str_gender, text_description, text_skills, entry_phone, str_educ, hobby_lists
+	global entry_name, entry_age, str_gender, text_addr, text_description, text_skills, entry_phone, str_educ, hobby_lists
 
 	text_height = 3
 	text_width = 30
@@ -62,11 +76,12 @@ def start():
 	gender_female = Radiobutton(root, text="Female", value="female", variable=str_gender)
 	gender_female.grid(row=2, column=3)
 
-	label_description = Label(root, text="Description: ")
-	label_description.grid(row=3, column=0, sticky='e')
 
-	text_description = Text(root, height=text_height, width=text_width)
-	text_description.grid(row=3, column=1, columnspan=3, sticky='w')
+	label_addr = Label(root, text="Address: ")
+	label_addr.grid(row=3, column=0, sticky='e')
+
+	text_addr = Text(root, height=text_height, width=text_width)
+	text_addr.grid(row=3, column=1, columnspan=3, sticky='w')
 
 	label_skills = Label(root, text="Skills: ")
 	label_skills.grid(row=4, column=0, sticky='e')
@@ -114,9 +129,15 @@ def start():
 		check_hobby.grid(row=8 + position, column=1, columnspan=3, sticky='w')
 		hobby_lists.append(str_hobby)
 		position += 1
+	
+	label_description = Label(root, text="Description: ")
+	label_description.grid(row=position + 10, column=0, sticky='e')
+
+	text_description = Text(root, height=text_height, width=text_width)
+	text_description.grid(row=position + 10, column=1, columnspan=3, sticky='w')
 
 	reg = Button(root, text="Register", command=lambda: register())
-	reg.grid(row=position + 9, column=1, columnspan=2)
+	reg.grid(row=position + 11, column=1, columnspan=2)
 
 	root.mainloop()
 
