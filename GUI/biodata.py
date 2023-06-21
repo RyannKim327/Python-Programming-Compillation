@@ -43,7 +43,6 @@ def register():
 	else:
 		messagebox.showerror("Error", f"Please fix your {', '.join(msg)} to proceed.")
 
-
 def start():
 
 	global entry_name, entry_age, str_gender, text_addr, text_description, text_skills, entry_phone, str_educ, hobby_lists, text_description
