@@ -10,6 +10,7 @@ def register():
 	skills = text_skills.get("1.0", "end-1c")
 	phone = entry_phone.get()
 	educ = str_educ.get()
+	description = text_description.get("1.0", "end-1c")
 
 	show = True
 	msg = []
@@ -26,6 +27,8 @@ def register():
 	if addr == "":
 		msg.append("address")
 		show = False
+	if description == "":
+		description = "No description Provided"
 	
 	if show:
 		hobbies = []
@@ -35,7 +38,7 @@ def register():
 		if len(hobbies) == 0:
 			hobbies.append("No hobbies")
 		
-		message = f"Name: {name}\nAge: {age}\nGender: {gender}\nDescription: {description}\nSkills: {skills}\nPhone: {phone}\nEducation: {educ}\nHobbies: {', '.join(hobbies)}"
+		message = f"Name: {name}\nAge: {age}\nGender: {gender}\nDescription: {description}\nSkills: {skills}\nPhone: {phone}\nEducation: {educ}\nHobbies: {', '.join(hobbies)}\n{description}"
 		messagebox.showinfo("Congrats", message)
 	else:
 		messagebox.showerror("Error", f"Please fix your {', '.join(msg)} to proceed.")
@@ -43,7 +46,7 @@ def register():
 
 def start():
 
-	global entry_name, entry_age, str_gender, text_addr, text_description, text_skills, entry_phone, str_educ, hobby_lists
+	global entry_name, entry_age, str_gender, text_addr, text_description, text_skills, entry_phone, str_educ, hobby_lists, text_description
 
 	text_height = 3
 	text_width = 30
