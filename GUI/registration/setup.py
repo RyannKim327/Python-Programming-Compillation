@@ -2,6 +2,7 @@ from openpyxl import *
 import os
 
 def createDatabase():
+	global wb, ws
 	if os.path.exists("employees.xlsx"):
 		wb = load_workbook("employees.xlsx")
 		ws = wb['employees']
@@ -9,44 +10,94 @@ def createDatabase():
 		wb = Workbook()
 		ws = wb.active
 		ws.title = "employees"
-	ws.cell(row = 1, column = 1, value = "reference")
+		columns = [
+			"reference",
+			"name",
+			"email",
+			"gender",
+			"destination",
+			"contact",
+			"salary",
+			"address"
+		]
+		for i in range(len(columns)):
+			ws.cell(row = 1, column = 1 + i, value = columns[i])
+
 
 def addData(data: dict):
 	proceed = True
 	invalids = []
-	if data.get("reference") == None:
+	send = []
+	if data.get("reference") == None or data['reference'] == "":
 		invalids.append("reference")
 		proceed = False
+	else:
+		send.append(data['reference'])
 
-	if data.get("name") == None:
+	if data.get("name") == None or data['name'] == "":
 		invalids.append("name")
 		proceed = False
+	else:
+		send.append(data['name'])
 		
-	if data.get("email") == None:
+	if data.get("email") == None or data['email'] == "":
 		invalids.append("email")
 		proceed = False
+	else:
+		send.append(data['email'])
 
-	if data.get("gender") == None:
+	if data.get("gender") == None or data['gender'] == "":
 		invalids.append("gender")
 		proceed = False
+	else:
+		send.append(data['gender'])
 
-	if data.get("destination") == None:
+	if data.get("destination") == None or data['destination'] == "":
 		invalids.append("destination")
 		proceed = False
+	else:
+		send.append(data['destination'])
 
-	if data.get("contact") == None:
+	if data.get("contact") == None or data['contact'] == "":
 		invalids.append("contact")
 		proceed = False
+	else:
+		send.append(data['contact'])
 
-	if data.get("salary") == None:
+	if data.get("salary") == None or data['salary'] == "":
 		invalids.append("salary")
 		proceed = False
+	else:
+		send.append(data['salary'])
 
-	if data.get("address") == None:
+	if data.get("address") == None or data['address'] == "":
 		invalids.append("address")
 		proceed = False
+	else:
+		send.append(data['address'])
+
+	if proceed:
+		rows = ws.max_row + 1
+		for i in range(len(send)):
+			ws.cell(row = rows, column = i + 1, value = send[i])
+		wb.save("employees.xlsx")
+
 	
 	return {
 		"approve": proceed,
 		"invalids": ", ".join(invalids)
 	}
+
+def getData():
+	data = []
+	# for r in ws.iter_rows(values_only=True):
+	# 	d = []
+	# 	for i in r:
+	# 		d.append(i)
+	# 	data.append(d)
+	for c in ws.iter_cols(values_only=True):
+		d = []
+		for r in c:
+			d.append(r)
+		data.append(d)
+	return data

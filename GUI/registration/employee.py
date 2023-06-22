@@ -1,11 +1,28 @@
 from tkinter import *
 from tkinter import messagebox
+import setup
 
-
+def addData():
+	_ = setup.addData({
+		"reference": _emp_ref.get(),
+		"name": _emp_name.get(),
+		"email": _emp_email.get(),
+		"gender": _emp_gender.get(),
+		"destination": _emp_destination.get(),
+		"contact": _emp_contact.get(),
+		"salary": _emp_salary.get(),
+		"address": _emp_addr.get("1.0", "end-1c")
+	})
+	if _['approve']:
+		messagebox.showinfo("Done", "New Data added")
+	else:
+		messagebox.showerror("Error", f"Please fix your {_['invalids']}")
 
 def employee_frame():
 
-	global _emp_ref, _emp_name, _emp_email, _emp_gender, emp_destination, _emp_contact, _emp_salary, _emp_addr
+	global _emp_ref, _emp_name, _emp_email, _emp_gender, _emp_destination, _emp_contact, _emp_salary, _emp_addr
+
+	setup.createDatabase()
 
 	bg = "#212529"
 	fg = "#e9ecef"
@@ -34,7 +51,7 @@ def employee_frame():
 
 	_bottom = Frame(employee_root, bg=bg)
 
-	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Add Record", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
+	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Add Record", bg=button_bg, fg=fg, command=lambda: addData()).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Save", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Print", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Reset", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
@@ -102,8 +119,8 @@ def employee_frame():
 	
 	emp_addr = Frame(_left, bg=bg)
 
-	Label(emp_addr, bg=bg, fg=fg, text="Address:\t\t", font=(font, def_size)).pack(side='left')
-	_emp_addr = Entry(emp_addr, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
+	Label(emp_addr, bg=bg, fg=fg, text="Address:\t\t", font=(font, def_size), anchor='n').pack(side='left', anchor='n')
+	_emp_addr = Text(emp_addr, height=3, width=20, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
 	_emp_addr.pack(side='left')
 
 	emp_addr.pack(side='top', fill='x', expand=True)
@@ -112,7 +129,29 @@ def employee_frame():
 
 	_right = Frame(employee_root, bg=bg)
 
-	_right.pack(side='right', fill='x', expand=True, anchor='nw')
+	columns = [
+		"Reference No.\t",
+		"Name\t",
+		"Email\t",
+		"Gender\t",
+		"Destination\t",
+		"Contact No.\t",
+		"Salary\t",
+		"Address\t"
+	]
+
+	data_set = setup.getData()
+
+	for i in range(len(data_set)):
+		_rows = Frame(_right)
+		for j in range(len(data_set[i])):
+			if j == 0:
+				Label(_rows, text=columns[i - 1], bg=bg, fg=fg).pack(side='top', fill='x', expand=True)
+			else:
+				Label(_rows, text=data_set[i][j], bg=bg, fg=fg).pack(side='top', fill='x', expand=True)
+		_rows.pack(side='left', fill='x', expand=True)
+
+	_right.pack(side='left', fill='x', expand=True, anchor='nw')
 
 	employee_root.mainloop()
 
