@@ -64,67 +64,67 @@ def employee_frame():
 
 	_left = Frame(employee_root, bg=bg)
 
-	emp_ref = Frame(_left, bg=bg)
+	emp_ref = LabelFrame(_left, bg=bg, fg=fg, text="Employee Ref:", labelanchor='nw')
 
-	Label(emp_ref, bg=bg, fg=fg, text="Employee Ref:\t", font=(font, def_size)).pack(side='left')
+	# Label(emp_ref, bg=bg, fg=fg, text="Employee Ref:\t", font=(font, def_size)).pack(side='left')
 	_emp_ref = Entry(emp_ref, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
-	_emp_ref.pack(side='left')
+	_emp_ref.pack(side='left', fill='x', expand=True)
 
 	emp_ref.pack(side='top', fill='x', expand=True)
 
-	emp_name = Frame(_left, bg=bg)
+	emp_name = LabelFrame(_left, bg=bg, fg=fg, text="Full name:", labelanchor='nw')
 
-	Label(emp_name, bg=bg, fg=fg, text="Full name:\t", font=(font, def_size)).pack(side='left')
+	# Label(emp_name, bg=bg, fg=fg, text="Full name:\t", font=(font, def_size)).pack(side='left')
 	_emp_name = Entry(emp_name, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
-	_emp_name.pack(side='left')
+	_emp_name.pack(side='left', fill='x', expand=True)
 
 	emp_name.pack(side='top', fill='x', expand=True)
 	
-	emp_email = Frame(_left, bg=bg)
+	emp_email = LabelFrame(_left, bg=bg, fg=fg, text="Email:", labelanchor='nw')
 
-	Label(emp_email, bg=bg, fg=fg, text="Email:\t\t", font=(font, def_size)).pack(side='left')
+	# Label(emp_email, bg=bg, fg=fg, text="Email:\t\t", font=(font, def_size)).pack(side='left')
 	_emp_email = Entry(emp_email, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
-	_emp_email.pack(side='left')
+	_emp_email.pack(side='left', fill='x', expand=True)
 
 	emp_email.pack(side='top', fill='x', expand=True)
 	
-	emp_gender = Frame(_left, bg=bg)
+	emp_gender = LabelFrame(_left, bg=bg, fg=fg, text="Gender:", labelanchor='nw')
 
-	Label(emp_gender, bg=bg, fg=fg, text="Gender:\t\t", font=(font, def_size)).pack(side='left')
+	# Label(emp_gender, bg=bg, fg=fg, text="Gender:\t\t", font=(font, def_size)).pack(side='left')
 	_emp_gender = Entry(emp_gender, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
-	_emp_gender.pack(side='left')
+	_emp_gender.pack(side='left', fill='x', expand=True)
 
 	emp_gender.pack(side='top', fill='x', expand=True)
 	
-	emp_destination = Frame(_left, bg=bg)
+	emp_destination = LabelFrame(_left, bg=bg, fg=fg, text="Destination:", labelanchor='nw')
 
-	Label(emp_destination, bg=bg, fg=fg, text="Destination:\t", font=(font, def_size)).pack(side='left')
+	# Label(emp_destination, bg=bg, fg=fg, text="Destination:\t", font=(font, def_size)).pack(side='left')
 	_emp_destination = Entry(emp_destination, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
-	_emp_destination.pack(side='left')
+	_emp_destination.pack(side='left', fill='x', expand=True)
 
 	emp_destination.pack(side='top', fill='x', expand=True)
 	
-	emp_contact = Frame(_left, bg=bg)
+	emp_contact = LabelFrame(_left, bg=bg, fg=fg, text="Contact No.:", labelanchor='nw')
 
-	Label(emp_contact, bg=bg, fg=fg, text="Contact No.:\t", font=(font, def_size)).pack(side='left')
+	# Label(emp_contact, bg=bg, fg=fg, text="Contact No.:\t", font=(font, def_size)).pack(side='left')
 	_emp_contact = Entry(emp_contact, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
-	_emp_contact.pack(side='left')
+	_emp_contact.pack(side='left', fill='x', expand=True)
 
 	emp_contact.pack(side='top', fill='x', expand=True)
 	
-	emp_salary = Frame(_left, bg=bg)
+	emp_salary = LabelFrame(_left, bg=bg, fg=fg, text="Salary:", labelanchor='nw')
 
-	Label(emp_salary, bg=bg, fg=fg, text="Salary:\t\t", font=(font, def_size)).pack(side='left')
+	# Label(emp_salary, bg=bg, fg=fg, text="Salary:\t\t", font=(font, def_size)).pack(side='left')
 	_emp_salary = Entry(emp_salary, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
-	_emp_salary.pack(side='left')
+	_emp_salary.pack(side='left', fill='x', expand=True)
 
 	emp_salary.pack(side='top', fill='x', expand=True)
 	
-	emp_addr = Frame(_left, bg=bg)
+	emp_addr = LabelFrame(_left, bg=bg, fg=fg, text="Address:", labelanchor='nw')
 
-	Label(emp_addr, bg=bg, fg=fg, text="Address:\t\t", font=(font, def_size), anchor='n').pack(side='left', anchor='n')
+	# Label(emp_addr, bg=bg, fg=fg, text="Address:\t\t", font=(font, def_size), anchor='n').pack(side='left', anchor='n')
 	_emp_addr = Text(emp_addr, height=3, width=20, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
-	_emp_addr.pack(side='left')
+	_emp_addr.pack(side='left', fill='x', expand=True)
 
 	emp_addr.pack(side='top', fill='x', expand=True)
 
@@ -133,14 +133,14 @@ def employee_frame():
 	_right = Frame(employee_root, bg=bg)
 
 	columns = [
-		"Reference No.\t",
-		"Name\t",
-		"Email\t",
-		"Gender\t",
-		"Destination\t",
-		"Contact No.\t",
-		"Salary\t",
-		"Address\t"
+		"Reference No.",
+		"Name",
+		"Email",
+		"Gender",
+		"Destination",
+		"Contact No.",
+		"Salary",
+		"Address"
 	]
 
 	data_set = setup.getData()
@@ -149,9 +149,9 @@ def employee_frame():
 		_rows = Frame(_right)
 		for j in range(len(data_set[i])):
 			if j == 0:
-				Label(_rows, text=columns[i - 1], bg=bg, fg=fg).pack(side='top', fill='x', expand=True)
+				Label(_rows, text=columns[i - 1], bg=bg, fg=fg, justify='center').pack(side='top', fill='x', expand=True)
 			else:
-				Label(_rows, text=data_set[i][j], bg=bg, fg=fg, borderwidth=table_w, relief=table_s).pack(side='top', fill='x', expand=True)
+				Label(_rows, text=data_set[i][j], bg=bg, fg=fg, justify='center', borderwidth=table_w, relief=table_s).pack(side='top', fill='x', expand=True)
 		_rows.pack(side='left', fill='x', expand=True)
 
 	_right.pack(side='left', fill='x', expand=True, anchor='nw')

@@ -58,13 +58,13 @@ def addData(data: dict):
 	else:
 		send.append(data['destination'])
 
-	if data.get("contact") == None or data['contact'] == "":
+	if data.get("contact") == None or data['contact'] == "" or not data['contact'].isdigit():
 		invalids.append("contact")
 		proceed = False
 	else:
 		send.append(data['contact'])
 
-	if data.get("salary") == None or data['salary'] == "":
+	if data.get("salary") == None or data['salary'] == "" or not data['salary'].isdigit():
 		invalids.append("salary")
 		proceed = False
 	else:
