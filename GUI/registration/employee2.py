@@ -38,8 +38,8 @@ def employee_frame():
 	button_bw = 1
 	button_style = 'solid'
 	
-	entry_bg = "#495057"
-	entry_bw = 1
+	entry_bg = bg # "#495057"
+	entry_bw = 0
 	entry_style = 'solid'
 
 	table_w = 1
@@ -62,7 +62,7 @@ def employee_frame():
 
 	_bottom.pack(side='bottom', fill='x', expand=True)
 
-	_left = Frame(employee_root, bg=bg)
+	_left = Frame(employee_root, bg=bg, padx=5)
 
 	emp_ref = LabelFrame(_left, bg=bg, fg=fg, text="Employee Ref:", labelanchor='nw')
 
@@ -130,7 +130,7 @@ def employee_frame():
 
 	_left.pack(side='left', fill='x', expand=True, anchor='ne')
 
-	_right = Frame(employee_root, bg=bg)
+	_right = Frame(employee_root, bg=bg, padx=5)
 
 	columns = [
 		"Reference No.",
@@ -149,7 +149,7 @@ def employee_frame():
 		_rows = Frame(_right)
 		for j in range(len(data_set[i])):
 			if j == 0:
-				Label(_rows, text=columns[i - 1], bg=bg, fg=fg, justify='center').pack(side='top', fill='x', expand=True)
+				Label(_rows, text=columns[i], bg=bg, fg=fg, justify='center').pack(side='top', fill='x', expand=True)
 			else:
 				Label(_rows, text=data_set[i][j], bg=bg, fg=fg, justify='center', borderwidth=table_w, relief=table_s).pack(side='top', fill='x', expand=True)
 		_rows.pack(side='left', fill='x', expand=True)
@@ -174,26 +174,30 @@ def start():
 	padx = 5
 	pady = 5
 
+	bg = "#212529"
+	fg = "#e9ecef"
+
 	root_login = Tk()
-	root_login.geometry("300x100")
+	root_login.geometry("300x150")
 	root_login.title("Login Panel")
+	root_login.config(bg=bg)
 
-	username = Frame(root_login)
+	username = LabelFrame(root_login, bg=bg, fg=fg, text="Username:", labelanchor='nw')
 
-	Label(username, text="Username:\t", font=("", 13)).pack(side='left', fill='x')
-	username_entry = Entry(username, font=("", 13))
+	# Label(username, text="Username:\t", font=("", 13), bg=bg, fg=fg).pack(side='left', fill='x')
+	username_entry = Entry(username, font=("", 13), bg=bg, fg=fg, borderwidth=0)
 	username_entry.pack(side='left', fill='x', expand=True, padx=padx, pady=pady)
 
-	password = Frame(root_login)
+	password = LabelFrame(root_login, bg=bg, fg=fg, text="Password:", labelanchor='nw')
 
-	Label(password, text="Password:\t", font=("", 13)).pack(side='left', fill='x')
-	password_entry = Entry(password, font=("", 13), show="•")
+	# Label(password, text="Password:\t", font=("", 13), bg=bg, fg=fg).pack(side='left', fill='x')
+	password_entry = Entry(password, font=("", 13), show="•", bg=bg, fg=fg, borderwidth=0)
 	password_entry.pack(side='left', fill='x', expand=True, padx=padx, pady=pady)
 
 	username.pack(fill='x', expand=True)
 	password.pack(fill='x', expand=True)
 
-	Button(root_login, text="Login", command=login).pack(side='left', fill='x', expand=True, padx=padx, pady=pady)
+	Button(root_login, text="Login", command=login, bg=bg, fg=fg).pack(side='left', fill='x', expand=True, padx=padx, pady=pady)
 
 	root_login.mainloop()
 
