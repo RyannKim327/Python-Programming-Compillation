@@ -20,4 +20,5 @@ def show():
 
 	root.mainloop()
 
-show()
+show(
+)
