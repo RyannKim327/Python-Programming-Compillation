@@ -2,6 +2,22 @@ from tkinter import *
 from tkinter import messagebox
 import setup
 
+def refreshData():
+	for i in _right.winfo_children():
+		i.destroy()
+	
+
+	data_set = setup.getData()
+	for i in range(len(data_set)):
+		_rows = Frame(_right)
+		for j in range(len(data_set[i])):
+			if j == 0:
+				Label(_rows, text=columns[i], bg=bg, fg=fg, justify='center').pack(side='top', fill='x', expand=True)
+			else:
+				Label(_rows, text=data_set[i][j], bg=bg, fg=fg, justify='center', borderwidth=table_w, relief=table_s).pack(side='top', fill='x', expand=True)
+		_rows.pack(side='left', fill='x', expand=True)
+
+
 def addData():
 	_ = setup.addData({
 		"reference": _emp_ref.get(),
@@ -15,12 +31,22 @@ def addData():
 	})
 	if _['approve']:
 		messagebox.showinfo("Done", "New Data added")
+		_emp_ref.delete(0, END)
+		_emp_name.delete(0, END)
+		_emp_email.delete(0, END)
+		_emp_gender.delete(0, END)
+		_emp_destination.delete(0, END)
+		_emp_contact.delete(0, END)
+		_emp_salary.delete(0, END)
+		_emp_addr.delete("1.0", END)
+		_emp_ref.insert(0, setup.lastID())
+		refreshData()
 	else:
 		messagebox.showerror("Error", f"Please fix your {_['invalids']}")
 
 def employee_frame():
 
-	global _emp_ref, _emp_name, _emp_email, _emp_gender, _emp_destination, _emp_contact, _emp_salary, _emp_addr
+	global _emp_ref, _emp_name, _emp_email, _emp_gender, _emp_destination, _emp_contact, _emp_salary, _emp_addr, _right, columns, table_w, table_s, bg, fg
 
 	setup.createDatabase()
 
@@ -68,6 +94,7 @@ def employee_frame():
 
 	# Label(emp_ref, bg=bg, fg=fg, text="Employee Ref:\t", font=(font, def_size)).pack(side='left')
 	_emp_ref = Entry(emp_ref, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
+	_emp_ref.insert(0, setup.lastID())
 	_emp_ref.pack(side='left', fill='x', expand=True)
 
 	emp_ref.pack(side='top', fill='x', expand=True)
@@ -156,6 +183,7 @@ def employee_frame():
 
 	_right.pack(side='left', fill='x', expand=True, anchor='nw')
 
+	employee_root.protocol("WM_DELETE_WINDOW", lambda: root_login.destroy())
 	employee_root.mainloop()
 
 def login():

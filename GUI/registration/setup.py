@@ -2,9 +2,12 @@ from openpyxl import *
 import os
 
 def createDatabase():
-	global wb, ws
-	if os.path.exists("employees.xlsx"):
-		wb = load_workbook("employees.xlsx")
+	global wb, ws, fn
+
+	fn = "employees.xlsx"
+
+	if os.path.exists(fn):
+		wb = load_workbook(fn)
 		ws = wb['employees']
 	else:
 		wb = Workbook()
@@ -80,7 +83,7 @@ def addData(data: dict):
 		rows = ws.max_row + 1
 		for i in range(len(send)):
 			ws.cell(row = rows, column = i + 1, value = send[i])
-		wb.save("employees.xlsx")
+		wb.save(fn)
 
 	
 	return {
@@ -101,3 +104,21 @@ def getData():
 			d.append(r)
 		data.append(d)
 	return data
+
+def lastID():
+	return f"EMP_{len(list(ws.iter_rows(values_only=True)))}"
+
+def updateData(id: str, data: list):
+	employee_id = 0
+	x = 1
+	for i in ws.iter_rows(values_only=True):
+		if i[0] == id:
+			employee_id = x
+			break
+		x += 1
+
+	for i in range(len(data)):
+		if data[i] != "":
+			ws.cell(row = employee_id, column = i + 2, value = data[i])
+	
+	wb.save(fn)
