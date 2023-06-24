@@ -7,7 +7,7 @@
 | --- | --- |
 | [Packages](#packs) | [Introduction](#introduction) |
 | [Create a workbook](#create-workbook) | [Save](#save) |
-| [Add Column Names](#add-columns)
+| [Add Column Names](#add-columns) | [Add some data](#add-data)
 
 ---
 <h3 id="packs">Packages</h3>
@@ -44,6 +44,7 @@ import os
 filename = "book.xlsx"
 sheet_name = "books"
 
+# Check if the file exists
 if os.path.exists(filename):
 	# Load the file
 	wb = xl.load_workbook(filename)
@@ -72,6 +73,7 @@ import os
 filename = "book.xlsx"
 sheet_name = "books"
 
+# Check if the file exists
 if os.path.exists(filename):
 	# Load the file
 	wb = xl.load_workbook(filename)
@@ -85,6 +87,7 @@ else:
 	# change the name of the sheet
 	ws.title = sheet_name
 
+# Save as file
 wb.save(filename)
 ```
 
@@ -121,6 +124,7 @@ import os
 filename = "book.xlsx"
 sheet_name = "books"
 
+# Check if the file exists
 if os.path.exists(filename):
 	# Load the file
 	wb = xl.load_workbook(filename)
@@ -134,6 +138,8 @@ else:
 	# change the name of the sheet
 	ws.title = sheet_name
 
+
+	# Add some column name
 	column = [
 		"ID",
 		"name",
@@ -148,7 +154,86 @@ else:
 		# ws is the worksheet where we're working on
 		ws.cell(row = 1, cell = (i + 1), value = column[i])
 
+# Save as file
 wb.save(filename)
 ```
 
 > It is actually included inside of your else, **WHY?** Because, we alrady have some data inside of the excell file if we done it before, so that we may not have some troubles regarding in adding of some column inside of it.
+
+---
+<h3 id="add-data">Add some data</h3>
+
+> In this section, we will going to use the `list method`, instead of using `tuple`. So just like the past tutorial on how to add some column names, it almost the same thing:
+
+```Python
+# First is you need to have the lists of data
+data = [
+	"book_001", # as ID
+	"Harry Potter", # as name
+	"22", # as age of the book
+	"National Bookstore" # as address or location
+]
+
+# next is we need to loop it
+rows = ws.max_row + 1
+for i in range(len(data)):
+	ws.cell(row = rows, column = i + 1, value = data[i])
+
+```
+
+> So the reason why we need to get the last row, is for us to identify where we will going to put the data. So the final code may look like this:
+
+
+```Python
+import openpyxl as xl
+import os
+
+filename = "book.xlsx"
+sheet_name = "books"
+
+# Check if the file exists
+if os.path.exists(filename):
+	# Load the file
+	wb = xl.load_workbook(filename)
+	# Load the sheet
+	ws = wb[sheet_name]
+else:
+	# Create a new Workbook
+	wb = xl.Workbook()
+	# .active is to create a new sheet if there is none
+	ws = wb.active
+	# change the name of the sheet
+	ws.title = sheet_name
+
+	# Add some column name
+	column = [
+		"ID",
+		"name",
+		"age",
+		"address"
+	]
+
+	# Then, we will going to create a loop.
+
+	for i in range(len(column)):
+		# let us add some data by help of cell function
+		# ws is the worksheet where we're working on
+		ws.cell(row = 1, cell = (i + 1), value = column[i])
+
+# First is you need to have the lists of data
+data = [
+	"book_001", # as ID
+	"Harry Potter", # as name
+	"22", # as age of the book
+	"National Bookstore" # as address or location
+]
+
+# next is we need to loop it
+rows = ws.max_row + 1
+for i in range(len(data)):
+	ws.cell(row = rows, column = i + 1, value = data[i])
+
+
+# Save as file
+wb.save(filename)
+```
