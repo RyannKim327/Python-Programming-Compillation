@@ -17,7 +17,6 @@ def refreshData():
 				Label(_rows, text=data_set[i][j], bg=bg, fg=fg, justify='center', borderwidth=table_w, relief=table_s).pack(side='top', fill='x', expand=True)
 		_rows.pack(side='left', fill='x', expand=True)
 
-
 def addData():
 	_ = setup.addData({
 		"reference": _emp_ref.get(),
@@ -47,7 +46,6 @@ def addData():
 def employee_frame():
 
 	global _emp_ref, _emp_name, _emp_email, _emp_gender, _emp_destination, _emp_contact, _emp_salary, _emp_addr, _right, columns, table_w, table_s, bg, fg
-
 	setup.createDatabase()
 
 	bg = "#212529"
