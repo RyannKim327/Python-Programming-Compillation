@@ -6,7 +6,8 @@
 | | |
 | --- | --- |
 | [Packages](#packs) | [Introduction](#introduction) |
-| [Create a workbook](#create-workbook) | [Save](#save)
+| [Create a workbook](#create-workbook) | [Save](#save) |
+| [Add Column Names](#add-columns)
 
 ---
 <h3 id="packs">Packages</h3>
@@ -86,3 +87,68 @@ else:
 
 wb.save(filename)
 ```
+
+> If the file isn't existed, it will automatically generate the file there in same directory of your python file.
+
+---
+<h3 id="add-columns">Add Column names</h3>
+
+> So since we use excell as database, we will going to add some columns inside of your else, if you follow the first step of this tutorial, and this is my way to easily recognized for the data where I need to use. At this point, we need first to create an array or list, lets named it `column`
+
+```Python
+column = [
+	"ID",
+	"name",
+	"age",
+	"address"
+]
+
+# Then, we will going to create a loop.
+
+for i in range(len(column)):
+	# let us add some data by help of cell function
+	# ws is the worksheet where we're working on
+	ws.cell(row = 1, cell = (i + 1), value = column[i])
+
+```
+
+> Excell is not an indexing type, where it is starts in zero. Excell always starts with `1` as primary cell and row. So the final code may look like this
+
+```Python
+import openpyxl as xl
+import os
+
+filename = "book.xlsx"
+sheet_name = "books"
+
+if os.path.exists(filename):
+	# Load the file
+	wb = xl.load_workbook(filename)
+	# Load the sheet
+	ws = wb[sheet_name]
+else:
+	# Create a new Workbook
+	wb = xl.Workbook()
+	# .active is to create a new sheet if there is none
+	ws = wb.active
+	# change the name of the sheet
+	ws.title = sheet_name
+
+	column = [
+		"ID",
+		"name",
+		"age",
+		"address"
+	]
+
+	# Then, we will going to create a loop.
+
+	for i in range(len(column)):
+		# let us add some data by help of cell function
+		# ws is the worksheet where we're working on
+		ws.cell(row = 1, cell = (i + 1), value = column[i])
+
+wb.save(filename)
+```
+
+> It is actually included inside of your else, **WHY?** Because, we alrady have some data inside of the excell file if we done it before, so that we may not have some troubles regarding in adding of some column inside of it.
