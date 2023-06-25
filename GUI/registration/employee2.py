@@ -189,7 +189,7 @@ def employee_frame():
 
 	_right.pack(side='left', fill='x', expand=True, anchor='nw')
 
-	employee_root.protocol("WM_DELETE_WINDOW", lambda: root_login.destroy())
+	employee_root.protocol("WM_DELETE_WINDOW", lambda: closeapp())
 	employee_root.mainloop()
 
 def login():
