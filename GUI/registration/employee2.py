@@ -17,6 +17,10 @@ def refreshData():
 				Label(_rows, text=data_set[i][j], bg=bg, fg=fg, justify='center', borderwidth=table_w, relief=table_s).pack(side='top', fill='x', expand=True)
 		_rows.pack(side='left', fill='x', expand=True)
 
+def closeapp():
+	if messagebox.askyesno("Confirmation", "Are you sure you want to exit?"):
+		root_login.destroy()
+
 def addData():
 	_ = setup.addData({
 		"reference": _emp_ref.get(),
@@ -82,7 +86,7 @@ def employee_frame():
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Save", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Print", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Reset", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
-	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Exit", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
+	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Exit", bg=button_bg, fg=fg, command=lambda: closeapp()).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 
 	_bottom.pack(side='bottom', fill='x', expand=True)
 
