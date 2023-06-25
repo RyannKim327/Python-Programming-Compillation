@@ -37,7 +37,7 @@ def addData():
 		_emp_ref.delete(0, END)
 		_emp_name.delete(0, END)
 		_emp_email.delete(0, END)
-		_emp_gender.delete(0, END)
+		_emp_gender.set("male")
 		_emp_destination.delete(0, END)
 		_emp_contact.delete(0, END)
 		_emp_salary.delete(0, END)
@@ -118,10 +118,14 @@ def employee_frame():
 	emp_email.pack(side='top', fill='x', expand=True)
 	
 	emp_gender = LabelFrame(_left, bg=bg, fg=fg, text="Gender:", labelanchor='nw')
-
+	
+	_emp_gender = StringVar()
+	_emp_gender.set("male")
+	Radiobutton(emp_gender, bg=bg, fg=fg, text="Male", value='male', variable=_emp_gender, font=(font, def_size)).pack(side='left', fill='x', expand=True)
+	Radiobutton(emp_gender, bg=bg, fg=fg, text="Female", value='female', variable=_emp_gender, font=(font, def_size)).pack(side='left', fill='x', expand=True)
 	# Label(emp_gender, bg=bg, fg=fg, text="Gender:\t\t", font=(font, def_size)).pack(side='left')
-	_emp_gender = Entry(emp_gender, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
-	_emp_gender.pack(side='left', fill='x', expand=True)
+	# _emp_gender = Entry(emp_gender, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
+	# _emp_gender.pack(side='left', fill='x', expand=True)
 
 	emp_gender.pack(side='top', fill='x', expand=True)
 	

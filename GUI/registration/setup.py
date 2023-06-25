@@ -105,6 +105,12 @@ def getData():
 		data.append(d)
 	return data
 
+def getAllID():
+	data = []
+	for r in ws.iter_rows(values_only=True):
+		data.append(r[0])
+	return data
+
 def lastID():
 	return f"EMP_{len(list(ws.iter_rows(values_only=True)))}"
 
