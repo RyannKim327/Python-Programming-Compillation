@@ -7,14 +7,17 @@ def refreshData():
 		i.destroy()
 
 	data_set = setup.getData()
+	
 	for i in range(len(data_set)):
-		_rows = Frame(_right)
-		for j in range(len(data_set[i])):
-			if j == 0:
-				Label(_rows, text=columns[i], bg=bg, fg=fg, justify='center').pack(side='top', fill='x', expand=True)
+		_data = data_set[i]
+		for j in range(len(_data)):
+			if i == 0:
+				Label(_right, width=table_w[j], text=columns[j], bg=bg, fg=fg, justify='center').grid(row=i, column=j, sticky='n')
 			else:
-				Label(_rows, text=data_set[i][j], bg=bg, fg=fg, justify='center', borderwidth=table_w, relief=table_s).pack(side='top', fill='x', expand=True)
-		_rows.pack(side='left', fill='x', expand=True)
+				Label(_right, width=table_w[j], text=_data[j], bg=bg, fg=fg, justify='center', borderwidth=table_b, relief=table_s).grid(row=i, column=j, sticky='n')
+
+	_right.pack(side='left', fill='x', expand=True, anchor='nw')
+
 
 def closeapp():
 	if messagebox.askyesno("Confirmation", "Are you sure you want to exit?"):
@@ -48,7 +51,7 @@ def addData():
 
 def employee_frame():
 
-	global _emp_ref, _emp_name, _emp_email, _emp_gender, _emp_destination, _emp_contact, _emp_salary, _emp_addr, _right, columns, table_w, table_s, bg, fg
+	global _emp_ref, _emp_name, _emp_email, _emp_gender, _emp_destination, _emp_contact, _emp_salary, _emp_addr, _right, columns, table_b, table_s, table_w, bg, fg
 	setup.createDatabase()
 
 	bg = "#212529"
@@ -69,8 +72,24 @@ def employee_frame():
 	entry_bw = 0
 	entry_style = 'solid'
 
-	table_w = 1
+	table_b= 1
 	table_s = 'solid'
+
+	columns = [
+		"Reference No.",
+		"Name",
+		"Email",
+		"Gender",
+		"Destination",
+		"Contact No.",
+		"Salary",
+		"Address"
+	]	
+	table_w = [
+		10, 20, 15,
+		8, 10, 20,
+		10, 20
+	]
 
 	employee_root = Toplevel()
 	employee_root.geometry("1200x760")
@@ -93,7 +112,6 @@ def employee_frame():
 
 	emp_ref = LabelFrame(_left, bg=bg, fg=fg, text="Employee Ref:", labelanchor='nw')
 
-	# Label(emp_ref, bg=bg, fg=fg, text="Employee Ref:\t", font=(font, def_size)).pack(side='left')
 	_emp_ref = Entry(emp_ref, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
 	_emp_ref.insert(0, setup.lastID())
 	_emp_ref.pack(side='left', fill='x', expand=True)
@@ -102,7 +120,6 @@ def employee_frame():
 
 	emp_name = LabelFrame(_left, bg=bg, fg=fg, text="Full name:", labelanchor='nw')
 
-	# Label(emp_name, bg=bg, fg=fg, text="Full name:\t", font=(font, def_size)).pack(side='left')
 	_emp_name = Entry(emp_name, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
 	_emp_name.pack(side='left', fill='x', expand=True)
 
@@ -110,7 +127,6 @@ def employee_frame():
 	
 	emp_email = LabelFrame(_left, bg=bg, fg=fg, text="Email:", labelanchor='nw')
 
-	# Label(emp_email, bg=bg, fg=fg, text="Email:\t\t", font=(font, def_size)).pack(side='left')
 	_emp_email = Entry(emp_email, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
 	_emp_email.pack(side='left', fill='x', expand=True)
 
@@ -120,17 +136,14 @@ def employee_frame():
 	
 	_emp_gender = StringVar()
 	_emp_gender.set("male")
-	Radiobutton(emp_gender, bg=bg, fg=fg, text="Male", value='male', variable=_emp_gender, font=(font, def_size)).pack(side='left', fill='x', expand=True)
-	Radiobutton(emp_gender, bg=bg, fg=fg, text="Female", value='female', variable=_emp_gender, font=(font, def_size)).pack(side='left', fill='x', expand=True)
-	# Label(emp_gender, bg=bg, fg=fg, text="Gender:\t\t", font=(font, def_size)).pack(side='left')
-	# _emp_gender = Entry(emp_gender, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
-	# _emp_gender.pack(side='left', fill='x', expand=True)
-
+	
+	Radiobutton(emp_gender, bg=bg, fg=fg, selectcolor=bg, text="Male", value='male', variable=_emp_gender, font=(font, def_size)).pack(side='left', fill='x', expand=True)
+	Radiobutton(emp_gender, bg=bg, fg=fg, selectcolor=bg, text="Female", value='female', variable=_emp_gender, font=(font, def_size)).pack(side='left', fill='x', expand=True)
+	
 	emp_gender.pack(side='top', fill='x', expand=True)
 	
 	emp_destination = LabelFrame(_left, bg=bg, fg=fg, text="Destination:", labelanchor='nw')
 
-	# Label(emp_destination, bg=bg, fg=fg, text="Destination:\t", font=(font, def_size)).pack(side='left')
 	_emp_destination = Entry(emp_destination, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
 	_emp_destination.pack(side='left', fill='x', expand=True)
 
@@ -138,7 +151,6 @@ def employee_frame():
 	
 	emp_contact = LabelFrame(_left, bg=bg, fg=fg, text="Contact No.:", labelanchor='nw')
 
-	# Label(emp_contact, bg=bg, fg=fg, text="Contact No.:\t", font=(font, def_size)).pack(side='left')
 	_emp_contact = Entry(emp_contact, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
 	_emp_contact.pack(side='left', fill='x', expand=True)
 
@@ -146,7 +158,6 @@ def employee_frame():
 	
 	emp_salary = LabelFrame(_left, bg=bg, fg=fg, text="Salary:", labelanchor='nw')
 
-	# Label(emp_salary, bg=bg, fg=fg, text="Salary:\t\t", font=(font, def_size)).pack(side='left')
 	_emp_salary = Entry(emp_salary, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
 	_emp_salary.pack(side='left', fill='x', expand=True)
 
@@ -154,7 +165,6 @@ def employee_frame():
 	
 	emp_addr = LabelFrame(_left, bg=bg, fg=fg, text="Address:", labelanchor='nw')
 
-	# Label(emp_addr, bg=bg, fg=fg, text="Address:\t\t", font=(font, def_size), anchor='n').pack(side='left', anchor='n')
 	_emp_addr = Text(emp_addr, height=3, width=20, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
 	_emp_addr.pack(side='left', fill='x', expand=True)
 
@@ -164,27 +174,24 @@ def employee_frame():
 
 	_right = Frame(employee_root, bg=bg, padx=5)
 
-	columns = [
-		"Reference No.",
-		"Name",
-		"Email",
-		"Gender",
-		"Destination",
-		"Contact No.",
-		"Salary",
-		"Address"
-	]
-
 	data_set = setup.getData()
 
+	# for i in range(len(data_set)):
+	# 	_rows = Frame(_right)
+	# 	for j in range(len(data_set[i])):
+	# 		if j == 0:
+	# 			Label(_rows, text=columns[i], bg=bg, fg=fg, justify='center').pack(side='top', fill='x', expand=True)
+	# 		else:
+	# 			Label(_rows, text=data_set[i][j], bg=bg, fg=fg, justify='center', borderwidth=table_w, relief=table_s).pack(side='top', fill='x', expand=True)
+	# 	_rows.pack(side='left', fill='x', expand=True)
+
 	for i in range(len(data_set)):
-		_rows = Frame(_right)
-		for j in range(len(data_set[i])):
-			if j == 0:
-				Label(_rows, text=columns[i], bg=bg, fg=fg, justify='center').pack(side='top', fill='x', expand=True)
+		_data = data_set[i]
+		for j in range(len(_data)):
+			if i == 0:
+				Label(_right, width=table_w[j], text=columns[j], bg=bg, fg=fg, justify='center').grid(row=i, column=j, sticky='n')
 			else:
-				Label(_rows, text=data_set[i][j], bg=bg, fg=fg, justify='center', borderwidth=table_w, relief=table_s).pack(side='top', fill='x', expand=True)
-		_rows.pack(side='left', fill='x', expand=True)
+				Label(_right, width=table_w[j], text=_data[j], bg=bg, fg=fg, justify='center', borderwidth=table_b, relief=table_s).grid(row=i, column=j, sticky='n')
 
 	_right.pack(side='left', fill='x', expand=True, anchor='nw')
 

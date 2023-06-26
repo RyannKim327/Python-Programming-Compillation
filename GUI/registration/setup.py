@@ -96,18 +96,28 @@ def addData(data: dict):
 		"invalids": ", ".join(invalids)
 	}
 
-def getData():
+def getData(search = ""):
 	data = []
-	# for r in ws.iter_rows(values_only=True):
+	if search == "":
+		for r in ws.iter_rows(values_only=True):
+			d = []
+			for i in r:
+				d.append(i)
+			data.append(d)
+	else:
+		for r in ws.iter_rows(values_only=True):
+			d = []
+			for i in r:
+				if search in i:
+					d.append(i)
+				else:
+					d.append(None)
+			data.append(d)
+	# for c in ws.iter_cols(values_only=True):
 	# 	d = []
-	# 	for i in r:
-	# 		d.append(i)
+	# 	for r in c:
+	# 		d.append(r)
 	# 	data.append(d)
-	for c in ws.iter_cols(values_only=True):
-		d = []
-		for r in c:
-			d.append(r)
-		data.append(d)
 	return data
 
 def getAllID():
