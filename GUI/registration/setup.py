@@ -35,14 +35,19 @@ def addData(data: dict):
 		invalids.append("reference")
 		proceed = False
 	else:
-		send.append(data['reference'])
+		if data['reference'] in getAllID():
+			return {
+				"approve": False,
+				"invalids": f"The Reference ID {data['reference']} is already existed."
+			}
+		else:
+			send.append(data['reference'])
 
 	if data.get("name") == None or data['name'] == "":
 		invalids.append("name")
 		proceed = False
 	else:
 		send.append(data['name'])
-		
 	if data.get("email") == None or data['email'] == "":
 		invalids.append("email")
 		proceed = False

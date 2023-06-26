@@ -5,7 +5,6 @@ import setup
 def refreshData():
 	for i in _right.winfo_children():
 		i.destroy()
-	
 
 	data_set = setup.getData()
 	for i in range(len(data_set)):
