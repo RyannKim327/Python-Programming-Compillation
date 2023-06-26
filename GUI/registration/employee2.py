@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import messagebox
+from tkinter import messagebox, ttk
 import setup
 
 def refreshData():
@@ -87,8 +87,18 @@ def employee_frame():
 	]	
 	table_w = [
 		10, 20, 15,
-		8, 10, 20,
+		8, 10, 15,
 		10, 20
+	]
+
+	destinations = [
+		"Finance Department",
+		"Chief Executive Officer",
+		"Chief Operating Officer",
+		"Programmer",
+		"Data Analysis",
+		"Department Head",
+		"Marketing Strategy"
 	]
 
 	employee_root = Toplevel()
@@ -144,7 +154,11 @@ def employee_frame():
 	
 	emp_destination = LabelFrame(_left, bg=bg, fg=fg, text="Destination:", labelanchor='nw')
 
-	_emp_destination = Entry(emp_destination, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
+	s = ttk.Style()
+	s.theme_use("clam")
+	s.configure("TCombobox", fieldbackground=bg, background=bg, fieldforeground=fg, foreground=fg)
+	
+	_emp_destination = ttk.Combobox(emp_destination, values=destinations, font=(font, def_size))
 	_emp_destination.pack(side='left', fill='x', expand=True)
 
 	emp_destination.pack(side='top', fill='x', expand=True)
