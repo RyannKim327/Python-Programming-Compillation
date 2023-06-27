@@ -107,11 +107,14 @@ def getData(search = ""):
 	else:
 		for r in ws.iter_rows(values_only=True):
 			d = []
+			x = False
 			for i in r:
-				if search in i:
+				if search.lower() in i.lower():
+					x = True
+					break
+			if x:
+				for i in r:
 					d.append(i)
-				else:
-					d.append(None)
 			data.append(d)
 	# for c in ws.iter_cols(values_only=True):
 	# 	d = []

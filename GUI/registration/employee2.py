@@ -18,14 +18,13 @@ def refreshData():
 
 	_right.pack(side='left', fill='x', expand=True, anchor='nw')
 
-
 def closeapp():
 	if messagebox.askyesno("Confirmation", "Are you sure you want to exit?"):
 		root_login.destroy()
 
 def addData():
 	_ = setup.addData({
-		"reference": _emp_ref.get(),
+		"reference": _emp_ref.get().upper(),
 		"name": _emp_name.get(),
 		"email": _emp_email.get(),
 		"gender": _emp_gender.get(),
@@ -48,6 +47,43 @@ def addData():
 		refreshData()
 	else:
 		messagebox.showerror("Error", f"Please fix your {_['invalids']}")
+
+def search(data):
+	for i in _right.winfo_children():
+		i.destroy()
+
+	data_set = setup.getData(data)
+	
+	for i in range(len(data_set)):
+		_data = data_set[i]
+		for j in range(len(_data)):
+			if i == 0:
+				Label(_right, width=table_w[j], text=columns[j], bg=bg, fg=fg, justify='center').grid(row=i, column=j, sticky='n')
+			else:
+				Label(_right, width=table_w[j], text=_data[j], bg=bg, fg=fg, justify='center', borderwidth=table_b, relief=table_s).grid(row=i, column=j, sticky='n')
+
+	_right.pack(side='left', fill='x', expand=True, anchor='nw')
+
+def search_close(search_root):
+	if messagebox.askyesno("Confirmation", "Would you like to clear the search?"):
+		refreshData()
+	
+	search_root.destroy()
+	
+
+def search_frame():
+	root_search = Toplevel()
+	root_search.geometry("200x100")
+	root_search.title("Search a data")
+	root_search.resizable(False, False)
+
+	_search = Entry(root_search)
+	_search.pack(fill='x', expand=True)
+
+	Button(root_search, text="Search Data", command=lambda: search(_search.get())).pack(fill='x', expand=True)
+
+	root_search.protocol("WM_DELETE_WINDOW", lambda: search_close(root_search))
+	root_search.mainloop()
 
 def employee_frame():
 
@@ -112,7 +148,7 @@ def employee_frame():
 
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Add Record", bg=button_bg, fg=fg, command=lambda: addData()).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Save", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
-	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Print", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
+	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Search", bg=button_bg, fg=fg, command=lambda: search_frame()).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Reset", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Exit", bg=button_bg, fg=fg, command=lambda: closeapp()).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 
@@ -207,7 +243,7 @@ def employee_frame():
 			else:
 				Label(_right, width=table_w[j], text=_data[j], bg=bg, fg=fg, justify='center', borderwidth=table_b, relief=table_s).grid(row=i, column=j, sticky='n')
 
-	_right.pack(side='left', fill='x', expand=True, anchor='nw')
+	_right.pack(side='left', fill='x', expand=True, anchor='ne')
 
 	employee_root.protocol("WM_DELETE_WINDOW", lambda: closeapp())
 	employee_root.mainloop()
