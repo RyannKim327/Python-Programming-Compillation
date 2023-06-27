@@ -69,25 +69,38 @@ def search_close(search_root):
 		refreshData()
 	
 	search_root.destroy()
-	
 
 def search_frame():
 	root_search = Toplevel()
 	root_search.geometry("200x100")
 	root_search.title("Search a data")
 	root_search.resizable(False, False)
+	root_search.config(bg=bg)
 
-	_search = Entry(root_search)
+	Label(root_search, bg=bg, fg=fg, text="Search a profile", justify='center').pack(fill='x', expand=True)
+
+	_search = Entry(root_search, bg=bg, fg=fg)
 	_search.pack(fill='x', expand=True)
 
-	Button(root_search, text="Search Data", command=lambda: search(_search.get())).pack(fill='x', expand=True)
+	Button(root_search, bg=bg, fg=fg, text="Search Data", command=lambda: search(_search.get())).pack(fill='x', expand=True)
 
 	root_search.protocol("WM_DELETE_WINDOW", lambda: search_close(root_search))
 	root_search.mainloop()
 
+def reset_all():
+	_emp_name.delete(0, END)
+	_emp_email.delete(0, END)
+	_emp_gender.set("male")
+	_emp_destination.configure(textvariable=destinations[0])
+	_emp_contact.delete(0, END)
+	_emp_salary.delete(0, END)
+	_emp_addr.delete("1.0", END)
+
+	refreshData()
+
 def employee_frame():
 
-	global _emp_ref, _emp_name, _emp_email, _emp_gender, _emp_destination, _emp_contact, _emp_salary, _emp_addr, _right, columns, table_b, table_s, table_w, bg, fg
+	global _emp_ref, _emp_name, _emp_email, _emp_gender, _emp_destination, _emp_contact, _emp_salary, _emp_addr, _right, columns, table_b, table_s, table_w, bg, fg, destinations
 	setup.createDatabase()
 
 	bg = "#212529"
@@ -147,9 +160,10 @@ def employee_frame():
 	_bottom = Frame(employee_root, bg=bg)
 
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Add Record", bg=button_bg, fg=fg, command=lambda: addData()).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
-	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Save", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Search", bg=button_bg, fg=fg, command=lambda: search_frame()).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
-	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Reset", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
+	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Update Record", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
+	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Delete Record", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
+	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Reset", bg=button_bg, fg=fg, command=lambda: reset_all()).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Exit", bg=button_bg, fg=fg, command=lambda: closeapp()).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 
 	_bottom.pack(side='bottom', fill='x', expand=True)
@@ -194,7 +208,7 @@ def employee_frame():
 	s.theme_use("clam")
 	s.configure("TCombobox", fieldbackground=bg, background=bg, fieldforeground=fg, foreground=fg)
 	
-	_emp_destination = ttk.Combobox(emp_destination, values=destinations, font=(font, def_size))
+	_emp_destination = ttk.Combobox(emp_destination, values=destinations, textvariable= destinations[0], font=(font, def_size))
 	_emp_destination.pack(side='left', fill='x', expand=True)
 
 	emp_destination.pack(side='top', fill='x', expand=True)
@@ -243,7 +257,18 @@ def employee_frame():
 			else:
 				Label(_right, width=table_w[j], text=_data[j], bg=bg, fg=fg, justify='center', borderwidth=table_b, relief=table_s).grid(row=i, column=j, sticky='n')
 
-	_right.pack(side='left', fill='x', expand=True, anchor='ne')
+	# tree = ttk.Treeview(_right)
+
+	# tree['columns'] = tuple(columns)
+	# for i in range(len(columns)):
+	# 	tree.column(columns[i], iid=str(i), width=table_w[i])
+
+	# for i in range(1, len(data_set)):
+	# 	tree.insert(parent='', index=END, values= tuple(data_set[i]))
+
+	# tree.pack()
+
+	_right.pack(side='right', fill='x', expand=True, anchor='ne')
 
 	employee_root.protocol("WM_DELETE_WINDOW", lambda: closeapp())
 	employee_root.mainloop()

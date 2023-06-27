@@ -123,6 +123,9 @@ def getData(search = ""):
 	# 	data.append(d)
 	return data
 
+def deleteData(id):
+	print()
+
 def getAllID():
 	data = []
 	for r in ws.iter_rows(values_only=True):
