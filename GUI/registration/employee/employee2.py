@@ -357,10 +357,14 @@ def employee_frame():
 
 	_right = Frame(employee_root, bg=bg, padx=5)
 
+	s = ttk.Style()
+	s.theme_use("clam")
+	s.configure("Treeview", background=bg, foreground=fg, fieldbackground=bg, fieldforeground=fg)
+
 	tree = ttk.Treeview(_right, show='headings')
 
-	_x = Scrollbar(_right, orient='horizontal', command=tree.xview)
-	_y = Scrollbar(_right, orient='vertical', command=tree.yview)
+	_x = Scrollbar(_right, orient='horizontal', command=tree.xview, bg=bg)
+	_y = Scrollbar(_right, orient='vertical', command=tree.yview, bg=bg)
 
 	tree.configure(xscrollcommand=_x.set, yscrollcommand=_y.set)
 
