@@ -3,21 +3,6 @@ from tkinter import messagebox, ttk
 import setup
 
 def refreshData():
-	# for i in _right.winfo_children():
-	# 	i.destroy()
-
-	# data_set = setup.getData()
-	
-	# for i in range(len(data_set)):
-	# 	_data = data_set[i]
-	# 	for j in range(len(_data)):
-	# 		if i == 0:
-	# 			Label(_right, width=table_w[j], text=columns[j], bg=bg, fg=fg, justify='center').grid(row=i, column=j, sticky='n')
-	# 		else:
-	# 			Label(_right, width=table_w[j], text=_data[j], bg=bg, fg=fg, justify='center', borderwidth=table_b, relief=table_s).grid(row=i, column=j, sticky='n')
-
-	# _right.pack(side='left', fill='x', expand=True, anchor='nw')
-	
 	for i in tree.get_children():
 		tree.delete(i)
 
@@ -57,20 +42,6 @@ def addData():
 		messagebox.showerror("Error", f"Please fix your {_['invalids']}")
 
 def search(data):
-	# for i in _right.winfo_children():
-	# 	i.destroy()
-
-	# data_set = setup.getData(data)
-	
-	# for i in range(len(data_set)):
-	# 	_data = data_set[i]
-	# 	for j in range(len(_data)):
-	# 		if i == 0:
-	# 			Label(_right, width=table_w[j], text=columns[j], bg=bg, fg=fg, justify='center').grid(row=i, column=j, sticky='n')
-	# 		else:
-	# 			Label(_right, width=table_w[j], text=_data[j], bg=bg, fg=fg, justify='center', borderwidth=table_b, relief=table_s).grid(row=i, column=j, sticky='n')
-
-	# _right.pack(side='left', fill='x', expand=True, anchor='nw')
 	for i in tree.get_children():
 		tree.delete(i)
 
@@ -274,25 +245,6 @@ def employee_frame():
 
 	_right = Frame(employee_root, bg=bg, padx=5)
 
-	# data_set = setup.getData()
-
-	# for i in range(len(data_set)):
-	# 	_rows = Frame(_right)
-	# 	for j in range(len(data_set[i])):
-	# 		if j == 0:
-	# 			Label(_rows, text=columns[i], bg=bg, fg=fg, justify='center').pack(side='top', fill='x', expand=True)
-	# 		else:
-	# 			Label(_rows, text=data_set[i][j], bg=bg, fg=fg, justify='center', borderwidth=table_w, relief=table_s).pack(side='top', fill='x', expand=True)
-	# 	_rows.pack(side='left', fill='x', expand=True)
-
-	# for i in range(len(data_set)):
-	# 	_data = data_set[i]
-	# 	for j in range(len(_data)):
-	# 		if i == 0:
-	# 			Label(_right, width=table_w[j], text=columns[j], bg=bg, fg=fg, justify='center').grid(row=i, column=j, sticky='n')
-	# 		else:
-	# 			Label(_right, width=table_w[j], text=_data[j], bg=bg, fg=fg, justify='center', borderwidth=table_b, relief=table_s).grid(row=i, column=j, sticky='n')
-
 	tree = ttk.Treeview(_right, show='headings')
 
 	_x = Scrollbar(_right, orient='horizontal', command=tree.xview)
@@ -304,9 +256,6 @@ def employee_frame():
 	for i in range(len(columns)):
 		tree.heading(columns[i], text=columns[i])
 		tree.column(columns[i], width=table_w[i])
-
-	# for i in range(1, len(data_set)):
-	# 	tree.insert(parent='', index=END, values=data_set[i])
 
 	refreshData()
 
@@ -331,8 +280,6 @@ def login():
 		messagebox.showerror("Error", "Invalid Credentials")
 
 def start():
-	# Login
-
 	global root_login, username_entry, password_entry
 
 	padx = 5
@@ -348,13 +295,11 @@ def start():
 
 	username = LabelFrame(root_login, bg=bg, fg=fg, text="Username:", labelanchor='nw')
 
-	# Label(username, text="Username:\t", font=("", 13), bg=bg, fg=fg).pack(side='left', fill='x')
 	username_entry = Entry(username, font=("", 13), bg=bg, fg=fg, borderwidth=0)
 	username_entry.pack(side='left', fill='x', expand=True, padx=padx, pady=pady)
 
 	password = LabelFrame(root_login, bg=bg, fg=fg, text="Password:", labelanchor='nw')
 
-	# Label(password, text="Password:\t", font=("", 13), bg=bg, fg=fg).pack(side='left', fill='x')
 	password_entry = Entry(password, font=("", 13), show="•", bg=bg, fg=fg, borderwidth=0)
 	password_entry.pack(side='left', fill='x', expand=True, padx=padx, pady=pady)
 

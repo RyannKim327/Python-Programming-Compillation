@@ -115,9 +115,10 @@ def getData(search = ""):
 				d = []
 				x = False
 				for i in r:
-					if search.lower() in i.lower():
-						x = True
-						break
+					if i != None:
+						if search.lower() in i.lower():
+							x = True
+							break
 				if x:
 					for i in r:
 						d.append(i)
@@ -137,7 +138,7 @@ def deleteData(ids: list):
 		if j[0] in ids:
 			ws.delete_rows(x)
 		x += 1
-	ws.save(fn)
+	wb.save(fn)
 
 
 def getAllID():
