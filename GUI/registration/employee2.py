@@ -3,20 +3,28 @@ from tkinter import messagebox, ttk
 import setup
 
 def refreshData():
-	for i in _right.winfo_children():
-		i.destroy()
+	# for i in _right.winfo_children():
+	# 	i.destroy()
+
+	# data_set = setup.getData()
+	
+	# for i in range(len(data_set)):
+	# 	_data = data_set[i]
+	# 	for j in range(len(_data)):
+	# 		if i == 0:
+	# 			Label(_right, width=table_w[j], text=columns[j], bg=bg, fg=fg, justify='center').grid(row=i, column=j, sticky='n')
+	# 		else:
+	# 			Label(_right, width=table_w[j], text=_data[j], bg=bg, fg=fg, justify='center', borderwidth=table_b, relief=table_s).grid(row=i, column=j, sticky='n')
+
+	# _right.pack(side='left', fill='x', expand=True, anchor='nw')
+	
+	for i in tree.get_children():
+		tree.delete(i)
 
 	data_set = setup.getData()
-	
-	for i in range(len(data_set)):
-		_data = data_set[i]
-		for j in range(len(_data)):
-			if i == 0:
-				Label(_right, width=table_w[j], text=columns[j], bg=bg, fg=fg, justify='center').grid(row=i, column=j, sticky='n')
-			else:
-				Label(_right, width=table_w[j], text=_data[j], bg=bg, fg=fg, justify='center', borderwidth=table_b, relief=table_s).grid(row=i, column=j, sticky='n')
 
-	_right.pack(side='left', fill='x', expand=True, anchor='nw')
+	for i in range(len(data_set)):
+		tree.insert(parent='', index=END, values=data_set[i])
 
 def closeapp():
 	if messagebox.askyesno("Confirmation", "Are you sure you want to exit?"):
@@ -49,20 +57,27 @@ def addData():
 		messagebox.showerror("Error", f"Please fix your {_['invalids']}")
 
 def search(data):
-	for i in _right.winfo_children():
-		i.destroy()
+	# for i in _right.winfo_children():
+	# 	i.destroy()
+
+	# data_set = setup.getData(data)
+	
+	# for i in range(len(data_set)):
+	# 	_data = data_set[i]
+	# 	for j in range(len(_data)):
+	# 		if i == 0:
+	# 			Label(_right, width=table_w[j], text=columns[j], bg=bg, fg=fg, justify='center').grid(row=i, column=j, sticky='n')
+	# 		else:
+	# 			Label(_right, width=table_w[j], text=_data[j], bg=bg, fg=fg, justify='center', borderwidth=table_b, relief=table_s).grid(row=i, column=j, sticky='n')
+
+	# _right.pack(side='left', fill='x', expand=True, anchor='nw')
+	for i in tree.get_children():
+		tree.delete(i)
 
 	data_set = setup.getData(data)
 	
 	for i in range(len(data_set)):
-		_data = data_set[i]
-		for j in range(len(_data)):
-			if i == 0:
-				Label(_right, width=table_w[j], text=columns[j], bg=bg, fg=fg, justify='center').grid(row=i, column=j, sticky='n')
-			else:
-				Label(_right, width=table_w[j], text=_data[j], bg=bg, fg=fg, justify='center', borderwidth=table_b, relief=table_s).grid(row=i, column=j, sticky='n')
-
-	_right.pack(side='left', fill='x', expand=True, anchor='nw')
+		tree.insert(parent='', index=END, values=data_set[i])
 
 def search_close(search_root):
 	if messagebox.askyesno("Confirmation", "Would you like to clear the search?"):
@@ -98,9 +113,29 @@ def reset_all():
 
 	refreshData()
 
+def selectDelRecord(event):
+	global dataDelete
+	dataDelete = []
+	for items in tree.selection():
+		item = tree.item(items)
+		dataDelete.append(item['values'][0])
+	if len(dataDelete) > 0:
+		_delete.config(state='active', bg=button_bg, fg=fg)
+	else:
+		_delete.config(state='disabled')
+	
+
+def deleteRecord():
+	if len(dataDelete) > 0:
+		setup.deleteData(dataDelete)
+		messagebox.showinfo("SUCCESS", "Data deleted successfully")
+		refreshData()
+	else:
+		messagebox.showerror("Error", "There is no data selected")
+
 def employee_frame():
 
-	global _emp_ref, _emp_name, _emp_email, _emp_gender, _emp_destination, _emp_contact, _emp_salary, _emp_addr, _right, columns, table_b, table_s, table_w, bg, fg, destinations
+	global _emp_ref, _emp_name, _emp_email, _emp_gender, _emp_destination, _emp_contact, _emp_salary, _emp_addr, _right, columns, table_b, table_s, table_w, bg, button_bg, fg, destinations, tree, _delete
 	setup.createDatabase()
 
 	bg = "#212529"
@@ -124,7 +159,7 @@ def employee_frame():
 	table_b= 1
 	table_s = 'solid'
 
-	columns = [
+	columns = (
 		"Reference No.",
 		"Name",
 		"Email",
@@ -133,11 +168,11 @@ def employee_frame():
 		"Contact No.",
 		"Salary",
 		"Address"
-	]	
+	)
 	table_w = [
-		10, 20, 15,
-		8, 10, 15,
-		10, 20
+		25, 100, 50,
+		8, 55, 50,
+		10, 100
 	]
 
 	destinations = [
@@ -162,7 +197,8 @@ def employee_frame():
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Add Record", bg=button_bg, fg=fg, command=lambda: addData()).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Search", bg=button_bg, fg=fg, command=lambda: search_frame()).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Update Record", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
-	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Delete Record", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
+	_delete = Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Delete Record", bg=button_bg, fg=fg, state='disabled', command=lambda: deleteRecord())
+	_delete.pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Reset", bg=button_bg, fg=fg, command=lambda: reset_all()).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Exit", bg=button_bg, fg=fg, command=lambda: closeapp()).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 
@@ -229,7 +265,7 @@ def employee_frame():
 	
 	emp_addr = LabelFrame(_left, bg=bg, fg=fg, text="Address:", labelanchor='nw')
 
-	_emp_addr = Text(emp_addr, height=3, width=20, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style)
+	_emp_addr = Text(emp_addr, height=5, width=20, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, wrap='word')
 	_emp_addr.pack(side='left', fill='x', expand=True)
 
 	emp_addr.pack(side='top', fill='x', expand=True)
@@ -238,7 +274,7 @@ def employee_frame():
 
 	_right = Frame(employee_root, bg=bg, padx=5)
 
-	data_set = setup.getData()
+	# data_set = setup.getData()
 
 	# for i in range(len(data_set)):
 	# 	_rows = Frame(_right)
@@ -249,26 +285,39 @@ def employee_frame():
 	# 			Label(_rows, text=data_set[i][j], bg=bg, fg=fg, justify='center', borderwidth=table_w, relief=table_s).pack(side='top', fill='x', expand=True)
 	# 	_rows.pack(side='left', fill='x', expand=True)
 
-	for i in range(len(data_set)):
-		_data = data_set[i]
-		for j in range(len(_data)):
-			if i == 0:
-				Label(_right, width=table_w[j], text=columns[j], bg=bg, fg=fg, justify='center').grid(row=i, column=j, sticky='n')
-			else:
-				Label(_right, width=table_w[j], text=_data[j], bg=bg, fg=fg, justify='center', borderwidth=table_b, relief=table_s).grid(row=i, column=j, sticky='n')
+	# for i in range(len(data_set)):
+	# 	_data = data_set[i]
+	# 	for j in range(len(_data)):
+	# 		if i == 0:
+	# 			Label(_right, width=table_w[j], text=columns[j], bg=bg, fg=fg, justify='center').grid(row=i, column=j, sticky='n')
+	# 		else:
+	# 			Label(_right, width=table_w[j], text=_data[j], bg=bg, fg=fg, justify='center', borderwidth=table_b, relief=table_s).grid(row=i, column=j, sticky='n')
 
-	# tree = ttk.Treeview(_right)
+	tree = ttk.Treeview(_right, show='headings')
 
-	# tree['columns'] = tuple(columns)
-	# for i in range(len(columns)):
-	# 	tree.column(columns[i], iid=str(i), width=table_w[i])
+	_x = Scrollbar(_right, orient='horizontal', command=tree.xview)
+	_y = Scrollbar(_right, orient='vertical', command=tree.yview)
+
+	tree.configure(xscrollcommand=_x.set, yscrollcommand=_y.set)
+
+	tree['columns'] = columns
+	for i in range(len(columns)):
+		tree.heading(columns[i], text=columns[i])
+		tree.column(columns[i], width=table_w[i])
 
 	# for i in range(1, len(data_set)):
-	# 	tree.insert(parent='', index=END, values= tuple(data_set[i]))
+	# 	tree.insert(parent='', index=END, values=data_set[i])
 
-	# tree.pack()
+	refreshData()
 
-	_right.pack(side='right', fill='x', expand=True, anchor='ne')
+	tree.bind("<<TreeviewSelect>>", selectDelRecord)
+
+	_x.pack(side="bottom", fill='x')
+	_y.pack(side="right", fill='y')
+
+	tree.pack(fill="both", expand=True)
+
+	_right.pack(side='right', fill='both', expand=True, anchor='ne')
 
 	employee_root.protocol("WM_DELETE_WINDOW", lambda: closeapp())
 	employee_root.mainloop()

@@ -99,23 +99,31 @@ def addData(data: dict):
 def getData(search = ""):
 	data = []
 	if search == "":
+		x = False
 		for r in ws.iter_rows(values_only=True):
-			d = []
-			for i in r:
-				d.append(i)
-			data.append(d)
-	else:
-		for r in ws.iter_rows(values_only=True):
-			d = []
-			x = False
-			for i in r:
-				if search.lower() in i.lower():
-					x = True
-					break
 			if x:
+				d = []
 				for i in r:
 					d.append(i)
-			data.append(d)
+				if d[0] != None:
+					data.append(d)
+			x = True
+	else:
+		y = False
+		for r in ws.iter_rows(values_only=True):
+			if y:
+				d = []
+				x = False
+				for i in r:
+					if search.lower() in i.lower():
+						x = True
+						break
+				if x:
+					for i in r:
+						d.append(i)
+					if d[0] != None:
+						data.append(d)
+			y = True
 	# for c in ws.iter_cols(values_only=True):
 	# 	d = []
 	# 	for r in c:
@@ -123,8 +131,14 @@ def getData(search = ""):
 	# 	data.append(d)
 	return data
 
-def deleteData(id):
-	print()
+def deleteData(ids: list):
+	x = 1
+	for j in ws.iter_rows(values_only=True):
+		if j[0] in ids:
+			ws.delete_rows(x)
+		x += 1
+	ws.save(fn)
+
 
 def getAllID():
 	data = []
