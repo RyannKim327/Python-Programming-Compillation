@@ -116,65 +116,109 @@ def updatePrefs():
 		_up_dest.config(state='normal')
 		_up_contact.config(state='normal')
 		_up_salary.config(state='normal')
-		_up_addr.config(state='normal')
+		_up_addr.configure(state='normal')
 
 		_up_ref.insert(0, data[0])
+		_up_name.insert(0, data[1])
+		_up_email.insert(0, data[2])
+		_up_gender.insert(0, data[3])
+		_up_dest.insert(0, data[4])
+		_up_contact.insert(0, data[5])
+		_up_salary.insert(0, data[6])
+		_up_addr.insert("1.0", data[7])
+
+		_upd.config(state='active')
+		_up_ref.config(state='disabled')
 	else:
 		messagebox.showerror("Invalid", "Reference ID is not valid")
 
+def updateData():
+	setup.updateData(_up_ref.get(), [
+		_up_name.get(),
+		_up_email.get(),
+		_up_gender.get(),
+		_up_dest.get(),
+		_up_contact.get(),
+		_up_salary.get(),
+		_up_addr.get("1.0", "end-1c")
+	])
+	messagebox.showinfo("SUCCESS", f"The data for {_up_ref.get()} is now updated.")
+	_up_ref.config(state='normal')
+	refreshData()
+	_up_ref.delete(0, END)
+	_up_name.delete(0, END)
+	_up_email.delete(0, END)
+	_up_gender.delete(0, END)
+	_up_dest.delete(0, END)
+	_up_contact.delete(0, END)
+	_up_salary.delete(0, END)
+	_up_addr.delete("1.0", "end-1c")
+
+	_up_name.config(state='disabled')
+	_up_email.config(state='disabled')
+	_up_gender.config(state='disabled')
+	_up_dest.config(state='disabled')
+	_up_contact.config(state='disabled')
+	_up_salary.config(state='disabled')
+	_up_addr.configure(state='disabled')
+	_upd.configure(state='disabled')
+
 def updateRecord():
-	global _up_ref, _up_name, _up_email, _up_gender, _up_dest, _up_contact, _up_salary, _up_addr
+	global _up_ref, _up_name, _up_email, _up_gender, _up_dest, _up_contact, _up_salary, _up_addr, _upd
 
 	update_root = Toplevel()
 	update_root.geometry("600x720")
 	update_root.title("Update Data")
+	update_root.config(bg=bg)
 
 	up_ref = LabelFrame(update_root, bg=bg, fg=fg, text="Employee Ref:", labelanchor='nw')
 	_up_ref = Entry(up_ref, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, validate="focusout", validatecommand=lambda: updatePrefs())
 	_up_ref.pack(fill='x', expand=True)
-	up_ref.pack(fill='x', expand=True, anchor='n')
+	up_ref.pack(fill='x', anchor='n', padx=padxb, pady=padyb)
 	
 	up_name = LabelFrame(update_root, bg=bg, fg=fg, text="Name:", labelanchor='nw')
-	_up_name = Entry(up_name, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
+	_up_name = Entry(up_name, font=(font, def_size), bg=entry_bg, fg=fg, disabledbackground=entry_bg, disabledforeground=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
 	_up_name.pack(fill='x', expand=True)
-	up_name.pack(fill='x', expand=True, anchor='n')
+	up_name.pack(fill='x', anchor='n', padx=padxb, pady=padyb)
 	
 	up_email = LabelFrame(update_root, bg=bg, fg=fg, text="Email:", labelanchor='nw')
-	_up_email = Entry(up_email, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
+	_up_email = Entry(up_email, font=(font, def_size), bg=entry_bg, fg=fg, disabledbackground=entry_bg, disabledforeground=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
 	_up_email.pack(fill='x', expand=True)
-	up_email.pack(fill='x', expand=True, anchor='n')
+	up_email.pack(fill='x', anchor='n', padx=padxb, pady=padyb)
 
 	up_gender = LabelFrame(update_root, bg=bg, fg=fg, text="Gender:", labelanchor='nw')
-	_up_gender = Entry(up_gender, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
+	_up_gender = Entry(up_gender, font=(font, def_size), bg=entry_bg, fg=fg, disabledbackground=entry_bg, disabledforeground=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
 	_up_gender.pack(fill='x', expand=True)
-	up_gender.pack(fill='x', expand=True, anchor='n')
+	up_gender.pack(fill='x', anchor='n', padx=padxb, pady=padyb)
 
 	up_dest = LabelFrame(update_root, bg=bg, fg=fg, text="Destination:", labelanchor='nw')
-	_up_dest = Entry(up_dest, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
+	_up_dest = Entry(up_dest, font=(font, def_size), bg=entry_bg, fg=fg, disabledbackground=entry_bg, disabledforeground=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
 	_up_dest.pack(fill='x', expand=True)
-	up_dest.pack(fill='x', expand=True, anchor='n')
+	up_dest.pack(fill='x', anchor='n', padx=padxb, pady=padyb)
 
 	up_contact = LabelFrame(update_root, bg=bg, fg=fg, text="Contact:", labelanchor='nw')
-	_up_contact = Entry(up_contact, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
+	_up_contact = Entry(up_contact, font=(font, def_size), bg=entry_bg, fg=fg, disabledbackground=entry_bg, disabledforeground=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
 	_up_contact.pack(fill='x', expand=True)
-	up_contact.pack(fill='x', expand=True, anchor='n')
+	up_contact.pack(fill='x', anchor='n', padx=padxb, pady=padyb)
 
 	up_salary = LabelFrame(update_root, bg=bg, fg=fg, text="Salary:", labelanchor='nw')
-	_up_salary = Entry(up_salary, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
+	_up_salary = Entry(up_salary, font=(font, def_size), bg=entry_bg, fg=fg, disabledbackground=entry_bg, disabledforeground=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
 	_up_salary.pack(fill='x', expand=True)
-	up_salary.pack(fill='x', expand=True, anchor='n')
+	up_salary.pack(fill='x', anchor='n', padx=padxb, pady=padyb)
 
 	up_addr = LabelFrame(update_root, bg=bg, fg=fg, text="Address:", labelanchor='nw')
-	_up_addr = Text(up_addr, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
+	_up_addr = Text(up_addr, height=5, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
 	_up_addr.pack(fill='x', expand=True)
-	up_addr.pack(fill='x', expand=True, anchor='n')
+	up_addr.pack(fill='x', anchor='n', padx=padxb, pady=padyb)
 
+	_upd = Button(update_root, font=(font, b_size), borderwidth=button_bw, state='disabled', activebackground=button_bg, activeforeground=fg, relief=button_style, text="Update Data", bg=button_bg, fg=fg, command=lambda: updateData())
+	_upd.pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 
 	update_root.mainloop()
 
 def employee_frame():
 
-	global _emp_ref, _emp_name, _emp_email, _emp_gender, _emp_destination, _emp_contact, _emp_salary, _emp_addr, _right, columns, table_b, table_s, table_w, bg, button_bg, fg, destinations, tree, _delete, entry_bw, entry_style, entry_bg, font, def_size
+	global _emp_ref, _emp_name, _emp_email, _emp_gender, _emp_destination, _emp_contact, _emp_salary, _emp_addr, _right, columns, table_b, table_s, table_w, bg, button_bg, fg, destinations, tree, _delete, entry_bw, entry_style, entry_bg, font, def_size, b_size, button_bw, button_style, padxb, padyb
 	setup.createDatabase()
 
 	bg = "#212529"
@@ -313,7 +357,7 @@ def employee_frame():
 
 	_right = Frame(employee_root, bg=bg, padx=5)
 
-	tree = ttk.Treeview(_right, show='headings', )
+	tree = ttk.Treeview(_right, show='headings')
 
 	_x = Scrollbar(_right, orient='horizontal', command=tree.xview)
 	_y = Scrollbar(_right, orient='vertical', command=tree.yview)

@@ -100,26 +100,11 @@ def getData(search = "", id_only = False):
 	data = []
 	if id_only:
 		for i in ws.iter_rows(values_only=True):
-			print(i[0])
 			if i[0] != None:
 				if i[0].lower() == search.lower():
 					for j in i:
 						data.append(j)
 					break
-		# for r in ws.iter_rows(values_only=True):
-		# 	if y:
-		# 		d = []
-		# 		x = False
-		# 		for i in r:
-		# 			if i != None:
-		# 				if search.lower() in i.lower():
-		# 					x = True
-		# 					break
-		# 		if x:
-		# 			for i in r:
-		# 				d.append(i)
-		# 			if d[0] != None:
-		# 				data.append(d)
 			y = True
 	else:
 		if search == "":
@@ -149,11 +134,6 @@ def getData(search = "", id_only = False):
 						if d[0] != None:
 							data.append(d)
 				y = True
-		# for c in ws.iter_cols(values_only=True):
-		# 	d = []
-		# 	for r in c:
-		# 		d.append(r)
-		# 	data.append(d)
 	return data
 
 def deleteData(ids: list):
