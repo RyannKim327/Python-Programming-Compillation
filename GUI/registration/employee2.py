@@ -91,7 +91,7 @@ def selectDelRecord(event):
 		item = tree.item(items)
 		dataDelete.append(item['values'][0])
 	if len(dataDelete) > 0:
-		_delete.config(state='active', bg=button_bg, fg=fg)
+		_delete.config(state='active', bg=button_bg, fg=fg, activebackground=button_bg, activeforeground=fg)
 	else:
 		_delete.config(state='disabled')
 	
@@ -104,9 +104,77 @@ def deleteRecord():
 	else:
 		messagebox.showerror("Error", "There is no data selected")
 
+def updatePrefs():
+	ref = _up_ref.get().lower()
+	if ref.startswith("emp_"):
+		# search
+		data = setup.getData(ref, True)
+		_up_ref.delete(0, END)
+		_up_name.config(state='normal')
+		_up_email.config(state='normal')
+		_up_gender.config(state='normal')
+		_up_dest.config(state='normal')
+		_up_contact.config(state='normal')
+		_up_salary.config(state='normal')
+		_up_addr.config(state='normal')
+
+		_up_ref.insert(0, data[0])
+	else:
+		messagebox.showerror("Invalid", "Reference ID is not valid")
+
+def updateRecord():
+	global _up_ref, _up_name, _up_email, _up_gender, _up_dest, _up_contact, _up_salary, _up_addr
+
+	update_root = Toplevel()
+	update_root.geometry("600x720")
+	update_root.title("Update Data")
+
+	up_ref = LabelFrame(update_root, bg=bg, fg=fg, text="Employee Ref:", labelanchor='nw')
+	_up_ref = Entry(up_ref, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, validate="focusout", validatecommand=lambda: updatePrefs())
+	_up_ref.pack(fill='x', expand=True)
+	up_ref.pack(fill='x', expand=True, anchor='n')
+	
+	up_name = LabelFrame(update_root, bg=bg, fg=fg, text="Name:", labelanchor='nw')
+	_up_name = Entry(up_name, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
+	_up_name.pack(fill='x', expand=True)
+	up_name.pack(fill='x', expand=True, anchor='n')
+	
+	up_email = LabelFrame(update_root, bg=bg, fg=fg, text="Email:", labelanchor='nw')
+	_up_email = Entry(up_email, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
+	_up_email.pack(fill='x', expand=True)
+	up_email.pack(fill='x', expand=True, anchor='n')
+
+	up_gender = LabelFrame(update_root, bg=bg, fg=fg, text="Gender:", labelanchor='nw')
+	_up_gender = Entry(up_gender, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
+	_up_gender.pack(fill='x', expand=True)
+	up_gender.pack(fill='x', expand=True, anchor='n')
+
+	up_dest = LabelFrame(update_root, bg=bg, fg=fg, text="Destination:", labelanchor='nw')
+	_up_dest = Entry(up_dest, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
+	_up_dest.pack(fill='x', expand=True)
+	up_dest.pack(fill='x', expand=True, anchor='n')
+
+	up_contact = LabelFrame(update_root, bg=bg, fg=fg, text="Contact:", labelanchor='nw')
+	_up_contact = Entry(up_contact, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
+	_up_contact.pack(fill='x', expand=True)
+	up_contact.pack(fill='x', expand=True, anchor='n')
+
+	up_salary = LabelFrame(update_root, bg=bg, fg=fg, text="Salary:", labelanchor='nw')
+	_up_salary = Entry(up_salary, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
+	_up_salary.pack(fill='x', expand=True)
+	up_salary.pack(fill='x', expand=True, anchor='n')
+
+	up_addr = LabelFrame(update_root, bg=bg, fg=fg, text="Address:", labelanchor='nw')
+	_up_addr = Text(up_addr, font=(font, def_size), bg=entry_bg, fg=fg, borderwidth=entry_bw, relief=entry_style, state='disabled')
+	_up_addr.pack(fill='x', expand=True)
+	up_addr.pack(fill='x', expand=True, anchor='n')
+
+
+	update_root.mainloop()
+
 def employee_frame():
 
-	global _emp_ref, _emp_name, _emp_email, _emp_gender, _emp_destination, _emp_contact, _emp_salary, _emp_addr, _right, columns, table_b, table_s, table_w, bg, button_bg, fg, destinations, tree, _delete
+	global _emp_ref, _emp_name, _emp_email, _emp_gender, _emp_destination, _emp_contact, _emp_salary, _emp_addr, _right, columns, table_b, table_s, table_w, bg, button_bg, fg, destinations, tree, _delete, entry_bw, entry_style, entry_bg, font, def_size
 	setup.createDatabase()
 
 	bg = "#212529"
@@ -167,7 +235,7 @@ def employee_frame():
 
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Add Record", bg=button_bg, fg=fg, command=lambda: addData()).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Search", bg=button_bg, fg=fg, command=lambda: search_frame()).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
-	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Update Record", bg=button_bg, fg=fg).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
+	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Update Record", bg=button_bg, fg=fg, command=lambda: updateRecord()).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 	_delete = Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Delete Record", bg=button_bg, fg=fg, state='disabled', command=lambda: deleteRecord())
 	_delete.pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
 	Button(_bottom, font=(font, b_size), borderwidth=button_bw, relief=button_style, text="Reset", bg=button_bg, fg=fg, command=lambda: reset_all()).pack(side='left', padx=padxb, pady=padyb, fill='x', expand=True)
@@ -245,7 +313,7 @@ def employee_frame():
 
 	_right = Frame(employee_root, bg=bg, padx=5)
 
-	tree = ttk.Treeview(_right, show='headings')
+	tree = ttk.Treeview(_right, show='headings', )
 
 	_x = Scrollbar(_right, orient='horizontal', command=tree.xview)
 	_y = Scrollbar(_right, orient='vertical', command=tree.yview)
