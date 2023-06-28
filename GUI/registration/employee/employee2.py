@@ -77,7 +77,7 @@ def reset_all():
 	_emp_name.delete(0, END)
 	_emp_email.delete(0, END)
 	_emp_gender.set("male")
-	_emp_destination.configure(textvariable=destinations[0])
+	_emp_destination.set(destinations[0])
 	_emp_contact.delete(0, END)
 	_emp_salary.delete(0, END)
 	_emp_addr.delete("1.0", END)
@@ -333,8 +333,6 @@ def employee_frame():
 	s.theme_use("clam")
 	s.configure("TCombobox", fieldbackground=bg, background=bg, fieldforeground=fg, foreground=fg)
 	
-	
-
 	_emp_destination = StringVar()
 	_emp_destination.set(destinations[0])
 	ttk.Combobox(emp_destination, values=destinations, textvariable=_emp_destination, font=(font, def_size)).pack(side='left', fill='x', expand=True)
