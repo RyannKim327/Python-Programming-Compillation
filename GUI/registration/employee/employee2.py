@@ -426,8 +426,8 @@ def start():
 	password_entry = Entry(password, font=("", 13), show="•", bg=bg, fg=fg, borderwidth=0)
 	password_entry.pack(side='left', fill='x', expand=True, padx=padx, pady=pady)
 
-	username.pack(fill='x', expand=True)
-	password.pack(fill='x', expand=True)
+	username.pack(fill='x', expand=True, padx=padx)
+	password.pack(fill='x', expand=True, padx=padx)
 
 	Button(root_login, text="Login", command=login, bg=bg, fg=fg).pack(side='left', fill='x', expand=True, padx=padx, pady=pady)
 	
