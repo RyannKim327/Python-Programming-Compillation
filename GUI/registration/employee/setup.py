@@ -90,7 +90,6 @@ def addData(data: dict):
 			ws.cell(row = rows, column = i + 1, value = send[i])
 		wb.save(fn)
 
-	
 	return {
 		"approve": proceed,
 		"invalids": ", ".join(invalids)
