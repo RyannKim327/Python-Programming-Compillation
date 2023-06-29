@@ -396,8 +396,8 @@ def employee_frame():
 
 def login():
 	if username_entry.get() == 'user' and password_entry.get() == 'admin':
-		messagebox.showinfo("Please proceed", "Start now")
 		root_login.withdraw()
+		messagebox.showinfo("Please proceed", "Start now")
 		employee_frame()
 	else:
 		messagebox.showerror("Error", "Invalid Credentials")
