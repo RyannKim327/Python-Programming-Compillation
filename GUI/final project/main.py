@@ -3,9 +3,21 @@ from tkinter import messagebox
 import menu, setup
 
 def credentials():
-	
+	global userID
+	userID = None
+	if user.get() == "":
+		messagebox.showerror("ERROR", "Please enter your username first")
+	elif len(password.get()) < 8:
+		messagebox.showerror("ERROR", "Password must be 8 characters")
+	else:
+		data = setup.getTeacherId(user.get(), password.get())
+		if data.done:
+			userID = data.userID
+		else:
+			messagebox.showerror("ERROR", "Account not found")
 
 def login():
+	global user, password
 	Label(root, text="Login", font=("Times New Roman", 25), justify='center', bg=baseColor, fg=txtColor).pack(fill='x')
 
 	userFrame = LabelFrame(root, text="ID", font=("Times New Roman", 15), bg=baseColor, fg=txtColor)

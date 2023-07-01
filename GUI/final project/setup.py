@@ -55,7 +55,7 @@ def createStudents():
 	save()
 
 def creaateTeachers():
-	global wb, students
+	global wb, teachers
 	teach = "students"
 	if os.path.exists(filename):
 		wb = load_workbook(filename)
@@ -75,3 +75,16 @@ def creaateTeachers():
 		teachers.append(columns)
 	
 	save()
+
+def getTeacherId(username, password) -> dict:
+	userID = 1
+	done = False
+	for i in teachers.iter_rows(values_only=True):
+		if i[0] == username and i[2] == password:
+			done = True
+			break
+		userID += 1
+	return {
+		"done": done,
+		"userID": userID
+	}
