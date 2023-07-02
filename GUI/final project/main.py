@@ -22,21 +22,43 @@ def register():
 def credentials():
 	global userID
 	userID = None
-	if user.get() == "":
-		messagebox.showerror("ERROR", "Please enter your username first")
-	elif len(password.get()) < 8:
-		messagebox.showerror("ERROR", "Password must be 8 characters")
-	else:
-		data = setup.getTeacherId(user.get(), password.get())
-		if data['done']:
-			messagebox.showinfo("SUCCESS", "You're now logged in as a teacher.")
-			userID = data['userID']
+	print(userType.get())
+	if userType.get() == 'student':
+		if user.get() == "":
+			messagebox.showerror("ERROR", "Please enter your username first")
+		elif len(password.get()) < 8:
+			messagebox.showerror("ERROR", "Password must be 8 characters")
 		else:
-			messagebox.showerror("ERROR", "Account not found")
+			data = setup.getTeacherId(user.get(), password.get())
+			if data['done']:
+				messagebox.showinfo("SUCCESS", "You're now logged in as a student.")
+				userID = data['userID']
+			else:
+				messagebox.showerror("ERROR", "Account not found")
+	else:
+		if user.get() == "":
+			messagebox.showerror("ERROR", "Please enter your username first")
+		elif len(password.get()) < 8:
+			messagebox.showerror("ERROR", "Password must be 8 characters")
+		else:
+			data = setup.getTeacherId(user.get(), password.get())
+			if data['done']:
+				messagebox.showinfo("SUCCESS", "You're now logged in as a teacher.")
+				userID = data['userID']
+			else:
+				messagebox.showerror("ERROR", "Account not found")
 
 def login():
-	global user, password
+	global user, password, userType
 	Label(root, text="Login", font=("Times New Roman", 25), justify='center', bg=baseColor, fg=txtColor).pack(fill='x')
+
+	userType = StringVar()
+	userType.set("student")
+	typeFrame = Frame(root, bg=baseColor)
+	Radiobutton(typeFrame, bg=baseColor, fg=txtColor, text="Student", selectcolor=baseColor, variable=userType, textvariable="student", value='student').pack(side='left', fill='x', expand=True)
+	Radiobutton(typeFrame, bg=baseColor, fg=txtColor, text="Teacher", selectcolor=baseColor, variable=userType, textvariable="teacher", value='teacher').pack(side='left', fill='x', expand=True)
+	typeFrame.pack(fill='x')
+
 
 	userFrame = LabelFrame(root, text="ID", font=("Times New Roman", 15), bg=baseColor, fg=txtColor)
 
