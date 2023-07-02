@@ -31,6 +31,7 @@ def menuSetup(root):
 				menus[title] = content
 
 	x = list(menus.keys())
+
 	about.add_cascade(label=x[0], command=lambda: showInfo(x[0]))
 	about.add_cascade(label=x[1], command=lambda: showInfo(x[1]))
 	about.add_cascade(label=x[2], command=lambda: showInfo(x[2]))
