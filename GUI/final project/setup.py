@@ -54,9 +54,9 @@ def createStudents():
 	
 	save()
 
-def creaateTeachers():
+def createTeachers():
 	global wb, teachers
-	teach = "students"
+	teach = "teachers"
 	if os.path.exists(filename):
 		wb = load_workbook(filename)
 	else:
@@ -76,11 +76,34 @@ def creaateTeachers():
 	
 	save()
 
-def getTeacherId(username, password) -> dict:
+def addTeacher(randomID: str, fullname: str, password: str) -> dict:
+	id = randomID
+	n = fullname
+	p = encrypt(password)
+	exist = False
+
+	for i in teachers.iter_rows(values_only=True):
+		if id in i:
+			exist = True
+			break
+	
+	if not exist:
+		teachers.append((
+			id,
+			n,
+			p
+		))
+		save()
+	
+	return {
+		"exists": exist
+	}
+
+def getTeacherId(username: str, password: str) -> dict:
 	userID = 1
 	done = False
 	for i in teachers.iter_rows(values_only=True):
-		if i[0] == username and i[2] == password:
+		if i[0] == username and i[2] == encrypt(password):
 			done = True
 			break
 		userID += 1

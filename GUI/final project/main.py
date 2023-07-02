@@ -1,6 +1,23 @@
 from tkinter import *
 from tkinter import messagebox
-import menu, setup
+import menu, setup, random
+
+def register():
+	chars = "abcdefghijklmnopqrstuvwxyz0123456789"
+	userID = ""
+	for i in range(5):
+		userID += chars[random.randint(0, len(chars) - 1)]
+	
+	data = setup.addTeacher(userID, user.get(), password.get())
+
+	print(data)
+
+	while data['exists']:
+		for i in range(5):
+			userID += chars[random.randint(0, len(chars) - 1)]
+			data = setup.addTeacher(userID, user.get(), password.get())
+	
+	messagebox.showinfo("SUCCESS", f"Teacher's account created successfully. Use this id: {userID} as ID pass")
 
 def credentials():
 	global userID
@@ -11,8 +28,9 @@ def credentials():
 		messagebox.showerror("ERROR", "Password must be 8 characters")
 	else:
 		data = setup.getTeacherId(user.get(), password.get())
-		if data.done:
-			userID = data.userID
+		if data['done']:
+			messagebox.showinfo("SUCCESS", "You're now logged in as a teacher.")
+			userID = data['userID']
 		else:
 			messagebox.showerror("ERROR", "Account not found")
 
@@ -34,14 +52,16 @@ def login():
 
 	passFrame.pack(fill='x')
 
-	Button(root, bg=baseColor, fg=txtColor, text="Login", activebackground=baseColor, activeforeground=txtColor, command=lambda: credentials()).pack(fill='x', pady=5)
-
+	buttons = Frame(root, bg=baseColor)
+	Button(buttons, bg=baseColor, fg=txtColor, text="Login", activebackground=baseColor, activeforeground=txtColor, command=lambda: credentials()).pack(side='left', fill='x', expand=True, pady=5)
+	Button(buttons, bg=baseColor, fg=txtColor, text="Register", activebackground=baseColor, activeforeground=txtColor, command=lambda: register()).pack(side='left', fill='x', expand=True,  pady=5)
+	buttons.pack(fill='x')
 
 def start():
 	global root, baseColor, txtColor
 	root = Tk()
 	root.geometry("500x200")
-	root.title("Elementary product")
+	root.title("Project Q&A")
 
 	baseColor = "#575D5E"
 	txtColor = "#ffffff"
@@ -56,4 +76,5 @@ def start():
 if __name__ == "__main__":
 	setup.createExcell()
 	setup.createStudents()
+	setup.createTeachers()
 	start()
