@@ -147,3 +147,25 @@ def getTeacherId(username: str, password: str) -> dict:
 		"done": done,
 		"userID": userID
 	}
+
+def getAllUsers(_type):
+	lists = []
+	if _type == 'teacher':
+		x = False
+		for i in teachers.iter_rows(values_only = True):
+			l = []
+			if x:
+				for j in range(0, 2):
+					l.append(i[j])
+				lists.append(l)
+			x = True
+	else:
+		x = False
+		for i in students.iter_rows(values_only = True):
+			l = []
+			if x:
+				for j in range(0, 2):
+					l.append(i[j])
+				lists.append(l)
+			x = True
+	return lists

@@ -88,6 +88,13 @@ def credentials():
 			else:
 				messagebox.showerror("ERROR", "Account not found")
 
+def accounts():
+	for i in tree.get_children():
+		tree.destroy(i)
+	lists = setup.getAllUsers(userType.get())
+	for i in lists:
+		tree.insert('', index=END, values=i)
+
 def destroyLists():
 	global h
 	if h >= 200:
@@ -96,11 +103,10 @@ def destroyLists():
 		root.after(10, destroyLists)
 	else:
 		listsFrame.destroy()
-		sy.destroy()
 		listsBtn.config(text="Lists", command=lambda: userLists())
 
 def userLists():
-	global h, listsFrame, sy
+	global h, listsFrame, tree
 	if h < 500:
 		root.geometry(f"{w}x{h}")
 		h += 10
@@ -108,13 +114,25 @@ def userLists():
 	else:
 		listsFrame = Frame(root, bg=baseColor)
 
-		tree = ttk.Treeview(listsFrame)
-		sx = Scrollbar(listsFrame, orient='vertical')
-		sy = Scrollbar(root, orient='horizontal')
+		style = ttk.Style()
+		style.theme_use("clam")
+		style.configure("Treeview", background=baseColor, foreground=txtColor, fieldbackground=baseColor, fieldforeground=txtColor)
+
+		tree = ttk.Treeview(listsFrame, show='headings')
+		sx = Scrollbar(listsFrame, orient='vertical', command=tree.xview)
+
+		tree.configure(xscrollcommand=sx.set)
+
+		columns = ("ID", "Fullname")
+		tree['columns'] = columns
+		for i in columns:
+			tree.heading(i, text=i)
+			tree.column(i)
+
+		accounts()
 
 		tree.pack(side='left', fill='both', expand=True)
 		sx.pack(side='left', fill='y')
-		sy.pack(side='bottom', fill='x', anchor='n')
 		listsFrame.pack(side='bottom', fill='x', expand=True)
 		listsBtn.config(text="Lists", command=lambda: destroyLists())
 
