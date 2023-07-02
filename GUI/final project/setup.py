@@ -99,6 +99,42 @@ def addTeacher(randomID: str, fullname: str, password: str) -> dict:
 		"exists": exist
 	}
 
+def addStudent(randomID: str, fullname: str, password: str) -> dict:
+	id = randomID
+	n = fullname
+	p = encrypt(password)
+	exist = False
+
+	for i in students.iter_rows(values_only=True):
+		if id in i:
+			exist = True
+			break
+	
+	if not exist:
+		students.append((
+			id,
+			n,
+			p
+		))
+		save()
+	
+	return {
+		"exists": exist
+	}
+
+def getStudentId(username: str, password: str) -> dict:
+	userID = 1
+	done = False
+	for i in students.iter_rows(values_only=True):
+		if i[0] == username and i[2] == encrypt(password):
+			done = True
+			break
+		userID += 1
+	return {
+		"done": done,
+		"userID": userID
+	}
+
 def getTeacherId(username: str, password: str) -> dict:
 	userID = 1
 	done = False

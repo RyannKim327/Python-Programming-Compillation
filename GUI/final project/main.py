@@ -1,27 +1,53 @@
 from tkinter import *
-from tkinter import messagebox
+from tkinter import messagebox, simpledialog
 import menu, setup, random
+
+def exitConfirmation():
+	if messagebox.askyesno("CONFIRMATION", "Are you sure, you want to close the app?"):
+		root.destroy()
+
+def createQuestion():
+	question_root = Toplevel()
+	question_root.geometry("300x500")
+	if userInfo['type'] == 'teacher':
+		Label(question_root, text="Create a Question", justify='center', font=("Times New Roman", 25)).pack(fill='x', expand=True)
+	else:
+		pass
+	
+	question_root.protocol("WM_DELETE_WINDOW", lambda: exitConfirmation())
+	question_root.mainloop()
 
 def register():
 	chars = "abcdefghijklmnopqrstuvwxyz0123456789"
-	userID = ""
-	for i in range(5):
-		userID += chars[random.randint(0, len(chars) - 1)]
-	
-	data = setup.addTeacher(userID, user.get(), password.get())
-
-	print(data)
-
-	while data['exists']:
+	if setup.encrypt(simpledialog.askstring("Confirmation", f"Please enter your passcode here to confirm this {userType.get()}", show="•")) == "c3782c86d8099f3fb5b755ebc970322567aa3894923de8c9c5fc97456133471c":
+		userID = ""
 		for i in range(5):
 			userID += chars[random.randint(0, len(chars) - 1)]
+		if userType.get() == 'teacher':
 			data = setup.addTeacher(userID, user.get(), password.get())
-	
-	messagebox.showinfo("SUCCESS", f"Teacher's account created successfully. Use this id: {userID} as ID pass")
+
+			print(data)
+
+			while data['exists']:
+				for i in range(5):
+					userID += chars[random.randint(0, len(chars) - 1)]
+					data = setup.addTeacher(userID, user.get(), password.get())
+			
+			messagebox.showinfo("SUCCESS", f"Teacher's account created successfully. Use this id: {userID} as ID pass")
+		else:
+			data = setup.addStudent(userID, user.get(), password.get())
+
+			while data['exists']:
+				for i in range(5):
+					userID += chars[random.randint(0, len(chars) - 1)]
+					data = setup.addStudent(userID, user.get(), password.get())
+			
+			messagebox.showinfo("SUCCESS", f"Student's account created successfully. Use this id: {userID} as ID pass")
 
 def credentials():
-	global userID
+	global userInfo
 	userID = None
+	userInfo = {}
 	print(userType.get())
 	if userType.get() == 'student':
 		if user.get() == "":
@@ -29,10 +55,16 @@ def credentials():
 		elif len(password.get()) < 8:
 			messagebox.showerror("ERROR", "Password must be 8 characters")
 		else:
-			data = setup.getTeacherId(user.get(), password.get())
+			data = setup.getStudentId(user.get(), password.get())
 			if data['done']:
 				messagebox.showinfo("SUCCESS", "You're now logged in as a student.")
 				userID = data['userID']
+				userInfo = {
+					"ID": userID,
+					"type": userType
+				}
+				root.withdraw()
+				createQuestion()
 			else:
 				messagebox.showerror("ERROR", "Account not found")
 	else:
@@ -45,6 +77,12 @@ def credentials():
 			if data['done']:
 				messagebox.showinfo("SUCCESS", "You're now logged in as a teacher.")
 				userID = data['userID']
+				userInfo = {
+					"ID": userID,
+					"type": userType
+				}
+				root.withdraw()
+				createQuestion()
 			else:
 				messagebox.showerror("ERROR", "Account not found")
 
