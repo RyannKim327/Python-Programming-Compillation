@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import messagebox, simpledialog
+from tkinter import messagebox, simpledialog, ttk
 import menu, setup, random
 
 def exitConfirmation():
@@ -14,6 +14,8 @@ def createQuestion():
 	else:
 		pass
 	
+	menu.menuSetup(question_root)
+
 	question_root.protocol("WM_DELETE_WINDOW", lambda: exitConfirmation())
 	question_root.mainloop()
 
@@ -86,8 +88,38 @@ def credentials():
 			else:
 				messagebox.showerror("ERROR", "Account not found")
 
+def destroyLists():
+	global h
+	if h >= 200:
+		root.geometry(f"{w}x{h}")
+		h -= 10
+		root.after(10, destroyLists)
+	else:
+		listsFrame.destroy()
+		sy.destroy()
+		listsBtn.config(text="Lists", command=lambda: userLists())
+
+def userLists():
+	global h, listsFrame, sy
+	if h < 500:
+		root.geometry(f"{w}x{h}")
+		h += 10
+		root.after(10, userLists)
+	else:
+		listsFrame = Frame(root, bg=baseColor)
+
+		tree = ttk.Treeview(listsFrame)
+		sx = Scrollbar(listsFrame, orient='vertical')
+		sy = Scrollbar(root, orient='horizontal')
+
+		tree.pack(side='left', fill='both', expand=True)
+		sx.pack(side='left', fill='y')
+		sy.pack(side='bottom', fill='x', anchor='n')
+		listsFrame.pack(side='bottom', fill='x', expand=True)
+		listsBtn.config(text="Lists", command=lambda: destroyLists())
+
 def login():
-	global user, password, userType
+	global user, password, userType, listsBtn
 	Label(root, text="Login", font=("Times New Roman", 25), justify='center', bg=baseColor, fg=txtColor).pack(fill='x')
 
 	userType = StringVar()
@@ -114,13 +146,17 @@ def login():
 
 	buttons = Frame(root, bg=baseColor)
 	Button(buttons, bg=baseColor, fg=txtColor, text="Login", activebackground=baseColor, activeforeground=txtColor, command=lambda: credentials()).pack(side='left', fill='x', expand=True, pady=5)
+	listsBtn = Button(buttons, bg=baseColor, fg=txtColor, text="Lists", activebackground=baseColor, activeforeground=txtColor, command=lambda: userLists())
+	listsBtn.pack(side='left', fill='x', expand=True,  pady=5)
 	Button(buttons, bg=baseColor, fg=txtColor, text="Register", activebackground=baseColor, activeforeground=txtColor, command=lambda: register()).pack(side='left', fill='x', expand=True,  pady=5)
 	buttons.pack(fill='x')
 
 def start():
-	global root, baseColor, txtColor
+	global root, baseColor, txtColor, w, h
+	w = 500
+	h = 200
 	root = Tk()
-	root.geometry("500x200")
+	root.geometry(f"{w}x{h}")
 	root.title("Project Q&A")
 
 	baseColor = "#575D5E"
