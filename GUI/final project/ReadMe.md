@@ -6,3 +6,4 @@
 ---
 ### How to Login
 > This program has only single "LOGIN" and "REGISTRATION" panel, as well as for "STUDENTS" and "TEACHERS". In this login panel, there's a single admin, where it needs to enter the secret password to proceed for a registration, to confirm, whether he/she is a student or a teacher.
+---
