@@ -33,12 +33,8 @@ def createExcell():
 	save()
 
 def createStudents():
-	global wb, students
+	global students
 	studs = "students"
-	if os.path.exists(filename):
-		wb = load_workbook(filename)
-	else:
-		wb = Workbook()
 	
 	if studs in wb.sheetnames:
 		students = wb[studs]
@@ -55,12 +51,8 @@ def createStudents():
 	save()
 
 def createTeachers():
-	global wb, teachers
+	global teachers
 	teach = "teachers"
-	if os.path.exists(filename):
-		wb = load_workbook(filename)
-	else:
-		wb = Workbook()
 	
 	if teach in wb.sheetnames:
 		teachers = wb[teach]

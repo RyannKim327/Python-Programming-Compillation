@@ -7,13 +7,23 @@ def exitConfirmation():
 		root.destroy()
 
 def createQuestion():
-	question_root = Toplevel()
+	question_root = Toplevel(bg=baseColor)
 	question_root.geometry("300x500")
-	if userInfo['type'] == 'teacher':
-		Label(question_root, text="Create a Question", justify='center', font=("Times New Roman", 25)).pack(fill='x', expand=True)
-	else:
-		pass
+	Label(question_root, text="Create a Question", bg=baseColor, fg=txtColor, justify='center', font=("Times New Roman", 25)).pack(fill='x')
 	
+	que = Entry(question_root, bg=baseColor, fg=txtColor)
+	que.pack(fill='x')
+
+	ans_frame = Frame(question_root, bg=baseColor)
+	ans = Entry(ans_frame, bg=baseColor, fg=txtColor)
+	ans.pack(fill='x', side='left')
+
+	isCaseSensitive = BooleanVar()
+	isCaseSensitive.set(True)
+	Checkbutton(ans_frame, bg=baseColor, fg=txtColor, activebackground=baseColor, activeforeground=txtColor, selectcolor=baseColor, text='Is Case Sensitive?', variable=isCaseSensitive).pack(side='left')
+	
+	ans_frame.pack(fill='x')
+
 	menu.menuSetup(question_root)
 
 	question_root.protocol("WM_DELETE_WINDOW", lambda: exitConfirmation())
@@ -90,13 +100,14 @@ def credentials():
 
 def accounts():
 	for i in tree.get_children():
-		tree.destroy(i)
-	lists = setup.getAllUsers(userType.get())
+		tree.delete(i)
+	lists = setup.getAllUsers(_type)
 	for i in lists:
 		tree.insert('', index=END, values=i)
 
 def destroyLists():
-	global h
+	global h, isShow
+	isShow = False
 	if h >= 200:
 		root.geometry(f"{w}x{h}")
 		h -= 10
@@ -106,7 +117,8 @@ def destroyLists():
 		listsBtn.config(text="Lists", command=lambda: userLists())
 
 def userLists():
-	global h, listsFrame, tree
+	global h, listsFrame, tree, _type, isShow
+	isShow = True
 	if h < 500:
 		root.geometry(f"{w}x{h}")
 		h += 10
@@ -129,6 +141,7 @@ def userLists():
 			tree.heading(i, text=i)
 			tree.column(i)
 
+		_type = userType.get()
 		accounts()
 
 		tree.pack(side='left', fill='both', expand=True)
@@ -136,15 +149,22 @@ def userLists():
 		listsFrame.pack(side='bottom', fill='x', expand=True)
 		listsBtn.config(text="Lists", command=lambda: destroyLists())
 
+def setType():
+	global _type
+	if isShow:
+		_type = userType.get()
+		accounts()
+
 def login():
-	global user, password, userType, listsBtn
+	global user, password, userType, listsBtn, isShow
+	isShow = False
 	Label(root, text="Login", font=("Times New Roman", 25), justify='center', bg=baseColor, fg=txtColor).pack(fill='x')
 
 	userType = StringVar()
 	userType.set("student")
 	typeFrame = Frame(root, bg=baseColor)
-	Radiobutton(typeFrame, bg=baseColor, fg=txtColor, text="Student", selectcolor=baseColor, variable=userType, textvariable="student", value='student').pack(side='left', fill='x', expand=True)
-	Radiobutton(typeFrame, bg=baseColor, fg=txtColor, text="Teacher", selectcolor=baseColor, variable=userType, textvariable="teacher", value='teacher').pack(side='left', fill='x', expand=True)
+	Radiobutton(typeFrame, bg=baseColor, fg=txtColor, text="Student", selectcolor=baseColor, variable=userType, textvariable="student", value='student', command=lambda: setType()).pack(side='left', fill='x', expand=True)
+	Radiobutton(typeFrame, bg=baseColor, fg=txtColor, text="Teacher", selectcolor=baseColor, variable=userType, textvariable="teacher", value='teacher', command=lambda: setType()).pack(side='left', fill='x', expand=True)
 	typeFrame.pack(fill='x')
 
 
