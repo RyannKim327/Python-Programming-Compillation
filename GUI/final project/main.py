@@ -137,40 +137,17 @@ def destroyLists():
 		h -= 10
 		root.after(10, destroyLists)
 	else:
-		listsFrame.destroy()
 		listsBtn.config(text="Lists", command=lambda: userLists())
 
 def userLists():
-	global h, listsFrame, tree, _type, isShow
+	global h, isShow
 	isShow = True
 	if h < 500:
 		root.geometry(f"{w}x{h}")
 		h += 10
 		root.after(10, userLists)
 	else:
-		listsFrame = Frame(root, bg=baseColor)
-
-		style = ttk.Style()
-		style.theme_use("clam")
-		style.configure("Treeview", background=baseColor, foreground=txtColor, fieldbackground=baseColor, fieldforeground=txtColor)
-
-		tree = ttk.Treeview(listsFrame, show='headings')
-		sx = Scrollbar(listsFrame, orient='vertical', command=tree.xview)
-
-		tree.configure(xscrollcommand=sx.set)
-
-		columns = ("ID", "Fullname")
-		tree['columns'] = columns
-		for i in columns:
-			tree.heading(i, text=i)
-			tree.column(i)
-
-		_type = userType.get()
-		accounts()
-
-		tree.pack(side='left', fill='both', expand=True)
-		sx.pack(side='left', fill='y')
-		listsFrame.pack(side='bottom', fill='x', expand=True)
+		
 		listsBtn.config(text="Lists", command=lambda: destroyLists())
 
 def setType():
@@ -180,7 +157,7 @@ def setType():
 		accounts()
 
 def login():
-	global user, password, userType, listsBtn, isShow
+	global user, password, userType, listsBtn, isShow, tree, _type
 	isShow = False
 	Label(root, text="Login", font=("Times New Roman", 25), justify='center', bg=baseColor, fg=txtColor).pack(fill='x')
 
@@ -212,6 +189,29 @@ def login():
 	listsBtn.pack(side='left', fill='x', expand=True,  pady=5)
 	Button(buttons, bg=baseColor, fg=txtColor, text="Register", activebackground=baseColor, activeforeground=txtColor, command=lambda: register()).pack(side='left', fill='x', expand=True,  pady=5)
 	buttons.pack(fill='x')
+
+	listsFrame = Frame(root, bg=baseColor)
+
+	style = ttk.Style()
+	style.theme_use("clam")
+	style.configure("Treeview", background=baseColor, foreground=txtColor, fieldbackground=baseColor, fieldforeground=txtColor)
+
+	tree = ttk.Treeview(listsFrame, show='headings')
+	sx = Scrollbar(listsFrame, orient='vertical', command=tree.xview)
+	tree.configure(xscrollcommand=sx.set)
+
+	columns = ("ID", "Fullname")
+	tree['columns'] = columns
+	for i in columns:
+		tree.heading(i, text=i)
+		tree.column(i)
+
+	_type = userType.get()
+	accounts()
+
+	tree.pack(side='left', fill='both', expand=True)
+	sx.pack(side='left', fill='y')
+	listsFrame.pack(side='bottom', fill='x', expand=True)
 
 def start():
 	global root, baseColor, txtColor, w, h
