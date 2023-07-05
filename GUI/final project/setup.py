@@ -26,6 +26,7 @@ def createExcell():
 		columns = (
 			"question",
 			"answer",
+			"case sensitive",
 			"question by"
 		)
 		questions.append(columns)
@@ -113,6 +114,11 @@ def addStudent(randomID: str, fullname: str, password: str) -> dict:
 	return {
 		"exists": exist
 	}
+
+def addQuestion(q: str, a: str, cs: bool, t: str):
+	questions.append((q, a, cs, t))
+	save()
+	return True
 
 def getStudentId(username: str, password: str) -> dict:
 	userID = 1

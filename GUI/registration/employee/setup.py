@@ -134,7 +134,7 @@ def getData(search = "", id_only = False):
 							data.append(d)
 				y = True
 	return data
-
+	
 def deleteData(ids: list):
 	x = 1
 	for j in ws.iter_rows(values_only=True):

@@ -6,9 +6,28 @@ def exitConfirmation():
 	if messagebox.askyesno("CONFIRMATION", "Are you sure, you want to close the app?"):
 		root.destroy()
 
+def addQuestion():
+	e = []
+	q = que.get()
+	a = ans.get()
+	cs = isCaseSensitive.get()
+	t = userInfo['ID']
+
+	if q == "" or not q.endswith("?") or not q.endswith("."):
+		e.append("question")
+	if a == "":
+		e.append("answer")
+	
+	if len(e) > 0:
+		messagebox.showerror(f"Please fill up with the valid data: {', '.join(e)}")
+	if setup.addQuestion(q, a, cs, t):
+		messagebox.showinfo("SUCCESS", "New Question Added")
+
 def createQuestion():
+	global que, ans, isCaseSensitive
+
 	question_root = Toplevel(bg=baseColor)
-	question_root.geometry("300x500")
+	question_root.geometry("500x300")
 	Label(question_root, text="Create a Question", bg=baseColor, fg=txtColor, justify='center', font=("Times New Roman", 25)).pack(fill='x')
 	
 	que = Entry(question_root, bg=baseColor, fg=txtColor)
@@ -16,13 +35,15 @@ def createQuestion():
 
 	ans_frame = Frame(question_root, bg=baseColor)
 	ans = Entry(ans_frame, bg=baseColor, fg=txtColor)
-	ans.pack(fill='x', side='left')
+	ans.pack(fill='x', side='left', expand=True)
 
 	isCaseSensitive = BooleanVar()
 	isCaseSensitive.set(True)
 	Checkbutton(ans_frame, bg=baseColor, fg=txtColor, activebackground=baseColor, activeforeground=txtColor, selectcolor=baseColor, text='Is Case Sensitive?', variable=isCaseSensitive).pack(side='left')
 	
 	ans_frame.pack(fill='x')
+
+	Button(question_root, bg=baseColor, fg=txtColor  , text="Add question", command=lambda: addQuestion()).pack(fill='x')
 
 	menu.menuSetup(question_root)
 
