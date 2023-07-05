@@ -26,24 +26,27 @@ def addQuestion():
 def createQuestion():
 	global que, ans, isCaseSensitive
 
-	question_root = Toplevel(bg=baseColor)
+	question_root = Toplevel(bg=baseColor, padx=5)
 	question_root.geometry("500x300")
 	Label(question_root, text="Create a Question", bg=baseColor, fg=txtColor, justify='center', font=("Times New Roman", 25)).pack(fill='x')
 	
-	que = Entry(question_root, bg=baseColor, fg=txtColor)
+	lq = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Question", font=("Times New Roman", 15))
+	que = Entry(lq, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), bd=0)
 	que.pack(fill='x')
 
-	ans_frame = Frame(question_root, bg=baseColor)
-	ans = Entry(ans_frame, bg=baseColor, fg=txtColor)
+	lq.pack(fill='x')
+
+	ans_frame = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Answer", font=("Times New Roman", 15))
+	ans = Entry(ans_frame, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), bd=0)
 	ans.pack(fill='x', side='left', expand=True)
 
 	isCaseSensitive = BooleanVar()
 	isCaseSensitive.set(True)
-	Checkbutton(ans_frame, bg=baseColor, fg=txtColor, activebackground=baseColor, activeforeground=txtColor, selectcolor=baseColor, text='Is Case Sensitive?', variable=isCaseSensitive).pack(side='left')
+	Checkbutton(ans_frame, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), activebackground=baseColor, activeforeground=txtColor, selectcolor=baseColor, text='Is Case Sensitive?', variable=isCaseSensitive).pack(side='left')
 	
 	ans_frame.pack(fill='x')
 
-	Button(question_root, bg=baseColor, fg=txtColor  , text="Add question", command=lambda: addQuestion()).pack(fill='x')
+	Button(question_root, bg=baseColor, fg=txtColor  , text="Add question", font=("Times New Roman", 15), command=lambda: addQuestion()).pack(fill='x', pady=5)
 
 	menu.menuSetup(question_root)
 
