@@ -53,6 +53,14 @@ def createQuestion():
 	question_root.protocol("WM_DELETE_WINDOW", lambda: exitConfirmation())
 	question_root.mainloop()
 
+def students_portal():
+	s_root = Toplevel()
+	s_root.geometry("300x300")
+
+
+	s_root.protocol("WM_DELETE_WINDOW", exitConfirmation)
+	s_root.mainloop()
+
 def register():
 	chars = "abcdefghijklmnopqrstuvwxyz0123456789"
 	if setup.encrypt(simpledialog.askstring("Confirmation", f"Please enter your passcode here to confirm this {userType.get()}", show="•")) == "c3782c86d8099f3fb5b755ebc970322567aa3894923de8c9c5fc97456133471c":
@@ -100,7 +108,7 @@ def credentials():
 					"type": userType
 				}
 				root.withdraw()
-				createQuestion()
+				students_portal()
 			else:
 				messagebox.showerror("ERROR", "Account not found")
 	else:
@@ -196,6 +204,13 @@ def login():
 	style.theme_use("clam")
 	style.configure("Treeview", background=baseColor, foreground=txtColor, fieldbackground=baseColor, fieldforeground=txtColor)
 
+	s = LabelFrame(listsFrame, text="Search your name", font=("Times New Roman", 15), bg=baseColor, fg=txtColor)
+
+	search = Entry(s, font=("", 15), bg=baseColor, fg=txtColor, bd=0)
+	search.pack(fill='x')
+
+	s.pack(fill='x')
+
 	tree = ttk.Treeview(listsFrame, show='headings')
 	sx = Scrollbar(listsFrame, orient='vertical', command=tree.xview)
 	tree.configure(xscrollcommand=sx.set)
@@ -211,7 +226,7 @@ def login():
 
 	tree.pack(side='left', fill='both', expand=True)
 	sx.pack(side='left', fill='y')
-	listsFrame.pack(side='bottom', fill='x', expand=True)
+	listsFrame.pack(side='top', fill='x', expand=True)
 
 def start():
 	global root, baseColor, txtColor, w, h
