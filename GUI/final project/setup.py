@@ -167,3 +167,10 @@ def getAllUsers(_type):
 				lists.append(l)
 			x = True
 	return lists
+
+def getAllQuestions():
+	lists = []
+	for i in questions.iter_rows(values_only=True):
+		lists.append(i)
+	
+	return lists

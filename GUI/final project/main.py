@@ -53,11 +53,41 @@ def createQuestion():
 	question_root.protocol("WM_DELETE_WINDOW", lambda: exitConfirmation())
 	question_root.mainloop()
 
+def go_ask():
+	global l_question, its_time
+	l_questions = []
+	totalQ = setup.getAllQuestions()
+	n = random.randint(1, len(totalQ) - 1)
+	while n in l_questions and len(n) < len(totalQ) - 2:
+		n = random.randint(1, len(totalQ) - 1)
+	if len(n) >= len(totalQ) - 2:
+		pass
+	else:
+		its_time = 0
+
+	
+
+def go_time():
+	global its_time
+	if its_time > 0:
+		its_time -= 1
+		timer.config(text=round(its_time))
+		s_root.after(1000, go_time)
+	else:
+		messagebox.showwarning("WARNING", "Time is up")
+
 def students_portal():
+	global timer, its_time, s_root
+	its_time = 60
 	s_root = Toplevel()
 	s_root.geometry("300x300")
 
+	timer = Label(s_root)
+	timer.pack()
 
+	Entry(s_root).pack()
+
+	go_time()
 
 	s_root.protocol("WM_DELETE_WINDOW", exitConfirmation)
 	s_root.mainloop()
@@ -168,9 +198,7 @@ def setType():
 def login():
 	global user, password, userType, listsBtn, isShow, tree, _type
 	isShow = False
-	x = exec('print("test")')
-	print(f"a{x}")
-	Label(root, text=x, font=("Times New Roman", 25), justify='center', bg=baseColor, fg=txtColor).pack(fill='x')
+	Label(root, text="Project Q&A", font=("Times New Roman", 25), justify='center', bg=baseColor, fg=txtColor).pack(fill='x')
 
 	userType = StringVar()
 	userType.set("student")
