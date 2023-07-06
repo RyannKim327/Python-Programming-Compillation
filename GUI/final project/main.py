@@ -81,12 +81,12 @@ def students_portal():
 	global timer, its_time, s_root, s_ans, s_f
 	its_time = 60
 	s_root = Toplevel(bg=baseColor)
-	s_root.geometry("300x300")
+	s_root.geometry("500x300")
 
-	timer = Label(s_root, bg=baseColor, fg=txtColor, font=("", 15))
+	timer = Label(s_root, bg=baseColor, fg=txtColor, font=("", 25))
 	timer.pack()
 
-	s_f = LabelFrame(s_root, bg=baseColor, fg=txtColor, font=("", 15))
+	s_f = LabelFrame(s_root, bg=baseColor, fg=txtColor, font=("", 10))
 	s_ans = Entry(s_f, bg=baseColor, fg=txtColor, bd=0, font=("", 15))
 	s_ans.pack(fill='x')
 
