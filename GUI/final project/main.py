@@ -58,10 +58,11 @@ def go_ask():
 	l_questions = []
 	totalQ = setup.getAllQuestions()
 	n = random.randint(1, len(totalQ) - 1)
-	while n in l_questions and len(n) < len(totalQ) - 2:
+	while n in l_questions and len(l_questions) < len(totalQ) - 2:
 		n = random.randint(1, len(totalQ) - 1)
-	if len(n) >= len(totalQ) - 2:
-		pass
+	if len(l_questions) >= len(totalQ) - 2:
+		s_f.config(text=totalQ[n][0])
+		l_questions.append(n)
 	else:
 		its_time = 0
 
@@ -77,16 +78,20 @@ def go_time():
 		messagebox.showwarning("WARNING", "Time is up")
 
 def students_portal():
-	global timer, its_time, s_root
+	global timer, its_time, s_root, s_ans, s_f
 	its_time = 60
-	s_root = Toplevel()
+	s_root = Toplevel(bg=baseColor)
 	s_root.geometry("300x300")
 
-	timer = Label(s_root)
+	timer = Label(s_root, bg=baseColor, fg=txtColor, font=("", 15))
 	timer.pack()
 
-	Entry(s_root).pack()
+	s_f = LabelFrame(s_root, bg=baseColor, fg=txtColor, font=("", 15))
+	s_ans = Entry(s_f, bg=baseColor, fg=txtColor, bd=0, font=("", 15))
+	s_ans.pack(fill='x')
 
+	s_f.pack(fill='x')
+	go_ask()
 	go_time()
 
 	s_root.protocol("WM_DELETE_WINDOW", exitConfirmation)
