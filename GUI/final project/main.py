@@ -58,6 +58,7 @@ def students_portal():
 	s_root.geometry("300x300")
 
 
+
 	s_root.protocol("WM_DELETE_WINDOW", exitConfirmation)
 	s_root.mainloop()
 
@@ -167,7 +168,9 @@ def setType():
 def login():
 	global user, password, userType, listsBtn, isShow, tree, _type
 	isShow = False
-	Label(root, text="Login", font=("Times New Roman", 25), justify='center', bg=baseColor, fg=txtColor).pack(fill='x')
+	x = exec('print("test")')
+	print(f"a{x}")
+	Label(root, text=x, font=("Times New Roman", 25), justify='center', bg=baseColor, fg=txtColor).pack(fill='x')
 
 	userType = StringVar()
 	userType.set("student")
@@ -175,7 +178,6 @@ def login():
 	Radiobutton(typeFrame, bg=baseColor, fg=txtColor, text="Student", selectcolor=baseColor, variable=userType, textvariable="student", value='student', command=lambda: setType()).pack(side='left', fill='x', expand=True)
 	Radiobutton(typeFrame, bg=baseColor, fg=txtColor, text="Teacher", selectcolor=baseColor, variable=userType, textvariable="teacher", value='teacher', command=lambda: setType()).pack(side='left', fill='x', expand=True)
 	typeFrame.pack(fill='x')
-
 
 	userFrame = LabelFrame(root, text="ID", font=("Times New Roman", 15), bg=baseColor, fg=txtColor)
 
