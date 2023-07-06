@@ -200,8 +200,20 @@ def setType():
 		_type = userType.get()
 		accounts()
 
+def showPassword():
+	global isPass
+	if isPass:
+		password.config(show="")
+		_bpass.config(text="0_0")
+	else:
+		password.config(show="•")
+		_bpass.config(text="-_-")
+	isPass = not isPass
+
 def login():
-	global user, password, userType, listsBtn, isShow, tree, _type
+	global user, password, userType, listsBtn, isShow, tree, _type, _bpass, isPass
+
+	isPass = True
 	isShow = False
 	Label(root, text="Project Q&A", font=("Times New Roman", 25), justify='center', bg=baseColor, fg=txtColor).pack(fill='x')
 
@@ -223,6 +235,9 @@ def login():
 
 	password = Entry(passFrame, bg=baseColor, fg=txtColor, bd=0, font=("", 15), show="•")
 	password.pack(side="left", fill='x', expand=True)
+
+	_bpass = Button(passFrame, text="-_-", command=lambda: showPassword(), bg=baseColor, fg=txtColor, bd=0)
+	_bpass.pack(side='left')
 
 	passFrame.pack(fill='x')
 

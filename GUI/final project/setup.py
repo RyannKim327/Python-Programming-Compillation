@@ -146,6 +146,12 @@ def getTeacherId(username: str, password: str) -> dict:
 		"userID": userID
 	}
 
+def getTeacher(id: int):
+	teacher = {}
+	for i in range(len(teachers[id])):
+		teacher[teachers[1][i].value] = teachers[id][i].value
+	return teacher
+
 def getAllUsers(_type):
 	lists = []
 	if _type == 'teacher':
