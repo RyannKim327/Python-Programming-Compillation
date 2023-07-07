@@ -66,17 +66,18 @@ def go_answer(n, totalQ):
 
 def go_ask():
 	global l_question, its_time
-	l_questions = []
 	totalQ = setup.getAllQuestions()
 	n = random.randint(1, len(totalQ) - 1)
 	while n in l_questions and len(l_questions) < len(totalQ) - 2:
 		n = random.randint(1, len(totalQ) - 1)
-	if len(l_questions) >= len(totalQ) - 2:
+	if len(l_questions) < len(totalQ) - 2:
 		s_f.config(text=totalQ[n][0])
 		l_questions.append(n)
 		s_ans.bind("<Return>", lambda e: go_answer(n, totalQ))
 	else:
+		s_ans.config(state='disabled')
 		its_time = 0
+	print(l_questions)
 
 def go_time():
 	global its_time
@@ -85,11 +86,13 @@ def go_time():
 		timer.config(text=round(its_time))
 		s_root.after(1000, go_time)
 	else:
+		s_ans.config(state='disabled')
 		messagebox.showwarning("WARNING", "Time is up")
 		
 
 def students_portal():
-	global timer, its_time, s_root, s_ans, s_f, score
+	global timer, its_time, s_root, s_ans, s_f, score, l_questions
+	l_questions = []
 	score = 0
 	its_time = 60
 	s_root = Toplevel(bg=baseColor)
