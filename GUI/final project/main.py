@@ -53,6 +53,17 @@ def createQuestion():
 	question_root.protocol("WM_DELETE_WINDOW", lambda: exitConfirmation())
 	question_root.mainloop()
 
+def go_answer(n, totalQ):
+	global score
+	q = totalQ[n]
+	if q[2]:
+		if s_ans.get() == q[1]:
+			score += 1
+	else:
+		if s_ans.get().lower() == q[1].lower():
+			score += 1
+	go_ask()
+
 def go_ask():
 	global l_question, its_time
 	l_questions = []
@@ -63,10 +74,9 @@ def go_ask():
 	if len(l_questions) >= len(totalQ) - 2:
 		s_f.config(text=totalQ[n][0])
 		l_questions.append(n)
+		s_ans.bind("<Return>", lambda e: go_answer(n, totalQ))
 	else:
 		its_time = 0
-
-	
 
 def go_time():
 	global its_time
@@ -76,9 +86,11 @@ def go_time():
 		s_root.after(1000, go_time)
 	else:
 		messagebox.showwarning("WARNING", "Time is up")
+		
 
 def students_portal():
-	global timer, its_time, s_root, s_ans, s_f
+	global timer, its_time, s_root, s_ans, s_f, score
+	score = 0
 	its_time = 60
 	s_root = Toplevel(bg=baseColor)
 	s_root.geometry("500x300")
