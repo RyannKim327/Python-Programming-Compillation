@@ -48,6 +48,15 @@ def getAllQuestions():
 		lists.append(i)
 	return lists
 
+def editQuestion(pos: int, data: list):
+	for i in range(len(data)):
+		questions.cell(row=pos + 2, column=i + 1, value=data[i])
+	save()
+	return {
+		"done": True,
+		"msg": "Data modified successfully"
+	}
+
 # Students
 def createStudents():
 	global students
@@ -103,6 +112,7 @@ def getStudentId(username: str, password: str) -> dict:
 		"userID": userID
 	}
 
+
 # Teachers
 def createTeachers():
 	global teachers
@@ -144,9 +154,6 @@ def addTeacher(randomID: str, fullname: str, password: str) -> dict:
 	return {
 		"exists": exist
 	}
-
-
-
 
 def getTeacherId(username: str, password: str) -> dict:
 	userID = 1
