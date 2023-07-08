@@ -2,12 +2,16 @@ from openpyxl import load_workbook
 from openpyxl.workbook import Workbook
 import os, hashlib
 
+# Encryption
 def encrypt(password: str) -> str:
 	return (hashlib.sha256(password.encode())).hexdigest()
 
+# Save
 def save():
 	wb.save(filename)
 
+
+# Questions
 def createExcell():
 	global wb, questions, filename
 	filename = "data.xlsx"
@@ -33,6 +37,18 @@ def createExcell():
 	
 	save()
 
+def addQuestion(q: str, a: str, cs: bool, t: str):
+	questions.append((q, a, cs, t))
+	save()
+	return True
+
+def getAllQuestions():
+	lists = []
+	for i in questions.iter_rows(values_only=True):
+		lists.append(i)
+	return lists
+
+# Students
 def createStudents():
 	global students
 	studs = "students"
@@ -51,6 +67,43 @@ def createStudents():
 	
 	save()
 
+def addStudent(randomID: str, fullname: str, password: str) -> dict:
+	id = randomID
+	n = fullname
+	p = encrypt(password)
+	exist = False
+
+	for i in students.iter_rows(values_only=True):
+		if id in i:
+			exist = True
+			break
+	
+	if not exist:
+		students.append((
+			id,
+			n,
+			p
+		))
+		save()
+	
+	return {
+		"exists": exist
+	}
+
+def getStudentId(username: str, password: str) -> dict:
+	userID = 1
+	done = False
+	for i in students.iter_rows(values_only=True):
+		if i[0] == username and i[2] == encrypt(password):
+			done = True
+			break
+		userID += 1
+	return {
+		"done": done,
+		"userID": userID
+	}
+
+# Teachers
 def createTeachers():
 	global teachers
 	teach = "teachers"
@@ -92,46 +145,8 @@ def addTeacher(randomID: str, fullname: str, password: str) -> dict:
 		"exists": exist
 	}
 
-def addStudent(randomID: str, fullname: str, password: str) -> dict:
-	id = randomID
-	n = fullname
-	p = encrypt(password)
-	exist = False
 
-	for i in students.iter_rows(values_only=True):
-		if id in i:
-			exist = True
-			break
-	
-	if not exist:
-		students.append((
-			id,
-			n,
-			p
-		))
-		save()
-	
-	return {
-		"exists": exist
-	}
 
-def addQuestion(q: str, a: str, cs: bool, t: str):
-	questions.append((q, a, cs, t))
-	save()
-	return True
-
-def getStudentId(username: str, password: str) -> dict:
-	userID = 1
-	done = False
-	for i in students.iter_rows(values_only=True):
-		if i[0] == username and i[2] == encrypt(password):
-			done = True
-			break
-		userID += 1
-	return {
-		"done": done,
-		"userID": userID
-	}
 
 def getTeacherId(username: str, password: str) -> dict:
 	userID = 1
@@ -152,6 +167,8 @@ def getTeacher(id: int):
 		teacher[teachers[1][i].value] = teachers[id][i].value
 	return teacher
 
+
+# All users
 def getAllUsers(_type):
 	lists = []
 	if _type == 'teacher':
@@ -172,11 +189,4 @@ def getAllUsers(_type):
 					l.append(i[j])
 				lists.append(l)
 			x = True
-	return lists
-
-def getAllQuestions():
-	lists = []
-	for i in questions.iter_rows(values_only=True):
-		lists.append(i)
-	
 	return lists
