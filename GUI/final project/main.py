@@ -2,9 +2,11 @@ from tkinter import *
 from tkinter import messagebox, simpledialog, ttk
 import menu, setup, random
 
+
 def exitConfirmation():
 	if messagebox.askyesno("CONFIRMATION", "Are you sure, you want to close the app?"):
 		root.destroy()
+
 
 def addQuestion():
 	e = []
@@ -23,11 +25,15 @@ def addQuestion():
 	if setup.addQuestion(q, a, cs, t):
 		messagebox.showinfo("SUCCESS", "New Question Added")
 
+
 def createQuestion():
 	global que, ans, isCaseSensitive
 
 	question_root = Toplevel(bg=baseColor, padx=5)
 	question_root.geometry("500x300")
+	question_root.title("Project Q&A")
+	question_root.resizable(False, False)
+
 	Label(question_root, text="Create a Question", bg=baseColor, fg=txtColor, justify='center', font=("Times New Roman", 25)).pack(fill='x')
 	
 	lq = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Question", font=("Times New Roman", 15))
@@ -53,6 +59,7 @@ def createQuestion():
 	question_root.protocol("WM_DELETE_WINDOW", lambda: exitConfirmation())
 	question_root.mainloop()
 
+
 def go_answer(n, totalQ):
 	global score
 	q = totalQ[n]
@@ -62,7 +69,9 @@ def go_answer(n, totalQ):
 	else:
 		if s_ans.get().lower() == q[1].lower():
 			score += 1
+	s_ans.delete(0, END)
 	go_ask()
+
 
 def go_ask():
 	global l_question, its_time
@@ -78,6 +87,7 @@ def go_ask():
 		s_ans.config(state='disabled')
 		its_time = 0
 	print(l_questions)
+
 
 def go_time():
 	global its_time
@@ -97,6 +107,8 @@ def students_portal():
 	its_time = 60
 	s_root = Toplevel(bg=baseColor)
 	s_root.geometry("500x300")
+	s_root.title("Project Q&A")
+	s_root.resizable(False, False)
 
 	timer = Label(s_root, bg=baseColor, fg=txtColor, font=("", 25))
 	timer.pack()
@@ -112,6 +124,7 @@ def students_portal():
 	s_root.protocol("WM_DELETE_WINDOW", exitConfirmation)
 	s_root.mainloop()
 
+
 def register():
 	chars = "abcdefghijklmnopqrstuvwxyz0123456789"
 	if setup.encrypt(simpledialog.askstring("Confirmation", f"Please enter your passcode here to confirm this {userType.get()}", show="•")) == "c3782c86d8099f3fb5b755ebc970322567aa3894923de8c9c5fc97456133471c":
@@ -120,9 +133,6 @@ def register():
 			userID += chars[random.randint(0, len(chars) - 1)]
 		if userType.get() == 'teacher':
 			data = setup.addTeacher(userID, user.get(), password.get())
-
-			print(data)
-
 			while data['exists']:
 				for i in range(5):
 					userID += chars[random.randint(0, len(chars) - 1)]
@@ -138,6 +148,10 @@ def register():
 					data = setup.addStudent(userID, user.get(), password.get())
 			
 			messagebox.showinfo("SUCCESS", f"Student's account created successfully. Use this id: {userID} as ID pass")
+		setType()
+	else:
+		messagebox.showerror("NOTICE", "Invalid Verification")
+
 
 def credentials():
 	global userInfo
@@ -181,12 +195,14 @@ def credentials():
 			else:
 				messagebox.showerror("ERROR", "Account not found")
 
+
 def accounts():
 	for i in tree.get_children():
 		tree.delete(i)
 	lists = setup.getAllUsers(_type)
 	for i in lists:
 		tree.insert('', index=END, values=i)
+
 
 def destroyLists():
 	global h, isShow
@@ -198,6 +214,7 @@ def destroyLists():
 	else:
 		listsBtn.config(text="Lists", command=lambda: userLists())
 
+
 def userLists():
 	global h, isShow
 	isShow = True
@@ -205,15 +222,18 @@ def userLists():
 		root.geometry(f"{w}x{h}")
 		h += 10
 		root.after(10, userLists)
+		setType()
 	else:
-		
 		listsBtn.config(text="Lists", command=lambda: destroyLists())
+
 
 def setType():
 	global _type
 	if isShow:
 		_type = userType.get()
 		accounts()
+
+
 
 def showPassword():
 	global isPass
@@ -224,6 +244,8 @@ def showPassword():
 		password.config(show="•")
 		_bpass.config(text="-_-")
 	isPass = not isPass
+
+
 
 def login():
 	global user, password, userType, listsBtn, isShow, tree, _type, _bpass, isPass
@@ -293,6 +315,7 @@ def login():
 	sx.pack(side='left', fill='y')
 	listsFrame.pack(side='top', fill='x', expand=True)
 
+
 def start():
 	global root, baseColor, txtColor, w, h
 	w = 500
@@ -300,6 +323,7 @@ def start():
 	root = Tk()
 	root.geometry(f"{w}x{h}")
 	root.title("Project Q&A")
+	root.resizable(False, False)
 
 	baseColor = "#575D5E"
 	txtColor = "#ffffff"
@@ -310,6 +334,7 @@ def start():
 	menu.menuSetup(root)
 
 	root.mainloop()
+
 
 if __name__ == "__main__":
 	setup.createExcell()
