@@ -8,6 +8,29 @@ def exitConfirmation():
 		root.destroy()
 
 
+def refreshQuestions():
+	quest_lists.delete(*quest_lists.get_children())
+	q = setup.getAllQuestions()
+	lists = []
+	x = False
+	for _q in q:
+		p = 0
+		l = []
+		for c in list(_q):
+			if x:
+				if p >= 3:
+					t = setup.getTeacher(int(c))
+					l.append(t['fullname'])
+				else:
+					l.append(c)
+				p += 1
+		if x:
+			lists.append(l)
+		x = True
+	for _q in lists:
+		quest_lists.insert("", index=END, values=_q)
+
+
 def addQuestion():
 	e = []
 	q = que.get()
@@ -24,10 +47,36 @@ def addQuestion():
 		messagebox.showerror(f"Please fill up with the valid data: {', '.join(e)}")
 	if setup.addQuestion(q, a, cs, t):
 		messagebox.showinfo("SUCCESS", "New Question Added")
+		refreshQuestions()
+
+
+def qCloseNav():
+	global qtwidth
+	if qtwidth >= 0:
+		qtwidth -= 0.075
+		navigation.place(x=-10, y=0, relheight=1, relwidth=qtwidth)
+		navigation.after(10, qCloseNav)
+
+def qShowNav():
+	global qtwidth
+	if qtwidth < 0.75:
+		qtwidth += 0.075
+		navigation.place(x=0, y=0, relheight=1, relwidth=qtwidth)
+		navigation.after(10, qShowNav)
+
+def nav():
+	global nav_show
+	if nav_show:
+		qCloseNav()
+	else:
+		qShowNav()
+	nav_show = not nav_show
 
 
 def createQuestion():
-	global que, ans, isCaseSensitive
+	global que, ans, isCaseSensitive, navigation, quest_lists, nav_show, qtwidth
+	qtwidth = 0
+	nav_show = False
 
 	question_root = Toplevel(bg=baseColor, padx=5)
 	question_root.geometry("500x300")
@@ -54,7 +103,34 @@ def createQuestion():
 
 	Button(question_root, bg=baseColor, fg=txtColor  , text="Add question", font=("Times New Roman", 15), command=lambda: addQuestion()).pack(fill='x', pady=5)
 
-	menu.menuSetup(question_root)
+	# m = Menu(question_root)
+	men = menu.menuSetup(question_root)
+	men.add_cascade(label="Navigation", command=lambda: nav())
+
+	navigation = Frame(question_root)
+
+	quest_lists = ttk.Treeview(navigation, show='headings')
+
+	columns = (
+		"Question",
+		"Answer",
+		"Case Sensitive",
+		"Question By"
+	)
+	w = [
+		10, 10, 5, 20
+	]
+	x = 0
+	quest_lists['columns'] = columns
+	for c in columns:
+		quest_lists.heading(c, text=c)
+		quest_lists.column(c, width=w[x])
+		x += 1
+	
+	refreshQuestions()
+
+	quest_lists.pack(fill='both')
+	navigation.place(x=0, y=0, relheight=1, relwidth=qtwidth)
 
 	question_root.protocol("WM_DELETE_WINDOW", lambda: exitConfirmation())
 	question_root.mainloop()
@@ -86,7 +162,6 @@ def go_ask():
 	else:
 		s_ans.config(state='disabled')
 		its_time = 0
-	print(l_questions)
 
 
 def go_time():
@@ -157,14 +232,13 @@ def credentials():
 	global userInfo
 	userID = None
 	userInfo = {}
-	print(userType.get())
 	if userType.get() == 'student':
-		if user.get() == "":
+		if user.get().lower() == "":
 			messagebox.showerror("ERROR", "Please enter your username first")
 		elif len(password.get()) < 8:
 			messagebox.showerror("ERROR", "Password must be 8 characters")
 		else:
-			data = setup.getStudentId(user.get(), password.get())
+			data = setup.getStudentId(user.get().lower(), password.get())
 			if data['done']:
 				messagebox.showinfo("SUCCESS", "You're now logged in as a student.")
 				userID = data['userID']
@@ -234,12 +308,11 @@ def setType():
 		accounts()
 
 
-
 def showPassword():
 	global isPass
 	if isPass:
 		password.config(show="")
-		_bpass.config(text="0_0")
+		_bpass.config(text="•_•")
 	else:
 		password.config(show="•")
 		_bpass.config(text="-_-")

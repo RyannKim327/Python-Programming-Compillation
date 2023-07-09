@@ -10,7 +10,6 @@ def encrypt(password: str) -> str:
 def save():
 	wb.save(filename)
 
-
 # Questions
 def createExcell():
 	global wb, questions, filename
