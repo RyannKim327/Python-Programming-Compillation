@@ -56,6 +56,14 @@ def editQuestion(pos: int, data: list):
 		"msg": "Data modified successfully"
 	}
 
+def deleteQuestion(pos: int):
+	questions.delete_rows(pos + 2)
+	save()
+	return {
+		"done": True,
+		"msg": "Data deleted successfully"
+	}
+
 # Students
 def createStudents():
 	global students
