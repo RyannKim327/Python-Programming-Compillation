@@ -64,6 +64,7 @@ def qShowNav():
 		navigation.place(x=0, y=0, relheight=1, relwidth=qtwidth)
 		navigation.after(10, qShowNav)
 
+
 def nav():
 	global nav_show
 	if nav_show:
@@ -103,7 +104,6 @@ def createQuestion():
 
 	Button(question_root, bg=baseColor, fg=txtColor  , text="Add question", font=("Times New Roman", 15), command=lambda: addQuestion()).pack(fill='x', pady=5)
 
-	# m = Menu(question_root)
 	men = menu.menuSetup(question_root)
 	men.add_cascade(label="Navigation", command=lambda: nav())
 
@@ -130,6 +130,10 @@ def createQuestion():
 	refreshQuestions()
 
 	quest_lists.pack(fill='both')
+
+	Button(navigation, text="Update").pack(side='left', fill='x')
+	Button(navigation, text="Delete").pack(side='left', fill='x')
+
 	navigation.place(x=0, y=0, relheight=1, relwidth=qtwidth)
 
 	question_root.protocol("WM_DELETE_WINDOW", lambda: exitConfirmation())
