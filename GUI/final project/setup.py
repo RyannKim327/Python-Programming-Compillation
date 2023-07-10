@@ -120,6 +120,15 @@ def getStudentId(username: str, password: str) -> dict:
 	}
 
 
+def deleteStudent(pos: int):
+	students.delete_rows(pos + 2)
+	save()
+	return {
+		"done": True,
+		"mgs": "A student was deleted successfully"
+	}
+
+
 # Teachers
 def createTeachers():
 	global teachers
