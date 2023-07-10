@@ -319,6 +319,15 @@ def showPassword():
 	isPass = not isPass
 
 
+def checker():
+	print("Checked")
+	if user.get() == "":
+		user.focus()
+	elif password.get() == "":
+		password.focus()
+	else:
+		credentials()
+
 
 def login():
 	global user, password, userType, listsBtn, isShow, tree, _type, _bpass, isPass
@@ -337,6 +346,7 @@ def login():
 	userFrame = LabelFrame(root, text="ID", font=("Times New Roman", 15), bg=baseColor, fg=txtColor)
 
 	user = Entry(userFrame, bg=baseColor, fg=txtColor, bd=0, font=("", 15))
+	user.bind("<Return>", lambda e: checker())
 	user.pack(side="left", fill='x', expand=True)
 
 	userFrame.pack(fill='x')
@@ -344,6 +354,7 @@ def login():
 	passFrame = LabelFrame(root, text="Password", font=("Times New Roman", 15), bg=baseColor, fg=txtColor)
 
 	password = Entry(passFrame, bg=baseColor, fg=txtColor, bd=0, font=("", 15), show="•")
+	password.bind("<Return>", lambda e: checker())
 	password.pack(side="left", fill='x', expand=True)
 
 	_bpass = Button(passFrame, text="-_-", command=lambda: showPassword(), bg=baseColor, fg=txtColor, bd=0)
