@@ -190,6 +190,15 @@ def getTeacher(id: int):
 		teacher[teachers[1][i].value] = teachers[id][i].value
 	return teacher
 
+def deleteStudent(pos: int):
+	teachers.delete_rows(pos + 2)
+	save()
+	return {
+		"done": True,
+		"mgs": "A teacher was deleted successfully"
+	}
+
+
 
 # All users
 def getAllUsers(_type):
