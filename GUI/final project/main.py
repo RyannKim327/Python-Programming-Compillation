@@ -123,7 +123,7 @@ def createQuestion():
 	
 	ans_frame.pack(fill='x')
 
-	Button(question_root, bg=baseColor, fg=txtColor  , text="Add question", font=("Times New Roman", 15), command=lambda: addQuestion()).pack(fill='x', pady=5)
+	Button(question_root, bg=baseColor, fg=txtColor, text="Add question", font=("Times New Roman", 15), command=lambda: addQuestion()).pack(fill='x', pady=5)
 
 	men = menu.menuSetup(question_root)
 	men.add_cascade(label="Navigation", command=lambda: nav())
@@ -152,8 +152,10 @@ def createQuestion():
 
 	quest_lists.pack(fill='both')
 
-	Button(navigation, text="Update").pack(side='left', fill='x')
-	Button(navigation, text="Delete").pack(side='left', fill='x')
+	update_q = Button(navigation, bg=baseColor, fg=txtColor, text="Update", state='disabled')
+	update_q.pack(side='left', fill='x', expand=True)
+	delete_q = Button(navigation, bg=baseColor, fg=txtColor, text="Delete", state='disabled')
+	delete_q.pack(side='left', fill='x', expand=True)
 
 	question_root.protocol("WM_DELETE_WINDOW", lambda: exitConfirmation())
 	question_root.mainloop()

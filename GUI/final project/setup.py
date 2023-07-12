@@ -98,7 +98,8 @@ def createStudents():
 		columns = (
 			"ID",
 			"fullname",
-			"password"
+			"password",
+			"score"
 		)
 		students.append(columns)
 	
@@ -119,7 +120,8 @@ def addStudent(randomID: str, fullname: str, password: str) -> dict:
 		students.append((
 			id,
 			n,
-			p
+			p,
+			0
 		))
 		save()
 	
@@ -139,6 +141,15 @@ def getStudentId(username: str, password: str) -> dict:
 		"done": done,
 		"userID": userID
 	}
+
+
+def updateScore(id: str, score: int):
+	x = 0
+	for i in students.iter_rows(values_only=True):
+		if id == i[0]:
+			break
+		x += 1
+	students.cell(row=x, column=4, valiue=score)
 
 
 def deleteStudent(pos: int):
