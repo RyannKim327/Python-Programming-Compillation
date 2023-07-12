@@ -12,7 +12,7 @@ def save():
 
 # Questions
 def createExcell():
-	global wb, questions, filename, archs
+	global wb, questions, filename, archieves
 	filename = "data.xlsx"
 	quest = "questions"
 	archs = "archieves questions"
@@ -38,7 +38,7 @@ def createExcell():
 	if archs in wb.sheetnames:
 		archieves = wb[archs]
 	else:
-		archieves = wb.create_chartsheet(archs)
+		archieves = wb.create_sheet(archs)
 		columns = (
 			"question",
 			"answer",
@@ -70,7 +70,15 @@ def editQuestion(pos: int, data: list):
 	}
 
 def archieveQuestions(pos: int):
-	questions.delete_rows(pos + 2)
+	x = 0
+
+	for i in questions.iter_rows(values_only=True):
+		if x == pos - 1:
+			archieves.append(i)
+			break
+		x += 1
+
+	questions.delete_rows(pos)
 	save()
 	return {
 		"done": True,

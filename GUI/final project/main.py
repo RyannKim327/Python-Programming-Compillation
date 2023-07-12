@@ -285,7 +285,7 @@ def accounts():
 def destroyLists():
 	global h, isShow
 	isShow = False
-	if h >= 200:
+	if h >= 205:
 		root.geometry(f"{w}x{h}")
 		h -= 10
 		root.after(10, destroyLists)
@@ -367,10 +367,10 @@ def login():
 	passFrame.pack(fill='x')
 
 	buttons = Frame(root, bg=baseColor)
-	Button(buttons, bg=baseColor, fg=txtColor, text="Login", activebackground=baseColor, activeforeground=txtColor, command=lambda: credentials()).pack(side='left', fill='x', expand=True, pady=5)
+	Button(buttons, bg=baseColor, fg=txtColor, text="Login", bd=1, relief="raised", activebackground=baseColor, activeforeground=txtColor, command=lambda: credentials()).pack(side='left', fill='x', expand=True, padx=5, pady=5)
 	listsBtn = Button(buttons, bg=baseColor, fg=txtColor, text="Lists", activebackground=baseColor, activeforeground=txtColor, command=lambda: userLists())
-	listsBtn.pack(side='left', fill='x', expand=True,  pady=5)
-	Button(buttons, bg=baseColor, fg=txtColor, text="Register", activebackground=baseColor, activeforeground=txtColor, command=lambda: register()).pack(side='left', fill='x', expand=True,  pady=5)
+	listsBtn.pack(side='left', fill='x', expand=True, padx=5, pady=5)
+	Button(buttons, bg=baseColor, fg=txtColor, text="Register", activebackground=baseColor, activeforeground=txtColor, command=lambda: register()).pack(side='left', fill='x', expand=True, padx=5, pady=5)
 	buttons.pack(fill='x')
 
 	listsFrame = Frame(root, bg=baseColor)
@@ -405,16 +405,14 @@ def login():
 
 
 def start():
-	global root, baseColor, txtColor, w, h
+	global root, w, h
 	w = 500
-	h = 200
+	h = 205
 	root = Tk()
 	root.geometry(f"{w}x{h}")
 	root.title("Project Q&A")
 	root.resizable(False, False)
 
-	baseColor = "#575D5E"
-	txtColor = "#ffffff"
 	root.config(bg=baseColor, padx=5)
 
 	login()
@@ -424,8 +422,21 @@ def start():
 	root.mainloop()
 
 
+def setTheme(theme='light'):
+	global  baseColor, txtColor
+	if theme == DARK:
+		baseColor = "#333333"
+		txtColor = "#ffffff"
+	else:
+		baseColor = "#efefef"
+		txtColor = "#000000"
+		
+
 if __name__ == "__main__":
+	DARK = 'dark'
+	LIGHT = 'light'
 	setup.createExcell()
 	setup.createStudents()
 	setup.createTeachers()
+	setTheme(DARK)
 	start()
