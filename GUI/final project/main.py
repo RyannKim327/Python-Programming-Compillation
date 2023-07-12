@@ -30,6 +30,22 @@ def refreshQuestions():
 	for _q in lists:
 		quest_lists.insert("", index=END, values=_q)
 
+def questionVerifier():
+	q = que.get()
+	a = ans.get()
+	x = []
+	if len(q) <= 5:
+		x.append("Question")
+	if a == "":
+		x.append("Answer")
+	
+	if len(x) > 0:
+		addQuestion()
+	elif "Question" in x:
+		que.focus()
+	elif "Answer" in x:
+		ans.focus()
+	
 
 def addQuestion():
 	e = []
@@ -38,16 +54,19 @@ def addQuestion():
 	cs = isCaseSensitive.get()
 	t = userInfo['ID']
 
-	if q == "" or not q.endswith("?") or not q.endswith("."):
+	if len(q) <= 5 or not q.endswith("?") or not q.endswith("."):
 		e.append("question")
 	if a == "":
 		e.append("answer")
 	
-	if len(e) > 0:
+	if len(e) <= 0:
 		messagebox.showerror(f"Please fill up with the valid data: {', '.join(e)}")
-	if setup.addQuestion(q, a, cs, t):
-		messagebox.showinfo("SUCCESS", "New Question Added")
-		refreshQuestions()
+	else:
+		if setup.addQuestion(q, a, cs, t):
+			que.delete(0, END)
+			ans.delete(0, END)
+			messagebox.showinfo("SUCCESS", "New Question Added")
+			refreshQuestions()
 
 
 def qCloseNav():
@@ -88,12 +107,14 @@ def createQuestion():
 	
 	lq = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Question", font=("Times New Roman", 15))
 	que = Entry(lq, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), bd=0)
-	que.pack(fill='x')
+	que.bind("<Return>", lambda e: questionVerifier())
+	que.pack(fill='x', ipadx=10)
 
 	lq.pack(fill='x')
 
 	ans_frame = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Answer", font=("Times New Roman", 15))
 	ans = Entry(ans_frame, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), bd=0)
+	ans.bind("<Return>", lambda e: questionVerifier())
 	ans.pack(fill='x', side='left', expand=True)
 
 	isCaseSensitive = BooleanVar()
@@ -107,7 +128,7 @@ def createQuestion():
 	men = menu.menuSetup(question_root)
 	men.add_cascade(label="Navigation", command=lambda: nav())
 
-	navigation = Frame(question_root)
+	navigation = Frame(question_root, bg=baseColor, bd=1, relief="solid")
 
 	quest_lists = ttk.Treeview(navigation, show='headings')
 
@@ -133,8 +154,6 @@ def createQuestion():
 
 	Button(navigation, text="Update").pack(side='left', fill='x')
 	Button(navigation, text="Delete").pack(side='left', fill='x')
-
-	navigation.place(x=0, y=0, relheight=1, relwidth=qtwidth)
 
 	question_root.protocol("WM_DELETE_WINDOW", lambda: exitConfirmation())
 	question_root.mainloop()
@@ -319,12 +338,11 @@ def showPassword():
 		_bpass.config(text="•_•")
 	else:
 		password.config(show="•")
-		_bpass.config(text="-_-")
+		_bpass.config(text="•_-")
 	isPass = not isPass
 
 
 def checker():
-	print("Checked")
 	if user.get() == "":
 		user.focus()
 	elif password.get() == "":
@@ -361,7 +379,7 @@ def login():
 	password.bind("<Return>", lambda e: checker())
 	password.pack(side="left", fill='x', expand=True)
 
-	_bpass = Button(passFrame, text="-_-", command=lambda: showPassword(), bg=baseColor, fg=txtColor, bd=0)
+	_bpass = Button(passFrame, text="•_-", command=lambda: showPassword(), bg=baseColor, fg=txtColor, bd=0)
 	_bpass.pack(side='left')
 
 	passFrame.pack(fill='x')
@@ -417,7 +435,7 @@ def start():
 
 	login()
 
-	menu.menuSetup(root)
+	menu.menuSetup(root) 
 
 	root.mainloop()
 
