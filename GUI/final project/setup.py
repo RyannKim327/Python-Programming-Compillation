@@ -164,7 +164,7 @@ def leaderboard():
 	for i in range(len(lists)):
 		for j in range(i):
 			if int(lists[i][3]) > int(lists[j][3]):
-				lists[i][3], lists[j][3] = lists[j][3], lists[i][3]
+				lists[i], lists[j] = lists[j], lists[i]
 		
 	return {
 		"done": done,
