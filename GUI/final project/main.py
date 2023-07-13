@@ -76,12 +76,55 @@ def qCloseNav():
 		navigation.place(x=-10, y=0, relheight=1, relwidth=qtwidth)
 		navigation.after(10, qCloseNav)
 
+
 def qShowNav():
 	global qtwidth
 	if qtwidth < 0.75:
 		qtwidth += 0.075
 		navigation.place(x=0, y=0, relheight=1, relwidth=qtwidth)
 		navigation.after(10, qShowNav)
+
+
+def showLeaderboards():
+	l_root = Toplevel()
+	l_root.geometry("500x500")
+	l_root.title("Leaderboards")
+	l_root.config(bg=baseColor)
+
+	l_style = ttk.Style()
+	l_style.theme_use("clam")
+	l_style.configure("Treeview", background=baseColor, foreground=txtColor, fieldbackground=baseColor, fieldforeground=txtColor)
+
+	l_tree = ttk.Treeview(l_root, show="headings")
+	lys = Scrollbar(l_root, orient='vertical', command=l_tree.yview, bg=baseColor)
+	l_tree.config(yscrollcommand=lys.set)
+
+	cols = (
+		"Name",
+		"Score"
+	)
+	l_tree['columns'] = cols
+	lists = setup.leaderboard()['lists']
+	for c in cols:
+		l_tree.heading(c, text=c)
+	
+	_l = []
+	for l in range(len(lists)):
+		__l = []
+		for i in range(len(lists[l])):
+			if i == 1 or i == 3:
+				d = lists[l][i]
+				__l.append(d)
+		_l.append(__l)
+	
+	for l in _l:
+		l_tree.insert("", index=END, values=l)
+
+
+	l_tree.pack(side='left', fill='both', expand=True)
+	lys.pack(side='left', fill='y')
+
+	l_root.mainloop()
 
 
 def nav():
@@ -127,6 +170,7 @@ def createQuestion():
 
 	men = menu.menuSetup(question_root)
 	men.add_cascade(label="Navigation", command=lambda: nav())
+	men.add_cascade(label="Leaderboards", command=lambda: showLeaderboards())
 
 	navigation = Frame(question_root, bg=baseColor, bd=1, relief="solid")
 
