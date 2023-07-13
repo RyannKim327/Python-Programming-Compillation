@@ -152,6 +152,26 @@ def updateScore(id: str, score: int):
 	students.cell(row=x, column=4, valiue=score)
 
 
+def leaderboard():
+	lists = []
+	done = False
+	x = False
+	for i in students.iter_rows(values_only=True):
+		if x:
+			lists.append(list(i))
+		x = True
+	
+	for i in range(len(lists)):
+		for j in range(i):
+			if int(lists[i][3]) > int(lists[j][3]):
+				lists[i][3], lists[j][3] = lists[j][3], lists[i][3]
+		
+	return {
+		"done": done,
+		"lists": lists
+	}
+
+
 def deleteStudent(pos: int):
 	students.delete_rows(pos + 2)
 	save()
