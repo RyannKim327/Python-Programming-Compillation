@@ -3,6 +3,15 @@ from tkinter import messagebox, simpledialog, ttk
 import menu, setup, random
 
 
+def logout(base):
+	global userInfo
+	userInfo = {
+		"ID": 0,
+		"type": ""
+	}
+	base.destroy()
+	root.deiconify()
+
 def exitConfirmation():
 	if messagebox.askyesno("CONFIRMATION", "Are you sure, you want to close the app?"):
 		root.destroy()
@@ -148,14 +157,14 @@ def createQuestion():
 
 	Label(question_root, text="Create a Question", bg=baseColor, fg=txtColor, justify='center', font=("Times New Roman", 25)).pack(fill='x')
 	
-	lq = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Question", font=("Times New Roman", 15), relief='solid', bd=0, highlightthickness=2, highlightcolor=txtColor, highlightbackground=txtColor,)
+	lq = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Question", font=("Times New Roman", 15))
 	que = Entry(lq, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), bd=0)
 	que.bind("<Return>", lambda e: questionVerifier())
 	que.pack(fill='x', ipadx=10)
 
 	lq.pack(fill='x', pady=3)
 
-	ans_frame = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Answer", font=("Times New Roman", 15), relief='solid', bd=0, highlightthickness=2, highlightcolor=txtColor, highlightbackground=txtColor,)
+	ans_frame = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Answer", font=("Times New Roman", 15))
 	ans = Entry(ans_frame, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), bd=0)
 	ans.bind("<Return>", lambda e: questionVerifier())
 	ans.pack(fill='x', side='left', expand=True)
@@ -171,6 +180,7 @@ def createQuestion():
 	men = menu.menuSetup(question_root)
 	men.add_cascade(label="Navigation", command=lambda: nav())
 	men.add_cascade(label="Leaderboards", command=lambda: showLeaderboards())
+	men.add_cascade(label="Logout", command=lambda: logout(question_root))
 
 	navigation = Frame(question_root, bg=baseColor, bd=0, highlightcolor=txtColor, highlightthickness=3)
 
@@ -252,6 +262,8 @@ def go_time():
 	else:
 		s_ans.config(state='disabled')
 		messagebox.showwarning("WARNING", "Time is up")
+		setup.updateScore(userInfo['ID'], score)
+		logout(s_root)
 		
 
 def students_portal():
@@ -267,7 +279,7 @@ def students_portal():
 	timer = Label(s_root, bg=baseColor, fg=txtColor, font=("", 25))
 	timer.pack()
 
-	s_f = LabelFrame(s_root, bg=baseColor, fg=txtColor, font=("", 10), relief='solid', bd=0, highlightthickness=2, highlightcolor=txtColor, highlightbackground=txtColor,)
+	s_f = LabelFrame(s_root, bg=baseColor, fg=txtColor, font=("", 10), relief='solid')
 	s_ans = Entry(s_f, bg=baseColor, fg=txtColor, bd=0, font=("", 15))
 	s_ans.pack(fill='x')
 
@@ -326,14 +338,20 @@ def credentials():
 					"type": userType
 				}
 				root.withdraw()
+				user.delete(0, END)
+				password.delete(0, END)
 				students_portal()
 			else:
 				messagebox.showerror("ERROR", "Account not found")
 	else:
 		if user.get() == "":
 			messagebox.showerror("ERROR", "Please enter your username first")
+			user.delete(0, END)
+			password.delete(0, END)
 		elif len(password.get()) < 8:
 			messagebox.showerror("ERROR", "Password must be 8 characters")
+			user.delete(0, END)
+			password.delete(0, END)
 		else:
 			data = setup.getTeacherId(user.get(), password.get())
 			if data['done']:
@@ -344,9 +362,13 @@ def credentials():
 					"type": userType
 				}
 				root.withdraw()
+				user.delete(0, END)
+				password.delete(0, END)
 				createQuestion()
 			else:
 				messagebox.showerror("ERROR", "Account not found")
+				user.delete(0, END)
+				password.delete(0, END)
 
 
 def accounts():
@@ -463,6 +485,7 @@ def login():
 	style = ttk.Style()
 	style.theme_use("default")
 	style.configure("Treeview", background=baseColor, foreground=txtColor, fieldbackground=baseColor, fieldforeground=txtColor)
+	style.configure("Menu", background=baseColor, foreground=txtColor, fieldbackground=baseColor, fieldforeground=txtColor)
 	style.configure("Treeview.Heading", background=baseColor, foreground=txtColor, fieldbackground=baseColor, fieldforeground=txtColor)
 
 	s = LabelFrame(listsFrame, text="Search your name", font=("Times New Roman", 15), bg=baseColor, fg=txtColor)
@@ -503,10 +526,10 @@ def start():
 	root = Tk()
 	root.geometry(f"{w}x{h}")
 	root.title("Project Q&A")
-	root.attributes("-alpha", 0.95)
+	# root.attributes("-alpha", 0.95)
 	root.resizable(False, False)
-
 	root.config(bg=baseColor, padx=5)
+
 
 	login()
 
@@ -519,10 +542,10 @@ def setTheme(theme='light'):
 	global  baseColor, txtColor
 	if theme == DARK:
 		baseColor = "#131320"
-		txtColor = "#ffffff"
+		txtColor = "#6CA0CB"
 	else:
-		baseColor = "#ededed"
-		txtColor = "#000000"
+		baseColor = "#9DE0F5"
+		txtColor = "#004A8A"
 		
 
 if __name__ == "__main__":
@@ -531,5 +554,5 @@ if __name__ == "__main__":
 	setup.createExcell()
 	setup.createStudents()
 	setup.createTeachers()
-	setTheme(DARK)
+	setTheme(LIGHT)
 	start()

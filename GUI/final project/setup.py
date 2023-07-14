@@ -146,10 +146,11 @@ def getStudentId(username: str, password: str) -> dict:
 def updateScore(id: str, score: int):
 	x = 0
 	for i in students.iter_rows(values_only=True):
-		if id == i[0]:
+		if (id + 1) == i[0]:
 			break
 		x += 1
-	students.cell(row=x, column=4, valiue=score)
+	students.cell(row=x, column=4, value=score)
+	save()
 
 
 def leaderboard():
@@ -249,8 +250,6 @@ def deleteStudent(pos: int):
 		"done": True,
 		"mgs": "A teacher was deleted successfully"
 	}
-
-
 
 # All users
 def getAllUsers(_type):
