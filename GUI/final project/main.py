@@ -264,6 +264,7 @@ def go_time():
 		messagebox.showwarning("WARNING", "Time is up")
 		setup.updateScore(userInfo['ID'], score)
 		logout(s_root)
+		accounts()
 		
 
 def students_portal():
@@ -287,7 +288,7 @@ def students_portal():
 	go_ask()
 	go_time()
 
-	s_root.protocol("WM_DELETE_WINDOW", exitConfirmation)
+	s_root.protocol("WM_DELETE_WINDOW", None)
 	s_root.mainloop()
 
 
