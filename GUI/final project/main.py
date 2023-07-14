@@ -148,14 +148,14 @@ def createQuestion():
 
 	Label(question_root, text="Create a Question", bg=baseColor, fg=txtColor, justify='center', font=("Times New Roman", 25)).pack(fill='x')
 	
-	lq = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Question", font=("Times New Roman", 15), relief='solid')
+	lq = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Question", font=("Times New Roman", 15), relief='solid', bd=0, highlightthickness=2, highlightcolor=txtColor, highlightbackground=txtColor,)
 	que = Entry(lq, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), bd=0)
 	que.bind("<Return>", lambda e: questionVerifier())
 	que.pack(fill='x', ipadx=10)
 
-	lq.pack(fill='x')
+	lq.pack(fill='x', pady=3)
 
-	ans_frame = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Answer", font=("Times New Roman", 15), relief='solid')
+	ans_frame = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Answer", font=("Times New Roman", 15), relief='solid', bd=0, highlightthickness=2, highlightcolor=txtColor, highlightbackground=txtColor,)
 	ans = Entry(ans_frame, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), bd=0)
 	ans.bind("<Return>", lambda e: questionVerifier())
 	ans.pack(fill='x', side='left', expand=True)
@@ -164,7 +164,7 @@ def createQuestion():
 	isCaseSensitive.set(True)
 	Checkbutton(ans_frame, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), activebackground=baseColor, activeforeground=txtColor, selectcolor=baseColor, text='Is Case Sensitive?', variable=isCaseSensitive).pack(side='left')
 	
-	ans_frame.pack(fill='x')
+	ans_frame.pack(fill='x', pady=3)
 
 	Button(question_root, bg=baseColor, fg=txtColor, text="Add question", font=("Times New Roman", 15), command=lambda: addQuestion()).pack(fill='x', pady=5)
 
@@ -172,7 +172,7 @@ def createQuestion():
 	men.add_cascade(label="Navigation", command=lambda: nav())
 	men.add_cascade(label="Leaderboards", command=lambda: showLeaderboards())
 
-	navigation = Frame(question_root, bg=baseColor, bd=1, relief="solid")
+	navigation = Frame(question_root, bg=baseColor, bd=0, highlightcolor=txtColor, highlightthickness=3)
 
 	q_base = Frame(navigation, bg=baseColor)
 
@@ -267,7 +267,7 @@ def students_portal():
 	timer = Label(s_root, bg=baseColor, fg=txtColor, font=("", 25))
 	timer.pack()
 
-	s_f = LabelFrame(s_root, bg=baseColor, fg=txtColor, font=("", 10), relief='solid')
+	s_f = LabelFrame(s_root, bg=baseColor, fg=txtColor, font=("", 10), relief='solid', bd=0, highlightthickness=2, highlightcolor=txtColor, highlightbackground=txtColor,)
 	s_ans = Entry(s_f, bg=baseColor, fg=txtColor, bd=0, font=("", 15))
 	s_ans.pack(fill='x')
 
@@ -360,7 +360,7 @@ def accounts():
 def destroyLists():
 	global h, isShow
 	isShow = False
-	if h >= 205:
+	if h >= 225:
 		root.geometry(f"{w}x{h}")
 		h -= 10
 		root.after(10, destroyLists)
@@ -408,11 +408,20 @@ def checker():
 
 
 def searchUser():
-	pass
+	utype = userType.get()
+	data = setup.getAllUsers(utype)
+	lists = []
+	for i in data:
+		if search.get().lower() in i[1].lower() or search.get().lower() in i[0].lower():
+			lists.append(i)
+	
+	tree.delete(*tree.get_children())
+	for i in lists:
+		tree.insert("", index=END, values=i)
 
 
 def login():
-	global user, password, userType, listsBtn, isShow, tree, _type, _bpass, isPass
+	global user, password, userType, listsBtn, isShow, tree, _type, _bpass, isPass, search
 	isPass = True
 	isShow = False
 	Label(root, text="Project Q&A", font=("Times New Roman", 25), justify='center', bg=baseColor, fg=txtColor).pack(fill='x')
@@ -424,15 +433,15 @@ def login():
 	Radiobutton(typeFrame, bg=baseColor, fg=txtColor, text="Teacher", selectcolor=baseColor, variable=userType, textvariable="teacher", value='teacher', command=lambda: setType()).pack(side='left', fill='x', expand=True)
 	typeFrame.pack(fill='x')
 
-	userFrame = LabelFrame(root, text="ID", font=("Times New Roman", 15), bg=baseColor, fg=txtColor, relief='solid')
+	userFrame = LabelFrame(root, text="ID", font=("Times New Roman", 15), bg=baseColor, fg=txtColor)
 
 	user = Entry(userFrame, bg=baseColor, fg=txtColor, bd=0, font=("", 15))
 	user.bind("<Return>", lambda e: checker())
 	user.pack(side="left", fill='x', expand=True)
 
-	userFrame.pack(fill='x')
+	userFrame.pack(fill='x', pady=3)
 
-	passFrame = LabelFrame(root, text="Password", font=("Times New Roman", 15), bg=baseColor, fg=txtColor, relief='solid')
+	passFrame = LabelFrame(root, text="Password", font=("Times New Roman", 15), bg=baseColor, fg=txtColor)
 
 	password = Entry(passFrame, bg=baseColor, fg=txtColor, bd=0, font=("", 15), show="•")
 	password.bind("<Return>", lambda e: checker())
@@ -441,7 +450,7 @@ def login():
 	_bpass = Button(passFrame, text="•_-", command=lambda: showPassword(), bg=baseColor, fg=txtColor, bd=0)
 	_bpass.pack(side='left')
 
-	passFrame.pack(fill='x')
+	passFrame.pack(fill='x', pady=3)
 
 	buttons = Frame(root, bg=baseColor)
 	Button(buttons, bg=baseColor, fg=txtColor, text="Login", bd=1, relief="raised", activebackground=baseColor, activeforeground=txtColor, command=lambda: credentials()).pack(side='left', fill='x', expand=True, padx=5, pady=5)
@@ -480,16 +489,17 @@ def login():
 
 	tree.pack(side='left', fill='both', expand=True)
 	sx.pack(side='left', fill='y')
-	listsFrame.pack(side='top', fill='x', expand=True)
+	listsFrame.pack(side='top', fill='x', expand=True, pady=5)
 
 
 def start():
 	global root, w, h
 	w = 500
-	h = 205
+	h = 225
 	root = Tk()
 	root.geometry(f"{w}x{h}")
 	root.title("Project Q&A")
+	root.attributes("-alpha", 0.95)
 	root.resizable(False, False)
 
 	root.config(bg=baseColor, padx=5)
@@ -504,10 +514,10 @@ def start():
 def setTheme(theme='light'):
 	global  baseColor, txtColor
 	if theme == DARK:
-		baseColor = "#333333"
+		baseColor = "#131320"
 		txtColor = "#ffffff"
 	else:
-		baseColor = "#efefef"
+		baseColor = "#ededed"
 		txtColor = "#000000"
 		
 
