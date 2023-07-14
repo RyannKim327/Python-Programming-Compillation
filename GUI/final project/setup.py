@@ -269,8 +269,13 @@ def getAllUsers(_type):
 		for i in students.iter_rows(values_only = True):
 			l = []
 			if x:
-				for j in range(0, 2):
-					l.append(i[j])
+				for j in range(len(i)):
+					if j != 2:
+						l.append(i[j])
 				lists.append(l)
 			x = True
+		for l in range(len(lists)):
+			for m in range(l):
+				if lists[l][2] > lists[m][2]:
+					lists[l], lists[m] = lists[m], lists[l]
 	return lists

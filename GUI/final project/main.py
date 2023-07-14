@@ -350,8 +350,7 @@ def credentials():
 
 
 def accounts():
-	for i in tree.get_children():
-		tree.delete(i)
+	tree.delete(*tree.get_children())
 	lists = setup.getAllUsers(_type)
 	for i in lists:
 		tree.insert('', index=END, values=i)
@@ -478,11 +477,16 @@ def login():
 	sx = Scrollbar(listsFrame, orient='vertical', command=tree.xview)
 	tree.configure(xscrollcommand=sx.set)
 
-	columns = ("ID", "Fullname")
+	columns = ("ID", "Fullname", "Score")
 	tree['columns'] = columns
+	widths = [
+		10, 50, 10
+	]
+	w = 0
 	for i in columns:
 		tree.heading(i, text=i)
-		tree.column(i)
+		tree.column(i, width=widths[w])
+		w += 1
 
 	_type = userType.get()
 	accounts()
