@@ -79,7 +79,7 @@ def qCloseNav():
 
 def qShowNav():
 	global qtwidth
-	if qtwidth < 0.75:
+	if qtwidth < 0.85:
 		qtwidth += 0.075
 		navigation.place(x=0, y=0, relheight=1, relwidth=qtwidth)
 		navigation.after(10, qShowNav)
@@ -87,12 +87,12 @@ def qShowNav():
 
 def showLeaderboards():
 	l_root = Toplevel()
-	l_root.geometry("500x500")
+	l_root.geometry("300x300")
 	l_root.title("Leaderboards")
 	l_root.config(bg=baseColor)
 
 	l_style = ttk.Style()
-	l_style.theme_use("clam")
+	l_style.theme_use("default")
 	l_style.configure("Treeview", background=baseColor, foreground=txtColor, fieldbackground=baseColor, fieldforeground=txtColor)
 
 	l_tree = ttk.Treeview(l_root, show="headings")
@@ -148,14 +148,14 @@ def createQuestion():
 
 	Label(question_root, text="Create a Question", bg=baseColor, fg=txtColor, justify='center', font=("Times New Roman", 25)).pack(fill='x')
 	
-	lq = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Question", font=("Times New Roman", 15))
+	lq = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Question", font=("Times New Roman", 15), relief='solid')
 	que = Entry(lq, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), bd=0)
 	que.bind("<Return>", lambda e: questionVerifier())
 	que.pack(fill='x', ipadx=10)
 
 	lq.pack(fill='x')
 
-	ans_frame = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Answer", font=("Times New Roman", 15))
+	ans_frame = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Answer", font=("Times New Roman", 15), relief='solid')
 	ans = Entry(ans_frame, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), bd=0)
 	ans.bind("<Return>", lambda e: questionVerifier())
 	ans.pack(fill='x', side='left', expand=True)
@@ -174,7 +174,11 @@ def createQuestion():
 
 	navigation = Frame(question_root, bg=baseColor, bd=1, relief="solid")
 
-	quest_lists = ttk.Treeview(navigation, show='headings')
+	q_base = Frame(navigation, bg=baseColor)
+
+	quest_lists = ttk.Treeview(q_base, show='headings')
+	q_scroll = Scrollbar(q_base, orient='vertical', command=quest_lists.yview)
+	quest_lists.configure(yscrollcommand=q_scroll.set)
 
 	columns = (
 		"Question",
@@ -194,12 +198,18 @@ def createQuestion():
 	
 	refreshQuestions()
 
-	quest_lists.pack(fill='both')
+	quest_lists.pack(side='left', fill='both', expand=True)
+	q_scroll.pack(side='left', fill='y')
 
-	update_q = Button(navigation, bg=baseColor, fg=txtColor, text="Update", state='disabled')
+	buttons = Frame(navigation, bg=baseColor)
+
+	update_q = Button(buttons, bg=baseColor, fg=txtColor, text="Update", state='disabled')
 	update_q.pack(side='left', fill='x', expand=True)
-	delete_q = Button(navigation, bg=baseColor, fg=txtColor, text="Delete", state='disabled')
+	delete_q = Button(buttons, bg=baseColor, fg=txtColor, text="Delete", state='disabled')
 	delete_q.pack(side='left', fill='x', expand=True)
+
+	q_base.pack(side='top', fill='both', expand=True)
+	buttons.pack(side='top', fill='x')
 
 	question_root.protocol("WM_DELETE_WINDOW", lambda: exitConfirmation())
 	question_root.mainloop()
@@ -257,7 +267,7 @@ def students_portal():
 	timer = Label(s_root, bg=baseColor, fg=txtColor, font=("", 25))
 	timer.pack()
 
-	s_f = LabelFrame(s_root, bg=baseColor, fg=txtColor, font=("", 10))
+	s_f = LabelFrame(s_root, bg=baseColor, fg=txtColor, font=("", 10), relief='solid')
 	s_ans = Entry(s_f, bg=baseColor, fg=txtColor, bd=0, font=("", 15))
 	s_ans.pack(fill='x')
 
@@ -397,9 +407,12 @@ def checker():
 		credentials()
 
 
+def searchUser():
+	pass
+
+
 def login():
 	global user, password, userType, listsBtn, isShow, tree, _type, _bpass, isPass
-
 	isPass = True
 	isShow = False
 	Label(root, text="Project Q&A", font=("Times New Roman", 25), justify='center', bg=baseColor, fg=txtColor).pack(fill='x')
@@ -411,7 +424,7 @@ def login():
 	Radiobutton(typeFrame, bg=baseColor, fg=txtColor, text="Teacher", selectcolor=baseColor, variable=userType, textvariable="teacher", value='teacher', command=lambda: setType()).pack(side='left', fill='x', expand=True)
 	typeFrame.pack(fill='x')
 
-	userFrame = LabelFrame(root, text="ID", font=("Times New Roman", 15), bg=baseColor, fg=txtColor)
+	userFrame = LabelFrame(root, text="ID", font=("Times New Roman", 15), bg=baseColor, fg=txtColor, relief='solid')
 
 	user = Entry(userFrame, bg=baseColor, fg=txtColor, bd=0, font=("", 15))
 	user.bind("<Return>", lambda e: checker())
@@ -419,7 +432,7 @@ def login():
 
 	userFrame.pack(fill='x')
 
-	passFrame = LabelFrame(root, text="Password", font=("Times New Roman", 15), bg=baseColor, fg=txtColor)
+	passFrame = LabelFrame(root, text="Password", font=("Times New Roman", 15), bg=baseColor, fg=txtColor, relief='solid')
 
 	password = Entry(passFrame, bg=baseColor, fg=txtColor, bd=0, font=("", 15), show="•")
 	password.bind("<Return>", lambda e: checker())
@@ -440,12 +453,14 @@ def login():
 	listsFrame = Frame(root, bg=baseColor)
 
 	style = ttk.Style()
-	style.theme_use("clam")
+	style.theme_use("default")
 	style.configure("Treeview", background=baseColor, foreground=txtColor, fieldbackground=baseColor, fieldforeground=txtColor)
+	style.configure("Treeview.Heading", background=baseColor, foreground=txtColor, fieldbackground=baseColor, fieldforeground=txtColor)
 
 	s = LabelFrame(listsFrame, text="Search your name", font=("Times New Roman", 15), bg=baseColor, fg=txtColor)
 
 	search = Entry(s, font=("", 15), bg=baseColor, fg=txtColor, bd=0)
+	search.bind("<Return>", lambda e: searchUser())
 	search.pack(fill='x')
 
 	s.pack(fill='x')
