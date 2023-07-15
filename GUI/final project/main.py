@@ -442,6 +442,16 @@ def searchUser():
 		tree.insert("", index=END, values=i)
 
 
+def inserAsID():
+	user.delete(0, END)
+	lists = []
+	for i in tree.selection():
+		item = tree.item(i)
+		lists.append(item['values'][0])
+	if len(lists) > 0:
+		user.insert(0, lists[len(lists) - 1])
+
+
 def login():
 	global user, password, userType, listsBtn, isShow, tree, _type, _bpass, isPass, search
 	isPass = True
@@ -459,6 +469,7 @@ def login():
 
 	user = Entry(userFrame, bg=baseColor, fg=txtColor, bd=0, font=("", 15))
 	user.bind("<Return>", lambda e: checker())
+	user.focus()
 	user.pack(side="left", fill='x', expand=True)
 
 	userFrame.pack(fill='x', pady=3)
@@ -515,6 +526,7 @@ def login():
 	_type = userType.get()
 	accounts()
 
+	tree.bind("<<TreeviewSelect>>", lambda e: inserAsID())
 	tree.pack(side='left', fill='both', expand=True)
 	sx.pack(side='left', fill='y')
 	listsFrame.pack(side='top', fill='x', expand=True, pady=5)
@@ -527,10 +539,8 @@ def start():
 	root = Tk()
 	root.geometry(f"{w}x{h}")
 	root.title("Project Q&A")
-	# root.attributes("-alpha", 0.95)
 	root.resizable(False, False)
 	root.config(bg=baseColor, padx=5)
-
 
 	login()
 
