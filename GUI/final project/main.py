@@ -145,7 +145,16 @@ def nav():
 	nav_show = not nav_show
 
 
+def updateQuestionAction():
+	data = setup.updateQuestion(updateQPos, (eu.get(), ea.get(), uc.get()))
+	if data['done']:
+		messagebox.showinfo("SUCCESS", data['msg'])
+		refreshQuestions()
+		update_r.destroy()
+
+
 def updateQuestion():
+	global eu, ea, uc, update_r
 	update_r = Toplevel()
 	update_r.geometry("500x300")
 	update_r.title("Update Question")
@@ -154,20 +163,24 @@ def updateQuestion():
 
 	uq = LabelFrame(update_r, bg=baseColor, fg=txtColor, text="Question", font=("Times New Roman", 15))
 	eu = Entry(uq, bg=baseColor, fg=txtColor, bd=0, font=("Times New Roman", 15))
+	eu.delete(0, END)
+	eu.insert(0, selected[len(selected) - 1][0])
 	eu.pack(fill='x')
-	uq.pack(fill='x')
+	uq.pack(fill='x', padx=5, pady=5)
 
 	ua = LabelFrame(update_r, bg=baseColor, fg=txtColor, text="Answer", font=("Times New Roman", 15))
 	ea = Entry(ua, bg=baseColor, fg=txtColor, bd=0, font=("Times New Roman", 15))
+	ea.delete(0, END)
+	ea.insert(0, selected[len(selected) - 1][1])
 	ea.pack(side='left', fill='x', expand=True)
 
-	isCaseSensitive = BooleanVar()
-	isCaseSensitive.set(True)
-	Checkbutton(ua, bg=baseColor, fg=txtColor, bd=0, font=("Times New Roman", 15), activebackground=baseColor, activeforeground=txtColor, selectcolor=baseColor, text='Is Case Sensitive?', variable=isCaseSensitive).pack(side='left')
+	uc = BooleanVar()
+	uc.set(selected[len(selected) - 1][2])
+	Checkbutton(ua, bg=baseColor, fg=txtColor, bd=0, font=("Times New Roman", 15), activebackground=baseColor, activeforeground=txtColor, selectcolor=baseColor, text='Is Case Sensitive?', variable=uc).pack(side='left')
 	
-	ua.pack(fill='x')
+	ua.pack(fill='x', padx=5, pady=5)
 
-	Button(update_r, text='Update Question')
+	Button(update_r, text='Update Question', bg=baseColor, fg=txtColor, command=lambda: updateQuestionAction()).pack(fill='x', padx=5, pady=5)
 
 	update_r.mainloop()
 
@@ -177,12 +190,17 @@ def deleteQuestion():
 
 
 def activateButtons(event):
-	global selected
+	global selected, updateQPos
+	updateQPos = 0
 	selected = []
 	for items in quest_lists.selection():
 		item = quest_lists.item(items)
-		selected.append(item)
+		selected.append(item['values'])
 	if len(selected) > 0:
+		for i in setup.getAllQuestions():
+			if i[0] == selected[len(selected) - 1][0] and i[1] == selected[len(selected) - 1][1]:
+				break
+			updateQPos += 1
 		delete_q.config(state='active')
 		update_q.config(state='active')
 	else:
@@ -599,8 +617,8 @@ def start():
 def setTheme(theme='light'):
 	global  baseColor, txtColor
 	if theme == DARK:
-		baseColor = "#131320"
-		txtColor = "#6CA0CB"
+		baseColor = "#16161d"
+		txtColor = "#ffffff"
 	else:
 		baseColor = "#9DE0F5"
 		txtColor = "#004A8A"
@@ -612,5 +630,5 @@ if __name__ == "__main__":
 	setup.createExcell()
 	setup.createStudents()
 	setup.createTeachers()
-	setTheme(LIGHT)
+	setTheme(DARK)
 	start()

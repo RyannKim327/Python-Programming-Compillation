@@ -60,9 +60,9 @@ def getAllQuestions():
 		lists.append(i)
 	return lists
 
-def editQuestion(pos: int, data: list):
+def updateQuestion(pos: int, data: list):
 	for i in range(len(data)):
-		questions.cell(row=pos + 2, column=i + 1, value=data[i])
+		questions.cell(row=pos, column=i + 1, value=data[i])
 	save()
 	return {
 		"done": True,
