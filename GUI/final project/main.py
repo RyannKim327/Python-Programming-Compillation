@@ -145,8 +145,53 @@ def nav():
 	nav_show = not nav_show
 
 
+def updateQuestion():
+	update_r = Toplevel()
+	update_r.geometry("500x300")
+	update_r.title("Update Question")
+	update_r.resizable(False, False)
+	update_r.config(bg=baseColor)
+
+	uq = LabelFrame(update_r, bg=baseColor, fg=txtColor, text="Question", font=("Times New Roman", 15))
+	eu = Entry(uq, bg=baseColor, fg=txtColor, bd=0, font=("Times New Roman", 15))
+	eu.pack(fill='x')
+	uq.pack(fill='x')
+
+	ua = LabelFrame(update_r, bg=baseColor, fg=txtColor, text="Answer", font=("Times New Roman", 15))
+	ea = Entry(ua, bg=baseColor, fg=txtColor, bd=0, font=("Times New Roman", 15))
+	ea.pack(side='left', fill='x', expand=True)
+
+	isCaseSensitive = BooleanVar()
+	isCaseSensitive.set(True)
+	Checkbutton(ua, bg=baseColor, fg=txtColor, bd=0, font=("Times New Roman", 15), activebackground=baseColor, activeforeground=txtColor, selectcolor=baseColor, text='Is Case Sensitive?', variable=isCaseSensitive).pack(side='left')
+	
+	ua.pack(fill='x')
+
+	Button(update_r, text='Update Question')
+
+	update_r.mainloop()
+
+
+def deleteQuestion():
+	pass
+
+
+def activateButtons(event):
+	global selected
+	selected = []
+	for items in quest_lists.selection():
+		item = quest_lists.item(items)
+		selected.append(item)
+	if len(selected) > 0:
+		delete_q.config(state='active')
+		update_q.config(state='active')
+	else:
+		delete_q.config(state='disabled')
+		update_q.config(state='disabled')
+
+
 def createQuestion():
-	global que, ans, isCaseSensitive, navigation, quest_lists, nav_show, qtwidth
+	global que, ans, isCaseSensitive, navigation, quest_lists, nav_show, qtwidth, update_q, delete_q
 	qtwidth = 0
 	nav_show = False
 
@@ -208,14 +253,16 @@ def createQuestion():
 	
 	refreshQuestions()
 
+	quest_lists.bind("<<TreeviewSelect>>", activateButtons)
+
 	quest_lists.pack(side='left', fill='both', expand=True)
 	q_scroll.pack(side='left', fill='y')
 
 	buttons = Frame(navigation, bg=baseColor)
 
-	update_q = Button(buttons, bg=baseColor, fg=txtColor, text="Update", state='disabled')
+	update_q = Button(buttons, bg=baseColor, fg=txtColor, activebackground=baseColor, activeforeground=txtColor, disabledforeground=txtColor, text="Update", state='disabled', command=updateQuestion)
 	update_q.pack(side='left', fill='x', expand=True)
-	delete_q = Button(buttons, bg=baseColor, fg=txtColor, text="Delete", state='disabled')
+	delete_q = Button(buttons, bg=baseColor, fg=txtColor, activebackground=baseColor, activeforeground=txtColor, disabledforeground=txtColor,  text="Delete", state='disabled', command=deleteQuestion)
 	delete_q.pack(side='left', fill='x', expand=True)
 
 	q_base.pack(side='top', fill='both', expand=True)
