@@ -185,9 +185,11 @@ def updateQuestion():
 	update_r.mainloop()
 
 
-def deleteQuestion():
-	pass
-
+def archieveQuestion():
+	data = setup.archieveQuestions(updateQPos)
+	if data['done']:
+		messagebox.showinfo("SUCCESS", data['msg'])
+		refreshQuestions()
 
 def activateButtons(event):
 	global selected, updateQPos
@@ -201,15 +203,15 @@ def activateButtons(event):
 			if i[0] == selected[len(selected) - 1][0] and i[1] == selected[len(selected) - 1][1]:
 				break
 			updateQPos += 1
-		delete_q.config(state='active')
+		archieve_q.config(state='active')
 		update_q.config(state='active')
 	else:
-		delete_q.config(state='disabled')
+		archieve_q.config(state='disabled')
 		update_q.config(state='disabled')
 
 
 def createQuestion():
-	global que, ans, isCaseSensitive, navigation, quest_lists, nav_show, qtwidth, update_q, delete_q
+	global que, ans, isCaseSensitive, navigation, quest_lists, nav_show, qtwidth, update_q, archieve_q
 	qtwidth = 0
 	nav_show = False
 
@@ -280,8 +282,8 @@ def createQuestion():
 
 	update_q = Button(buttons, bg=baseColor, fg=txtColor, activebackground=baseColor, activeforeground=txtColor, disabledforeground=txtColor, text="Update", state='disabled', command=updateQuestion)
 	update_q.pack(side='left', fill='x', expand=True)
-	delete_q = Button(buttons, bg=baseColor, fg=txtColor, activebackground=baseColor, activeforeground=txtColor, disabledforeground=txtColor,  text="Delete", state='disabled', command=deleteQuestion)
-	delete_q.pack(side='left', fill='x', expand=True)
+	archieve_q = Button(buttons, bg=baseColor, fg=txtColor, activebackground=baseColor, activeforeground=txtColor, disabledforeground=txtColor,  text="Archieve", state='disabled', command=archieveQuestion)
+	archieve_q.pack(side='left', fill='x', expand=True)
 
 	q_base.pack(side='top', fill='both', expand=True)
 	buttons.pack(side='top', fill='x')
@@ -359,30 +361,33 @@ def students_portal():
 
 def register():
 	chars = "abcdefghijklmnopqrstuvwxyz0123456789"
-	if setup.encrypt(simpledialog.askstring("Confirmation", f"Please enter your passcode here to confirm this {userType.get()}", show="•")) == "c3782c86d8099f3fb5b755ebc970322567aa3894923de8c9c5fc97456133471c":
-		userID = ""
-		for i in range(5):
-			userID += chars[random.randint(0, len(chars) - 1)]
-		if userType.get() == 'teacher':
-			data = setup.addTeacher(userID, user.get(), password.get())
-			while data['exists']:
-				for i in range(5):
-					userID += chars[random.randint(0, len(chars) - 1)]
-					data = setup.addTeacher(userID, user.get(), password.get())
-			
-			messagebox.showinfo("SUCCESS", f"Teacher's account created successfully. Use this id: {userID} as ID pass")
-		else:
-			data = setup.addStudent(userID, user.get(), password.get())
+	if len(password.get()) >= 8:
+		if setup.encrypt(simpledialog.askstring("Confirmation", f"Please enter your passcode here to confirm this {userType.get()}", show="•")) == "c3782c86d8099f3fb5b755ebc970322567aa3894923de8c9c5fc97456133471c":
+			userID = ""
+			for i in range(5):
+				userID += chars[random.randint(0, len(chars) - 1)]
+			if userType.get() == 'teacher':
+				data = setup.addTeacher(userID, user.get(), password.get())
+				while data['exists']:
+					for i in range(5):
+						userID += chars[random.randint(0, len(chars) - 1)]
+						data = setup.addTeacher(userID, user.get(), password.get())
+				
+				messagebox.showinfo("SUCCESS", f"Teacher's account created successfully. Use this id: {userID} as ID pass")
+			else:
+				data = setup.addStudent(userID, user.get(), password.get())
 
-			while data['exists']:
-				for i in range(5):
-					userID += chars[random.randint(0, len(chars) - 1)]
-					data = setup.addStudent(userID, user.get(), password.get())
-			
-			messagebox.showinfo("SUCCESS", f"Student's account created successfully. Use this id: {userID} as ID pass")
-		setType()
+				while data['exists']:
+					for i in range(5):
+						userID += chars[random.randint(0, len(chars) - 1)]
+						data = setup.addStudent(userID, user.get(), password.get())
+				
+				messagebox.showinfo("SUCCESS", f"Student's account created successfully. Use this id: {userID} as ID pass")
+			setType()
+		else:
+			messagebox.showerror("NOTICE", "Invalid Verification")
 	else:
-		messagebox.showerror("NOTICE", "Invalid Verification")
+		messagebox.showerror("NOTICE", "Password must least 8 characters")
 
 
 def credentials():
@@ -552,9 +557,9 @@ def login():
 
 	buttons = Frame(root, bg=baseColor)
 	Button(buttons, bg=baseColor, fg=txtColor, text="Login", bd=1, relief="raised", activebackground=baseColor, activeforeground=txtColor, command=lambda: credentials()).pack(side='left', fill='x', expand=True, padx=5, pady=5)
-	listsBtn = Button(buttons, bg=baseColor, fg=txtColor, text="Lists", activebackground=baseColor, activeforeground=txtColor, command=lambda: userLists())
+	listsBtn = Button(buttons, bg=baseColor, fg=txtColor, text="Lists", bd=1, relief="raised", activebackground=baseColor, activeforeground=txtColor, command=lambda: userLists())
 	listsBtn.pack(side='left', fill='x', expand=True, padx=5, pady=5)
-	Button(buttons, bg=baseColor, fg=txtColor, text="Register", activebackground=baseColor, activeforeground=txtColor, command=lambda: register()).pack(side='left', fill='x', expand=True, padx=5, pady=5)
+	Button(buttons, bg=baseColor, fg=txtColor, text="Register", bd=1, relief="raised", activebackground=baseColor, activeforeground=txtColor, command=lambda: register()).pack(side='left', fill='x', expand=True, padx=5, pady=5)
 	buttons.pack(fill='x')
 
 	listsFrame = Frame(root, bg=baseColor)

@@ -73,12 +73,13 @@ def archieveQuestions(pos: int):
 	x = 0
 
 	for i in questions.iter_rows(values_only=True):
-		if x == pos - 1:
+		if x == pos:
 			archieves.append(i)
 			break
 		x += 1
 
-	questions.delete_rows(pos)
+	questions.delete_rows(pos + 1)
+	# print(pos)
 	save()
 	return {
 		"done": True,
