@@ -306,7 +306,8 @@ def go_answer(n, totalQ):
 
 
 def go_ask():
-	global l_question, its_time
+	global l_question, its_time, question_starts
+	s_ans.focus()
 	totalQ = setup.getAllQuestions()
 	n = random.randint(1, len(totalQ) - 1)
 	while n in l_questions and len(l_questions) < len(totalQ) - 2:
@@ -315,6 +316,9 @@ def go_ask():
 		s_f.config(text=totalQ[n][0])
 		l_questions.append(n)
 		s_ans.bind("<Return>", lambda e: go_answer(n, totalQ))
+		if not question_starts:
+			go_time()
+			question_starts = True
 	else:
 		s_ans.config(state='disabled')
 		its_time = 0
@@ -335,7 +339,8 @@ def go_time():
 		
 
 def students_portal():
-	global timer, its_time, s_root, s_ans, s_f, score, l_questions
+	global timer, its_time, s_root, s_ans, s_f, score, l_questions, question_starts
+	question_starts = False
 	l_questions = []
 	score = 0
 	its_time = 60
@@ -343,6 +348,7 @@ def students_portal():
 	s_root.geometry("500x300")
 	s_root.title("Project Q&A")
 	s_root.resizable(False, False)
+	s_root.focus()
 
 	timer = Label(s_root, bg=baseColor, fg=txtColor, font=("", 25))
 	timer.pack()
@@ -353,7 +359,6 @@ def students_portal():
 
 	s_f.pack(fill='x')
 	go_ask()
-	go_time()
 
 	s_root.protocol("WM_DELETE_WINDOW", None)
 	s_root.mainloop()
@@ -406,6 +411,7 @@ def credentials():
 				userID = data['userID']
 				userInfo = {
 					"ID": userID,
+					"pos": data['pos'],
 					"type": userType
 				}
 				root.withdraw()
@@ -518,6 +524,7 @@ def inserAsID():
 	for i in tree.selection():
 		item = tree.item(i)
 		lists.append(item['values'][0])
+		password.focus()
 	if len(lists) > 0:
 		user.insert(0, lists[len(lists) - 1])
 
@@ -535,7 +542,7 @@ def login():
 	Radiobutton(typeFrame, bg=baseColor, fg=txtColor, text="Teacher", selectcolor=baseColor, variable=userType, textvariable="teacher", value='teacher', command=lambda: setType()).pack(side='left', fill='x', expand=True)
 	typeFrame.pack(fill='x')
 
-	userFrame = LabelFrame(root, text="ID", font=("Times New Roman", 15), bg=baseColor, fg=txtColor)
+	userFrame = LabelFrame(root, text="ID to login | Fullname to register", font=("Times New Roman", 15), bg=baseColor, fg=txtColor)
 
 	user = Entry(userFrame, bg=baseColor, fg=txtColor, bd=0, font=("", 15))
 	user.bind("<Return>", lambda e: checker())

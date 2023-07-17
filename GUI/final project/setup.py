@@ -131,26 +131,32 @@ def addStudent(randomID: str, fullname: str, password: str) -> dict:
 	}
 
 def getStudentId(username: str, password: str) -> dict:
-	userID = 1
+	pos = 0
+	userID = ""
 	done = False
 	for i in students.iter_rows(values_only=True):
 		if i[0] == username and i[2] == encrypt(password):
 			done = True
+			userID = i[0]
 			break
-		userID += 1
+		pos += 1
 	return {
 		"done": done,
-		"userID": userID
+		"userID": userID,
+		"pos": pos
 	}
 
 
 def updateScore(id: str, score: int):
 	x = 0
+	print(id)
 	for i in students.iter_rows(values_only=True):
-		if (id + 1) == i[0]:
+		if id == i[0]:
+			print(i[0])
 			break
 		x += 1
-	students.cell(row=x, column=4, value=score)
+	print(x)
+	students.cell(row=x + 1, column=4, value=score)
 	save()
 
 

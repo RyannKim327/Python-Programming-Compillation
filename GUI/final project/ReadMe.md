@@ -8,4 +8,4 @@
 > This program has only single "LOGIN" and "REGISTRATION" panel, as well as for "STUDENTS" and "TEACHERS". In this login panel, there's a single admin, where it needs to enter the secret password to proceed for a registration, to confirm, whether he/she is a student or a teacher.
 ---
 ### How to start
-> To start, you need first to login, and once you've logged in, as a student, you will going to answer some sort of question immediately. If as a teacher, you may create some questions.
+> To start, you need first to login, and once you've logged in, as a student, you will going to answer some sort of question immediately. There's a time here, and you may answer it in one minute, and the timer starts after you answered the first question. If as a teacher, you may create, archieve and update questions, as well as to see and review it. You may also remove some students if every that they are out of your class
