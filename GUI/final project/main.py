@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox, simpledialog, ttk
+from playsound import playsound
 import menu, setup, random
 
 
@@ -332,6 +333,7 @@ def go_time():
 		s_root.after(1000, go_time)
 	else:
 		s_ans.config(state='disabled')
+		playsound("gover.mp3")
 		messagebox.showwarning("WARNING", "Time is up")
 		setup.updateScore(userInfo['ID'], score)
 		logout(s_root)
