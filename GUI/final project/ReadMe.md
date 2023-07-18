@@ -9,3 +9,8 @@
 ---
 ### How to start
 > To start, you need first to login, and once you've logged in, as a student, you will going to answer some sort of question immediately. There's a time here, and you may answer it in one minute, and the timer starts after you answered the first question. If as a teacher, you may create, archieve and update questions, as well as to see and review it. You may also remove some students if every that they are out of your class
+---
+### Student
+> After you login, you were automatically required to answer as many as you can. which you also need to test to type faster and to think faster, for you only have 60 seconds to answer all those questions. You may not exit or close the window, if you've started answering those questions. After you've answer those questions, you're automatically logged out.
+### Teacher
+> After you've logged in, teachers can see the lists of students in the leaderboards, as well as the questions lists and also you can create different questions. Also, you may logout from the application, if ever that you want to play it with the students.

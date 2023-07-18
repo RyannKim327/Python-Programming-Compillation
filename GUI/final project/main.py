@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import messagebox, simpledialog, ttk
 from playsound import playsound
-import menu, setup, random
+import menu, setup, random, time
 
 
 def logout(base):
@@ -332,13 +332,17 @@ def go_time():
 		timer.config(text=round(its_time))
 		s_root.after(1000, go_time)
 	else:
+		timer.config(text="Time's up!!!")
 		s_ans.config(state='disabled')
-		playsound("gover.mp3")
-		messagebox.showwarning("WARNING", "Time is up")
 		setup.updateScore(userInfo['ID'], score)
+		playsound("gover.mp3")
 		logout(s_root)
 		accounts()
 		
+
+def cantClose():
+	messagebox.showerror("ERROR", "You can't close this window while answering")
+
 
 def students_portal():
 	global timer, its_time, s_root, s_ans, s_f, score, l_questions, question_starts
@@ -350,7 +354,9 @@ def students_portal():
 	s_root.geometry("500x300")
 	s_root.title("Project Q&A")
 	s_root.resizable(False, False)
-	s_root.focus()
+	s_root.focus_force()
+	s_root.grab_set()
+	s_root.grab_release()
 
 	timer = Label(s_root, bg=baseColor, fg=txtColor, font=("", 25))
 	timer.pack()
@@ -362,7 +368,7 @@ def students_portal():
 	s_f.pack(fill='x')
 	go_ask()
 
-	s_root.protocol("WM_DELETE_WINDOW", None)
+	s_root.protocol("WM_DELETE_WINDOW", cantClose)
 	s_root.mainloop()
 
 
