@@ -79,7 +79,6 @@ def archieveQuestions(pos: int):
 		x += 1
 
 	questions.delete_rows(pos + 1)
-	# print(pos)
 	save()
 	return {
 		"done": True,
@@ -149,13 +148,10 @@ def getStudentId(username: str, password: str) -> dict:
 
 def updateScore(id: str, score: int):
 	x = 0
-	print(id)
 	for i in students.iter_rows(values_only=True):
 		if id == i[0]:
-			print(i[0])
 			break
 		x += 1
-	print(x)
 	students.cell(row=x + 1, column=4, value=score)
 	save()
 
