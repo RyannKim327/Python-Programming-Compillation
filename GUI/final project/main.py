@@ -331,11 +331,15 @@ def go_time():
 		its_time -= 1
 		timer.config(text=round(its_time))
 		s_root.after(1000, go_time)
-	else:
+	elif its_time == 0:
 		timer.config(text="Time's up!!!")
 		s_ans.config(state='disabled')
 		setup.updateScore(userInfo['ID'], score)
+		its_time -= 1
+		s_root.after(100, go_time)
+	else:
 		playsound("gover.mp3")
+		# time.sleep(1.5)
 		logout(s_root)
 		accounts()
 		
@@ -354,15 +358,15 @@ def students_portal():
 	s_root.geometry("500x300")
 	s_root.title("Project Q&A")
 	s_root.resizable(False, False)
-	s_root.focus_force()
 	s_root.grab_set()
+	s_root.focus_force()
 	s_root.grab_release()
 
 	timer = Label(s_root, bg=baseColor, fg=txtColor, font=("", 25))
 	timer.pack()
 
 	s_f = LabelFrame(s_root, bg=baseColor, fg=txtColor, font=("", 10), relief='solid')
-	s_ans = Entry(s_f, bg=baseColor, fg=txtColor, bd=0, font=("", 15))
+	s_ans = Entry(s_f, bg=baseColor, fg=txtColor, bd=0, font=("", 15), justify='center')
 	s_ans.pack(fill='x')
 
 	s_f.pack(fill='x')
