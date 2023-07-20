@@ -306,8 +306,7 @@ def createQuestion():
 	)
 	w = [
 		10, 10, 5, 20
-	]
-	
+	]	
 	x = 0
 	quest_lists['columns'] = columns
 	for c in columns:
