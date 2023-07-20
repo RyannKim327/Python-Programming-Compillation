@@ -176,8 +176,8 @@ def leaderboard():
 	}
 
 
-def deleteStudent(pos: int):
-	students.delete_rows(pos + 2)
+def removeStudent(pos: int):
+	students.delete_rows(pos + 1)
 	save()
 	return {
 		"done": True,
@@ -246,8 +246,8 @@ def getTeacher(id: int):
 		teacher[teachers[1][i].value] = teachers[id][i].value
 	return teacher
 
-def deleteStudent(pos: int):
-	teachers.delete_rows(pos + 2)
+def removeTeacher(pos: int):
+	teachers.delete_rows(pos + 1)
 	save()
 	return {
 		"done": True,
@@ -255,7 +255,7 @@ def deleteStudent(pos: int):
 	}
 
 # All users
-def getAllUsers(_type):
+def getAllUsers(_type, sorted: bool = True):
 	lists = []
 	if _type == 'teacher':
 		x = False
@@ -276,8 +276,9 @@ def getAllUsers(_type):
 						l.append(i[j])
 				lists.append(l)
 			x = True
-		for l in range(len(lists)):
-			for m in range(l):
-				if lists[l][2] > lists[m][2]:
-					lists[l], lists[m] = lists[m], lists[l]
+		if sorted:
+			for l in range(len(lists)):
+				for m in range(l):
+					if lists[l][2] > lists[m][2]:
+						lists[l], lists[m] = lists[m], lists[l]
 	return lists

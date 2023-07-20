@@ -48,14 +48,14 @@ def questionVerifier():
 		x.append("Question")
 	if a == "":
 		x.append("Answer")
-	
+
 	if len(x) > 0:
 		addQuestion()
 	elif "Question" in x:
 		que.focus()
 	elif "Answer" in x:
 		ans.focus()
-	
+
 
 def addQuestion():
 	e = []
@@ -68,7 +68,7 @@ def addQuestion():
 		e.append("question")
 	if a == "":
 		e.append("answer")
-	
+
 	if len(e) <= 0:
 		messagebox.showerror(f"Please fill up with the valid data: {', '.join(e)}")
 	else:
@@ -95,10 +95,43 @@ def qShowNav():
 		navigation.after(10, qShowNav)
 
 
-def showLeaderboards():
+def removeStudent(treeView):
+	delete = False
+	stud = ""
+	if len(treeView.selection()) > 0:
+		i = treeView.selection()[0]
+		item = treeView.item(i)['values']
+		pos = 1
+		for j in setup.getAllUsers("students", False):
+			if item[0] == j[1]:
+				delete = True
+				stud = item[0]
+				break
+			pos += 1
+		if delete:
+			if messagebox.askyesno("CONFIRMATION", f"Are you sure you want to remove this {stud}?"):
+				if setup.removeStudent(pos)['done']:
+					messagebox.showinfo("SUCCESS", "A student was removed")
+					lists = setup.leaderboard()['lists']
+					treeView.delete(*treeView.get_children())
+					_l = []
+					for l in range(len(lists)):
+						__l = []
+						for _i in range(len(lists[l])):
+							if _i == 1 or _i == 3:
+								d = lists[l][_i]
+								__l.append(d)
+						_l.append(__l)
+
+				for l in _l:
+					treeView.insert("", index=END, values=l)
+		else:
+			messagebox.showerror("ERROR", "We can't find this student to our data")
+
+def showStudents():
 	l_root = Toplevel()
 	l_root.geometry("300x300")
-	l_root.title("Leaderboards")
+	l_root.title("Students")
 	l_root.config(bg=baseColor)
 
 	l_style = ttk.Style()
@@ -109,15 +142,22 @@ def showLeaderboards():
 	lys = Scrollbar(l_root, orient='vertical', command=l_tree.yview, bg=baseColor)
 	l_tree.config(yscrollcommand=lys.set)
 
+	widths = [
+		50,50
+	]
 	cols = (
 		"Name",
 		"Score"
 	)
+
 	l_tree['columns'] = cols
 	lists = setup.leaderboard()['lists']
+	something = 0
 	for c in cols:
 		l_tree.heading(c, text=c)
-	
+		l_tree.column(c, width=widths[something])
+		something += 1
+
 	_l = []
 	for l in range(len(lists)):
 		__l = []
@@ -126,10 +166,11 @@ def showLeaderboards():
 				d = lists[l][i]
 				__l.append(d)
 		_l.append(__l)
-	
+
 	for l in _l:
 		l_tree.insert("", index=END, values=l)
 
+	l_tree.bind("<<TreeviewSelect>>", lambda e: removeStudent(l_tree))
 
 	l_tree.pack(side='left', fill='both', expand=True)
 	lys.pack(side='left', fill='y')
@@ -178,7 +219,7 @@ def updateQuestion():
 	uc = BooleanVar()
 	uc.set(selected[len(selected) - 1][2])
 	Checkbutton(ua, bg=baseColor, fg=txtColor, bd=0, font=("Times New Roman", 15), activebackground=baseColor, activeforeground=txtColor, selectcolor=baseColor, text='Is Case Sensitive?', variable=uc).pack(side='left')
-	
+
 	ua.pack(fill='x', padx=5, pady=5)
 
 	Button(update_r, text='Update Question', bg=baseColor, fg=txtColor, command=lambda: updateQuestionAction()).pack(fill='x', padx=5, pady=5)
@@ -222,7 +263,7 @@ def createQuestion():
 	question_root.resizable(False, False)
 
 	Label(question_root, text="Create a Question", bg=baseColor, fg=txtColor, justify='center', font=("Times New Roman", 25)).pack(fill='x')
-	
+
 	lq = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Question", font=("Times New Roman", 15))
 	que = Entry(lq, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), bd=0)
 	que.bind("<Return>", lambda e: questionVerifier())
@@ -238,14 +279,14 @@ def createQuestion():
 	isCaseSensitive = BooleanVar()
 	isCaseSensitive.set(True)
 	Checkbutton(ans_frame, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), activebackground=baseColor, activeforeground=txtColor, selectcolor=baseColor, text='Is Case Sensitive?', variable=isCaseSensitive).pack(side='left')
-	
+
 	ans_frame.pack(fill='x', pady=3)
 
 	Button(question_root, bg=baseColor, fg=txtColor, text="Add question", font=("Times New Roman", 15), command=lambda: addQuestion()).pack(fill='x', pady=5)
 
 	men = menu.menuSetup(question_root)
 	men.add_cascade(label="Navigation", command=lambda: nav())
-	men.add_cascade(label="Leaderboards", command=lambda: showLeaderboards())
+	men.add_cascade(label="Students", command=lambda: showStudents())
 	men.add_cascade(label="Logout", command=lambda: logout(question_root))
 
 	navigation = Frame(question_root, bg=baseColor, bd=0, highlightcolor=txtColor, highlightthickness=3)
@@ -271,7 +312,7 @@ def createQuestion():
 		quest_lists.heading(c, text=c)
 		quest_lists.column(c, width=w[x])
 		x += 1
-	
+
 	refreshQuestions()
 
 	quest_lists.bind("<<TreeviewSelect>>", activateButtons)
@@ -342,7 +383,7 @@ def go_time():
 		# time.sleep(1.5)
 		logout(s_root)
 		accounts()
-		
+
 
 def cantClose():
 	messagebox.showerror("ERROR", "You can't close this window while answering")
@@ -389,7 +430,7 @@ def register():
 					for i in range(5):
 						userID += chars[random.randint(0, len(chars) - 1)]
 						data = setup.addTeacher(userID, user.get(), password.get())
-				
+
 				messagebox.showinfo("SUCCESS", f"Teacher's account created successfully. Use this id: {userID} as ID pass")
 			else:
 				data = setup.addStudent(userID, user.get(), password.get())
@@ -398,7 +439,7 @@ def register():
 					for i in range(5):
 						userID += chars[random.randint(0, len(chars) - 1)]
 						data = setup.addStudent(userID, user.get(), password.get())
-				
+
 				messagebox.showinfo("SUCCESS", f"Student's account created successfully. Use this id: {userID} as ID pass")
 			setType()
 		else:
@@ -524,7 +565,7 @@ def searchUser():
 	for i in data:
 		if search.get().lower() in i[1].lower() or search.get().lower() in i[0].lower():
 			lists.append(i)
-	
+
 	tree.delete(*tree.get_children())
 	for i in lists:
 		tree.insert("", index=END, values=i)
@@ -633,7 +674,7 @@ def start():
 
 	login()
 
-	menu.menuSetup(root) 
+	menu.menuSetup(root)
 
 	root.mainloop()
 
@@ -646,7 +687,7 @@ def setTheme(theme='light'):
 	else:
 		baseColor = "#9DE0F5"
 		txtColor = "#004A8A"
-		
+
 
 if __name__ == "__main__":
 	DARK = 'dark'
