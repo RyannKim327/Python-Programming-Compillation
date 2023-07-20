@@ -285,7 +285,8 @@ def createQuestion():
 	Button(question_root, bg=baseColor, fg=txtColor, text="Add question", font=("Times New Roman", 15), command=lambda: addQuestion()).pack(fill='x', pady=5)
 
 	men = menu.menuSetup(question_root)
-	men.add_cascade(label="Navigation", command=lambda: nav())
+	totalQ = len(setup.getAllQuestions())
+	men.add_cascade(label=f"Questions ({totalQ})", command=lambda: nav())
 	men.add_cascade(label="Students", command=lambda: showStudents())
 	men.add_cascade(label="Logout", command=lambda: logout(question_root))
 
