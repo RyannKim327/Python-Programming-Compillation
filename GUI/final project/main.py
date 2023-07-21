@@ -191,8 +191,8 @@ def updateQuestionAction():
 	data = setup.updateQuestion(updateQPos, (eu.get(), ea.get(), uc.get()))
 	if data['done']:
 		messagebox.showinfo("SUCCESS", data['msg'])
-		refreshQuestions()
 		update_r.destroy()
+		refreshQuestions()
 
 
 def updateQuestion():
@@ -235,7 +235,7 @@ def archieveQuestion():
 
 def activateButtons(event):
 	global selected, updateQPos
-	updateQPos = 0
+	updateQPos = 1
 	selected = []
 	for items in quest_lists.selection():
 		item = quest_lists.item(items)
