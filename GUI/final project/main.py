@@ -522,7 +522,7 @@ def destroyLists():
 
 def userLists():
 	global h, isShow
-	isShow = True
+	isShow = Trueg
 	if h < 500:
 		root.geometry(f"{w}x{h}")
 		h += 10
@@ -691,6 +691,9 @@ def setTheme(theme='light'):
 
 
 if __name__ == "__main__":
+	# from toPDF import toPDF
+	# pd = toPDF("data.xlsx", "questions", "sample.pdf")
+	# print(pd)
 	DARK = 'dark'
 	LIGHT = 'light'
 	setup.createExcell()

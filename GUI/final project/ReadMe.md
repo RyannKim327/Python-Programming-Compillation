@@ -12,5 +12,6 @@
 ---
 ### Student
 > After you login, you were automatically required to answer as many as you can. which you also need to test to type faster and to think faster, for you only have 60 seconds to answer all those questions. You may not exit or close the window, if you've started answering those questions. After you've answer those questions, you're automatically logged out. If your answer was a noun, it is automatically case sensitive.
+---
 ### Teacher
 > After you've logged in, teachers can see the lists of students in the leaderboards, as well as the questions lists and also you can create different questions. Also, you may logout from the application, if ever that you want to play it with the students.

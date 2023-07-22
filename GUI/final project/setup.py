@@ -82,7 +82,33 @@ def archieveQuestions(pos: int):
 	save()
 	return {
 		"done": True,
-		"msg": "Data deleted successfully"
+		"msg": "Data archieved successfully"
+	}
+
+def listsArchieve():
+	lists = []
+	x = False
+	for i in archieves.iter_rows(values_only=True):
+		if x:
+			lists.append(i)
+		x = True
+	
+	return lists
+
+def retrieveQuestion(pos: int):
+	x = 0
+
+	for i in archieves.iter_rows(values_only=True):
+		if x == pos:
+			questions.append(i)
+			break
+		x += 1
+
+	archieves.delete_rows(pos + 1)
+	save()
+	return {
+		"done": True,
+		"msg": "Data retrieved successfully"
 	}
 
 # Students
