@@ -522,7 +522,7 @@ def destroyLists():
 
 def userLists():
 	global h, isShow
-	isShow = Trueg
+	isShow = True
 	if h < 500:
 		root.geometry(f"{w}x{h}")
 		h += 10
