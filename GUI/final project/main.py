@@ -691,13 +691,13 @@ def setTheme(theme='light'):
 
 
 if __name__ == "__main__":
-	# from toPDF import toPDF
-	# pd = toPDF("data.xlsx", "questions", "sample.pdf")
-	# print(pd)
-	DARK = 'dark'
-	LIGHT = 'light'
-	setup.createExcell()
-	setup.createStudents()
-	setup.createTeachers()
-	setTheme(DARK)
-	start()
+	from toPDF import toPDF
+	pd = toPDF("data2.xlsx", "questions", "sample.pdf")
+	print(pd)
+	# DARK = 'dark'
+	# LIGHT = 'light'
+	# setup.createExcell()
+	# setup.createStudents()
+	# setup.createTeachers()
+	# setTheme(DARK)
+	# start()
