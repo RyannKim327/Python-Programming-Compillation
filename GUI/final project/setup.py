@@ -281,6 +281,9 @@ def removeTeacher(pos: int):
 	}
 
 # All users
+def getAllSheets():
+	return wb.sheetnames
+
 def getAllUsers(_type, sorted: bool = True):
 	lists = []
 	if _type == 'teacher':

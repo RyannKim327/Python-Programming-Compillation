@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox, simpledialog, ttk
 from playsound import playsound
+from toPDF import toPDF
 import menu, setup, random, time
 
 
@@ -251,6 +252,30 @@ def activateButtons(event):
 		archieve_q.config(state='disabled')
 		update_q.config(state='disabled')
 
+def extractPDF(filename, sheetname, pdfname):
+	res = toPDF(filename, sheetname, pdfname)
+	if res['done']:
+		messagebox.showinfo("SUCCESS", res['msg'])
+	else:
+		messagebox.showerror("ERROR", res['msg'])
+
+def exportPDF():
+	pdf_root = Toplevel(bg=baseColor)
+	pdf_root.geometry("500x150")
+	sheets = setup.getAllSheets()
+	name = LabelFrame(pdf_root, bg=baseColor, fg=txtColor, text="Enter PDF Name")
+	file = Entry(name, font=("", 15))
+	file.pack(fill='x', expand=True)
+	name.pack(fill='x', expand=True)
+	title = LabelFrame(pdf_root, bg=baseColor, fg=txtColor, text="Choose Data to Extract")
+	sheet = StringVar()
+	sheet.set(sheets[0])
+	ttk.Combobox(title, font=("", 15), textvariable=sheet, values=sheets).pack(fill='x', expand=True)
+	title.pack(fill='x', expand=True)
+
+	Button(pdf_root, text="Convert now", command=lambda: extractPDF("data.xlsx", sheet.get(), file.get() + ".pdf")).pack()
+
+	pdf_root.mainloop()
 
 def createQuestion():
 	global que, ans, isCaseSensitive, navigation, quest_lists, nav_show, qtwidth, update_q, archieve_q
@@ -287,6 +312,7 @@ def createQuestion():
 	men = menu.menuSetup(question_root)
 	totalQ = len(setup.getAllQuestions())
 	men.add_cascade(label=f"Questions ({totalQ})", command=lambda: nav())
+	men.add_cascade(label=f"Save as PDF File", command=lambda: exportPDF())
 	men.add_cascade(label="Students", command=lambda: showStudents())
 	men.add_cascade(label="Logout", command=lambda: logout(question_root))
 
@@ -691,13 +717,10 @@ def setTheme(theme='light'):
 
 
 if __name__ == "__main__":
-	from toPDF import toPDF
-	pd = toPDF("data2.xlsx", "questions", "sample.pdf")
-	print(pd)
-	# DARK = 'dark'
-	# LIGHT = 'light'
-	# setup.createExcell()
-	# setup.createStudents()
-	# setup.createTeachers()
-	# setTheme(DARK)
-	# start()
+	DARK = 'dark'
+	LIGHT = 'light'
+	setup.createExcell()
+	setup.createStudents()
+	setup.createTeachers()
+	setTheme(DARK)
+	start()
