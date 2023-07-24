@@ -182,6 +182,11 @@ def showStudents():
 def nav():
 	global nav_show
 	if nav_show:
+		treeArchives.pack_forget()
+		q_scroll.pack_forget()
+		quest_lists.pack(side='left', fill='both', expand=True)
+		q_scroll.pack(side='left', fill='y')
+		refreshQuestions()
 		qCloseNav()
 	else:
 		qShowNav()
@@ -281,8 +286,15 @@ def exportPDF():
 
 	pdf_root.mainloop()
 
+def archives():
+	nav()
+	quest_lists.pack_forget()
+	q_scroll.pack_forget()
+	treeArchives.pack(side='left', fill='both', expand=True)
+	q_scroll.pack(side='left', fill='y')
+
 def createQuestion():
-	global que, ans, isCaseSensitive, navigation, quest_lists, nav_show, qtwidth, update_q, archieve_q
+	global que, ans, isCaseSensitive, navigation, quest_lists, nav_show, qtwidth, update_q, archieve_q, q_scroll, treeArchives
 	qtwidth = 0
 	nav_show = False
 
@@ -315,10 +327,14 @@ def createQuestion():
 
 	men = menu.menuSetup(question_root)
 	totalQ = len(setup.getAllQuestions())
-	men.add_cascade(label=f"Questions ({totalQ})", command=lambda: nav())
-	men.add_cascade(label=f"Save as PDF File", command=lambda: exportPDF())
-	men.add_cascade(label="Students", command=lambda: showStudents())
-	men.add_cascade(label="Logout", command=lambda: logout(question_root))
+	totalArcs = len(setup.getAllArchives())
+	menus = Menu(men, tearoff=False, background=baseColor, foreground=txtColor)
+	menus.add_command(label=f"Questions ({totalQ - 1})", command=lambda: nav())
+	menus.add_command(label=f"Show Archives ({totalArcs - 1})", command=lambda: archives())
+	menus.add_command(label=f"Save as PDF File", command=lambda: exportPDF())
+	menus.add_command(label="Students", command=lambda: showStudents())
+	menus.add_command(label="Logout", command=lambda: logout(question_root))
+	men.add_cascade(label="Actions", menu=menus)
 
 	navigation = Frame(question_root, bg=baseColor, bd=0, highlightcolor=txtColor, highlightthickness=3)
 
@@ -343,6 +359,15 @@ def createQuestion():
 		quest_lists.heading(c, text=c)
 		quest_lists.column(c, width=w[x])
 		x += 1
+	
+	treeArchives = ttk.Treeview(q_base, show="headings")
+	
+	treeArchives['columns'] = columns
+	colx = 0
+	for i in columns:
+		treeArchives.heading(i, text=i)
+		treeArchives.column(i, width=w[colx])
+		colx +=1
 
 	refreshQuestions()
 

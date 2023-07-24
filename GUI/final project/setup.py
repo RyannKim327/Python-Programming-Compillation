@@ -12,10 +12,10 @@ def save():
 
 # Questions
 def createExcell():
-	global wb, questions, filename, archieves
+	global wb, questions, filename, archives
 	filename = "data.xlsx"
 	quest = "questions"
-	archs = "archieves questions"
+	archs = "archives questions"
 	if os.path.exists(filename):
 		wb = load_workbook(filename)
 	else:
@@ -36,16 +36,16 @@ def createExcell():
 		questions.append(columns)
 	
 	if archs in wb.sheetnames:
-		archieves = wb[archs]
+		archives = wb[archs]
 	else:
-		archieves = wb.create_sheet(archs)
+		archives = wb.create_sheet(archs)
 		columns = (
 			"question",
 			"answer",
 			"case sensitive",
 			"question by"
 		)
-		archieves.append(columns)		
+		archives.append(columns)		
 	
 	save()
 
@@ -57,6 +57,12 @@ def addQuestion(q: str, a: str, cs: bool, t: str):
 def getAllQuestions():
 	lists = []
 	for i in questions.iter_rows(values_only=True):
+		lists.append(i)
+	return lists
+
+def getAllArchives():
+	lists = []
+	for i in archives.iter_rows(values_only=True):
 		lists.append(i)
 	return lists
 
@@ -74,7 +80,7 @@ def archieveQuestions(pos: int):
 
 	for i in questions.iter_rows(values_only=True):
 		if x == pos:
-			archieves.append(i)
+			archives.append(i)
 			break
 		x += 1
 
@@ -88,7 +94,7 @@ def archieveQuestions(pos: int):
 def listsArchieve():
 	lists = []
 	x = False
-	for i in archieves.iter_rows(values_only=True):
+	for i in archives.iter_rows(values_only=True):
 		if x:
 			lists.append(i)
 		x = True
@@ -98,13 +104,13 @@ def listsArchieve():
 def retrieveQuestion(pos: int):
 	x = 0
 
-	for i in archieves.iter_rows(values_only=True):
+	for i in archives.iter_rows(values_only=True):
 		if x == pos:
 			questions.append(i)
 			break
 		x += 1
 
-	archieves.delete_rows(pos + 1)
+	archives.delete_rows(pos + 1)
 	save()
 	return {
 		"done": True,
