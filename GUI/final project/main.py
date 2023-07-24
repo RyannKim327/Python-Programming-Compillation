@@ -41,6 +41,29 @@ def refreshQuestions():
 	for _q in lists:
 		quest_lists.insert("", index=END, values=_q)
 
+def refreshArchives():
+	treeArchives.delete(*treeArchives.get_children())
+	q = setup.getAllArchives()
+	lists = []
+	x = False
+	for _q in q:
+		p = 0
+		l = []
+		for c in list(_q):
+			if x:
+				if p >= 3:
+					t = setup.getTeacher(int(c))
+					l.append(t['fullname'])
+				else:
+					l.append(c)
+				p += 1
+		if x:
+			lists.append(l)
+		x = True
+	for _q in lists:
+		treeArchives.insert("", index=END, values=_q)
+
+
 def questionVerifier():
 	q = que.get()
 	a = ans.get()
@@ -182,12 +205,8 @@ def showStudents():
 def nav():
 	global nav_show
 	if nav_show:
-		treeArchives.pack_forget()
-		q_scroll.pack_forget()
-		quest_lists.pack(side='left', fill='both', expand=True)
-		q_scroll.pack(side='left', fill='y')
-		refreshQuestions()
 		qCloseNav()
+		refreshQuestions()
 	else:
 		qShowNav()
 	nav_show = not nav_show
@@ -231,7 +250,6 @@ def updateQuestion():
 	Button(update_r, text='Update Question', bg=baseColor, fg=txtColor, command=lambda: updateQuestionAction()).pack(fill='x', padx=5, pady=5)
 
 	update_r.mainloop()
-
 
 def archieveQuestion():
 	data = setup.archieveQuestions(updateQPos)
@@ -286,12 +304,39 @@ def exportPDF():
 
 	pdf_root.mainloop()
 
+def verifArchieve():
+	if messagebox.askyesno("CONFIRMATION", "Are you sure you want to unarchive this question?"):
+		lists = list(treeArchives.selection())
+		last = len(lists) - 1
+		setup.retrieveQuestion(last)
+
 def archives():
-	nav()
-	quest_lists.pack_forget()
-	q_scroll.pack_forget()
-	treeArchives.pack(side='left', fill='both', expand=True)
-	q_scroll.pack(side='left', fill='y')
+	global treeArchives
+	arRoot = Toplevel(bg=baseColor)
+	arRoot.geometry("500x500")
+	arRoot.title("Archives Questions")
+	treeArchives = ttk.Treeview(arRoot, show="headings")
+	columns = (
+		"Question",
+		"Answer",
+		"Case Sensitive",
+		"Question By"
+	)
+	w = [
+		10, 10, 5, 20
+	]	
+	treeArchives['columns'] = columns
+	colx = 0
+	for i in columns:
+		treeArchives.heading(i, text=i)
+		treeArchives.column(i, width=w[colx])
+		colx +=1
+	
+	treeArchives.bind("<<TreeviewSelect>>", lambda e: verifArchieve())
+	treeArchives.pack(side='left', fill='x', expand=True)
+	refreshArchives()
+	arRoot.mainloop()
+
 
 def createQuestion():
 	global que, ans, isCaseSensitive, navigation, quest_lists, nav_show, qtwidth, update_q, archieve_q, q_scroll, treeArchives
@@ -352,7 +397,7 @@ def createQuestion():
 	)
 	w = [
 		10, 10, 5, 20
-	]	
+	]
 	x = 0
 	quest_lists['columns'] = columns
 	for c in columns:
@@ -360,15 +405,6 @@ def createQuestion():
 		quest_lists.column(c, width=w[x])
 		x += 1
 	
-	treeArchives = ttk.Treeview(q_base, show="headings")
-	
-	treeArchives['columns'] = columns
-	colx = 0
-	for i in columns:
-		treeArchives.heading(i, text=i)
-		treeArchives.column(i, width=w[colx])
-		colx +=1
-
 	refreshQuestions()
 
 	quest_lists.bind("<<TreeviewSelect>>", activateButtons)
