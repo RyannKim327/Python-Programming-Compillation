@@ -41,14 +41,17 @@ def toPDF(excelFile: str, sheetname: str = "",  pdfFile: str = ""):
 		cell_width = (11 * inch - lm - rm) / mc 
 		cell_height = (8.5 * inch - tm - bm) / mr 
 
-		for row in range(1, 3):
-			for col in range(1, 3):
+		for row in range(1, mr + 1):
+			for col in range(1, mc + 1):
 				cell  = sheet.cell(row=row, column=col)
 				txt = str(cell.value)
 
+				if col == 4:
+					col += 1
 				x = lm + (col - 1) * cell_width
 				y = 11 * inch - (tm + row * cell_height)
-				can.drawString(x, y, txt)
+				if col != 3:
+					can.drawString(x, y, txt)
 		
 		can.save()
 

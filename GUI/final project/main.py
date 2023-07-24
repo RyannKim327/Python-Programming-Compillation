@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox, simpledialog, ttk
 from playsound import playsound
 from toPDF import toPDF
-import menu, setup, random, time
+import menu, setup, random
 
 
 def logout(base):
@@ -262,18 +262,22 @@ def extractPDF(filename, sheetname, pdfname):
 def exportPDF():
 	pdf_root = Toplevel(bg=baseColor)
 	pdf_root.geometry("500x150")
+	pdf_root.resizable(False, False)
 	sheets = setup.getAllSheets()
 	name = LabelFrame(pdf_root, bg=baseColor, fg=txtColor, text="Enter PDF Name")
-	file = Entry(name, font=("", 15))
+	file = Entry(name, font=("", 15), bg=baseColor, fg=txtColor)
 	file.pack(fill='x', expand=True)
 	name.pack(fill='x', expand=True)
 	title = LabelFrame(pdf_root, bg=baseColor, fg=txtColor, text="Choose Data to Extract")
 	sheet = StringVar()
 	sheet.set(sheets[0])
-	ttk.Combobox(title, font=("", 15), textvariable=sheet, values=sheets).pack(fill='x', expand=True)
+	s = ttk.Style()
+	s.theme_use("clam")
+	s.configure("TCombobox", fieldbackground=baseColor, background=baseColor, fieldforeground=txtColor, foreground=txtColor)
+	ttk.Combobox(title, font=("", 15), background=baseColor, foreground=txtColor, textvariable=sheet, values=sheets).pack(fill='x', expand=True)
 	title.pack(fill='x', expand=True)
 
-	Button(pdf_root, text="Convert now", command=lambda: extractPDF("data.xlsx", sheet.get(), file.get() + ".pdf")).pack()
+	Button(pdf_root, text="Convert now", bg=baseColor, fg=txtColor, command=lambda: extractPDF("data.xlsx", sheet.get(), file.get() + ".pdf")).pack(fill="x", expand=True)
 
 	pdf_root.mainloop()
 
@@ -367,6 +371,8 @@ def go_answer(n, totalQ):
 	if q[2]:
 		if s_ans.get() == q[1]:
 			score += 1
+		elif s_ans.get().lower() == q[1].lower():
+			score += 0.5
 	else:
 		if s_ans.get().lower() == q[1].lower():
 			score += 1
@@ -404,9 +410,12 @@ def go_time():
 		s_ans.config(state='disabled')
 		setup.updateScore(userInfo['ID'], score)
 		its_time -= 1
-		s_root.after(100, go_time)
+		s_root.after(10, go_time)
 	else:
-		playsound("gover.mp3")
+		try:
+			playsound("gover.mp3")
+		except:
+			pass
 		# time.sleep(1.5)
 		logout(s_root)
 		accounts()
@@ -447,7 +456,7 @@ def students_portal():
 def register():
 	chars = "abcdefghijklmnopqrstuvwxyz0123456789"
 	if len(password.get()) >= 8:
-		if setup.encrypt(simpledialog.askstring("Confirmation", f"Please enter your passcode here to confirm this {userType.get()}", show="•")) == "c3782c86d8099f3fb5b755ebc970322567aa3894923de8c9c5fc97456133471c":
+		if setup.encrypt(simpledialog.askstring("Confirmation", f"Please enter your passcode here to confirm this {userType.get()}", show="•")) == adminMasterKey:
 			userID = ""
 			for i in range(5):
 				userID += chars[random.randint(0, len(chars) - 1)]
@@ -688,9 +697,37 @@ def login():
 	sx.pack(side='left', fill='y')
 	listsFrame.pack(side='top', fill='x', expand=True, pady=5)
 
+def teacherRemoveConfirmation(id):
+	t_lists = []
+	for i in setup.getAllUsers("teacher"):
+		t_lists.append(i[0])
+	print(t_lists)
+	if id in t_lists:
+		pos = 1
+		for i in t_lists:
+			if i == id:
+				break
+			pos += 1
+		setup.removeTeacher(pos)
+	else:
+		messagebox.showerror("ERROR", "Teacher not found")
+
+def removeTeacher():
+	if setup.encrypt(simpledialog.askstring("Verification", "Enter the master's password: ")) == adminMasterKey:
+		admin_root = Toplevel(bg =baseColor)
+		admin_root.geometry("500x150")
+		frame = LabelFrame(admin_root, font=("", 15), bg=baseColor, fg=txtColor, text="Enter teacher's ID")
+		t_id = Entry(frame, font=("", 15), bg=baseColor, fg=txtColor, bd=0)
+		t_id.pack(fill='x', expand=True)
+		t_id.bind("<Return>", lambda e: teacherRemoveConfirmation(t_id.get()))
+		frame.pack(fill='x', expand=True)
+		admin_root.mainloop()
+	else:
+		messagebox.showerror("DENIED", "You're not allowed here")
 
 def start():
-	global root, w, h
+	global root, w, h, adminMasterKey
+	adminMasterKey = "c3782c86d8099f3fb5b755ebc970322567aa3894923de8c9c5fc97456133471c"
 	w = 500
 	h = 225
 	root = Tk()
@@ -701,7 +738,8 @@ def start():
 
 	login()
 
-	menu.menuSetup(root)
+	men = menu.menuSetup(root)
+	men.add_command(label="Remove teacher", command=lambda: removeTeacher())
 
 	root.mainloop()
 
