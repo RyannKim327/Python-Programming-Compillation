@@ -84,7 +84,7 @@ def archieveQuestions(pos: int):
 			break
 		x += 1
 
-	questions.delete_rows(pos + 2)
+	questions.delete_rows(pos + 1)
 	save()
 	return {
 		"done": True,
@@ -110,7 +110,7 @@ def retrieveQuestion(pos: int):
 			break
 		x += 1
 
-	archives.delete_rows(pos + 2)
+	archives.delete_rows(pos + 1)
 	save()
 	return {
 		"done": True,

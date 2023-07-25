@@ -18,6 +18,21 @@ def exitConfirmation():
 	if messagebox.askyesno("CONFIRMATION", "Are you sure, you want to close the app?"):
 		root.destroy()
 
+def cantClose():
+	messagebox.showerror("ERROR", "You can't close this window while answering")
+
+def extractPDF(filename, sheetname, pdfname):
+	res = toPDF(filename, sheetname, pdfname)
+	if res['done']:
+		messagebox.showinfo("SUCCESS", res['msg'])
+	else:
+		messagebox.showerror("ERROR", res['msg'])
+
+def archieveQuestion():
+	data = setup.archieveQuestions(updateQPos)
+	if data['done']:
+		messagebox.showinfo("SUCCESS", data['msg'])
+		refreshQuestions()
 
 def refreshQuestions():
 	quest_lists.delete(*quest_lists.get_children())
@@ -94,7 +109,7 @@ def addQuestion():
 		e.append("answer")
 
 	if len(e) <= 0:
-		messagebox.showerror(f"Please fill up with the valid data: {', '.join(e)}")
+		messagebox.showerror("ERROR", f"Please fill up with the valid data: {', '.join(e)}")
 	else:
 		if setup.addQuestion(q, a, cs, t):
 			que.delete(0, END)
@@ -251,11 +266,6 @@ def updateQuestion():
 
 	update_r.mainloop()
 
-def archieveQuestion():
-	data = setup.archieveQuestions(updateQPos)
-	if data['done']:
-		messagebox.showinfo("SUCCESS", data['msg'])
-		refreshQuestions()
 
 def activateButtons(event):
 	global selected, updateQPos
@@ -274,13 +284,6 @@ def activateButtons(event):
 	else:
 		archieve_q.config(state='disabled')
 		update_q.config(state='disabled')
-
-def extractPDF(filename, sheetname, pdfname):
-	res = toPDF(filename, sheetname, pdfname)
-	if res['done']:
-		messagebox.showinfo("SUCCESS", res['msg'])
-	else:
-		messagebox.showerror("ERROR", res['msg'])
 
 def exportPDF():
 	pdf_root = Toplevel(bg=baseColor)
@@ -481,11 +484,6 @@ def go_time():
 		logout(s_root)
 		accounts()
 
-
-def cantClose():
-	messagebox.showerror("ERROR", "You can't close this window while answering")
-
-
 def students_portal():
 	global timer, its_time, s_root, s_ans, s_f, score, l_questions, question_starts
 	question_starts = False
@@ -517,7 +515,7 @@ def students_portal():
 def register():
 	chars = "abcdefghijklmnopqrstuvwxyz0123456789"
 	if len(password.get()) >= 8:
-		if setup.encrypt(simpledialog.askstring("Confirmation", f"Please enter your passcode here to confirm this {userType.get()}", show="•")) == adminMasterKey:
+		if setup.encrypt(simpledialog.askstring("CONFIRMATION", f"Please enter your passcode here to confirm this {userType.get()}", show="•")) == adminMasterKey:
 			userID = ""
 			for i in range(5):
 				userID += chars[random.randint(0, len(chars) - 1)]
@@ -540,9 +538,9 @@ def register():
 				messagebox.showinfo("SUCCESS", f"Student's account created successfully. Use this id: {userID} as ID pass")
 			setType()
 		else:
-			messagebox.showerror("NOTICE", "Invalid Verification")
+			messagebox.showwarning("NOTICE", "Invalid Verification")
 	else:
-		messagebox.showerror("NOTICE", "Password must least 8 characters")
+		messagebox.showwarning("NOTICE", "Password must least 8 characters")
 
 
 def credentials():
@@ -784,7 +782,7 @@ def removeTeacher():
 		frame.pack(fill='x', expand=True)
 		admin_root.mainloop()
 	else:
-		messagebox.showerror("DENIED", "You're not allowed here")
+		messagebox.showwarning("DENIED", "You're not allowed here")
 
 def start():
 	global root, w, h, adminMasterKey
