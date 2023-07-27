@@ -33,12 +33,19 @@ def toPDF(excelFile: str, sheetname: str = "",  pdfFile: str = ""):
 		mc = sheet.max_column
 		
 		can = canvas.Canvas(pdf_path, pagesize=landscape(letter))
-		
-		for i in range(mr_ // 2):
+		x = mr_
+		x2 = []
+		while x > 0:
+			x2.append(x // 10)
+			x -= 10
 
-			mr = i // mr_
+		x = 1
 
-			can.addPageLabel(i + 1)
+		for i in range(len(x2)):
+			can.drawString(1, 1, f"{sheetname.capitalize()}: ({i + 1})")
+
+			mr = int(x + x2[i])
+			x += mr
 
 			tm = 3 * inch
 			lm = 0.75 * inch
