@@ -244,14 +244,14 @@ def updateQuestion():
 	update_r.config(bg=baseColor)
 
 	uq = LabelFrame(update_r, bg=baseColor, fg=txtColor, text="Question", font=("Times New Roman", 15))
-	eu = Entry(uq, bg=baseColor, fg=txtColor, bd=0, font=("Times New Roman", 15))
+	eu = Entry(uq, bg=baseColor, fg=txtColor, bd=0, font=("Times New Roman", 15), insertbackground=txtColor)
 	eu.delete(0, END)
 	eu.insert(0, selected[len(selected) - 1][0])
 	eu.pack(fill='x')
 	uq.pack(fill='x', padx=5, pady=5)
 
 	ua = LabelFrame(update_r, bg=baseColor, fg=txtColor, text="Answer", font=("Times New Roman", 15))
-	ea = Entry(ua, bg=baseColor, fg=txtColor, bd=0, font=("Times New Roman", 15))
+	ea = Entry(ua, bg=baseColor, fg=txtColor, bd=0, font=("Times New Roman", 15), insertbackground=txtColor)
 	ea.delete(0, END)
 	ea.insert(0, selected[len(selected) - 1][1])
 	ea.pack(side='left', fill='x', expand=True)
@@ -291,7 +291,7 @@ def exportPDF():
 	pdf_root.resizable(False, False)
 	sheets = setup.getAllSheets()
 	name = LabelFrame(pdf_root, bg=baseColor, fg=txtColor, text="Enter PDF Name")
-	file = Entry(name, font=("", 15), bg=baseColor, fg=txtColor)
+	file = Entry(name, font=("", 15), bg=baseColor, fg=txtColor, insertbackground=txtColor)
 	file.pack(fill='x', expand=True)
 	name.pack(fill='x', expand=True)
 	title = LabelFrame(pdf_root, bg=baseColor, fg=txtColor, text="Choose Data to Extract")
@@ -354,14 +354,14 @@ def createQuestion():
 	Label(question_root, text="Create a Question", bg=baseColor, fg=txtColor, justify='center', font=("Times New Roman", 25)).pack(fill='x')
 
 	lq = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Question", font=("Times New Roman", 15))
-	que = Entry(lq, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), bd=0)
+	que = Entry(lq, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), bd=0, insertbackground=txtColor)
 	que.bind("<Return>", lambda e: questionVerifier())
 	que.pack(fill='x', ipadx=10)
 
 	lq.pack(fill='x', pady=3)
 
 	ans_frame = LabelFrame(question_root, bg=baseColor, fg=txtColor, text="Answer", font=("Times New Roman", 15))
-	ans = Entry(ans_frame, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), bd=0)
+	ans = Entry(ans_frame, bg=baseColor, fg=txtColor, font=("Times New Roman", 15), bd=0, insertbackground=txtColor)
 	ans.bind("<Return>", lambda e: questionVerifier())
 	ans.pack(fill='x', side='left', expand=True)
 
@@ -480,7 +480,6 @@ def go_time():
 			playsound("gover.mp3")
 		except:
 			pass
-		# time.sleep(1.5)
 		logout(s_root)
 		accounts()
 
@@ -502,7 +501,7 @@ def students_portal():
 	timer.pack()
 
 	s_f = LabelFrame(s_root, bg=baseColor, fg=txtColor, font=("", 10), relief='solid')
-	s_ans = Entry(s_f, bg=baseColor, fg=txtColor, bd=0, font=("", 15), justify='center')
+	s_ans = Entry(s_f, bg=baseColor, fg=txtColor, bd=0, font=("", 15), justify='center', insertbackground=txtColor)
 	s_ans.pack(fill='x')
 
 	s_f.pack(fill='x')
@@ -692,7 +691,7 @@ def login():
 
 	userFrame = LabelFrame(root, text="ID to login | Fullname to register", font=("Times New Roman", 15), bg=baseColor, fg=txtColor)
 
-	user = Entry(userFrame, bg=baseColor, fg=txtColor, bd=0, font=("", 15))
+	user = Entry(userFrame, bg=baseColor, fg=txtColor, bd=0, font=("", 15), insertbackground=txtColor)
 	user.bind("<Return>", lambda e: checker())
 	user.focus()
 	user.pack(side="left", fill='x', expand=True)
@@ -701,7 +700,7 @@ def login():
 
 	passFrame = LabelFrame(root, text="Password", font=("Times New Roman", 15), bg=baseColor, fg=txtColor)
 
-	password = Entry(passFrame, bg=baseColor, fg=txtColor, bd=0, font=("", 15), show="•")
+	password = Entry(passFrame, bg=baseColor, fg=txtColor, bd=0, font=("", 15), show="•", insertbackground=txtColor)
 	password.bind("<Return>", lambda e: checker())
 	password.pack(side="left", fill='x', expand=True)
 
@@ -727,7 +726,7 @@ def login():
 
 	s = LabelFrame(listsFrame, text="Search your name", font=("Times New Roman", 15), bg=baseColor, fg=txtColor)
 
-	search = Entry(s, font=("", 15), bg=baseColor, fg=txtColor, bd=0)
+	search = Entry(s, font=("", 15), bg=baseColor, fg=txtColor, bd=0, insertbackground=txtColor)
 	search.bind("<Return>", lambda e: searchUser())
 	search.pack(fill='x')
 
@@ -772,17 +771,19 @@ def teacherRemoveConfirmation(id):
 		messagebox.showerror("ERROR", "Teacher not found")
 
 def removeTeacher():
-	if setup.encrypt(simpledialog.askstring("Verification", "Enter the master's password: ")) == adminMasterKey:
-		admin_root = Toplevel(bg =baseColor)
-		admin_root.geometry("500x150")
-		frame = LabelFrame(admin_root, font=("", 15), bg=baseColor, fg=txtColor, text="Enter teacher's ID")
-		t_id = Entry(frame, font=("", 15), bg=baseColor, fg=txtColor, bd=0)
-		t_id.pack(fill='x', expand=True)
-		t_id.bind("<Return>", lambda e: teacherRemoveConfirmation(t_id.get()))
-		frame.pack(fill='x', expand=True)
-		admin_root.mainloop()
-	else:
-		messagebox.showwarning("DENIED", "You're not allowed here")
+	ask =simpledialog.askstring("Verification", "Enter the master's password: ")
+	if ask:
+		if setup.encrypt(ask) == adminMasterKey:
+			admin_root = Toplevel(bg =baseColor)
+			admin_root.geometry("500x150")
+			frame = LabelFrame(admin_root, font=("", 15), bg=baseColor, fg=txtColor, text="Enter teacher's ID")
+			t_id = Entry(frame, font=("", 15), bg=baseColor, fg=txtColor, bd=0, insertbackground=txtColor)
+			t_id.pack(fill='x', expand=True)
+			t_id.bind("<Return>", lambda e: teacherRemoveConfirmation(t_id.get()))
+			frame.pack(fill='x', expand=True)
+			admin_root.mainloop()
+		else:
+			messagebox.showwarning("DENIED", "You're not allowed here")
 
 def start():
 	global root, w, h, adminMasterKey
@@ -813,6 +814,41 @@ def setTheme(theme='light'):
 		txtColor = "#004A8A"
 
 
+def change(load_root):
+	load_root.destroy()
+	start()
+
+def loading():
+	load_root = Tk()
+	load_root.geometry("300x150")
+	load_root.config(bg=baseColor)
+	load_root.eval("tk::PlaceWindow . center")
+	load_root.overrideredirect(True)
+
+	Label(load_root, text="Developed by",  bg=baseColor, fg=txtColor, font=("Times New Roman", 25)).pack(fill='x')
+	Label(load_root, text="Ryann Kim Sesgundo", bg=baseColor, fg=txtColor, font=("Times New Roman", 15)).pack(fill='x')
+
+	f = LabelFrame(load_root, text="Please Wait", bg=baseColor, fg=txtColor)
+
+	progress = ttk.Progressbar(f, orient='horizontal', maximum=101, mode="determinate")
+	progress.pack(fill='x', expand=True)
+
+	def loadit(i=0):
+		if i < 100:
+			x =  (random.randint(0, 10))
+			if x + i > 90:
+				x = (100 -  i) 
+			progress.step(x)
+			i += x
+			load_root.after(random.randint(0, 1000), lambda: loadit(i))
+		else:
+			change(load_root)
+	
+	loadit()
+
+	f.pack(fill='x', expand=True)
+	load_root.mainloop()
+
 if __name__ == "__main__":
 	DARK = 'dark'
 	LIGHT = 'light'
@@ -820,4 +856,4 @@ if __name__ == "__main__":
 	setup.createStudents()
 	setup.createTeachers()
 	setTheme(DARK)
-	start()
+	loading()
