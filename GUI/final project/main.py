@@ -88,7 +88,7 @@ def questionVerifier():
 	if a == "":
 		x.append("Answer")
 
-	if len(x) > 0:
+	if len(x) >= 1:
 		addQuestion()
 	elif "Question" in x:
 		que.focus()
@@ -103,12 +103,12 @@ def addQuestion():
 	cs = isCaseSensitive.get()
 	t = userInfo['ID']
 
-	if len(q) <= 5 or not q.endswith("?") or not q.endswith("."):
+	if not (len(q) > 5 or q.endswith("?") or q.endswith(".")):
 		e.append("question")
 	if a == "":
 		e.append("answer")
 
-	if len(e) > 0:
+	if len(e) >= 1:
 		messagebox.showerror("ERROR", f"Please fill up with the valid data: {', '.join(e)}")
 	else:
 		if setup.addQuestion(q, a, cs, t):
