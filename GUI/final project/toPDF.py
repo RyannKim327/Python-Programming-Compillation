@@ -41,6 +41,8 @@ def toPDF(excelFile: str, sheetname: str = "",  pdfFile: str = ""):
 
 		x = 1
 		r = 1
+		
+		added = []
 
 		for i in range(len(x2)):
 			can.drawString(1, 5, f"{sheetname.capitalize()}: ({i + 1})")
@@ -73,11 +75,12 @@ def toPDF(excelFile: str, sheetname: str = "",  pdfFile: str = ""):
 					else:
 						x = lm + (col - 1) * cell_width
 					
-					y = 11 * inch - (tm + ((row % 10) + 1)  * cell_height)
-					
+					y = 11 * inch - (tm + (row - r)  * cell_height)
+
 					if col != 3:
 						can.drawString(x, y, txt)
-					r += row
+					
+			r += 11
 
 			can.showPage()	
 
