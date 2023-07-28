@@ -77,13 +77,11 @@ def updateQuestion(pos: int, data: list):
 
 def archieveQuestions(pos: int):
 	x = 1
-
 	for i in questions.iter_rows(values_only=True):
 		if x == pos:
 			archives.append(i)
 			break
 		x += 1
-
 	questions.delete_rows(pos)
 	save()
 	return {
@@ -98,19 +96,16 @@ def listsArchieve():
 		if x:
 			lists.append(i)
 		x = True
-	
 	return lists
 
 def retrieveQuestion(pos: int):
-	x = 0
-
+	x = 1
 	for i in archives.iter_rows(values_only=True):
 		if x == pos:
 			questions.append(i)
 			break
 		x += 1
-
-	archives.delete_rows(pos + 1)
+	archives.delete_rows(pos + 2)
 	save()
 	return {
 		"done": True,

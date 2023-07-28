@@ -58,7 +58,7 @@ def toPDF(excelFile: str, sheetname: str = "",  pdfFile: str = ""):
 			cell_height = (8.5 * inch - tm - bm) / (mr_ // len(x2))
 			
 			for row in range(r, r + max_data):
-				if max_data > mr_ + 1:
+				if r > mr_ + 1:
 					break
 				for col in range(1, mc + 1):
 					cell  = sheet.cell(row=row, column=col)

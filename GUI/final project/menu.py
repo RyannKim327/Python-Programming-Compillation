@@ -32,13 +32,13 @@ def menuSetup(root):
 
 	x = list(menus.keys())
 
-	about.add_command(label=x[0], command=lambda: showInfo(x[0]))
 	about.add_command(label=x[1], command=lambda: showInfo(x[1]))
 	about.add_command(label=x[2], command=lambda: showInfo(x[2]))
 	about.add_command(label=x[3], command=lambda: showInfo(x[3]))
 	about.add_command(label=x[4], command=lambda: showInfo(x[4]))
 	about.add_command(label=x[5], command=lambda: showInfo(x[5]))
 	about.add_command(label=x[6], command=lambda: showInfo(x[6]))
+	about.add_command(label=x[7], command=lambda: showInfo(x[7]))
 	# about.add_command(label=x[7], command=lambda: showInfo(x[7]))
 	menu.add_cascade(label="Documentation", menu=about)
 	root.config(menu=menu)

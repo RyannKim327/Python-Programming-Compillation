@@ -4,7 +4,6 @@ from playsound import playsound
 from toPDF import toPDF
 import menu, setup, random
 
-
 def logout(base):
 	global userInfo
 	userInfo = {
@@ -78,7 +77,6 @@ def refreshArchives():
 	for _q in lists:
 		treeArchives.insert("", index=END, values=_q)
 
-
 def questionVerifier():
 	q = que.get()
 	a = ans.get()
@@ -94,7 +92,6 @@ def questionVerifier():
 		que.focus()
 	elif "Answer" in x:
 		ans.focus()
-
 
 def addQuestion():
 	e = []
@@ -124,14 +121,12 @@ def qCloseNav():
 		navigation.place(x=-10, y=0, relheight=1, relwidth=qtwidth)
 		navigation.after(10, qCloseNav)
 
-
 def qShowNav():
 	global qtwidth
 	if qtwidth < 0.85:
 		qtwidth += 0.075
 		navigation.place(x=0, y=0, relheight=1, relwidth=qtwidth)
 		navigation.after(10, qShowNav)
-
 
 def removeStudent(treeView):
 	delete = False
@@ -165,6 +160,10 @@ def removeStudent(treeView):
 					treeView.insert("", index=END, values=l)
 		else:
 			messagebox.showerror("ERROR", "We can't find this student to our data")
+
+def closeStudents(l_root):
+	l_root.destroy()
+	createQuestion()
 
 def showStudents():
 	l_root = Toplevel()
@@ -212,9 +211,9 @@ def showStudents():
 
 	l_tree.pack(side='left', fill='both', expand=True)
 	lys.pack(side='left', fill='y')
-
+	question_root.destroy()
+	l_root.protocol("WM_DELETE_WINDOW", lambda: closeStudents(l_root))
 	l_root.mainloop()
-
 
 def nav():
 	global nav_show
@@ -225,14 +224,12 @@ def nav():
 		qShowNav()
 	nav_show = not nav_show
 
-
 def updateQuestionAction():
 	data = setup.updateQuestion(updateQPos, (eu.get(), ea.get(), uc.get()))
 	if data['done']:
 		messagebox.showinfo("SUCCESS", data['msg'])
 		update_r.destroy()
 		refreshQuestions()
-
 
 def updateQuestion():
 	global eu, ea, uc, update_r
@@ -265,7 +262,6 @@ def updateQuestion():
 
 	update_r.mainloop()
 
-
 def activateButtons(event):
 	global selected, updateQPos
 	updateQPos = 1
@@ -284,13 +280,19 @@ def activateButtons(event):
 		archieve_q.config(state='disabled')
 		update_q.config(state='disabled')
 
+def closePDF():
+	pdf_root.destroy()
+	createQuestion()
+
 def exportPDF():
+	global pdf_root, question_root
+
 	pdf_root = Toplevel(bg=baseColor)
 	pdf_root.geometry("500x150")
 	pdf_root.resizable(False, False)
-	sheets = setup.getAllSheets()
+	sheets = setup.getAllSheets()	
 	name = LabelFrame(pdf_root, bg=baseColor, fg=txtColor, text="Enter PDF Name")
-	file = Entry(name, font=("", 15), bg=baseColor, fg=txtColor, insertbackground=txtColor)
+	file = Entry(name, font=("", 15), bg=baseColor, fg=txtColor, insertbackground=txtColor, bd=0)
 	file.pack(fill='x', expand=True)
 	name.pack(fill='x', expand=True)
 	title = LabelFrame(pdf_root, bg=baseColor, fg=txtColor, text="Choose Data to Extract")
@@ -304,6 +306,8 @@ def exportPDF():
 
 	Button(pdf_root, text="Convert now", bg=baseColor, fg=txtColor, command=lambda: extractPDF("data.xlsx", sheet.get(), file.get() + ".pdf")).pack(fill="x", expand=True)
 
+	pdf_root.protocol("WM_DELETE_WINDOW", lambda: closePDF())
+	question_root.destroy()
 	pdf_root.mainloop()
 
 def verifArchieve():
@@ -312,8 +316,12 @@ def verifArchieve():
 		last = len(lists) - 1
 		setup.retrieveQuestion(last)
 
+def closeArchives():
+	arRoot.destroy()
+	createQuestion()
+
 def archives():
-	global treeArchives
+	global treeArchives, arRoot
 	arRoot = Toplevel(bg=baseColor)
 	arRoot.geometry("500x500")
 	arRoot.title("Archives Questions")
@@ -337,11 +345,12 @@ def archives():
 	treeArchives.bind("<<TreeviewSelect>>", lambda e: verifArchieve())
 	treeArchives.pack(side='left', fill='x', expand=True)
 	refreshArchives()
+	question_root.destroy()
+	arRoot.protocol("WM_DELETE_WINDOW", lambda: closeArchives())
 	arRoot.mainloop()
 
-
 def createQuestion():
-	global que, ans, isCaseSensitive, navigation, quest_lists, nav_show, qtwidth, update_q, archieve_q, q_scroll, treeArchives
+	global que, ans, isCaseSensitive, navigation, quest_lists, nav_show, qtwidth, update_q, archieve_q, q_scroll, treeArchives, question_root
 	qtwidth = 0
 	nav_show = False
 
@@ -427,7 +436,6 @@ def createQuestion():
 	question_root.protocol("WM_DELETE_WINDOW", lambda: exitConfirmation())
 	question_root.mainloop()
 
-
 def go_answer(n, totalQ):
 	global score
 	q = totalQ[n]
@@ -441,7 +449,6 @@ def go_answer(n, totalQ):
 			score += 1
 	s_ans.delete(0, END)
 	go_ask()
-
 
 def go_ask():
 	global l_question, its_time, question_starts
@@ -460,7 +467,6 @@ def go_ask():
 	else:
 		s_ans.config(state='disabled')
 		its_time = 0
-
 
 def go_time():
 	global its_time
@@ -509,7 +515,6 @@ def students_portal():
 	s_root.protocol("WM_DELETE_WINDOW", cantClose)
 	s_root.mainloop()
 
-
 def register():
 	chars = "abcdefghijklmnopqrstuvwxyz0123456789"
 	if len(password.get()) >= 8:
@@ -539,7 +544,6 @@ def register():
 			messagebox.showwarning("NOTICE", "Invalid Verification")
 	else:
 		messagebox.showwarning("NOTICE", "Password must least 8 characters")
-
 
 def credentials():
 	global userInfo
@@ -593,13 +597,11 @@ def credentials():
 				user.delete(0, END)
 				password.delete(0, END)
 
-
 def accounts():
 	tree.delete(*tree.get_children())
 	lists = setup.getAllUsers(_type)
 	for i in lists:
 		tree.insert('', index=END, values=i)
-
 
 def destroyLists():
 	global h, isShow
@@ -610,7 +612,6 @@ def destroyLists():
 		root.after(10, destroyLists)
 	else:
 		listsBtn.config(text="Lists", command=lambda: userLists())
-
 
 def userLists():
 	global h, isShow
@@ -623,13 +624,11 @@ def userLists():
 	else:
 		listsBtn.config(text="Lists", command=lambda: destroyLists())
 
-
 def setType():
 	global _type
 	if isShow:
 		_type = userType.get()
 		accounts()
-
 
 def showPassword():
 	global isPass
@@ -641,7 +640,6 @@ def showPassword():
 		_bpass.config(text="•_-")
 	isPass = not isPass
 
-
 def checker():
 	if user.get() == "":
 		user.focus()
@@ -649,7 +647,6 @@ def checker():
 		password.focus()
 	else:
 		credentials()
-
 
 def searchUser():
 	utype = userType.get()
@@ -663,7 +660,6 @@ def searchUser():
 	for i in lists:
 		tree.insert("", index=END, values=i)
 
-
 def inserAsID():
 	user.delete(0, END)
 	lists = []
@@ -673,7 +669,6 @@ def inserAsID():
 		password.focus()
 	if len(lists) > 0:
 		user.insert(0, lists[len(lists) - 1])
-
 
 def login():
 	global user, password, userType, listsBtn, isShow, tree, _type, _bpass, isPass, search
@@ -802,7 +797,6 @@ def start():
 
 	root.mainloop()
 
-
 def setTheme(theme='light'):
 	global  baseColor, txtColor
 	if theme == DARK:
@@ -811,7 +805,6 @@ def setTheme(theme='light'):
 	else:
 		baseColor = "#9DE0F5"
 		txtColor = "#004A8A"
-
 
 def change(load_root):
 	load_root.destroy()
@@ -846,6 +839,7 @@ def loading():
 	loadit()
 
 	f.pack(fill='x', expand=True)
+	load_root.config(padx=5, pady=5)
 	load_root.mainloop()
 
 if __name__ == "__main__":

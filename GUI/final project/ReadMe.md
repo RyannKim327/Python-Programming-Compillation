@@ -1,3 +1,7 @@
+### Final Project [Python Programming]
+#### Ryann Kim Sesgundo
+
+---
 ### Introduction
 > This program is part of our finals laboratory in CC103, wherein we need to create any program that has Create, Read, Update, and Delete functionalities.
 ---
