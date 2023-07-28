@@ -101,7 +101,7 @@ def listsArchieve():
 def retrieveQuestion(pos: int):
 	x = 1
 	for i in archives.iter_rows(values_only=True):
-		if x == pos:
+		if x == pos + 2:
 			questions.append(i)
 			break
 		x += 1
