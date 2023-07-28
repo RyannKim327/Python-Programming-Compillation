@@ -1,4 +1,4 @@
-from tkinter import messagebox, Menu
+from tkinter import Menu, messagebox
 
 def getMenu():
 	data = []

@@ -1,8 +1,11 @@
+import random
 from tkinter import *
 from tkinter import messagebox, simpledialog, ttk
 from playsound import playsound
+import menu
+import setup
 from toPDF import toPDF
-import menu, setup, random
+
 
 def logout(base):
 	global userInfo

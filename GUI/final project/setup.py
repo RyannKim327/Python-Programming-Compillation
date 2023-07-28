@@ -1,6 +1,8 @@
+import hashlib
+import os
 from openpyxl import load_workbook
 from openpyxl.workbook import Workbook
-import os, hashlib
+
 
 # Encryption
 def encrypt(password: str) -> str:
@@ -256,7 +258,6 @@ def addTeacher(randomID: str, fullname: str, password: str) -> dict:
 
 def getTeacherId(username: str, password: str) -> dict:
 	userID = 1
-	done = False
 	for i in teachers.iter_rows(values_only=True):
 		if i[0] == username and i[2] == encrypt(password):
 			done = True
