@@ -39,7 +39,7 @@ def menuSetup(root):
 	about.add_command(label=x[4], command=lambda: showInfo(x[4]))
 	about.add_command(label=x[5], command=lambda: showInfo(x[5]))
 	about.add_command(label=x[6], command=lambda: showInfo(x[6]))
-	about.add_command(label=x[7], command=lambda: showInfo(x[7]))
+	# about.add_command(label=x[7], command=lambda: showInfo(x[7]))
 	menu.add_cascade(label="Documentation", menu=about)
 	root.config(menu=menu)
 	return menu

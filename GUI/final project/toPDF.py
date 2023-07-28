@@ -53,11 +53,11 @@ def toPDF(excelFile: str, sheetname: str = "",  pdfFile: str = ""):
 			rm = 0.75 * inch
 
 			cell_width = (11 * inch - lm - rm) / mc 
-			cell_height = (8.5 * inch - tm - bm) / mr
+			cell_height = (8.5 * inch - tm - bm) / (mr_ // len(x2))
 
 			for row in range(1, mr + 1):
 				for col in range(1, mc + 1):
-					cell  = sheet.cell(row=row, column=col)
+					cell  = sheet.cell(row=(mr - row) + row, column=col)
 					txt = str(cell.value)
 
 					if col == 4:
