@@ -76,7 +76,7 @@ def updateQuestion(pos: int, data: list):
 	}
 
 def archieveQuestions(pos: int):
-	x = 0
+	x = 1
 
 	for i in questions.iter_rows(values_only=True):
 		if x == pos:
@@ -84,7 +84,7 @@ def archieveQuestions(pos: int):
 			break
 		x += 1
 
-	questions.delete_rows(pos + 1)
+	questions.delete_rows(pos)
 	save()
 	return {
 		"done": True,

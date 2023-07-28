@@ -28,12 +28,6 @@ def extractPDF(filename, sheetname, pdfname):
 	else:
 		messagebox.showerror("ERROR", res['msg'])
 
-def archieveQuestion():
-	data = setup.archieveQuestions(updateQPos)
-	if data['done']:
-		messagebox.showinfo("SUCCESS", data['msg'])
-		refreshQuestions()
-
 def refreshQuestions():
 	quest_lists.delete(*quest_lists.get_children())
 	q = setup.getAllQuestions()
@@ -55,6 +49,12 @@ def refreshQuestions():
 		x = True
 	for _q in lists:
 		quest_lists.insert("", index=END, values=_q)
+
+def archieveQuestion():
+	data = setup.archieveQuestions(updateQPos)
+	if data['done']:
+		messagebox.showinfo("SUCCESS", data['msg'])
+		refreshQuestions()
 
 def refreshArchives():
 	treeArchives.delete(*treeArchives.get_children())
@@ -107,6 +107,8 @@ def addQuestion():
 		e.append("question")
 	if a == "":
 		e.append("answer")
+
+	print(len(e))
 
 	if len(e) <= 0:
 		messagebox.showerror("ERROR", f"Please fill up with the valid data: {', '.join(e)}")
