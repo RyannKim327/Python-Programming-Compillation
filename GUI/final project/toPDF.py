@@ -34,15 +34,14 @@ def toPDF(excelFile: str, sheetname: str = "",  pdfFile: str = ""):
 		
 		can = canvas.Canvas(pdf_path, pagesize=landscape(letter))
 		x = mr_
+		max_data = 25
 		x2 = []
 		while x > 0:
-			x2.append(x - (x - 10))
-			x -= 10
+			x2.append(x - (x - max_data))
+			x -= max_data
 
 		x = 1
 		r = 1
-		
-		added = []
 
 		for i in range(len(x2)):
 			can.drawString(1, 5, f"{sheetname.capitalize()}: ({i + 1})")
@@ -57,8 +56,10 @@ def toPDF(excelFile: str, sheetname: str = "",  pdfFile: str = ""):
 
 			cell_width = (11 * inch - lm - rm) / mc 
 			cell_height = (8.5 * inch - tm - bm) / (mr_ // len(x2))
-
-			for row in range(r, (mr + 1)):
+			
+			for row in range(r, r + max_data):
+				if max_data > mr_ + 1:
+					break
 				for col in range(1, mc + 1):
 					cell  = sheet.cell(row=row, column=col)
 					txt = str(cell.value)
@@ -78,9 +79,10 @@ def toPDF(excelFile: str, sheetname: str = "",  pdfFile: str = ""):
 					y = 11 * inch - (tm + (row - r)  * cell_height)
 
 					if col != 3:
-						can.drawString(x, y, txt)
+						if txt != "None":
+							can.drawString(x, y, txt)
 					
-			r += 11
+			r += max_data
 
 			can.showPage()	
 
