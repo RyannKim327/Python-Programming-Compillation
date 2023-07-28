@@ -108,9 +108,7 @@ def addQuestion():
 	if a == "":
 		e.append("answer")
 
-	print(len(e))
-
-	if len(e) <= 0:
+	if len(e) > 0:
 		messagebox.showerror("ERROR", f"Please fill up with the valid data: {', '.join(e)}")
 	else:
 		if setup.addQuestion(q, a, cs, t):
@@ -118,7 +116,6 @@ def addQuestion():
 			ans.delete(0, END)
 			messagebox.showinfo("SUCCESS", "New Question Added")
 			refreshQuestions()
-
 
 def qCloseNav():
 	global qtwidth

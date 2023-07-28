@@ -36,13 +36,14 @@ def toPDF(excelFile: str, sheetname: str = "",  pdfFile: str = ""):
 		x = mr_
 		x2 = []
 		while x > 0:
-			x2.append(x // 10)
+			x2.append(x - (x - 10))
 			x -= 10
 
 		x = 1
+		r = 1
 
 		for i in range(len(x2)):
-			can.drawString(1, 1, f"{sheetname.capitalize()}: ({i + 1})")
+			can.drawString(1, 5, f"{sheetname.capitalize()}: ({i + 1})")
 
 			mr = int(x + x2[i])
 			x += mr
@@ -55,9 +56,9 @@ def toPDF(excelFile: str, sheetname: str = "",  pdfFile: str = ""):
 			cell_width = (11 * inch - lm - rm) / mc 
 			cell_height = (8.5 * inch - tm - bm) / (mr_ // len(x2))
 
-			for row in range(1, mr + 1):
+			for row in range(r, (mr + 1)):
 				for col in range(1, mc + 1):
-					cell  = sheet.cell(row=(mr - row) + row, column=col)
+					cell  = sheet.cell(row=row, column=col)
 					txt = str(cell.value)
 
 					if col == 4:
@@ -65,22 +66,22 @@ def toPDF(excelFile: str, sheetname: str = "",  pdfFile: str = ""):
 					if "question" in sheetname:
 						if col >= 2:
 							x = lm + (col + 1) * cell_width
-							y = 11 * inch - (tm + row * cell_height)
+							# y = 11 * inch - (tm + ((row % 10) + 1) * cell_height)
 						else:
 							x = lm + (col - 1) * cell_width
-							y = 11 * inch - (tm + row * cell_height)
+							# y = 11 * inch - (tm + ((row % 10) + 1) * cell_height)
 					else:
 						x = lm + (col - 1) * cell_width
-						y = 11 * inch - (tm + row * cell_height)
+					
+					y = 11 * inch - (tm + ((row % 10) + 1)  * cell_height)
 					
 					if col != 3:
-						can.drawString(x, y + .5, txt)
+						can.drawString(x, y, txt)
+					r += row
+
 			can.showPage()	
 
-		if os.path.exists(f"~${pdf_path}"):
-			messagebox.showerror("ERROR", "The PDF file is currently in use")
-		else:
-			can.save()
+		can.save()
 
 		result['msg'] = "Success"
 	return result
