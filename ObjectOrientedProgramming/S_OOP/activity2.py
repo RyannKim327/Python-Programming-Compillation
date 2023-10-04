@@ -7,7 +7,14 @@ class IT2A:
 		msg = f"Student name: {self.name}\nSection: {self.section}\nSubject: {self.subject}"
 		print(msg)
 	
-	def 
+	def present(self):
+		self.attendance += 1
+
+	def absent(self):
+		self.attendance -= 1
+	
+	def totalGrade(self):
+		self.g
 
 kim = IT2A("Kim", "IT2A", "PF101")
 gem = IT2A("Gem", "IT2A", "PF101")
