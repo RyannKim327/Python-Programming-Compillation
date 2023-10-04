@@ -7,4 +7,6 @@ class IT2A:
 		msg = f"Student name: {self.name}\nSection: {self.section}\nSubject: {self.subject}"
 		print(msg)
 
-kim = IT2A("Kim")
+kim = IT2A("Kim", "IT2A", "PF101")
+gem = IT2A("Gem", "IT2A", "PF101")
+jiro = IT2A("Jiro", "IT2A", "PF101")
