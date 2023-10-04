@@ -6,6 +6,8 @@ class IT2A:
 		self.subject = subject
 		msg = f"Student name: {self.name}\nSection: {self.section}\nSubject: {self.subject}"
 		print(msg)
+	
+	def 
 
 kim = IT2A("Kim", "IT2A", "PF101")
 gem = IT2A("Gem", "IT2A", "PF101")
