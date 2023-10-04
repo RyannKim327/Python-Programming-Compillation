@@ -8,4 +8,7 @@ class Animal:
 
 class Dog(Animal):
 	def __init__(self, type, sound):
-		self.type = ""
+		self.type = "DOG"
+		self.sound = "Awrf"
+
+dog = Dog("Dog", "Awrf")
