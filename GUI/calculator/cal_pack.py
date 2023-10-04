@@ -60,78 +60,62 @@ def start():
 	root.title('Calculator')
 	root.config(bg=main_bg)
 	
-	wala_kaming = Label(root, text="Calculator", bg=main_bg, fg=main_fg, font=('Times New Roman', 25))
-	wala_kaming.pack(fill='x')
+	title = Label(root, text="Calculator", bg=main_bg, fg=main_fg, font=('Times New Roman', 25))
+	title.grid(row=0, column=0, columnspan=5)
 
 	e = Entry(root, bg=main_bg, fg=main_fg, font=('Times New Roman', 35), justify='right', borderwidth=5, relief="sunken")
-	e.pack(fill='x', padx=5, pady=5)
+	e.grid(row=1, column=0, columnspan=5)
 
-	row1 = Frame(root, bg=main_bg)
+	b1 = Button(root, bg=main_bg, fg=main_fg, text='1', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("1"))
+	b1.grid(row=2, column=0)
 
-	b1 = Button(row1, bg=main_bg, fg=main_fg, text='1', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("1"))
-	b1.pack(side='left', fill='both', expand=True, anchor='n', padx=pads, pady=pads)
+	b2 = Button(root, bg=main_bg, fg=main_fg, text='2', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("2"))
+	b2.grid(row=2, column=1)
 
-	b2 = Button(row1, bg=main_bg, fg=main_fg, text='2', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("2"))
-	b2.pack(side='left', fill='both', expand=True, anchor='n', padx=pads, pady=pads)
+	b3 = Button(root, bg=main_bg, fg=main_fg, text='3', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("3"))
+	b3.grid(row=2, column=2)
 
-	b3 = Button(row1, bg=main_bg, fg=main_fg, text='3', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("3"))
-	b3.pack(side='left', fill='both', expand=True, anchor='n', padx=pads, pady=pads)
+	ba = Button(root, bg=main_bg, fg=main_fg, text='+', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("+"))
+	ba.grid(row=2, column=3)
 
-	ba = Button(row1, bg=main_bg, fg=main_fg, text='+', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("+"))
-	ba.pack(side='left', fill='both', expand=True, anchor='n', padx=pads, pady=pads)
+	bs = Button(root, bg=main_bg, fg=main_fg, text='-', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("-"))
+	bs.grid(row=2, column=4)
 
-	bs = Button(row1, bg=main_bg, fg=main_fg, text='-', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("-"))
-	bs.pack(side='left', fill='both', expand=True, anchor='n', padx=pads, pady=pads)
+	b4 = Button(root, bg=main_bg, fg=main_fg, text='4', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("4"))
+	b4.grid(row=3, column=0)
 
-	row1.pack(fill='both', expand=True)
-	
-	row2 = Frame(root, bg=main_bg)
+	b5 = Button(root, bg=main_bg, fg=main_fg, text='5', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("5"))
+	b5.grid(row=3, column=1)
 
-	b4 = Button(row2, bg=main_bg, fg=main_fg, text='4', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("4"))
-	b4.pack(side='left', fill='both', expand=True, anchor='n', padx=pads, pady=pads)
+	b6 = Button(root, bg=main_bg, fg=main_fg, text='6', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("6"))
+	b6.grid(row=3, column=2)
 
-	b5 = Button(row2, bg=main_bg, fg=main_fg, text='5', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("5"))
-	b5.pack(side='left', fill='both', expand=True, anchor='n', padx=pads, pady=pads)
+	bm = Button(root, bg=main_bg, fg=main_fg, text='*', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("*"))
+	bm.grid(row=3, column=3)
 
-	b6 = Button(row2, bg=main_bg, fg=main_fg, text='6', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("6"))
-	b6.pack(side='left', fill='both', expand=True, anchor='n', padx=pads, pady=pads)
+	bq = Button(root, bg=main_bg, fg=main_fg, text='/', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("/"))
+	bq.grid(row=3, column=4)
 
-	bm = Button(row2, bg=main_bg, fg=main_fg, text='*', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("*"))
-	bm.pack(side='left', fill='both', expand=True, anchor='n', padx=pads, pady=pads)
+	be = Button(root, bg=main_bg, fg=main_fg, text='=', font=("Times New Roman", 30), borderwidth=5, relief="raised", command=sum_it_all)
+	be.grid(row=4, column=4, columnspan=2, rowspan=2)
 
-	bq = Button(row2, bg=main_bg, fg=main_fg, text='/', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("/"))
-	bq.pack(side='left', fill='both', expand=True, anchor='n', padx=pads, pady=pads)
+	b7 = Button(root, bg=main_bg, fg=main_fg, text='7', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("7"))
+	b7.grid(row=4, column=0)
 
-	row2.pack(fill='both', expand=True)
+	b8 = Button(root, bg=main_bg, fg=main_fg, text='8', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("8"))
+	b8.grid(row=4, column=1)
 
-	be = Button(root, bg=main_bg, fg=main_fg, text='=', font=("Times New Roman", 30), borderwidth=5, relief="raised", width=8, command=sum_it_all)
-	be.pack(side='right', fill='both', anchor='n', padx=pads, pady=pads)
+	b9 = Button(root, bg=main_bg, fg=main_fg, text='9', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("9"))
+	b9.grid(row=4, column=2)
 
-	row3 = Frame(root, bg=main_bg)
+	bd = Button(root, bg=main_bg, fg=main_fg, text='.', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("."))
+	bd.grid(row=5, column=0)
 
-	b7 = Button(row3, bg=main_bg, fg=main_fg, text='7', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("7"))
-	b7.pack(side='left', fill='both', expand=True, anchor='n', padx=pads, pady=pads)
+	b0 = Button(root, bg=main_bg, fg=main_fg, text='0', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("0"))
+	b0.grid(row=5, column=1)	
+	bc = Button(root, bg=main_bg, fg=main_fg, text='CE', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=delete_one)
+	bc.grid(row=5, column=2)
 
-	b8 = Button(row3, bg=main_bg, fg=main_fg, text='8', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("8"))
-	b8.pack(side='left', fill='both', expand=True, anchor='n', padx=pads, pady=pads)
-
-	b9 = Button(row3, bg=main_bg, fg=main_fg, text='9', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("9"))
-	b9.pack(side='left', fill='both', expand=True, anchor='n', padx=pads, pady=pads)
-
-	row3.pack(fill='both', expand=True)
-
-	row4 = Frame(root, bg=main_bg)
-
-	bd = Button(row4, bg=main_bg, fg=main_fg, text='.', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("."))
-	bd.pack(side='left', fill='both', expand=True, anchor='n', padx=pads, pady=pads)
-
-	b0 = Button(row4, bg=main_bg, fg=main_fg, text='0', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=lambda: add("0"))
-	b0.pack(side='left', fill='both', expand=True, anchor='n', padx=pads, pady=pads)
-	
-	bc = Button(row4, bg=main_bg, fg=main_fg, text='CE', font=("Times New Roman", 25), borderwidth=5, relief="raised", command=delete_one)
-	bc.pack(side='left', fill='both', expand=True, anchor='n', padx=pads, pady=pads)
-
-	row4.pack(fill='both', expand=True)
 
 	root.mainloop()
 

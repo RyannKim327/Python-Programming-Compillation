@@ -5,7 +5,7 @@ def login():
 	if usr.get() == "user" and password.get() == "admin":
 		messagebox.showinfo("Done", "Done")
 	else:
-		messagebox.showerror("Error", "Error", "Yes")
+		messagebox.showerror("Error", "Error")
 
 def showpass():
 	global _show

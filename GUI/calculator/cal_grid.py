@@ -1,6 +1,5 @@
 from tkinter import *
 
-
 def start():
 
 	pads = 5
