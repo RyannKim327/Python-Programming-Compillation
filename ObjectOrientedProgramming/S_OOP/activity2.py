@@ -29,7 +29,7 @@ kim.absent()
 kim.present()
 
 gem.absent()
-gem.absent(
+gem.absent()
 gem.absent()
 gem.present()
 
