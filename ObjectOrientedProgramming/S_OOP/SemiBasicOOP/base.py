@@ -3,7 +3,7 @@ class Animal:
 		self.type = type
 		self.sound = sound
 
-	def sound(self):
+	def itis(self):
 		print(f"The {self.type} sounds like {self.sound}")
 
 class Dog(Animal):
@@ -12,3 +12,4 @@ class Dog(Animal):
 		self.sound = "Awrf"
 
 dog = Dog("Dog", "Awrf")
+dog.itis()
