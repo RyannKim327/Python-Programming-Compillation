@@ -15,8 +15,13 @@ class IT2A:
 	
 	def totalGrade(self):
 		self.total_grade = self.attendance + 80
-		msg = f"Student {self.name} "
+		msg = f"Student {self.name}'s grade is {self.total_grade}"
+		print(msg)
 
 kim = IT2A("Kim", "IT2A", "PF101")
 gem = IT2A("Gem", "IT2A", "PF101")
 jiro = IT2A("Jiro", "IT2A", "PF101")
+
+kim.total_grade()
+gem.total_grade()
+jiro.total_grade()
