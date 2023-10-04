@@ -1,4 +1,4 @@
-import activity1_external
+import ObjectOrientedProgramming.S_OOP.BasicOOP.activity1_external as activity1_external
 
 activity1_external.getInfo("Ryann", "IT2A", "CC104")
 
