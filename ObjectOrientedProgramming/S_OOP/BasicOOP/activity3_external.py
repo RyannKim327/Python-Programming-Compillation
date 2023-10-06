@@ -21,3 +21,5 @@ class BankAccount:
 			else:
 				amt = 0
 
+	def checkBalance(self):
+		return self.initial_deposit

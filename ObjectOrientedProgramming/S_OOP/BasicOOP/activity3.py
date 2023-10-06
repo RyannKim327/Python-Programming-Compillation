@@ -14,3 +14,4 @@ while True:
 	if "y" in input("Do you want to continue? ").lower():
 		break
 
+print(users[0])
