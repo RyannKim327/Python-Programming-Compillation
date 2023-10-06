@@ -21,8 +21,10 @@ while True:
 	while not a in _:
 		a = input("Enter your choice: ")
 	
-	match(a):
-		case 
+	while a != "4":
+		match(a):
+			case "1":
+				user.
 
 	users.append(user)
 	if "n" in input("Do you want to continue? ").lower():
