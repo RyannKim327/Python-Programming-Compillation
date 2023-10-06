@@ -24,7 +24,10 @@ while True:
 	while a != "4":
 		match(a):
 			case "1":
-				user.
+				print(f"Your current balance is: {user.checkBalance()}")
+			case "2":
+				b = input("Enter you widrawal: ")
+				if b 
 
 	users.append(user)
 	if "n" in input("Do you want to continue? ").lower():
