@@ -1,5 +1,7 @@
 from activity3_external import BankAccount
 
+users = []
+
 while True:
 	name = input("Enter account holder: ")
 	val = input("Enter initial deposit: ")
@@ -8,7 +10,7 @@ while True:
 	else:
 		val = 0
 	user = BankAccount(name, val)
-
-	
+	users.append(user)
 	if "y" in input("Do you want to continue? ").lower():
 		break
+
