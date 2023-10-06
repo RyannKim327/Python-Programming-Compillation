@@ -27,7 +27,12 @@ while True:
 				print(f"Your current balance is: {user.checkBalance()}")
 			case "2":
 				b = input("Enter you widrawal: ")
-				if b 
+				while not b.isdigit():
+					b = input("Enter you widrawal: ")
+				
+				user.setWidraw(int(b))
+			case "3":
+				
 
 	users.append(user)
 	if "n" in input("Do you want to continue? ").lower():
