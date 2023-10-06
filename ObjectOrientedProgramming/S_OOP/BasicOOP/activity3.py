@@ -32,7 +32,11 @@ while True:
 				
 				user.setWidraw(int(b))
 			case "3":
+				b = input("Enter you widrawal: ")
+				while not b.isdigit():
+					b = input("Enter you widrawal: ")
 				
+				user.setDeposit()
 
 	users.append(user)
 	if "n" in input("Do you want to continue? ").lower():
