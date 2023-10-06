@@ -26,17 +26,17 @@ while True:
 			case "1":
 				print(f"Your current balance is: {user.checkBalance()}")
 			case "2":
-				b = input("Enter you widrawal: ")
+				b = input("Enter your widrawal: ")
 				while not b.isdigit():
-					b = input("Enter you widrawal: ")
+					b = input("Enter your widrawal: ")
 				
 				user.setWidraw(int(b))
 			case "3":
-				b = input("Enter you widrawal: ")
+				b = input("Enter your deposit: ")
 				while not b.isdigit():
-					b = input("Enter you widrawal: ")
+					b = input("Enter your deposit: ")
 				
-				user.setDeposit()
+				user.setDeposit(int(b))
 
 	users.append(user)
 	if "n" in input("Do you want to continue? ").lower():
