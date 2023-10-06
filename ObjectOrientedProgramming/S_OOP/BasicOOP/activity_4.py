@@ -15,5 +15,5 @@ class BankAccount:
 
 	def widraw(self, amt=0):
 		while 0 >= amt > 500:
-			val = input("Enter ")
+			val = input("Enter atleast 500 pesos of widrawa")
 
