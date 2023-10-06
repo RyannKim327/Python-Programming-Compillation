@@ -14,7 +14,6 @@ class BankAccount:
 			return 0
 
 	def widraw(self, amt=0):
-		while 0 >= amt >= 500:
-			self.initial_deposit -= amt
-		else:
+		while 0 >= amt > 500:
+			if amt
 
