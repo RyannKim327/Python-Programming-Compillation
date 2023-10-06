@@ -18,7 +18,12 @@ while True:
 		[3] Deposit
 		[4] Exit
 	""")
-	while not a
+	while not a in _:
+		a = input("Enter your choice: ")
+	
+	match(a):
+		case 
+
 	users.append(user)
 	if "n" in input("Do you want to continue? ").lower():
 		break
