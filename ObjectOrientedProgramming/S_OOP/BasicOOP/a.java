@@ -1,6 +1,4 @@
-import android.content.Context;
-
-class a{
+public class a{
 	String msg;
 	public a(String content){
 		// constructor
@@ -12,4 +10,5 @@ class a{
 	public String getMessage(){
 		return msg;
 	}
+	private
 }
