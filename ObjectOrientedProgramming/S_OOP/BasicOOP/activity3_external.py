@@ -9,9 +9,7 @@ class BankAccount:
 
 	def setDeposit(self, value="0"):
 		if value.isdigit():
-			return int(value)
-		else:
-			return 0
+			self.initial_deposit += int(value)
 
 	def setWidraw(self, amt=0):
 		while 0 >= amt > 500:
