@@ -37,6 +37,14 @@ while True:
 					b = input("Enter your deposit: ")
 				
 				user.setDeposit(int(b))
+		
+		a = input("""
+		Select your activity:
+		[1] Check Balance
+		[2] Widraw
+		[3] Deposit
+		[4] Exit
+	""")
 
 	users.append(user)
 	if "n" in input("Do you want to continue? ").lower():
