@@ -33,10 +33,7 @@ Select your activity:
 				user.setWidraw(int(b))
 			case "3":
 				b = input("Enter your deposit: ")
-				while not b.isdigit():
-					b = input("Enter your deposit: ")
-				
-				user.setDeposit(int(b))
+				user.setDeposit(b)
 		
 		a = input("""
  your activity:
