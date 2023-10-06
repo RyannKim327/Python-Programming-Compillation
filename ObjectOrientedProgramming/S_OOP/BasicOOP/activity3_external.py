@@ -15,7 +15,7 @@ class BankAccount:
 		if val.isdigit():
 			while 0 >= amt > 500:
 				val = input("Enter atleast 500 pesos of widrawal")
-					self.initial_deposit -= int(val)
+				self.initial_deposit -= int(val)
 		else:
 			amt = 0
 
