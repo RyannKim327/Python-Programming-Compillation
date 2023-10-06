@@ -5,10 +5,9 @@ class BankAccount:
 
 		while self.initial_deposit < 500:
 			value = input("Enter an initial deposit: ")
-			if value.isdigit():
-				self.setDeposit(value)
+			self.setDeposit(value)
 
-	def setDeposit(self, value=0):
+	def setDeposit(self, value="0"):
 		if value.isdigit():
 			return int(value)
 		else:
