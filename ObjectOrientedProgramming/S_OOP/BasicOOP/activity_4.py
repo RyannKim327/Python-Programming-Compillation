@@ -3,5 +3,5 @@ class BankAccount:
 		self.account_holder = account_holder
 		self.initial_deposit = initial_deposit
 
-	def setDeposit(self):
-		
+	def setDeposit(self, value=0):
+		if value.isdigit()
