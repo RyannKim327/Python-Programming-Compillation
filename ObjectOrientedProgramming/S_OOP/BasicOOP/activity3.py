@@ -12,12 +12,12 @@ while True:
 	user = BankAccount(name, val)
 	_ = ["1", "2", "3", "4"]
 	a = input("""
-		Select your activity:
-		[1] Check Balance
-		[2] Widraw
-		[3] Deposit
-		[4] Exit
-	""")
+Select your activity:
+[1] Check Balance
+[2] Widraw
+[3] Deposit
+[4] Exit
+""")
 	while not a in _:
 		a = input("Enter your choice: ")
 	
@@ -39,12 +39,12 @@ while True:
 				user.setDeposit(int(b))
 		
 		a = input("""
-			Select your activity:
-			[1] Check Balance
-			[2] Widraw
-			[3] Deposit
-			[4] Exit
-		""")
+ your activity:
+1] Check Balance
+2] Widraw
+3] Deposit
+4] Exit
+""")
 		while not a in _:
 			a = input("Enter your choice: ")
 
