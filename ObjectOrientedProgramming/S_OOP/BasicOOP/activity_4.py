@@ -15,5 +15,5 @@ class BankAccount:
 
 	def widraw(self, amt=0):
 		while 0 >= amt > 500:
-			if amt
+			val = input("Enter ")
 
