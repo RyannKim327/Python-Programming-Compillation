@@ -10,15 +10,15 @@ while True:
 	else:
 		val = 0
 	user = BankAccount(name, val)
-	_ = ["1", "2", "3"]
+	_ = ["1", "2", "3", "4"]
 	a = input("""
 		Select your activity:
-	   [1] Check Balance
-	   [2] Widraw
-	   [3] Deposit
-		   [4]
+		[1] Check Balance
+		[2] Widraw
+		[3] Deposit
+		[4] Exit
 	""")
-	while 
+	while not a
 	users.append(user)
 	if "n" in input("Do you want to continue? ").lower():
 		break
