@@ -12,10 +12,9 @@ class BankAccount:
 			self.initial_deposit += int(value)
 
 	def setWidraw(self, amt=0):
-		if val.isdigit():
-			while 0 >= amt > 500:
-				val = input("Enter atleast 500 pesos of widrawal")
-				self.initial_deposit -= int(val)
+		while 0 >= amt > 500:
+			val = input("Enter atleast 500 pesos of widrawal")
+			self.initial_deposit -= int(val)
 		else:
 			amt = 0
 
