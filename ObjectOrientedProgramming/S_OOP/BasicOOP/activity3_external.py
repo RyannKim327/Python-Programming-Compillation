@@ -17,7 +17,7 @@ class BankAccount:
 				val = input("Enter atleast 500 pesos of widrawal")
 				while not val.isdigit():
 					val = input("Enter atleast 500 pesos of widrawal")
-				self.initial_deposit -= int(val)
+			self.initial_deposit -= int(val)
 		else:
 			val = 0
 
