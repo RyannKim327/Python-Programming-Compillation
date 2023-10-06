@@ -27,10 +27,7 @@ Select your activity:
 				print(f"Your current balance is: {user.checkBalance()}")
 			case "2":
 				b = input("Enter your widrawal: ")
-				while not b.isdigit():
-					b = input("Enter your widrawal: ")
-				
-				user.setWidraw(int(b))
+				user.setWidraw(b)
 			case "3":
 				b = input("Enter your deposit: ")
 				user.setDeposit(b)
