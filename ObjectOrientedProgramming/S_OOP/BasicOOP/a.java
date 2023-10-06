@@ -1,9 +1,12 @@
 import android.content.Context;
 
 class a{
-	
-	public a(Context a){
+	String msg;
+	public a(String content){
 		// constructor
+		msg = content;
 	}
-
+	public String getMessage(){
+		return msg;
+	}
 }
