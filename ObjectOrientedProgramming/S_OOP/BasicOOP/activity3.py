@@ -7,7 +7,6 @@ while True:
 		val = int(val)
 	else:
 		val = 0
-	
-	
+	user = BankAccount(name, val)
 	if "y" in input("Do you want to continue? ").lower():
 		break
