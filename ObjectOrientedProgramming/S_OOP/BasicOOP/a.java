@@ -6,6 +6,9 @@ class a{
 		// constructor
 		msg = content;
 	}
+	public void setMessage(String msg){
+		this.msg = msg;
+	}
 	public String getMessage(){
 		return msg;
 	}
