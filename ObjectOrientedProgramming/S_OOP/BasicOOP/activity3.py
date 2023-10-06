@@ -10,7 +10,11 @@ while True:
 	else:
 		val = 0
 	user = BankAccount(name, val)
-	
+	print("""
+		Select your activity:
+	   [1] Check Balance
+	   [2]
+	""")
 	users.append(user)
 	if "n" in input("Do you want to continue? ").lower():
 		break
