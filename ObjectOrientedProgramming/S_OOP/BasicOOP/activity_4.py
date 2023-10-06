@@ -13,7 +13,11 @@ class BankAccount:
 		else:
 			return 0
 
-	def widraw(self, amt=0):
+	def setWidraw(self, amt=0):
 		while 0 >= amt > 500:
-			val = input("Enter atleast 500 pesos of widrawa")
+			val = input("Enter atleast 500 pesos of widrawal")
+			if val.isdigit():
+				amt = int(val)
+			else:
+				amt = 0
 
