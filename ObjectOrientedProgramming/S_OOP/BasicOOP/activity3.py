@@ -22,7 +22,10 @@ def pick(new_user):
 			checkBalance(new_user)
 		case "2":
 			deposit(new_user)
-		case "3"
+		case "3":
+			widraw(new_user)
+		case _:
+			cont =
 
 def createAccount():
 	global users
