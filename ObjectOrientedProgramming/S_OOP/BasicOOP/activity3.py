@@ -6,7 +6,8 @@ def checkBalance(new_user):
 	print(f"Your current balance is {new_user.checkBalance}")
 
 def deposit(new_user):
-	new_user.setDeposit()
+	balance = in
+	new_user.setDeposit(int(balance))
 	pass
 
 def widraw(new_user):
