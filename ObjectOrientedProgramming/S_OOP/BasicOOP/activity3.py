@@ -3,7 +3,7 @@ from activity3_external import BankAccount
 users = []
 
 def checkBalance(new_user):
-	print(f"Your current balance is {new_user.checkBalance()}")
+	print(f"Your current balance is ${new_user.checkBalance()}")
 
 def deposit(new_user):
 	balance = input("Enter amount you want to deposit: ")
