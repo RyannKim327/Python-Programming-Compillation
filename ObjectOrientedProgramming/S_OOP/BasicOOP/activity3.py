@@ -16,7 +16,7 @@ def widraw(new_user):
 	balance = input("Enter amount you want to deposit: ")
 	while not balance.isdigit():
 		balance = input("Enter amount you want to deposit: ")
-	new_user.setWidraw(int(balance))
+	new_user.setWidraw(balance)
 
 def pick(new_user):
 	while True:
