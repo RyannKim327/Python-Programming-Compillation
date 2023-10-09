@@ -3,7 +3,8 @@ from activity3_external import BankAccount
 users = []
 
 def createAccount():
-	
+	a = ["1", "2", "3", "4"]
+	pass
 
 def start():
 	while True:
