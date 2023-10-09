@@ -17,11 +17,12 @@ def widraw(new_user):
 	while not balance.isdigit():
 		balance = input("Enter amount you want to deposit: ")
 	new_user.setWidraw(balance)
+	checkBalance(new_user)
 
 def pick(new_user):
 	while True:
 		a = ["1", "2", "3", "4"]
-		choice = input("Menu:\n[1]Check Balance\n[2]Deposit\n[3]Widraw\nEnter your choice:")
+		choice = input("Menu:\n[1]Check Balance\n[2]Deposit\n[3]Widraw\n[4] Exit\nEnter your choice:")
 		while not choice in a:
 			choice = input("Enter your choice: ")
 		
