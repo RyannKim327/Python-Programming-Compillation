@@ -5,6 +5,10 @@ users = []
 def createAccount():
 	name = input("Enter holder name: ")
 	balance = input("Enter your balance (500 Minimum): ")
+	while not balance.isdigit():
+		balance = input("Enter your balance (500 Minimum): ")
+	while int(balance) < 500:
+		
 	a = ["1", "2", "3", "4"]
 	choice = input("Menu:\n[1]Check Balance\n[2]Deposit\n[3]Widraw\nEnter your choice:")
 
