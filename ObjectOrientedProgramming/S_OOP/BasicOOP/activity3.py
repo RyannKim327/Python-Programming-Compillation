@@ -38,7 +38,6 @@ def pick(new_user):
 		
 
 def createAccount():
-	global users
 	name = input("Enter holder name: ")
 	balance = input("Enter your balance (500 Minimum): ")
 	while not balance.isdigit():
@@ -49,6 +48,7 @@ def createAccount():
 	new_user = BankAccount(name, int(balance))
 	users.append(new_user)
 	pick(new_user)
+	users.append(new_user)
 
 def start():
 	while True:
