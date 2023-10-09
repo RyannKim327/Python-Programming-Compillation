@@ -3,6 +3,7 @@ from activity3_external import BankAccount
 users = []
 
 def createAccount():
+	global users
 	name = input("Enter holder name: ")
 	balance = input("Enter your balance (500 Minimum): ")
 	while not balance.isdigit():
@@ -11,9 +12,11 @@ def createAccount():
 		balance = input("Enter your balance (500 Minimum): ")
 
 	new_user = BankAccount(name, int(balance))
-
+	users.append(new_user)
 	a = ["1", "2", "3", "4"]
 	choice = input("Menu:\n[1]Check Balance\n[2]Deposit\n[3]Widraw\nEnter your choice:")
+
+	
 
 	pass
 
