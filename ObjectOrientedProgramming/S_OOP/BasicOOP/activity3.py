@@ -33,12 +33,11 @@ Select your activity:
 				user.setDeposit(b)
 		
 		a = input("""
-Enter your activity:
 1] Check Balance
 2] Widraw
 3] Deposit
 4] Exit
-""")
+Enter your choice: """)
 		while not a in _:
 			a = input("Enter your choice: ")
 
