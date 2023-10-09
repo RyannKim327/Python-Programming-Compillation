@@ -2,6 +2,15 @@ from activity3_external import BankAccount
 
 users = []
 
+def checkBalance():
+	pass
+
+def deposit():
+	pass
+
+def widraw():
+	pass
+
 def pick(new_user):
 	a = ["1", "2", "3", "4"]
 	choice = input("Menu:\n[1]Check Balance\n[2]Deposit\n[3]Widraw\nEnter your choice:")
@@ -10,7 +19,7 @@ def pick(new_user):
 	
 	match(choice):
 		case "1":
-			
+			checkBalance()
 
 def createAccount():
 	global users
