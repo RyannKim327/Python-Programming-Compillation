@@ -4,6 +4,7 @@ users = []
 
 def createAccount():
 	a = ["1", "2", "3", "4"]
+	choice = input("Menu:\n[1]Check Balance\n[2]Deposit\n[3]Widraw0")
 	pass
 
 def start():
