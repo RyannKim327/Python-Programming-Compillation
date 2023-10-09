@@ -13,8 +13,10 @@ def deposit(new_user):
 	checkBalance(new_user)
 
 def widraw(new_user):
-	new_user.setWidraw()
-	pass
+	balance = input("Enter amount you want to deposit: ")
+	while not balance.isdigit():
+		balance = input("Enter amount you want to deposit: ")
+	new_user.setWidraw(int(balance))
 
 def pick(new_user):
 	while True:
