@@ -3,28 +3,32 @@ from activity3_external import BankAccount
 users = []
 
 def checkBalance(new_user):
-	new_user
-	pass
+	print(f"Your current balance is {new_user.checkBalance}")
 
 def deposit(new_user):
+	new_user.setDeposit()
 	pass
 
 def widraw(new_user):
 	pass
 
 def pick(new_user):
-	a = ["1", "2", "3", "4"]
-	choice = input("Menu:\n[1]Check Balance\n[2]Deposit\n[3]Widraw\nEnter your choice:")
-	while not choice in a:
-		choice = input("Enter your choice: ")
-	
-	match(choice):
-		case "1":
-			checkBalance(new_user)
-		case "2":
-			deposit(new_user)
-		case "3":
-			widraw(new_user)
+	while True:
+		a = ["1", "2", "3", "4"]
+		choice = input("Menu:\n[1]Check Balance\n[2]Deposit\n[3]Widraw\nEnter your choice:")
+		while not choice in a:
+			choice = input("Enter your choice: ")
+		
+		match(choice):
+			case "1":
+				checkBalance(new_user)
+			case "2":
+				deposit(new_user)
+			case "3":
+				widraw(new_user)
+			case _:
+				break
+		
 
 def createAccount():
 	global users
