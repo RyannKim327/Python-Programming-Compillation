@@ -59,11 +59,11 @@ def start():
 		if choice == "1":
 			createAccount()
 			cont = input("Would you like to continue? ").lower()
-			if cont.startswith("y"):
+			if cont.startswith("n"):
 				break
 		else:
 			print("Thank you")
-			breaj=k
+			break
 
 if __name__ == "__main__":
 	start()
