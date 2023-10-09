@@ -3,7 +3,7 @@ from activity3_external import BankAccount
 users = []
 
 def checkBalance(new_user):
-	print(f"Your current balance is {new_user.checkBalance}")
+	print(f"Your current balance is {new_user.checkBalance()}")
 
 def deposit(new_user):
 	balance = input("Enter amount you want to deposit: ")
@@ -55,7 +55,7 @@ def start():
 		choice = input("Menu\n[1] Create account\n[2] Exit")
 		while not choice in a:
 			choice = input("Menu\n[1] Create account\n[2] Exit")
-		if a == "1":
+		if choice == "1":
 			createAccount()
 			cont = input("Would you like to continue? ").lower()
 			if cont.startswith("y"):
