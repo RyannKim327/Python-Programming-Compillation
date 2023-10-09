@@ -33,7 +33,7 @@ Select your activity:
 				user.setDeposit(b)
 		
 		a = input("""
- your activity:
+Enter your activity:
 1] Check Balance
 2] Widraw
 3] Deposit
