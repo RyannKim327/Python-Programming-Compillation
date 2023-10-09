@@ -9,7 +9,7 @@ def deposit(new_user):
 	balance = input("Enter amount you want to deposit: ")
 	while not balance.isdigit():
 		balance = input("Enter amount you want to deposit: ")
-	new_user.setDeposit(int(balance))
+	new_user.setDeposit(balance)
 	checkBalance(new_user)
 
 def widraw(new_user):
@@ -52,9 +52,9 @@ def createAccount():
 def start():
 	while True:
 		a = ["1", "2"]
-		choice = input("Menu\n[1] Create account\n[2] Exit")
+		choice = input("Menu\n[1] Create account\n[2] Exit\nEnter your choice: ")
 		while not choice in a:
-			choice = input("Menu\n[1] Create account\n[2] Exit")
+			choice = input("Menu\n[1] Create account\n[2] Exit\nEnter your choice: ")
 		if choice == "1":
 			createAccount()
 			cont = input("Would you like to continue? ").lower()
