@@ -1,6 +1,11 @@
 from activity3_external import BankAccount
 
-users = {}
+users = []
+
+def pick():
+	a = ["1", "2", "3", "4"]
+	choice = input("Menu:\n[1]Check Balance\n[2]Deposit\n[3]Widraw\nEnter your choice:")
+	while 
 
 def createAccount():
 	global users
@@ -12,11 +17,9 @@ def createAccount():
 		balance = input("Enter your balance (500 Minimum): ")
 
 	new_user = BankAccount(name, int(balance))
-	users[name.lower()] = new_user
-	a = ["1", "2", "3", "4"]
-	choice = input("Menu:\n[1]Check Balance\n[2]Deposit\n[3]Widraw\nEnter your choice:")
-
-
+	users.append(new_user)
+	
+	
 
 	pass
 
