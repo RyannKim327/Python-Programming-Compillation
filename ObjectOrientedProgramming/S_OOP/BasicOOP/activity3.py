@@ -46,9 +46,7 @@ def createAccount():
 		balance = input("Enter your balance (500 Minimum): ")
 
 	new_user = BankAccount(name, int(balance))
-	users.append(new_user)
 	pick(new_user)
-	users.append(new_user)
 
 def start():
 	while True:
