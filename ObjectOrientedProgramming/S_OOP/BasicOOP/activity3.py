@@ -22,7 +22,7 @@ def widraw(new_user):
 def pick(new_user):
 	while True:
 		a = ["1", "2", "3", "4"]
-		choice = input("Menu:\n[1]Check Balance\n[2]Deposit\n[3]Widraw\n[4] Exit\nEnter your choice:")
+		choice = input("Menu:\n[1]Check Balance\n[2]Deposit\n[3]Widraw\n[4]Exit\nEnter your choice:")
 		while not choice in a:
 			choice = input("Enter your choice: ")
 		
@@ -63,6 +63,7 @@ def start():
 				break
 		else:
 			print("Thank you")
+			breaj=k
 
 if __name__ == "__main__":
 	start()
