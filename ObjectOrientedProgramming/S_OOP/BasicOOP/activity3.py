@@ -24,8 +24,6 @@ def pick(new_user):
 			deposit(new_user)
 		case "3":
 			widraw(new_user)
-		case _:
-			cont =
 
 def createAccount():
 	global users
@@ -49,6 +47,7 @@ def start():
 			choice = input("Menu\n[1] Create account\n[2] Exit")
 		if a == "1":
 			createAccount()
+			cont = 
 		else:
 			print("Thank you")
 
