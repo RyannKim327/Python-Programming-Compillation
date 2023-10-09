@@ -47,7 +47,8 @@ def start():
 			choice = input("Menu\n[1] Create account\n[2] Exit")
 		if a == "1":
 			createAccount()
-			cont = 
+			cont = input("Would you like to continue? ").lower()
+			while cont.s
 		else:
 			print("Thank you")
 
