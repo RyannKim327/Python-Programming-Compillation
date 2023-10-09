@@ -6,11 +6,14 @@ def checkBalance(new_user):
 	print(f"Your current balance is {new_user.checkBalance}")
 
 def deposit(new_user):
-	balance = in
+	balance = input("Enter amount you want to deposit: ")
+	while not balance.isdigit():
+		balance = input("Enter amount you want to deposit: ")
 	new_user.setDeposit(int(balance))
-	pass
+	checkBalance(new_user)
 
 def widraw(new_user):
+	new_user.setWidraw()
 	pass
 
 def pick(new_user):
