@@ -8,7 +8,10 @@ def createAccount():
 	while not balance.isdigit():
 		balance = input("Enter your balance (500 Minimum): ")
 	while int(balance) < 500:
-		
+		balance = input("Enter your balance (500 Minimum): ")
+
+	new_user = BankAccount(name, int(balance))
+
 	a = ["1", "2", "3", "4"]
 	choice = input("Menu:\n[1]Check Balance\n[2]Deposit\n[3]Widraw\nEnter your choice:")
 
