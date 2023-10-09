@@ -35,7 +35,7 @@ def pick(new_user):
 				widraw(new_user)
 			case _:
 				break
-	
+	users.append(new_user)
 		
 
 def createAccount():
