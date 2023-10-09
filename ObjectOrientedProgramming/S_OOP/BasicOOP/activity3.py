@@ -3,4 +3,4 @@ from activity3_external import BankAccount
 users = []
 
 while True:
-	choice = input("Menu")
+	choice = input("Menu\n[1] Create account\n[2] Exit")
