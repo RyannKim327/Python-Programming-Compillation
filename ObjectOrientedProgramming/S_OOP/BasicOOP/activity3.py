@@ -3,6 +3,7 @@ from activity3_external import BankAccount
 users = []
 
 def checkBalance(new_user):
+	new_user
 	pass
 
 def deposit(new_user):
@@ -37,7 +38,6 @@ def createAccount():
 	new_user = BankAccount(name, int(balance))
 	users.append(new_user)
 	pick(new_user)
-	pass
 
 def start():
 	while True:
@@ -48,7 +48,8 @@ def start():
 		if a == "1":
 			createAccount()
 			cont = input("Would you like to continue? ").lower()
-			while cont.s
+			if cont.startswith("y"):
+				break
 		else:
 			print("Thank you")
 
