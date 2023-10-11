@@ -19,7 +19,7 @@ def start():
 				"studentName": name
 			})
 
-			print(student.getStudentID())
+			print(f"Welcome to Library Mr/Ms. {student.getStudentName()}")
 
 			students.append(student)
 
