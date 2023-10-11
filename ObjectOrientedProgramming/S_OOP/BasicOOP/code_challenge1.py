@@ -12,7 +12,10 @@ def enterBook(librarian):
 	author = input("Enter the book author: ")
 	publisher = input("Enter the publisher name: ")
 	date = input("Enter the publishing date: ")
-	book = Books()
+	book = Books({
+		"ID": id,
+		"title"
+	})
 	pass
 
 def start():
