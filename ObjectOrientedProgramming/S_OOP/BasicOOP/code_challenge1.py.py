@@ -6,10 +6,12 @@ librarians = []
 books = []
 
 def enterBook(librarian):
-	books
+	global books
+
 	pass
 
 def start():
+	global books, librarians, students
 	choice = input("Login as:\n[1] Student\n[2] Librarian\n[3] Exit\nEnter your choice: ")
 	_a_ = ["1", "2", "3"]
 
