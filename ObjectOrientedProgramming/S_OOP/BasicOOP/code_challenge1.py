@@ -59,8 +59,6 @@ def start():
 						if attempt == 0:
 							input("Ano kaya pa? ")
 						password = getpass.getpass("Enter your password: ")
-
-
 			else:
 				password = getpass.getpass("Enter your password: ")
 				password1 = getpass.getpass("Verify your password: ")
