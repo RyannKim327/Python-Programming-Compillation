@@ -53,9 +53,13 @@ def start():
 			name = input("Enter your name: ")
 			for lib in librarians:
 				if name == lib.getName():
+					attempt = 5
 					password = getpass.getpass("Enter your password: ")
 					while password != lib.getPassword():
-						
+						if attempt 
+						password = getpass.getpass("Enter your password: ")
+
+
 			else:
 				password = getpass.getpass("Enter your password: ")
 				password1 = getpass.getpass("Verify your password: ")
