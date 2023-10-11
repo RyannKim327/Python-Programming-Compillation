@@ -2,7 +2,11 @@ class Student:
 	def __init__(self, student: dict):
 		self._id_ = student['ID']
 		self._student_ = student['studentName']
+	
+	def getStudentName(self):
+		print(self._student_)
 
+	def getStudentID(self)
 
 class Librarian:
 	def __init__(self, librarian: dict):
