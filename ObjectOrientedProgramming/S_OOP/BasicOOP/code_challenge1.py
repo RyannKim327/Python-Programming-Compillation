@@ -56,7 +56,8 @@ def start():
 					attempt = 5
 					password = getpass.getpass("Enter your password: ")
 					while password != lib.getPassword():
-						if attempt 
+						if attempt == 0:
+							input("Ano kaya pa? ")
 						password = getpass.getpass("Enter your password: ")
 
 
