@@ -16,4 +16,6 @@ class Books:
 		self._id_ = book['ID']
 		self._name_ = book['title']
 		self._author_ = book['author']
+		self._publisher_ = book['publisher']
+		self._date_ = book['date']
 		pass
