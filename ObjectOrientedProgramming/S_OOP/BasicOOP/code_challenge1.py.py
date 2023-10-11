@@ -20,6 +20,7 @@ def start():
 			})
 
 			print(f"Welcome to Library Mr/Ms. {student.getStudentName()}")
+			another_choice = input("")
 
 			students.append(student)
 
