@@ -1,4 +1,5 @@
 from code_challenge1_external import *
+import getpass
 
 students= []
 librarians = []
@@ -25,7 +26,9 @@ def start():
 
 			students.append(student)
 		case "2":
-			id = len(librarians)
+			id = len(librarians) + 1
+			name = input("Enter your name: ")
+			password = getpass.getpass()
 			librarian = Librarian()
 		case _:
 			print("Thank you...")
