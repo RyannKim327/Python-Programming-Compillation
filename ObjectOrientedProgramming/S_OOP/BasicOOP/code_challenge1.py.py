@@ -14,7 +14,11 @@ def start():
 		case "1":
 			id = len(student)
 			name = input("Enter your name: ")
-			student = Student()
+			student = Student({
+				"ID": id,
+				"studentName": name
+			})
+			
 
 if __name__ == "__main__":
 	start()
