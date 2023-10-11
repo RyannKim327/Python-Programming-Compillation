@@ -14,5 +14,6 @@ class Librarian:
 class Books:
 	def __init__(self, book: dict):
 		self._id_ = book['ID']
-		self._name_ 
+		self._name_ = book['title']
+		self._author_ = book['author']
 		pass
