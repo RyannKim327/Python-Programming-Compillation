@@ -19,7 +19,7 @@ class Librarian:
 		return self._name_
 	
 	def getPassword(self):
-		return sl
+		return self._password_
 
 class Books:
 	def __init__(self, book: dict):
