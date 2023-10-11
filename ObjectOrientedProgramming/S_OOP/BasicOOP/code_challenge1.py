@@ -62,7 +62,7 @@ def start():
 			else:
 				password = getpass.getpass("Enter your password: ")
 				password1 = getpass.getpass("Verify your password: ")
-				while password == password1:
+				while password != password1:
 					password = getpass.getpass("Enter your password: ")
 					password1 = getpass.getpass("Verify your password: ")
 
