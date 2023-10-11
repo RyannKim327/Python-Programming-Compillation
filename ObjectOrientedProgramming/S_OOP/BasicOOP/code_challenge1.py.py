@@ -25,6 +25,7 @@ def start():
 
 			students.append(student)
 		case "2":
+			id = len(librarians)
 			librarian = Librarian()
 		case _:
 			print("Thank you...")
