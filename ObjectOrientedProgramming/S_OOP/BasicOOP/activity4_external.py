@@ -1,3 +1,3 @@
 class Student:
 	def __init__(self, student: dict):
-		sel
+		self._student_ = student['studentName']
