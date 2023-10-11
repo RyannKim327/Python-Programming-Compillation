@@ -4,11 +4,11 @@ students= []
 librarian = []
 
 def start():
-	choice = input("Login as:\n[1] Student\n[2] Librarian\n[3] Exit\nEnter your choice")
+	choice = input("Login as:\n[1] Student\n[2] Librarian\n[3] Exit\nEnter your choice: ")
 	_a_ = ["1", "2", "3"]
 
 	while not choice in _a_:
-		choice = input("Login as:\n[1] Student\n[2] Librarian\n[3] Exit\nEnter your choice")
+		choice = input("Login as:\n[1] Student\n[2] Librarian\n[3] Exit\nEnter your choice: ")
 	
 	match choice:
 		case "1":
