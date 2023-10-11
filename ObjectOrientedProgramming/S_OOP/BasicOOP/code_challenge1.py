@@ -29,7 +29,12 @@ def start():
 			name = input("Enter your name: ")
 			for i in students:
 				if name == i.getStudentName():
-					
+					print(f"Welcome back to Library Mr/Ms. {i.getStudentName()}")
+					if len(books) <= 0:
+						print("There's no books yet.")
+					else:
+						another_choice = input("Enter a book you want to borrow: ")
+
 			student = Student({
 				"ID": id,
 				"studentName": name
