@@ -23,4 +23,5 @@ class Books:
 		self._author_ = book['author']
 		self._publisher_ = book['publisher']
 		self._date_ = book['date']
-		pass
+	
+	def 

@@ -2,6 +2,7 @@ from code_challenge1_external import *
 
 students= []
 librarian = []
+books 
 
 def start():
 	choice = input("Login as:\n[1] Student\n[2] Librarian\n[3] Exit\nEnter your choice: ")
@@ -20,7 +21,7 @@ def start():
 			})
 
 			print(f"Welcome to Library Mr/Ms. {student.getStudentName()}")
-			another_choice = input("")
+			another_choice = input("Enter a book you want to borrow")
 
 			students.append(student)
 
