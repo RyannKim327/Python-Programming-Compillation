@@ -5,6 +5,10 @@ students= []
 librarians = []
 books = []
 
+def enterBook(librarian):
+	books
+	pass
+
 def start():
 	choice = input("Login as:\n[1] Student\n[2] Librarian\n[3] Exit\nEnter your choice: ")
 	_a_ = ["1", "2", "3"]
@@ -43,6 +47,8 @@ def start():
 				"name": name,
 				"password": password
 			})
+
+			enterBook(librarian)
 
 			librarians.append(librarian)
 
