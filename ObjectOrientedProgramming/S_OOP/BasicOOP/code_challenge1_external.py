@@ -25,9 +25,9 @@ class Books:
 	def __init__(self, book: dict):
 		self.__id__ = book['ID']
 		self.__name__ = book['title']
-		self._author_ = book['author']
-		self._publisher_ = book['publisher']
-		self._date_ = book['date']
+		self.__author__ = book['author']
+		self.__publisher__ = book['publisher']
+		self.__date__ = book['date']
 	
 	def  getBookName(self):
 		return self.__name__
