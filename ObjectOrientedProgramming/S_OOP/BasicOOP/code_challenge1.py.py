@@ -2,7 +2,7 @@ from code_challenge1_external import *
 
 students= []
 librarian = []
-books 
+books = []
 
 def start():
 	choice = input("Login as:\n[1] Student\n[2] Librarian\n[3] Exit\nEnter your choice: ")
@@ -24,7 +24,11 @@ def start():
 			another_choice = input("Enter a book you want to borrow")
 
 			students.append(student)
-
+		case "2":
+		
+		case _:
+			print("Thank you")
+			break
 
 if __name__ == "__main__":
 	start()
