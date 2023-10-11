@@ -1,5 +1,7 @@
 from code_challenge1_external import *
 
+student = []
+librarian = []
 
 def start():
 	choice = input("Login as:\n[1] Student\n[2] Librarian\n[3] Exit")
@@ -10,7 +12,8 @@ def start():
 	
 	match choice:
 		case "1":
-			name = 
+			id = len(student)
+			name = input("Enter your name: ")
 			student = Student()
 
 if __name__ == "__main__":
