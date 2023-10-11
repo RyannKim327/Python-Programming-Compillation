@@ -6,6 +6,9 @@ class Student:
 
 class Librarian:
 	def __init__(self, librarian: dict):
+		self._id_ = librarian['ID']
+		self._name_ = librarian['name']
+		self._password_ = librarian['password']
 		pass
 
 class Books:
