@@ -12,5 +12,7 @@ class Librarian:
 		pass
 
 class Books:
-	def __init__(self):
+	def __init__(self, book: dict):
+		self._id_ = book['ID']
+		self._name_ 
 		pass
