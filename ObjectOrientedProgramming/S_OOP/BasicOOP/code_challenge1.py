@@ -57,7 +57,7 @@ def start():
 		case "2":
 			id = len(librarians) + 1
 			name = input("Enter your name: ")
-			it = False
+			it = True
 			for lib in librarians:
 				if name == lib.getName():
 					attempt = 5
@@ -67,6 +67,7 @@ def start():
 							input("Ano kaya pa? ")
 						password = getpass.getpass("Enter your password: ")
 						attempt -= 1
+					it = False
 			if it:
 				password = getpass.getpass("Enter your password: ")
 				password1 = getpass.getpass("Verify your password: ")
