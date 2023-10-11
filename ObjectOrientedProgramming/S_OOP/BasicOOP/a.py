@@ -7,3 +7,9 @@ elif a == 2:
 else:
 	pass
 
+match a:
+	case 1:
+		pass
+	case 2:
+		pass
+	case
