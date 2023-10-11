@@ -22,6 +22,7 @@ def start():
 			})
 
 			print(f"Welcome to Library Mr/Ms. {student.getStudentName()}")
+			if len(books)
 			another_choice = input("Enter a book you want to borrow: ")
 
 			students.append(student)
@@ -34,11 +35,14 @@ def start():
 			while password == password1:
 				password = getpass.getpass("Enter your password: ")
 				password1 = getpass.getpass("Verify your password: ")
+
 			librarian = Librarian({
 				"ID": id,
 				"name": name,
 				"password": password
 			})
+
+			librarians.append(librarian)
 
 		case _:
 			print("Thank you...")
