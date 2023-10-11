@@ -67,7 +67,7 @@ def start():
 							input("Ano kaya pa? ")
 						password = getpass.getpass("Enter your password: ")
 						attempt -= 1
-			it:
+			if it:
 				password = getpass.getpass("Enter your password: ")
 				password1 = getpass.getpass("Verify your password: ")
 				while password != password1:
