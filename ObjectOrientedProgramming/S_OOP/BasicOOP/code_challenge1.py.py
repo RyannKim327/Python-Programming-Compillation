@@ -7,7 +7,9 @@ books = []
 
 def enterBook(librarian):
 	global books
-	
+	id = len(books) + 1
+	name = input("Enter you")
+	book = Books()
 	pass
 
 def start():
