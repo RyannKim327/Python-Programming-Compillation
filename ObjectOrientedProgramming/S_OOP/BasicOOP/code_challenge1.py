@@ -14,7 +14,10 @@ def enterBook(librarian):
 	date = input("Enter the publishing date: ")
 	book = Books({
 		"ID": id,
-		"title"
+		"title": name,
+		"author": author,
+		"publisher": publisher,
+		"date": date
 	})
 	pass
 
@@ -81,6 +84,7 @@ def start():
 
 		case _:
 			print("Thank you...")
+	start()
 
 if __name__ == "__main__":
 	start()
