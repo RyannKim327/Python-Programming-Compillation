@@ -22,7 +22,9 @@ def start():
 			})
 
 			print(f"Welcome to Library Mr/Ms. {student.getStudentName()}")
-			if len(books)
+			if len(books) <= 0:
+				print("There's no books yet.")
+				return
 			another_choice = input("Enter a book you want to borrow: ")
 
 			students.append(student)
