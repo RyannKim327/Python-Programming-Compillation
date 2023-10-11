@@ -28,8 +28,11 @@ def start():
 		case "2":
 			id = len(librarians) + 1
 			name = input("Enter your name: ")
-			password = getpass.getpass()
-			librarian = Librarian()
+			password = getpass.getpass("Enter your password")
+			password1 = getpass.getpass("Verify your password")
+			if password == password1:
+				librarian = Librarian()
+			
 		case _:
 			print("Thank you...")
 			break
