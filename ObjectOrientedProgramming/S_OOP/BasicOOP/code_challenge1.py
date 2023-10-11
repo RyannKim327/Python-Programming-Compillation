@@ -27,6 +27,7 @@ def start():
 		case "1":
 			id = len(students) + 1
 			name = input("Enter your name: ")
+			for i in stu
 			student = Student({
 				"ID": id,
 				"studentName": name
