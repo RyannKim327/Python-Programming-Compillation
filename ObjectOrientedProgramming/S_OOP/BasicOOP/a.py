@@ -12,4 +12,6 @@ match a:
 		pass
 	case 2:
 		pass
-	case
+	case _:
+		pass
+	
