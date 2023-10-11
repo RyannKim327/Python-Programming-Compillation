@@ -14,7 +14,9 @@ class Librarian:
 		self._id_ = librarian['ID']
 		self._name_ = librarian['name']
 		self._password_ = librarian['password']
-		pass
+
+	def getName(self):
+		return self._name_
 
 class Books:
 	def __init__(self, book: dict):

@@ -40,7 +40,7 @@ def start():
 			name = input("Enter your name: ")
 			password = getpass.getpass("Enter your password: ")
 			for lib in librarians:
-				
+				lib.getName()
 			password1 = getpass.getpass("Verify your password: ")
 			while password == password1:
 				password = getpass.getpass("Enter your password: ")
