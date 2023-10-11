@@ -24,8 +24,8 @@ def start():
 			print(f"Welcome to Library Mr/Ms. {student.getStudentName()}")
 			if len(books) <= 0:
 				print("There's no books yet.")
-				return
-			another_choice = input("Enter a book you want to borrow: ")
+			else:
+				another_choice = input("Enter a book you want to borrow: ")
 
 			students.append(student)
 
@@ -48,7 +48,6 @@ def start():
 
 		case _:
 			print("Thank you...")
-			break
 
 if __name__ == "__main__":
 	start()
