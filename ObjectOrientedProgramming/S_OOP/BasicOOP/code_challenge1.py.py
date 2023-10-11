@@ -1,7 +1,7 @@
 from code_challenge1_external import *
 
 students= []
-librarian = []
+librarians = []
 books = []
 
 def start():
@@ -25,9 +25,9 @@ def start():
 
 			students.append(student)
 		case "2":
-		
+			librarian = Librarian()
 		case _:
-			print("Thank you")
+			print("Thank you...")
 			break
 
 if __name__ == "__main__":
