@@ -26,4 +26,5 @@ class Books:
 		self._publisher_ = book['publisher']
 		self._date_ = book['date']
 	
-	def 
+	def  getBookName(self):
+		return self._name_
