@@ -21,6 +21,8 @@ def start():
 
 			print(student.getStudentID())
 
+			students.append(student)
+
 
 if __name__ == "__main__":
 	start()
