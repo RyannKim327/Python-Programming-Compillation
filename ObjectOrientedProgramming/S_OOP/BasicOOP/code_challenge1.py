@@ -68,6 +68,7 @@ def start():
 						password = getpass.getpass("Enter your password: ")
 						attempt -= 1
 					it = False
+					librarian = lib
 			if it:
 				password = getpass.getpass("Enter your password: ")
 				password1 = getpass.getpass("Verify your password: ")
