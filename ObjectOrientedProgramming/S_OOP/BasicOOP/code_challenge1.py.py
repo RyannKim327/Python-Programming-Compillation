@@ -7,7 +7,7 @@ books = []
 
 def enterBook(librarian):
 	global books
-
+	
 	pass
 
 def start():
