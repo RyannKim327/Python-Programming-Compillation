@@ -12,7 +12,7 @@ def start():
 	
 	match choice:
 		case "1":
-			id = len(students)
+			id = len(students) + 1
 			name = input("Enter your name: ")
 			student = Student({
 				"ID": id,
