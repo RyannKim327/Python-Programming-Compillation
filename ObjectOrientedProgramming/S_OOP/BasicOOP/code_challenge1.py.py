@@ -34,8 +34,12 @@ def start():
 			while password == password1:
 				password = getpass.getpass("Enter your password: ")
 				password1 = getpass.getpass("Verify your password: ")
-			librarian = Librarian()
-			
+			librarian = Librarian({
+				"ID": id,
+				"name": name,
+				"password": password
+			})
+
 		case _:
 			print("Thank you...")
 			break
