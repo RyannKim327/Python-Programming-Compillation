@@ -18,7 +18,9 @@ def start():
 				"ID": id,
 				"studentName": name
 			})
-			
+
+			print(student.getStudentID())
+
 
 if __name__ == "__main__":
 	start()

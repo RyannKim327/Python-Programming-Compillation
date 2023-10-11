@@ -6,7 +6,8 @@ class Student:
 	def getStudentName(self):
 		print(self._student_)
 
-	def getStudentID(self)
+	def getStudentID(self):
+		print(self._id_)
 
 class Librarian:
 	def __init__(self, librarian: dict):
