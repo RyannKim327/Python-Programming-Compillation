@@ -34,19 +34,19 @@ def start():
 						print("There's no books yet.")
 					else:
 						another_choice = input("Enter a book you want to borrow: ")
-
-			student = Student({
-				"ID": id,
-				"studentName": name
-			})
-
-			print(f"Welcome to Library Mr/Ms. {student.getStudentName()}")
-			if len(books) <= 0:
-				print("There's no books yet.")
 			else:
-				another_choice = input("Enter a book you want to borrow: ")
+				student = Student({
+					"ID": id,
+					"studentName": name
+				})
 
-			students.append(student)
+				print(f"Welcome to Library Mr/Ms. {student.getStudentName()}")
+				if len(books) <= 0:
+					print("There's no books yet.")
+				else:
+					another_choice = input("Enter a book you want to borrow: ")
+
+				students.append(student)
 
 		case "2":
 			id = len(librarians) + 1
