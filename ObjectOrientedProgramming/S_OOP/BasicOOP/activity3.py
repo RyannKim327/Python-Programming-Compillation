@@ -25,7 +25,7 @@ def pick(new_user):
 		choice = input("Menu:\n[1]Check Balance\n[2]Deposit\n[3]Widraw\n[4]Exit\nEnter your choice:")
 		while not choice in a:
 			choice = input("Enter your choice: ")
-		
+
 		match(choice):
 			case "1":
 				checkBalance(new_user)
@@ -35,6 +35,7 @@ def pick(new_user):
 				widraw(new_user)
 			case _:
 				break
+
 	users.append(new_user)
 		
 
