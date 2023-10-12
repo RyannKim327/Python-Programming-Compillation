@@ -9,9 +9,9 @@ def enterBook(librarian):
 	global books
 	id = len(books) + 1
 	name = insert("Enter the book name: ")
-	author = input("Enter the book author: ")
-	publisher = input("Enter the publisher name: ")
-	date = input("Enter the publishing date: ")
+	author = insert("Enter the book author: ")
+	publisher = insert("Enter the publisher name: ")
+	date = insert("Enter the publishing date: ")
 	book = Books({
 		"ID": id,
 		"title": name,
