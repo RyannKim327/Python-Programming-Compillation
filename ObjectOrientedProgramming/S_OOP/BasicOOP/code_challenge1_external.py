@@ -18,7 +18,7 @@ class Student:
 		self.__student__ = student['studentName']
 	
 	def getStudentName(self):
-		print(self.__student__)
+		return self.__student__
 
 	def getStudentID(self):
 		print(self.__id__)
