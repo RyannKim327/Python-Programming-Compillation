@@ -5,6 +5,8 @@ students= []
 librarians = []
 books = []
 
+Utilities.
+
 def enterBook(librarian):
 	global books
 	id = len(books) + 1

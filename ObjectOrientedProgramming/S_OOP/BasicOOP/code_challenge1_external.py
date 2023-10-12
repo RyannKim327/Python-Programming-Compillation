@@ -1,7 +1,9 @@
+import time
 class Utilities:
 	def typing(text):
 		for i in text:
 			print(i, end="", flush=True)
+			time.sleep(1)
 		print()
 
 class Student:
