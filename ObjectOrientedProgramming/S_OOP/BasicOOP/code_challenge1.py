@@ -5,7 +5,7 @@ students= []
 librarians = []
 books = []
 
-Utilities.
+Utilities.typing("sample")
 
 def enterBook(librarian):
 	global books
