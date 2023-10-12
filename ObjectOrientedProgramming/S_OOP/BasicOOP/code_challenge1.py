@@ -17,7 +17,8 @@ def enterBook(librarian):
 		"title": name,
 		"author": author,
 		"publisher": publisher,
-		"date": date
+		"date": date,
+		"isBorrowed": false
 	})
 	pass
 
@@ -41,6 +42,7 @@ def start():
 						print("There's no books yet.")
 					else:
 						another_choice = input("Enter a book you want to borrow: ")
+
 			else:
 				student = Student({
 					"ID": id,
