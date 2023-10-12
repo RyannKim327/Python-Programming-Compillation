@@ -6,7 +6,9 @@ class Utilities:
 			time.sleep(timer)
 		print()
 	
-	def insert(text)
+	def insert(text, timer=0.05):
+		for i in text:
+			print(i, end="", )
 
 class Student:
 	def __init__(self, student: dict):
