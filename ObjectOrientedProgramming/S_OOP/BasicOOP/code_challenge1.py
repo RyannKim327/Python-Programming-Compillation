@@ -39,7 +39,7 @@ def start():
 			for i in students:
 				if name == i.getStudentName():
 					typing(f"Welcome back to Library Mr/Ms. {i.getStudentName()}")
-					it
+					it = True
 					if len(books) <= 0:
 						print("There's no books yet.")
 					else:
@@ -51,7 +51,7 @@ def start():
 					"studentName": name
 				})
 
-				print(f"Welcome to Library Mr/Ms. {student.getStudentName()}")
+				typing(f"Welcome to Library Mr/Ms. {student.getStudentName()}")
 				if len(books) <= 0:
 					print("There's no books yet.")
 				else:
