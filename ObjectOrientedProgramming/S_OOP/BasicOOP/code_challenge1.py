@@ -85,9 +85,11 @@ def start():
 				librarians.append(librarian)
 
 			enterBook(librarian)
+			
 		case _:
 			print("Thank you...")
 			cont = False
+
 	if cont:
 		start()
 
