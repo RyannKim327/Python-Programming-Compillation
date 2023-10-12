@@ -37,7 +37,7 @@ def start():
 			name = insert("Enter your name: ")
 			for i in students:
 				if name == i.getStudentName():
-					(f"Welcome back to Library Mr/Ms. {i.getStudentName()}")
+					typing(f"Welcome back to Library Mr/Ms. {i.getStudentName()}")
 					if len(books) <= 0:
 						print("There's no books yet.")
 					else:
