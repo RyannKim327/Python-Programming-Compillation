@@ -35,15 +35,17 @@ def start():
 		case "1":
 			id = len(students) + 1
 			name = insert("Enter your name: ")
+			it = True
 			for i in students:
 				if name == i.getStudentName():
 					typing(f"Welcome back to Library Mr/Ms. {i.getStudentName()}")
+					it
 					if len(books) <= 0:
 						print("There's no books yet.")
 					else:
 						another_choice = input("Enter a book you want to borrow: ")
 
-			else:
+			if it:
 				student = Student({
 					"ID": id,
 					"studentName": name
