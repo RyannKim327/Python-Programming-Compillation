@@ -35,3 +35,6 @@ class Books:
 	
 	def canBorrow(self):
 		return self.__isBorrowed__
+	
+	def doBorrow(self):
+		self.__isBorrowed__ = not _i
