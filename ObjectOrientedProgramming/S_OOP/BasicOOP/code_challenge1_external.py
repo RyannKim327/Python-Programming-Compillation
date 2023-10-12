@@ -1,5 +1,8 @@
 class Utilities:
-	
+	def typing(text):
+		for i in text:
+			print(i, end="", flush=True)
+		print()
 
 class Student:
 	def __init__(self, student: dict):
