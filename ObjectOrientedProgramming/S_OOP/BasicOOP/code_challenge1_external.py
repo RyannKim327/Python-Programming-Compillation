@@ -8,7 +8,9 @@ class Utilities:
 	
 	def insert(text, timer=0.05):
 		for i in text:
-			print(i, end="", )
+			print(i, end="", flush=True)
+			time.sleep(timer)
+		return input()
 
 class Student:
 	def __init__(self, student: dict):

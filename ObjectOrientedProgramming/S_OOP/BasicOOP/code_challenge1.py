@@ -5,8 +5,6 @@ students= []
 librarians = []
 books = []
 
-Utilities.typing("sample")
-
 def enterBook(librarian):
 	global books
 	id = len(books) + 1
