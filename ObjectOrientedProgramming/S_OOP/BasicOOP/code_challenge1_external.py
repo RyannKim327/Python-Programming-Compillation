@@ -32,3 +32,6 @@ class Books:
 	
 	def  getBookName(self):
 		return self.__name__
+	
+	def canBorrow(self):
+		return self.__isBorrowed__
