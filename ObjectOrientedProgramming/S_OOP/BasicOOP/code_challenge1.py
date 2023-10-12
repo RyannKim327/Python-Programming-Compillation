@@ -24,7 +24,7 @@ def enterBook(librarian):
 
 def start():
 	global books, librarians, students
-	choice = input("Login as:\n[1] Student\n[2] Librarian\n[3] Exit\nEnter your choice: ")
+	choice = insert("Login as:\n[1] Student\n[2] Librarian\n[3] Exit\nEnter your choice: ")
 	_a_ = ["1", "2", "3"]
 	cont = True
 
@@ -34,10 +34,10 @@ def start():
 	match choice:
 		case "1":
 			id = len(students) + 1
-			name = input("Enter your name: ")
+			name = insert("Enter your name: ")
 			for i in students:
 				if name == i.getStudentName():
-					print(f"Welcome back to Library Mr/Ms. {i.getStudentName()}")
+					(f"Welcome back to Library Mr/Ms. {i.getStudentName()}")
 					if len(books) <= 0:
 						print("There's no books yet.")
 					else:
