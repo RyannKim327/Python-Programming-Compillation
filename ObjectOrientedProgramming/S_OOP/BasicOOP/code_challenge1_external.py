@@ -37,4 +37,5 @@ class Books:
 		return self.__isBorrowed__
 	
 	def doBorrow(self):
-		self.__isBorrowed__ = not _i
+		self.__isBorrowed__ = not self.__isBorrowed__
+		print(f"The book was borrowed by {student}")
