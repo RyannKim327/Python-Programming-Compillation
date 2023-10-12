@@ -18,7 +18,7 @@ def enterBook(librarian):
 		"author": author,
 		"publisher": publisher,
 		"date": date,
-		"isBorrowed": false
+		"isBorrowed": False
 	})
 	pass
 

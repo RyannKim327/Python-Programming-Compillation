@@ -28,6 +28,7 @@ class Books:
 		self.__author__ = book['author']
 		self.__publisher__ = book['publisher']
 		self.__date__ = book['date']
+		self.__isBorrowed__ = book['isBorrowed']
 	
 	def  getBookName(self):
 		return self.__name__
