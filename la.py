@@ -24,7 +24,9 @@ def start():
 	hr = convert(timer[0])
 	min = convert(timer[1])
 	sec = convert(timer[2])
-	print(hr)
+	for i in range(len(a)):
+		for j in range(len(a[i])):
+			
 
 if __name__ == "__main__":
 	start()
