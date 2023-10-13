@@ -7,6 +7,9 @@ a = [
 	[8, 4, 2, 1]
 ]
 
-timer = time.gmtime()
+
+def getTime():
+	timer = time.ctime()
+	time1 = timer.split(" ")
 
 print(time.ctime())
