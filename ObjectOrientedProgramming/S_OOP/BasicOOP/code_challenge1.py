@@ -65,8 +65,9 @@ def start():
 					another_choice = input("Enter a book you want to borrow: ")
 
 				students.append(student)
-				if 
-				menu.append("Exit")
+				if not "Exit" in menu:
+					menu.append("Exit")
+					_a_.append("3")
 
 		case "2":
 			id = len(librarians) + 1
@@ -98,6 +99,9 @@ def start():
 				librarians.append(librarian)
 
 			enterBook(librarian)
+			if not "Exit" in menu:
+				menu.append("Exit")
+				_a_.append("3")
 			
 		case _:
 			typing("Thank you for using this project\nCode challege accepted by Ryann Kim Sesgundo of BS Information Technology 2A...")
