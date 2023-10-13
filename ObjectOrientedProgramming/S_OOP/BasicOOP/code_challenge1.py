@@ -30,9 +30,9 @@ def start():
 		"Exit"
 	]
 	# choice = insert("Login as:\n[1] Student\n[2] Librarian\n[3] Exit\nEnter your choice: ")
-	typ
+	typing("Welcome to my Library Management System:")
 	_a_ = ["1", "2", "3"]
-	byonearray(menu, "Enter your choice")
+	byonearray(menu, "Enter your choice: ")
 	cont = True
 
 	while not choice in _a_:
