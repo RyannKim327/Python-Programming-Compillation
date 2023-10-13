@@ -26,7 +26,7 @@ def start():
 	sec = convert(timer[2])
 	for i in range(len(a)):
 		for j in range(len(a[i])):
-			pass
+			pass4re
 	pass
 
 if __name__ == "__main__":
