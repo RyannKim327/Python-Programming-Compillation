@@ -30,6 +30,7 @@ def start():
 		"Exit"
 	]
 	# choice = insert("Login as:\n[1] Student\n[2] Librarian\n[3] Exit\nEnter your choice: ")
+	typ
 	_a_ = ["1", "2", "3"]
 	byonearray(menu, "Enter your choice")
 	cont = True

@@ -16,7 +16,7 @@ def byonearray(lists: list, prompt="Enter your choice", timer=0.05):
 	for i in range(len(lists)):
 		print(f"[{i + 1}] {lists[i]}")
 		time.sleep(timer)
-	insert()
+	insert(prompt)
 
 class Student:
 	def __init__(self, student: dict):
