@@ -11,6 +11,5 @@ a = [
 def getTime():
 	timer = time.ctime()
 	time1 = timer.split(" ")[3]
-	time2 = time1.split(":")
+	return tuple(time1.split(":"))
 
-print(time.ctime())
