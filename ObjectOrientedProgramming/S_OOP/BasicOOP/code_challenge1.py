@@ -99,7 +99,7 @@ def start():
 			enterBook(librarian)
 			
 		case _:
-			typing("Thank you...")
+			typing("Thank you for using this project\n")
 			cont = False
 
 	if cont:
