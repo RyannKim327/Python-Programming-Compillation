@@ -14,5 +14,10 @@ def getTime():
 	return tuple(time1.split(":"))
 
 def convert(a):
-	if a.is
-	return
+	if a.isdigit():
+		return int(a) % 12
+	else:
+		return 0
+
+def start():
+	
