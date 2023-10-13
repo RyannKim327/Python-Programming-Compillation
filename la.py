@@ -9,4 +9,4 @@ a = [
 
 timer = time.gmtime()
 
-print(time.)
+print(time.ctime())
