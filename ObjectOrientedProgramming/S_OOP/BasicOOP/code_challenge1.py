@@ -78,15 +78,15 @@ def start():
 					while password != lib.getPassword():
 						if attempt == 0:
 							input("Ano kaya pa? ")
-						password = getpass.getpass("Enter your password: ", True)
+						password = insert("Enter your password: ", True)
 						attempt -= 1
 					it = False
 					librarian = lib
 			if it:
-				password = getpass.getpass("Enter your password: ")
-				password1 = getpass.getpass("Verify your password: ")
+				password = insert("Enter your password: ", True)
+				password1 = insert("Verify your password: ", True)
 				while password != password1:
-					password = getpass.getpass("Enter your password: ")
+					password = insert("Enter your password: ", True)
 					password1 = getpass.getpass("Verify your password: ")
 
 				librarian = Librarian({
