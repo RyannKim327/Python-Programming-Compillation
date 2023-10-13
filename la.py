@@ -20,7 +20,10 @@ def convert(a):
 		return 0
 
 def start():
-	
+	timer = getTime()
+	hr = convert(timer[0])
+	min = convert(timer[0])
+	sec = convert(timer[0])
 
 if __name__ == "__main__":
 	start()
