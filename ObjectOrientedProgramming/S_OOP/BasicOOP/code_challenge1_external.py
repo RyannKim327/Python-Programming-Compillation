@@ -13,8 +13,8 @@ def insert(text, timer=0.05):
 	return input()
 
 def byonearray(lists: list, timer=0.05):
-	for i in lists:
-		print()
+	for i in range(len(lists)):
+		print(f"[{i + 1}] {lists[i]}")
 
 class Student:
 	def __init__(self, student: dict):
