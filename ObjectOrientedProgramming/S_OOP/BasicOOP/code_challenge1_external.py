@@ -12,7 +12,9 @@ def insert(text, timer=0.05):
 		time.sleep(timer)
 	return input()
 
-def byonearray()
+def byonearray(lists: list, timer=0.05):
+	for i in lists:
+		print()
 
 class Student:
 	def __init__(self, student: dict):
