@@ -1,4 +1,4 @@
-import time
+import time, getpass
 
 def typing(text, timer=0.05):
 	for i in text:
@@ -6,10 +6,12 @@ def typing(text, timer=0.05):
 		time.sleep(timer)
 	print()
 
-def insert(text, timer=0.05):
+def insert(text, password=False, timer=0.05):
 	for i in text:
 		print(i, end="", flush=True)
 		time.sleep(timer)
+	if password:
+		return getpass.getpass
 	return input()
 
 def insertlists(lists: list, prompt="Enter your choice: ", timer=0.1):
