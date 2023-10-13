@@ -9,4 +9,4 @@ a = [
 
 timer = time.gmtime()
 
-print(timer)
+print(timer.index("tm_mday"))
