@@ -10,8 +10,11 @@ def insert(text, password=False, timer=0.05):
 	for i in text:
 		print(i, end="", flush=True)
 		time.sleep(timer)
+	if text.endswith(":"):
+		text += " "
+	if not text.endswith("")
 	if password:
-		return getpass.getpass
+		return getpass.getpass()
 	return input()
 
 def insertlists(lists: list, prompt="Enter your choice: ", timer=0.1):
