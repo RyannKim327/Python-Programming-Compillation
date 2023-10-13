@@ -11,7 +11,7 @@ a = [
 def getTime():
 	timer = time.ctime()
 	time1 = timer.split(" ")[3]
-	return tuple(time1.split(":"))
+	return time1.split(":")
 
 def convert(a):
 	if a.isdigit():
@@ -22,8 +22,9 @@ def convert(a):
 def start():
 	timer = getTime()
 	hr = convert(timer[0])
-	min = convert(timer[0])
-	sec = convert(timer[0])
+	min = convert(timer[1])
+	sec = convert(timer[2])
+	print(hr)
 
 if __name__ == "__main__":
 	start()
