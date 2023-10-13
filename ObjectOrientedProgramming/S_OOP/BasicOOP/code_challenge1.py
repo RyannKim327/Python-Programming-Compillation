@@ -74,11 +74,11 @@ def start():
 			for lib in librarians:
 				if name == lib.getName():
 					attempt = 5
-					password = getpass.getpass("Enter your password: ")
+					password = insert("Enter your password: ", True)
 					while password != lib.getPassword():
 						if attempt == 0:
 							input("Ano kaya pa? ")
-						password = getpass.getpass("Enter your password: ")
+						password = getpass.getpass("Enter your password: ", True)
 						attempt -= 1
 					it = False
 					librarian = lib

@@ -12,7 +12,8 @@ def insert(text, password=False, timer=0.05):
 		time.sleep(timer)
 	if text.endswith(":"):
 		text += " "
-	if not text.endswith("")
+	if not text.endswith(": "):
+		text += ": "
 	if password:
 		return getpass.getpass()
 	return input()
