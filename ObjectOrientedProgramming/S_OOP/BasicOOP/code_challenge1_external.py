@@ -16,6 +16,8 @@ def byonearray(lists: list, prompt="Enter your choice: ", timer=0.05):
 	for i in range(len(lists)):
 		print(f"[{i + 1}] {lists[i]}")
 		time.sleep(timer)
+	if prompt.endswith(":"):
+		prompt += " "
 	if not prompt.endswith(": "):
 		prompt += ": "
 	insert(prompt)
