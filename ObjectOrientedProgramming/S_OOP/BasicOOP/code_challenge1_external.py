@@ -12,6 +12,8 @@ def insert(text, timer=0.05):
 		time.sleep(timer)
 	return input()
 
+def byonearray()
+
 class Student:
 	def __init__(self, student: dict):
 		self.__id__ = student['ID']
