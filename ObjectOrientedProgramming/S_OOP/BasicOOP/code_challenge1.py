@@ -87,7 +87,7 @@ def start():
 				password1 = insert("Verify your password: ", True)
 				while password != password1:
 					password = insert("Enter your password: ", True)
-					password1 = getpass.getpass("Verify your password: ")
+					password1 = insert("Verify your password: ", True)
 
 				librarian = Librarian({
 					"ID": id,
