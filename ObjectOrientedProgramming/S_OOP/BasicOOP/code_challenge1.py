@@ -26,12 +26,11 @@ def start():
 	global books, librarians, students
 	menu = [
 		"Student",
-		"Librarian",
-		"Exit"
+		"Librarian"
 	]
 	# choice = insert("Login as:\n[1] Student\n[2] Librarian\n[3] Exit\nEnter your choice: ")
 	typing("Welcome to my Library Management System. Would you like to LOGIN as: ")
-	_a_ = ["1", "2", "3"]
+	_a_ = ["1", "2"]
 	choice = insertlists(menu, "Enter your choice:")
 	cont = True
 
@@ -66,6 +65,8 @@ def start():
 					another_choice = input("Enter a book you want to borrow: ")
 
 				students.append(student)
+				if 
+				menu.append("Exit")
 
 		case "2":
 			id = len(librarians) + 1
