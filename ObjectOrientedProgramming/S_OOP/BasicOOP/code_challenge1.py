@@ -24,6 +24,11 @@ def enterBook(librarian):
 
 def start():
 	global books, librarians, students
+	menu = [
+		"Student",
+		"Librarian",
+		"Exit"
+	]
 	choice = insert("Login as:\n[1] Student\n[2] Librarian\n[3] Exit\nEnter your choice: ")
 	_a_ = ["1", "2", "3"]
 	cont = True
@@ -43,7 +48,7 @@ def start():
 					if len(books) <= 0:
 						print("There's no books yet.")
 					else:
-						
+
 						another_choice = input("Enter a book you want to borrow: ")
 
 			if it:

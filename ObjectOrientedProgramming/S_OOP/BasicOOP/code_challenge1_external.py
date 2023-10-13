@@ -15,6 +15,7 @@ def insert(text, timer=0.05):
 def byonearray(lists: list, prompt="Enter your choice", timer=0.05):
 	for i in range(len(lists)):
 		print(f"[{i + 1}] {lists[i]}")
+		time.sleep(timer)
 	insert()
 
 class Student:
