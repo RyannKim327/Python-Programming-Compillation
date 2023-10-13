@@ -15,7 +15,9 @@ def getTime():
 
 def convert(a):
 	if a.isdigit():
-		return int(a) % 12
+		b = int(a) % 12
+		if
+		return b
 	else:
 		return 0
 
