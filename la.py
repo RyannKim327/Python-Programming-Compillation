@@ -38,6 +38,9 @@ def start():
 	print(algo(hr))
 	print(algo(min))
 	print(algo(sec))
+	time.sleep(1)
+	print("", end="\r")
+	start()
 	
 if __name__ == "__main__":
 	start()
