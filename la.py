@@ -3,7 +3,6 @@ import time
 a = [
 	[16, 8, 4, 2, 1],
 	[16, 8, 4, 2, 1],
-	[16, 8, 4, 2, 1],
 	[16, 8, 4, 2, 1]
 ]
 
@@ -27,8 +26,8 @@ def start():
 	min = convert(timer[1])
 	sec = convert(timer[2])
 	for i in range(len(a)):
-		for j in range(len(a[i])):
-			pass
+		
+			
 	pass
 
 if __name__ == "__main__":
