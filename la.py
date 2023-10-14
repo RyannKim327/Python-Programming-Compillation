@@ -18,10 +18,17 @@ def algo(a):
 		[16, 8, 4, 2, 1],
 		[16, 8, 4, 2, 1]
 	]
-	_hr_ = []
-	for i in t[0]:
-		_hr_.append(hr // i)
-		hr %= i
+	c = []
+	d = ""
+	for e in b[0]:
+		c.append(a // e)
+		a %= e
+	for i in c:
+		if i == 1:
+			d += a
+		else:
+			d += b
+	
 
 
 def start():
@@ -35,12 +42,7 @@ def start():
 	_min = ""
 	_sec = ""
 	
-	for i in _hr_:
-		if i == 1:
-			_hr += a
-		else:
-			_hr += b
-
+	
 	print(_hr)
 	
 if __name__ == "__main__":
