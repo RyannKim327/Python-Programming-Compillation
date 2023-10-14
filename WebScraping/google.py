@@ -8,7 +8,7 @@ def getData(query):
 def scrape(query):
 	data = getData(query)
 	bs = soup(data, "lxml")
-	data = bs.find("div", class_="PZPZlf")
-	print(data.html())
+	data2 = bs.find("div", class_="PZPZlf")
+	print(data2)
 
 scrape("broken vessels lyrics")
