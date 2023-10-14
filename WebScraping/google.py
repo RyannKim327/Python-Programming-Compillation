@@ -9,3 +9,5 @@ def scrape(query):
 	data = getData(query)
 	bs = soup(data, "lxml")
 	print(bs.prettify())
+
+scrape("")
