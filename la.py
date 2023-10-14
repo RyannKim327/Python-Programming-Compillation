@@ -1,12 +1,5 @@
 import time
 
-a = [
-	[16, 8, 4, 2, 1],
-	[16, 8, 4, 2, 1],
-	[16, 8, 4, 2, 1]
-]
-
-
 def getTime():
 	timer = time.ctime()
 	time1 = timer.split(" ")[3]
@@ -22,6 +15,11 @@ def convert(a):
 		return 0
 
 def start():
+	a = [
+		[16, 8, 4, 2, 1],
+		[16, 8, 4, 2, 1],
+		[16, 8, 4, 2, 1]
+	]
 	timer = getTime()
 	a = "*"
 	b = "."
