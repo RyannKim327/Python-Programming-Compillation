@@ -44,9 +44,3 @@ def start():
 	
 if __name__ == "__main__":
 	start()
-
-	# a = 501
-	# b = [1000, 500, 200, 100, 50, 20, 5, 1, .25]
-	# for i in b:
-	# 	print(a // i)
-	# 	a %= 
