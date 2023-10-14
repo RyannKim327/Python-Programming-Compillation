@@ -40,4 +40,7 @@ def start():
 	print(_hr)
 	
 if __name__ == "__main__":
-	start()
+	# start()
+
+	a = 501
+	k = a // 
