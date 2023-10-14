@@ -1,4 +1,4 @@
-import time, os
+import time, os, tkinter
 
 def getTime():
 	timer = time.ctime()
@@ -30,7 +30,7 @@ def algo(a):
 	
 	return d
 
-def start():
+def run():
 	timer = getTime()
 	hr =  convert(timer[0])
 	min = convert(timer[1])
@@ -40,7 +40,10 @@ def start():
 	print(algo(sec))
 	time.sleep(.1)
 	os.system("cls")
-	start()
+
+def start():
+	base = tk
+	pass
 	
 if __name__ == "__main__":
 	start()
