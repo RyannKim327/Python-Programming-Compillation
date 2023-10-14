@@ -32,8 +32,9 @@ def start():
 	_min = ""
 	_sec = ""
 	_hr_ = [16]
-	for i in range(len(a[0]):
-		if a[0][i] in _hr_:
+	for i in a[0]:
+		print(i)
+		if i in _hr_:
 			_hr += a
 		else:
 			_hr += b
