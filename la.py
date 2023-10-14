@@ -25,11 +25,8 @@ def algo(a):
 	for e in b[0]:
 		c.append(a // e)
 		a %= e
-	for i in c:
-		if i == 1:
-			d += a1
-		else:
-			d += 
+	for e in c:
+		d += f"[{e}]"
 	
 	return d
 
@@ -38,12 +35,7 @@ def start():
 	hr =  5 #convert(timer[0])
 	min = convert(timer[1])
 	sec = convert(timer[2])
-	_hr = ""
-	_min = ""
-	_sec = ""
-	
-	
-	print(_hr)
+	print()
 	
 if __name__ == "__main__":
 	start()
@@ -52,4 +44,4 @@ if __name__ == "__main__":
 	# b = [1000, 500, 200, 100, 50, 20, 5, 1, .25]
 	# for i in b:
 	# 	print(a // i)
-	# 	a %= i
+	# 	a %= 
