@@ -34,15 +34,16 @@ def algo(a, w):
 			w[e].config(bg="red")
 
 def run():
+	global hs, ms, ss
 	timer = getTime()
 	hr =  convert(timer[0])
 	min = convert(timer[1])
 	sec = convert(timer[2])
-	algo(hr)
+	algo(hr, hs)
 	algo(min, ms)
 	algo(sec, ss)
 	time.sleep(.1)
-	os.system("cls")
+	
 
 def start():
 	global hs
@@ -109,6 +110,8 @@ def start():
 	hs = [h, h1, h2, h3, h4, h5]
 	ms = [m, m1, m2, m3, m4, m5]
 	ss = [s, s1, s2, s3, s4, s5]
+
+	run()
 
 	base.mainloop()
 
