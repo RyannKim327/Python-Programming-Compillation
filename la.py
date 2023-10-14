@@ -26,10 +26,10 @@ def start():
 	min = convert(timer[1])
 	sec = convert(timer[2])
 	for i in range(len(a)):
-			
-	# pass
+		pass	
+	pass
 
 if __name__ == "__main__":
 	# a = getTime()
 	# b = convert(a[0])
-	print(13 % 12)
+	print(12 % 12)
