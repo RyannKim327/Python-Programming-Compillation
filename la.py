@@ -42,7 +42,7 @@ def run():
 	algo(hr, hs)
 	algo(min, ms)
 	algo(sec, ss)
-	base.after(1000, run)
+	base.after(1, run)
 
 def start():
 	global hs
