@@ -47,7 +47,19 @@ def start():
 	base.geometry("500x500")
 
 	h1 = Label(base, text="16")
-	h1.grid(row=)
+	h1.grid(row=0, column=0)
+	
+	h1 = Label(base, text="8")
+	h1.grid(row=0, column=1)
+
+	h1 = Label(base, text="4")
+	h1.grid(row=0, column=2)
+
+	h1 = Label(base, text="2")
+	h1.grid(row=0, column=3)
+
+	h1 = Label(base, text="1")
+	h1.grid(row=0, column=1)
 
 	base.mainloop()
 
