@@ -27,7 +27,8 @@ def algo(a):
 		c.append(a // e)
 		a %= e
 	for e in c:
-		d += f"[{e}]"
+		# d += f"[{e}]"
+		
 	
 	return d
 
@@ -45,7 +46,7 @@ def run():
 def start():
 	global hs
 	global ms
-	global s, s1, s2, s3, s4, s5
+	global ss
 	
 	base = Tk()
 	base.geometry("500x500")
@@ -106,6 +107,7 @@ def start():
 
 	hs = [h, h1, h2, h3, h4, h5]
 	ms = [m, m1, m2, m3, m4, m5]
+	ss = [s, s1, s2, s3, s4, s5]
 
 	base.mainloop()
 
