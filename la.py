@@ -13,7 +13,7 @@ def convert(a):
 	else:
 		return 0
 
-def algo(a):
+def algo(a, w):
 	b = [
 		[32, 16, 8, 4, 2, 1],
 		[32, 16, 8, 4, 2, 1],
@@ -29,7 +29,7 @@ def algo(a):
 	for e in range(len(c)):
 		# d += f"[{e}]"
 		if c[e] == 1:
-			
+			w[e].config(bg="green")
 
 	
 	return d
