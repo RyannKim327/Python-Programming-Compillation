@@ -29,7 +29,13 @@ def start():
 	_hr = ""
 	_min = ""
 	_sec = ""
-	return 
+	for i in range(a[0]):
+		
+	return [
+		_hr,
+		_min,
+		_sec
+	]
 
 if __name__ == "__main__":
 	start()
