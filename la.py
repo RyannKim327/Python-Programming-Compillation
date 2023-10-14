@@ -42,11 +42,13 @@ def run():
 	algo(hr, hs)
 	algo(min, ms)
 	algo(sec, ss)
+	base.after(1000, run)
 
 def start():
 	global hs
 	global ms
 	global ss
+	global base
 	
 	base = Tk()
 	base.geometry("500x500")
