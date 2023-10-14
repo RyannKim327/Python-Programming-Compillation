@@ -43,4 +43,6 @@ def start():
 	
 if __name__ == "__main__":
 	a = 16
-	
+	b = []
+	print((a // 12) * 12)
+	print((a % 12))
