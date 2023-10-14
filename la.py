@@ -43,8 +43,9 @@ if __name__ == "__main__":
 	# start()
 
 	a = 501
-	while a > 0:
-		
+	b = [1000, 500, 200, 100, 50, 20, 5, 1, .25]
+	for i in b
+		print(a // )
 	k = a // 1000
 	a %= 1000
 	hhh = a // 500
