@@ -43,7 +43,7 @@ def run():
 	os.system("cls")
 
 def start():
-	global h1, h2, h3, h4, h5, m1, m2, m3, m4
+	global h1, h2, h3, h4, h5, m1, m2, m3, m4, m5, s1, s2, s3, s4, s5
 	base = Tk()
 	base.geometry("500x500")
 
@@ -91,6 +91,8 @@ def start():
 
 	s5 = Label(base, text="1", font=("", 25), width=5)
 	s5.grid(row=1, column=4)
+
+	
 
 	base.mainloop()
 
