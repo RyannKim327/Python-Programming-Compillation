@@ -15,7 +15,8 @@ def getTime():
 def convert(a):
 	if a.isdigit():
 		b = int(a) % 12
-		
+		if b == 0:
+			return 12
 		return b
 	else:
 		return 0
@@ -32,4 +33,4 @@ def start():
 if __name__ == "__main__":
 	# a = getTime()
 	# b = convert(a[0])
-	print(12 % 12)
+	print(convert("13"))
