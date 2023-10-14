@@ -30,7 +30,8 @@ def start():
 	_min = ""
 	_sec = ""
 	_hr_ = []
-	for i in range
+	while hr >:
+
 	for i in t[0]:
 		if i in _hr_:
 			_hr += a
