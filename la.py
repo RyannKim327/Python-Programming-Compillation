@@ -14,9 +14,9 @@ def convert(a):
 
 def algo(a):
 	b = [
-		[16, 8, 4, 2, 1],
-		[16, 8, 4, 2, 1],
-		[16, 8, 4, 2, 1]
+		[32, 16, 8, 4, 2, 1],
+		[32, 16, 8, 4, 2, 1],
+		[32, 16, 8, 4, 2, 1]
 	]
 	c = []
 	d = ""
@@ -32,11 +32,12 @@ def algo(a):
 
 def start():
 	timer = getTime()
-	hr =  5 #convert(timer[0])
+	hr =  convert(timer[0])
 	min = convert(timer[1])
 	sec = convert(timer[2])
 	print(algo(hr))
 	print(algo(min))
+	print(algo(sec))
 	
 if __name__ == "__main__":
 	start()
