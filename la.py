@@ -46,7 +46,8 @@ def start():
 	base = Tk()
 	base.geometry("500x500")
 
-	
+	h1 = Label(base, text="16")
+	h1.grid(row=)
 
 	base.mainloop()
 
