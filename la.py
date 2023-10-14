@@ -26,9 +26,11 @@ def algo(a):
 	for e in b[0]:
 		c.append(a // e)
 		a %= e
-	for e in c:
+	for e in range(len(c)):
 		# d += f"[{e}]"
-		
+		if c[e] == 1:
+			
+
 	
 	return d
 
