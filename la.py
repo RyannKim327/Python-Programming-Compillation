@@ -62,19 +62,19 @@ def start():
 	h5.grid(row=0, column=4)
 
 	m1 = Label(base, text="16", font=("", 25))
-	m1.grid(row=0, column=0)
+	m1.grid(row=1, column=0)
 	
-	h2 = Label(base, text="8", font=("", 25))
-	h2.grid(row=0, column=1)
+	m2 = Label(base, text="8", font=("", 25))
+	m2.grid(row=1, column=1)
 
-	h3 = Label(base, text="4", font=("", 25))
-	h3.grid(row=0, column=2)
+	m3 = Label(base, text="4", font=("", 25))
+	m3.grid(row=1, column=2)
 
-	h4 = Label(base, text="2", font=("", 25))
-	h4.grid(row=0, column=3)
+	m4 = Label(base, text="2", font=("", 25))
+	m4.grid(row=1, column=3)
 
-	h5 = Label(base, text="1", font=("", 25))
-	h5.grid(row=0, column=4)
+	m5 = Label(base, text="1", font=("", 25))
+	m5.grid(row=1, column=4)
 
 
 	base.mainloop()
