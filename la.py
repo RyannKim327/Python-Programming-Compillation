@@ -15,7 +15,7 @@ def getTime():
 def convert(a):
 	if a.isdigit():
 		b = int(a) % 12
-		if
+		
 		return b
 	else:
 		return 0
@@ -26,9 +26,8 @@ def start():
 	min = convert(timer[1])
 	sec = convert(timer[2])
 	for i in range(len(a)):
-		
 			
-	pass
+	# pass
 
 if __name__ == "__main__":
-	start()
+	s
