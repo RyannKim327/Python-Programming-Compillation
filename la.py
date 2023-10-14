@@ -31,6 +31,7 @@ def start():
 	_sec = ""
 	_hr_ = []
 	_hr_.append(hr % 12)
+	hr %= 12
 	_hr_.append(hr % 12)
 	for i in t[0]:
 		if i in _hr_:
