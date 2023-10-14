@@ -43,6 +43,9 @@ def run():
 	os.system("cls")
 
 def start():
+	global h, h1, h2, h3, h4, h5
+	global m, m1, m2, m3, m4, m5
+
 	base = Tk()
 	base.geometry("500x500")
 
