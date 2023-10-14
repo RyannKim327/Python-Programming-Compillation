@@ -30,18 +30,17 @@ def algo(a, w):
 		# d += f"[{e}]"
 		if c[e] == 1:
 			w[e].config(bg="green")
-
-	
-	return d
+		else:
+			w[e].config(bg="red")
 
 def run():
 	timer = getTime()
 	hr =  convert(timer[0])
 	min = convert(timer[1])
 	sec = convert(timer[2])
-	print(algo(hr))
-	print(algo(min))
-	print(algo(sec))
+	algo(hr)
+	algo(min, ms)
+	algo(sec, ss)
 	time.sleep(.1)
 	os.system("cls")
 
