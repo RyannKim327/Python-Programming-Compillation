@@ -10,4 +10,4 @@ def scrape(query):
 	bs = soup(data, "lxml")
 	print(bs.prettify())
 
-scrape("")
+scrape("broken vessels lyrics")
