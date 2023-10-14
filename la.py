@@ -39,13 +39,10 @@ def run():
 	hr =  convert(timer[0])
 	min = convert(timer[1])
 	sec = convert(timer[2])
-	algo(hr, hs)
-	algo(min, ms)
-	algo(sec, ss)
-	x = 10000
-	while x >= 0:
-		x -= 1
-	run()
+	while True:
+		algo(hr, hs)
+		algo(min, ms)
+		algo(sec, ss)
 
 def start():
 	global hs
