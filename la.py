@@ -26,8 +26,10 @@ def start():
 	hr = convert(timer[0])
 	min = convert(timer[1])
 	sec = convert(timer[2])
-	
-	pass
+	_hr = ""
+	_min = ""
+	_sec = ""
+	return 
 
 if __name__ == "__main__":
 	start()
