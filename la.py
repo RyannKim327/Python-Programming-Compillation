@@ -30,4 +30,6 @@ def start():
 	# pass
 
 if __name__ == "__main__":
-	s
+	# a = getTime()
+	# b = convert(a[0])
+	print(13 % 12)
