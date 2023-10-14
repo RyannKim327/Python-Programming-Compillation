@@ -19,8 +19,8 @@ def start():
 		[16, 8, 4, 2, 1]
 	]
 	timer = getTime()
-	a = "[]"
-	b = "[]"
+	a = "[1]"
+	b = "[0]"
 	hr = convert(timer[0])
 	min = convert(timer[1])
 	sec = convert(timer[2])
@@ -28,7 +28,7 @@ def start():
 	_min = ""
 	_sec = ""
 	_hr_ = []
-	_hr_.append((hr // 12) * 12)
+	_hr_.append((hr // 12))
 	_hr_.append(hr % 12)
 	for i in t[0]:
 		if i in _hr_:
