@@ -43,11 +43,17 @@ if __name__ == "__main__":
 	# start()
 
 	a = 501
+	while a > 0:
+		
 	k = a // 1000
 	a %= 1000
 	hhh = a // 500
 	a %= 500
 	hh = a // 200
-	a %= 500
-	hh = a // 500
-	a %= 500
+	a %= 200
+	h = a // 100
+	a %= 100
+	print(k)
+	print(hhh)
+	print(hh)
+	print(h)
