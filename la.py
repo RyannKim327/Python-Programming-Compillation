@@ -65,19 +65,19 @@ def start():
 	h5.grid(row=0, column=5)
 
 	m = Label(base, text="32", font=("", 20), width=5)
-	m.grid(row=0, column=0)
+	m.grid(row=1, column=0)
 
-	h1 = Label(base, text="16", font=("", 20), width=5)
-	h1.grid(row=0, column=1)
+	m1 = Label(base, text="16", font=("", 20), width=5)
+	m1.grid(row=1, column=1)
 	
-	h2 = Label(base, text="8", font=("", 20), width=5)
-	h2.grid(row=0, column=2)
+	m2 = Label(base, text="8", font=("", 20), width=5)
+	m2.grid(row=1, column=2)
 
-	h3 = Label(base, text="4", font=("", 20), width=5)
-	h3.grid(row=0, column=3)
+	m3 = Label(base, text="4", font=("", 20), width=5)
+	m3.grid(row=1, column=3)
 
 	h4 = Label(base, text="2", font=("", 20), width=5)
-	h4.grid(row=0, column=4)
+	h4.grid(row=1, column=4)
 
 	h5 = Label(base, text="1", font=("", 20), width=5)
 	h5.grid(row=0, column=5)
