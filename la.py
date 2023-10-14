@@ -92,7 +92,7 @@ def start():
 	s5 = Label(base, text="1", font=("", 25), width=5)
 	s5.grid(row=1, column=4)
 
-	
+	print(s1.cget("1.0", END))
 
 	base.mainloop()
 
