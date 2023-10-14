@@ -76,17 +76,17 @@ def start():
 	m3 = Label(base, text="4", font=("", 20), width=5)
 	m3.grid(row=1, column=3)
 
-	h4 = Label(base, text="2", font=("", 20), width=5)
-	h4.grid(row=1, column=4)
+	m4 = Label(base, text="2", font=("", 20), width=5)
+	m4.grid(row=1, column=4)
 
-	h5 = Label(base, text="1", font=("", 20), width=5)
-	h5.grid(row=0, column=5)
+	m5 = Label(base, text="1", font=("", 20), width=5)
+	m5.grid(row=1, column=5)
 
-	h = Label(base, text="32", font=("", 20), width=5)
-	h.grid(row=0, column=0)
+	s = Label(base, text="32", font=("", 20), width=5)
+	s.grid(row=0, column=0)
 
-	h1 = Label(base, text="16", font=("", 20), width=5)
-	h1.grid(row=0, column=1)
+	s1 = Label(base, text="16", font=("", 20), width=5)
+	s1.grid(row=0, column=1)
 	
 	h2 = Label(base, text="8", font=("", 20), width=5)
 	h2.grid(row=0, column=2)
