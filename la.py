@@ -46,22 +46,22 @@ def start():
 	base = Tk()
 	base.geometry("500x500")
 
-	h1 = Label(base, text="32", font=("", 3), width=5)
+	h1 = Label(base, text="32", font=("", 25), width=5)
 	h1.grid(row=0, column=0)
 
-	h1 = Label(base, text="16", font=("", 3), width=5)
+	h1 = Label(base, text="16", font=("", 25), width=5)
 	h1.grid(row=0, column=1)
 	
-	h2 = Label(base, text="8", font=("", 3), width=5)
+	h2 = Label(base, text="8", font=("", 25), width=5)
 	h2.grid(row=0, column=2)
 
-	h3 = Label(base, text="4")
+	h3 = Label(base, text="4", font=("", 25), width=5)
 	h3.grid(row=0, column=3)
 
-	h4 = Label(base, text="2")
+	h4 = Label(base, text="2", font=("", 25), width=5)
 	h4.grid(row=0, column=4)
 
-	h5 = Label(base, text="1")
+	h5 = Label(base, text="1", font=("", 25), width=5)
 	h5.grid(row=0, column=5)
 
 	base.mainloop()
