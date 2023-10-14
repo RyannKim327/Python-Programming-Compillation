@@ -15,7 +15,7 @@ def convert(a):
 		return 0
 
 def start():
-	a = [
+	t = [
 		[16, 8, 4, 2, 1],
 		[16, 8, 4, 2, 1],
 		[16, 8, 4, 2, 1]
@@ -30,12 +30,13 @@ def start():
 	_min = ""
 	_sec = ""
 	_hr_ = [16]
-	for i in a[0]:
+	print(t[0])
+	for i in t[0]:
 		print(i)
-		if i in _hr_:
-			_hr += a
-		else:
-			_hr += b
+		# if i in _hr_:
+		# 	_hr += a
+		# else:
+		# 	_hr += b
 
 	print(_hr)
 	
