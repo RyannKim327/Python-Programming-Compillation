@@ -31,10 +31,9 @@ def start():
 	for i in t[0]:
 		_hr_.append(hr // i)
 		hr %= i
-	print(_hr_)
-	
-	for i in t[0]:
-		if i in _hr_:
+
+	for i in _hr_:
+		if i == 1:
 			_hr += a
 		else:
 			_hr += b
