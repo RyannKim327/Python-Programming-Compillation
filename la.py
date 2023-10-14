@@ -26,11 +26,8 @@ def start():
 	hr = convert(timer[0])
 	min = convert(timer[1])
 	sec = convert(timer[2])
-	for i in range(len(a)):
-		pass	
+	
 	pass
 
 if __name__ == "__main__":
-	# a = getTime()
-	# b = convert(a[0])
-	print(convert("13"))
+	start()
