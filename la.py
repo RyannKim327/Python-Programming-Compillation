@@ -8,8 +8,6 @@ def getTime():
 def convert(a):
 	if a.isdigit():
 		b = int(a) % 12
-		if b == 0:
-			return 12
 		return b
 	else:
 		return 0
