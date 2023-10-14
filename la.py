@@ -12,12 +12,19 @@ def convert(a):
 	else:
 		return 0
 
-def start():
-	t = [
+def algo(a):
+	b = [
 		[16, 8, 4, 2, 1],
 		[16, 8, 4, 2, 1],
 		[16, 8, 4, 2, 1]
 	]
+	_hr_ = []
+	for i in t[0]:
+		_hr_.append(hr // i)
+		hr %= i
+
+
+def start():
 	timer = getTime()
 	a = "[1]"
 	b = "[0]"
@@ -27,11 +34,7 @@ def start():
 	_hr = ""
 	_min = ""
 	_sec = ""
-	_hr_ = []
-	for i in t[0]:
-		_hr_.append(hr // i)
-		hr %= i
-
+	
 	for i in _hr_:
 		if i == 1:
 			_hr += a
