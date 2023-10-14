@@ -31,16 +31,14 @@ def start():
 	_hr = ""
 	_min = ""
 	_sec = ""
-	_hr_ = 16
+	_hr_ = [16]
 	for i in range(len(a[0])):
 		if i in _hr_:
+			_hr += a
+		else:
+			_hr += b
 
-
-	return [
-		_hr,
-		_min,
-		_sec
-	]
-
+	print(_hr)
+	
 if __name__ == "__main__":
 	start()
