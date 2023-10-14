@@ -8,6 +8,6 @@ def getData(query):
 def scrape(query):
 	data = getData(query)
 	bs = soup(data, "lxml")
-	print(bs.prettify())
+	data = bs.file
 
 scrape("broken vessels lyrics")
