@@ -44,7 +44,7 @@ def run():
 
 def start():
 	global hs
-	global m, m1, m2, m3, m4, m5
+	global ms
 	global s, s1, s2, s3, s4, s5
 	
 	base = Tk()
@@ -103,6 +103,9 @@ def start():
 
 	s5 = Label(base, text="1", font=("", 20), width=5)
 	s5.grid(row=2, column=5)
+
+	hs = [h, h1, h2, h3, h4, h5]
+	ms = [m, m1, m2, m3, m4, m5]
 
 	base.mainloop()
 
