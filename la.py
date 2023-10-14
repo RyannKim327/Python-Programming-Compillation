@@ -19,8 +19,8 @@ def start():
 		[16, 8, 4, 2, 1]
 	]
 	timer = getTime()
-	a = "*"
-	b = "."
+	a = "[]"
+	b = "[]"
 	hr = convert(timer[0])
 	min = convert(timer[1])
 	sec = convert(timer[2])
@@ -36,7 +36,7 @@ def start():
 		else:
 			_hr += b
 
-	print(_hr_)
+	print(_hr)
 	
 if __name__ == "__main__":
 	start()
