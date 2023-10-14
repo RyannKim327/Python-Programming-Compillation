@@ -28,8 +28,8 @@ def start():
 	_min = ""
 	_sec = ""
 	_hr_ = []
-	_hr_.append((hr // 12) * 12)
-	_hr_.append(hr % 12)
+	for i in t[0]:
+		
 	print(_hr_)
 	for i in t[0]:
 		if i in _hr_:
@@ -44,17 +44,6 @@ if __name__ == "__main__":
 
 	a = 501
 	b = [1000, 500, 200, 100, 50, 20, 5, 1, .25]
-	for i in b
-		print(a // )
-	k = a // 1000
-	a %= 1000
-	hhh = a // 500
-	a %= 500
-	hh = a // 200
-	a %= 200
-	h = a // 100
-	a %= 100
-	print(k)
-	print(hhh)
-	print(hh)
-	print(h)
+	for i in b:
+		print(a // i)
+		a %= i
