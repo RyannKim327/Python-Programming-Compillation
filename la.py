@@ -1,4 +1,5 @@
-import time, os, tkinter
+import time, os
+from tkinter import *
 
 def getTime():
 	timer = time.ctime()
@@ -42,8 +43,13 @@ def run():
 	os.system("cls")
 
 def start():
-	base = tk
-	pass
+	base = Tk()
+	base.geometry("500x500")
+
+	
+
+	base.mainloop()
+
 	
 if __name__ == "__main__":
 	start()
