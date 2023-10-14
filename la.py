@@ -23,6 +23,8 @@ def convert(a):
 
 def start():
 	timer = getTime()
+	a = "*"
+	b = " "
 	hr = convert(timer[0])
 	min = convert(timer[1])
 	sec = convert(timer[2])
