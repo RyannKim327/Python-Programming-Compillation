@@ -42,4 +42,5 @@ def start():
 	print(_hr_)
 	
 if __name__ == "__main__":
-	start()
+	a = 16
+	
