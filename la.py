@@ -29,7 +29,7 @@ def start():
 	_sec = ""
 	_hr_ = []
 	for i in t[0]:
-		
+		_hr_.append()
 	print(_hr_)
 	for i in t[0]:
 		if i in _hr_:
