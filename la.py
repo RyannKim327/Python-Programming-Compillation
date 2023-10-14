@@ -1,4 +1,4 @@
-import time
+import time, os
 
 def getTime():
 	timer = time.ctime()
@@ -38,8 +38,8 @@ def start():
 	print(algo(hr))
 	print(algo(min))
 	print(algo(sec))
-	time.sleep(1)
-	print("\r")
+	time.sleep(.1)
+	
 	start()
 	
 if __name__ == "__main__":
