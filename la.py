@@ -30,7 +30,7 @@ def start():
 	_min = ""
 	_sec = ""
 	_hr_ = []
-	while hr > 0:
+	while hr >= 0:
 		print(hr)
 		_hr_.append(hr // 12)
 		hr %= 12
