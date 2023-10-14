@@ -21,14 +21,13 @@ def start():
 	timer = getTime()
 	a = "[1]"
 	b = "[0]"
-	hr = convert(timer[0])
+	hr =  5 #convert(timer[0])
 	min = convert(timer[1])
 	sec = convert(timer[2])
 	_hr = ""
 	_min = ""
 	_sec = ""
 	_hr_ = []
-	print(hr)
 	_hr_.append((hr // 12) * 12)
 	_hr_.append(hr % 12)
 	print(_hr_)
