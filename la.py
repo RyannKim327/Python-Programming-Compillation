@@ -83,23 +83,22 @@ def start():
 	m5.grid(row=1, column=5)
 
 	s = Label(base, text="32", font=("", 20), width=5)
-	s.grid(row=0, column=0)
+	s.grid(row=2, column=0)
 
 	s1 = Label(base, text="16", font=("", 20), width=5)
-	s1.grid(row=0, column=1)
+	s1.grid(row=2, column=1)
 	
-	h2 = Label(base, text="8", font=("", 20), width=5)
-	h2.grid(row=0, column=2)
+	s2 = Label(base, text="8", font=("", 20), width=5)
+	s2.grid(row=2, column=2)
 
-	h3 = Label(base, text="4", font=("", 20), width=5)
-	h3.grid(row=0, column=3)
+	s3 = Label(base, text="4", font=("", 20), width=5)
+	s3.grid(row=2, column=3)
 
-	h4 = Label(base, text="2", font=("", 20), width=5)
-	h4.grid(row=0, column=4)
+	s4 = Label(base, text="2", font=("", 20), width=5)
+	s4.grid(row=2, column=4)
 
-	h5 = Label(base, text="1", font=("", 20), width=5)
-	h5.grid(row=0, column=5)
-
+	s5 = Label(base, text="1", font=("", 20), width=5)
+	s5.grid(row=2, column=5)
 
 	base.mainloop()
 
