@@ -29,14 +29,13 @@ def start():
 	_hr = ""
 	_min = ""
 	_sec = ""
-	_hr_ = [16]
-	print(t[0])
+	_hr_ = []
+	for i in range
 	for i in t[0]:
-		print(i)
-		# if i in _hr_:
-		# 	_hr += a
-		# else:
-		# 	_hr += b
+		if i in _hr_:
+			_hr += a
+		else:
+			_hr += b
 
 	print(_hr)
 	
