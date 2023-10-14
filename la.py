@@ -42,8 +42,10 @@ def run():
 	algo(hr, hs)
 	algo(min, ms)
 	algo(sec, ss)
-	time.sleep(.1)
-	
+	x = 10000
+	while x >= 0:
+		x -= 1
+	run()
 
 def start():
 	global hs
