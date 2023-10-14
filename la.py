@@ -39,7 +39,7 @@ def start():
 	print(algo(min))
 	print(algo(sec))
 	time.sleep(.1)
-	
+	os.system("cls")
 	start()
 	
 if __name__ == "__main__":
