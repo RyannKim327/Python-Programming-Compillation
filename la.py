@@ -46,34 +46,34 @@ def start():
 	base = Tk()
 	base.geometry("500x500")
 
-	h1 = Label(base, text="16", font=("", 25))
+	h1 = Label(base, text="16", font=("", 25), width=)
 	h1.grid(row=0, column=0)
 	
-	h2 = Label(base, text="8", font=("", 25))
+	h2 = Label(base, text="8", font=("", 25), width=)
 	h2.grid(row=0, column=1)
 
-	h3 = Label(base, text="4", font=("", 25))
+	h3 = Label(base, text="4", font=("", 25), width=)
 	h3.grid(row=0, column=2)
 
-	h4 = Label(base, text="2", font=("", 25))
+	h4 = Label(base, text="2", font=("", 25), width=)
 	h4.grid(row=0, column=3)
 
-	h5 = Label(base, text="1", font=("", 25))
+	h5 = Label(base, text="1", font=("", 25), width=)
 	h5.grid(row=0, column=4)
 
-	m1 = Label(base, text="16", font=("", 25))
+	m1 = Label(base, text="16", font=("", 25), width=)
 	m1.grid(row=1, column=0)
 	
-	m2 = Label(base, text="8", font=("", 25))
+	m2 = Label(base, text="8", font=("", 25), width=)
 	m2.grid(row=1, column=1)
 
-	m3 = Label(base, text="4", font=("", 25))
+	m3 = Label(base, text="4", font=("", 25), width=)
 	m3.grid(row=1, column=2)
 
-	m4 = Label(base, text="2", font=("", 25))
+	m4 = Label(base, text="2", font=("", 25), width=)
 	m4.grid(row=1, column=3)
 
-	m5 = Label(base, text="1", font=("", 25))
+	m5 = Label(base, text="1", font=("", 25), width=)
 	m5.grid(row=1, column=4)
 
 
