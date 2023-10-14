@@ -24,7 +24,7 @@ def convert(a):
 def start():
 	timer = getTime()
 	a = "*"
-	b = " "
+	b = "."
 	hr = convert(timer[0])
 	min = convert(timer[1])
 	sec = convert(timer[2])
@@ -32,8 +32,8 @@ def start():
 	_min = ""
 	_sec = ""
 	_hr_ = [16]
-	for i in range(len(a[0])):
-		if i in _hr_:
+	for i in range(len(a[0]):
+		if a[0][i] in _hr_:
 			_hr += a
 		else:
 			_hr += b
