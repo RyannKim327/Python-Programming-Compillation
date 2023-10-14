@@ -43,56 +43,23 @@ def run():
 	os.system("cls")
 
 def start():
-	global h1, h2, h3, h4, h5, m1, m2, m3, m4, m5, s1, s2, s3, s4, s5
 	base = Tk()
 	base.geometry("500x500")
 
-	h1 = Label(base, text="16", font=("", 25), width=5)
+	h1 = Label(base, text="16", texc)
 	h1.grid(row=0, column=0)
 	
-	h2 = Label(base, text="8", font=("", 25), width=5)
+	h2 = Label(base, text="8")
 	h2.grid(row=0, column=1)
 
-	h3 = Label(base, text="4", font=("", 25), width=5)
+	h3 = Label(base, text="4")
 	h3.grid(row=0, column=2)
 
-	h4 = Label(base, text="2", font=("", 25), width=5)
+	h4 = Label(base, text="2")
 	h4.grid(row=0, column=3)
 
-	h5 = Label(base, text="1", font=("", 25), width=5)
+	h5 = Label(base, text="1")
 	h5.grid(row=0, column=4)
-
-	m1 = Label(base, text="16", font=("", 25), width=5)
-	m1.grid(row=1, column=0)
-	
-	m2 = Label(base, text="8", font=("", 25), width=5)
-	m2.grid(row=1, column=1)
-
-	m3 = Label(base, text="4", font=("", 25), width=5)
-	m3.grid(row=1, column=2)
-
-	m4 = Label(base, text="2", font=("", 25), width=5)
-	m4.grid(row=1, column=3)
-
-	m5 = Label(base, text="1", font=("", 25), width=5)
-	m5.grid(row=1, column=4)
-
-	s1 = Label(base, text="16", font=("", 25), width=5)
-	s1.grid(row=1, column=0)
-	
-	s2 = Label(base, text="8", font=("", 25), width=5)
-	s2.grid(row=1, column=1)
-
-	s3 = Label(base, text="4", font=("", 25), width=5)
-	s3.grid(row=1, column=2)
-
-	s4 = Label(base, text="2", font=("", 25), width=5)
-	s4.grid(row=1, column=3)
-
-	s5 = Label(base, text="1", font=("", 25), width=5)
-	s5.grid(row=1, column=4)
-
-	print(s1.cget("end-1c"))
 
 	base.mainloop()
 
