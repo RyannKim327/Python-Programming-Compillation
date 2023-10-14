@@ -20,21 +20,21 @@ def algo(a):
 	]
 	c = []
 	d = ""
+	a1 = "[1]"
+	b1 = "[0]"
 	for e in b[0]:
 		c.append(a // e)
 		a %= e
 	for i in c:
 		if i == 1:
-			d += a
+			d += a1
 		else:
-			d += b
+			d += 
 	
-
+	return d
 
 def start():
 	timer = getTime()
-	a = "[1]"
-	b = "[0]"
 	hr =  5 #convert(timer[0])
 	min = convert(timer[1])
 	sec = convert(timer[2])
