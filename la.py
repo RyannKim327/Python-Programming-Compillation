@@ -35,7 +35,8 @@ def start():
 	hr =  5 #convert(timer[0])
 	min = convert(timer[1])
 	sec = convert(timer[2])
-	print()
+	print(algo(hr))
+	print(algo(min))
 	
 if __name__ == "__main__":
 	start()
