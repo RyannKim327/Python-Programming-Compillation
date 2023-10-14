@@ -7,5 +7,5 @@ def getData(query):
 
 def scrape(query):
 	data = getData(query)
-	bs = soup(data, "html.parser")
-	
+	bs = soup(data, "lxml")
+	print(bs.prettify())
