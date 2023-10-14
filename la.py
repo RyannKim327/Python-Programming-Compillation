@@ -30,10 +30,8 @@ def start():
 	_min = ""
 	_sec = ""
 	_hr_ = []
-	while hr >= 0:
-		print(hr)
-		_hr_.append(hr // 12)
-		hr %= 12
+	_hr_.append(hr // 12)
+	_hr_.append(hr % 12)
 	# for i in t[0]:
 	# 	if i in _hr_:
 	# 		_hr += a
