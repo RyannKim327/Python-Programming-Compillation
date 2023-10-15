@@ -170,9 +170,9 @@ def start2():
 	s1 = Label(fm, text="16", bg="blue", font=("", 20))
 	s1.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
-	s4 = Label(fs, text="02", bg="red", font=("", 20))
+	s4 = Label(fm, text="02", bg="red", font=("", 20))
 	s4.pack(padx=1, pady=1, side='left', fill='both', expand=True)
-	
+
 	fm.pack(padx=1, fill="both", expand=True)
 
 	fb = Frame(base)
@@ -188,6 +188,13 @@ def start2():
 
 	m5 = Label(fb, text="01", bg="red", font=("", 20))
 	m5.pack(padx=1, side='left', fill='both', expand=True)
+
+	s2 = Label(fb, text="08", bg="red", font=("", 20))
+	s2.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+
+	s5 = Label(fb, text="01", bg="red", font=("", 20))
+	s5.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+
 	fb.pack(padx=1, pady=1, fill="both", expand=True)
 
 	base.mainloop()
