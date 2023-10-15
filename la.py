@@ -134,6 +134,12 @@ def start2():
 	ft = Frame(base)
 
 	ft.pack(padx=1, pady=1, fill="both", expand=True)
+	fm = Frame(base)
+
+	ft.pack(padx=1, pady=1, fill="both", expand=True)
+	ft = Frame(base)
+
+	ft.pack(padx=1, pady=1, fill="both", expand=True)
 
 	base.mainloop()
 	
