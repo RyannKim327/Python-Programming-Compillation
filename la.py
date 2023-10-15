@@ -53,7 +53,7 @@ def start():
 	base = Tk()
 	base.geometry("200x100")
 	base.overrideredirect(True)
-	base.
+	base.deiconify()
 
 	ft = Frame(base)
 
