@@ -56,7 +56,7 @@ def start():
 	fh = Frame(base)
 
 	h = Label(fh, text="32", font=("", 20), width=5)
-	h.pack()
+	h.pack(expand=True, fill='x')
 
 	h1 = Label(fh, text="16", font=("", 20), width=5)
 	h1.grid(row=0, column=1)
