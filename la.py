@@ -133,11 +133,11 @@ def start2():
 
 	fh = Frame(base)
 
-	h = Label(fh, text="32", bg="red", font=("", 20))
-	h.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+	s = Label(fh, text="32", bg="red", font=("", 20))
+	s.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
-	h1 = Label(fh, text="16", bg="blue", font=("", 20))
-	h1.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+	s1 = Label(fh, text="16", bg="blue", font=("", 20))
+	s1.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 	
 	m = Label(fh, text="32", bg="red", font=("", 20))
 	m.pack(padx=1, pady=1, side='left', fill='both', expand=True)
@@ -145,11 +145,13 @@ def start2():
 	m1 = Label(fh, text="16", bg="blue", font=("", 20))
 	m1.pack(padx=1, side='left', fill='both', expand=True)
 	
-	s = Label(fh, text="32", bg="red", font=("", 20))
-	s.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+	h = Label(fh, text="32", bg="red", font=("", 20))
+	h.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
-	s1 = Label(fh, text="16", bg="blue", font=("", 20))
-	s1.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+	h1 = Label(fh, text="16", bg="blue", font=("", 20))
+	h1.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+
+
 
 	h2 = Label(fh, text="08", bg="red", font=("", 20))
 	h2.pack(padx=1, pady=1, side='left', fill='both', expand=True)
