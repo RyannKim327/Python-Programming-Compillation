@@ -52,8 +52,7 @@ def start():
 
 	base = Tk()
 	base.geometry("200x100")
-	base.overrideredirect(True)
-	base.deiconify()
+	base.title("Binary Clock")
 
 	ft = Frame(base)
 
