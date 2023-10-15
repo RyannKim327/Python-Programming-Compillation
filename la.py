@@ -131,7 +131,10 @@ def start2():
 	base = Tk()
 	base.geometry("500x500")
 
-	fh = Frame(base)
+	ft = Frame(base)
+
+	ft.pack(padx=1, pady=1, fill="both", expand=True)
+
 	base.mainloop()
 	
 if __name__ == "__main__":
