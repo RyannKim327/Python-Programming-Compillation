@@ -139,6 +139,12 @@ def start2():
 	h3 = Label(ft, text="04", bg="red", font=("", 20))
 	h3.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
+	m = Label(ft, text="32", bg="red", font=("", 20))
+	m.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+
+	m3 = Label(ft, text="04", bg="red", font=("", 20))
+	m3.pack(padx=1, side='left', fill='both', expand=True)
+
 	ft.pack(padx=1, pady=1, fill="both", expand=True)
 
 	fm = Frame(base)
@@ -146,6 +152,9 @@ def start2():
 	h1 = Label(fm, text="16", bg="blue", font=("", 20))
 	h1.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
+	m1 = Label(fm, text="16", bg="blue", font=("", 20))
+	m1.pack(padx=1, side='left', fill='both', expand=True)
+	
 	h4 = Label(fm, text="02", bg="red", font=("", 20))
 	h4.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
