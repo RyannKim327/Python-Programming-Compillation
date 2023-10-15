@@ -133,13 +133,18 @@ def start2():
 
 	ft = Frame(base)
 
+	h = Label(fh, text="32", bg="red", font=("", 20))
+	h.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+
 	ft.pack(padx=1, pady=1, fill="both", expand=True)
+
 	fm = Frame(base)
 
-	ft.pack(padx=1, pady=1, fill="both", expand=True)
-	ft = Frame(base)
+	fm.pack(padx=1, fill="both", expand=True)
 
-	ft.pack(padx=1, pady=1, fill="both", expand=True)
+	fb = Frame(base)
+
+	fb.pack(padx=1, pady=1, fill="both", expand=True)
 
 	base.mainloop()
 	
