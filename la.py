@@ -53,7 +53,7 @@ def start():
 	base = Tk()
 	base.geometry("500x500")
 
-	fh = Frame(base, )
+	fh = Frame(base)
 
 	h = Label(fh, text="32", bg="red", font=("", 20))
 	h.pack(fill='y', expand=True)
