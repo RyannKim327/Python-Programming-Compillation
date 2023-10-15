@@ -187,7 +187,8 @@ def start2():
 	m5 = Label(fs, text="01", bg="red", font=("", 20))
 	m5.pack(padx=1, side='left', fill='both', expand=True)
 
-
+	h2 = Label(fs, text="08", bg="red", font=("", 20))
+	h2.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
 	h5 = Label(fs, text="01", bg="red", font=("", 20))
 	h5.pack(padx=1, pady=1, side='left', fill='both', expand=True)
