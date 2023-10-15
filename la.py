@@ -133,16 +133,22 @@ def start2():
 
 	ft = Frame(base)
 
-	h = Label(fh, text="32", bg="red", font=("", 20))
+	h = Label(ft, text="32", bg="red", font=("", 20))
 	h.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
 	ft.pack(padx=1, pady=1, fill="both", expand=True)
 
 	fm = Frame(base)
 
+	h1 = Label(fb, text="16", bg="blue", font=("", 20))
+	h1.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+
 	fm.pack(padx=1, fill="both", expand=True)
 
 	fb = Frame(base)
+	
+	h2 = Label(fh, text="08", bg="red", font=("", 20))
+	h2.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
 	fb.pack(padx=1, pady=1, fill="both", expand=True)
 
