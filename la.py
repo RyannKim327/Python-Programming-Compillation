@@ -61,16 +61,16 @@ def start():
 	h1 = Label(fh, text="16", bg="blue", font=("", 20))
 	h1.pack(side='left', fill='both', expand=True)
 	
-	h2 = Label(fh, text="8", bg="red", font=("", 20))
+	h2 = Label(fh, text="08", bg="red", font=("", 20))
 	h2.pack(side='left', fill='both', expand=True)
 
-	h3 = Label(fh, text="4", bg="red", font=("", 20))
+	h3 = Label(fh, text="04", bg="red", font=("", 20))
 	h3.pack(side='left', fill='both', expand=True)
 
-	h4 = Label(fh, text="2", bg="red", font=("", 20))
+	h4 = Label(fh, text="02", bg="red", font=("", 20))
 	h4.pack(side='left', fill='both', expand=True)
 
-	h5 = Label(fh, text="1", bg="red", font=("", 20))
+	h5 = Label(fh, text="01", bg="red", font=("", 20))
 	h5.pack(side='left', fill='both', expand=True)
 
 	fh.pack(fill='both', expand=True)
