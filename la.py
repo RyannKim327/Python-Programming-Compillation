@@ -194,6 +194,8 @@ def start2():
 	h5.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
 	fs.pack(padx=1, pady=1, fill='both', expand=True)
+
+	base.mainloop()
 	
 if __name__ == "__main__":
 	start2()
