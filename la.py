@@ -53,6 +53,8 @@ def start():
 	base = Tk()
 	base.geometry("500x500")
 
+	fh
+
 	h = Label(base, text="32", font=("", 20), width=5)
 	h.grid(row=0, column=0)
 
