@@ -152,11 +152,11 @@ def start2():
 	h1 = Label(fm, text="16", bg="blue", font=("", 20))
 	h1.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
-	m1 = Label(fm, text="16", bg="blue", font=("", 20))
-	m1.pack(padx=1, side='left', fill='both', expand=True)
-
 	h4 = Label(fm, text="02", bg="red", font=("", 20))
 	h4.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+
+	m1 = Label(fm, text="16", bg="blue", font=("", 20))
+	m1.pack(padx=1, side='left', fill='both', expand=True)
 
 	m4 = Label(fm, text="02", bg="red", font=("", 20))
 	m4.pack(padx=1, side='left', fill='both', expand=True)
@@ -174,7 +174,7 @@ def start2():
 	m2 = Label(fb, text="08", bg="red", font=("", 20))
 	m2.pack(padx=1, side='left', fill='both', expand=True)
 
-	m5 = Label(fm, text="01", bg="red", font=("", 20))
+	m5 = Label(fb, text="01", bg="red", font=("", 20))
 	m5.pack(padx=1, side='left', fill='both', expand=True)
 	fb.pack(padx=1, pady=1, fill="both", expand=True)
 
