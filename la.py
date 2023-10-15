@@ -55,22 +55,22 @@ def start():
 
 	fh = Frame(base)
 
-	h = Label(fh, text="32", font=("", 20))
+	h = Label(fh, text="32", bg="red", font=("", 20))
 	h.pack(fill='x', expand=True)
 
-	h1 = Label(fh, text="16", font=("", 20))
+	h1 = Label(fh, text="16", bg="blue", font=("", 20))
 	h1.pack(fill='x', expand=True)
 	
-	h2 = Label(fh, text="8", font=("", 20))
+	h2 = Label(fh, text="8", bg="red", font=("", 20))
 	h2.pack(fill='x', expand=True)
 
-	h3 = Label(fh, text="4", font=("", 20))
+	h3 = Label(fh, text="4", bg="red", font=("", 20))
 	h3.pack(fill='x', expand=True)
 
-	h4 = Label(fh, text="2", font=("", 20))
+	h4 = Label(fh, text="2", bg="red", font=("", 20))
 	h4.pack(fill='x', expand=True)
 
-	h5 = Label(fh, text="1", font=("", 20))
+	h5 = Label(fh, text="1", bg="red", font=("", 20))
 	h5.pack(fill='x', expand=True)
 
 	fh.pack(fill='x', expand=True)
