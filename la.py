@@ -52,7 +52,8 @@ def start():
 
 	base = Tk()
 	base.geometry("200x100")
-	base.overrideredirect(False)
+	base.overrideredirect(True)
+	base.eval("tk::PlaceWindow . topright")
 
 	ft = Frame(base)
 
