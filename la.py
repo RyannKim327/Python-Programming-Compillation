@@ -52,6 +52,7 @@ def start():
 
 	base = Tk()
 	base.geometry("500x250")
+	base.overrideredirect(True)
 
 	ft = Frame(base)
 
