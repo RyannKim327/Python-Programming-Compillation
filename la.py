@@ -29,9 +29,9 @@ def algo(a, w):
 	for e in range(len(c)):
 		# d += f"[{e}]"
 		if c[e] == 1:
-			w[e].config(bg="#aaaaaa", fg="131320")
+			w[e].config(bg="#aaaaaa", fg="#131320")
 		else:
-			w[e].config(bg="#131320")
+			w[e].config(bg="#131320", fg="#aaaaaa")
 
 def run():
 	global hs, ms, ss
