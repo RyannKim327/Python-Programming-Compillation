@@ -16,8 +16,7 @@ def convert(a):
 def algo(a, w):
 	b = [
 		[32, 16, 8, 4, 2, 1],
-		[32, 16, 8, 4, 2, 1],
-		[32, 16, 8, 4, 2, 1]
+		[16, 8, 4, 2, 1]
 	]
 	c = []
 	d = ""
@@ -31,7 +30,7 @@ def algo(a, w):
 		if c[e] == 1:
 			w[e].config(bg="green")
 		else:
-			w[e].config(bg="red")
+			w[e].config(bg="#131320")
 
 def run():
 	global hs, ms, ss
