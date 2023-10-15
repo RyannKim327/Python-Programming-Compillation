@@ -53,25 +53,25 @@ def start():
 	base = Tk()
 	base.geometry("500x500")
 
-	fh = Frame(base)
+	fh = Frame(base, )
 
 	h = Label(fh, text="32", bg="red", font=("", 20))
-	h.pack(fill='x', expand=True)
+	h.pack(fill='y', expand=True)
 
 	h1 = Label(fh, text="16", bg="blue", font=("", 20))
-	h1.pack(fill='x', expand=True)
+	h1.pack(fill='y', expand=True)
 	
 	h2 = Label(fh, text="8", bg="red", font=("", 20))
-	h2.pack(fill='x', expand=True)
+	h2.pack(fill='y', expand=True)
 
 	h3 = Label(fh, text="4", bg="red", font=("", 20))
-	h3.pack(fill='x', expand=True)
+	h3.pack(fill='y', expand=True)
 
 	h4 = Label(fh, text="2", bg="red", font=("", 20))
-	h4.pack(fill='x', expand=True)
+	h4.pack(fill='y', expand=True)
 
 	h5 = Label(fh, text="1", bg="red", font=("", 20))
-	h5.pack(fill='x', expand=True)
+	h5.pack(fill='y', expand=True)
 
 	fh.pack(fill='x', expand=True)
 
