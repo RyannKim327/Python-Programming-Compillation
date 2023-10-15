@@ -127,6 +127,8 @@ def start():
 
 	base.mainloop()
 
+def start2():
+	base = 
 	
 if __name__ == "__main__":
-	start()
+	start2()
