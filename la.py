@@ -29,7 +29,7 @@ def algo(a, w):
 	for e in range(len(c)):
 		# d += f"[{e}]"
 		if c[e] == 1:
-			w[e].config(bg="#aaaaaa")
+			w[e].config(bg="#aaaaaa", fg="131320")
 		else:
 			w[e].config(bg="#131320")
 
@@ -83,16 +83,16 @@ def start():
 	m1 = Label(fm, text="16", bg="blue", font=("", 20))
 	m1.pack(side='left', fill='both', expand=True)
 	
-	m2 = Label(fm, text="8", bg="red", font=("", 20))
+	m2 = Label(fm, text="08", bg="red", font=("", 20))
 	m2.pack(side='left', fill='both', expand=True)
 
-	m3 = Label(fm, text="4", bg="red", font=("", 20))
+	m3 = Label(fm, text="04", bg="red", font=("", 20))
 	m3.pack(side='left', fill='both', expand=True)
 
-	m4 = Label(fm, text="2", bg="red", font=("", 20))
+	m4 = Label(fm, text="02", bg="red", font=("", 20))
 	m4.pack(side='left', fill='both', expand=True)
 
-	m5 = Label(fm, text="1", bg="red", font=("", 20))
+	m5 = Label(fm, text="01", bg="red", font=("", 20))
 	m5.pack(side='left', fill='both', expand=True)
 
 	fm.pack(fill='both', expand=True)
@@ -105,16 +105,16 @@ def start():
 	s1 = Label(fs, text="16", bg="blue", font=("", 20))
 	s1.pack(side='left', fill='both', expand=True)
 	
-	s2 = Label(fs, text="8", bg="red", font=("", 20))
+	s2 = Label(fs, text="08", bg="red", font=("", 20))
 	s2.pack(side='left', fill='both', expand=True)
 
-	s3 = Label(fs, text="4", bg="red", font=("", 20))
+	s3 = Label(fs, text="04", bg="red", font=("", 20))
 	s3.pack(side='left', fill='both', expand=True)
 
-	s4 = Label(fs, text="2", bg="red", font=("", 20))
+	s4 = Label(fs, text="02", bg="red", font=("", 20))
 	s4.pack(side='left', fill='both', expand=True)
 
-	s5 = Label(fs, text="1", bg="red", font=("", 20))
+	s5 = Label(fs, text="01", bg="red", font=("", 20))
 	s5.pack(side='left', fill='both', expand=True)
 
 	fs.pack(fill='both', expand=True)
