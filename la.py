@@ -49,17 +49,7 @@ def start():
 	global ms
 	global ss
 	global base
-	
-	
-	hs = [h, h1, h2, h3, h4, h5]
-	ms = [m, m1, m2, m3, m4, m5]
-	ss = [s, s1, s2, s3, s4, s5]
 
-	run()
-
-	base.mainloop()
-
-def start2():
 	base = Tk()
 	base.geometry("500x500")
 
@@ -128,8 +118,14 @@ def start2():
 	s5.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
 	fb.pack(padx=1, pady=1, fill="both", expand=True)
+	
+	hs = [h, h1, h2, h3, h4, h5]
+	ms = [m, m1, m2, m3, m4, m5]
+	ss = [s, s1, s2, s3, s4, s5]
+
+	run()
 
 	base.mainloop()
-	
+
 if __name__ == "__main__":
-	start2()
+	start()
