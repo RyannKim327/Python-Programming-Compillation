@@ -31,7 +31,7 @@ def algo(a, w):
 		if c[e] == 1:
 			w[e].config(bg="#aaaaaa", fg="#131320")
 		else:
-			w[e].config(bg="#131320", fg="#aaaaaa")
+			w[e].config(bg="#131320", fg="#131320")
 
 def run():
 	global hs, ms, ss
