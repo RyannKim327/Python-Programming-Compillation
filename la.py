@@ -145,6 +145,12 @@ def start2():
 	m3 = Label(ft, text="04", bg="red", font=("", 20))
 	m3.pack(padx=1, side='left', fill='both', expand=True)
 
+	s = Label(ft, text="32", bg="red", font=("", 20))
+	s.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+
+	s3 = Label(ft, text="04", bg="red", font=("", 20))
+	s3.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+
 	ft.pack(padx=1, pady=1, fill="both", expand=True)
 
 	fm = Frame(base)
