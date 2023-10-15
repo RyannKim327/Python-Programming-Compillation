@@ -51,7 +51,7 @@ def start():
 	global base
 
 	base = Tk()
-	base.geometry("500x500")
+	base.geometry("500x250")
 
 	ft = Frame(base)
 
