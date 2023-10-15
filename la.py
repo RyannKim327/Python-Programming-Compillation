@@ -56,22 +56,22 @@ def start():
 	fh = Frame(base)
 
 	h = Label(fh, text="32", font=("", 20))
-	h.pack(fill='x', )
+	h.pack(fill='y')
 
 	h1 = Label(fh, text="16", font=("", 20))
-	h1.pack(fill='x', )
+	h1.pack(fill='y')
 	
 	h2 = Label(fh, text="8", font=("", 20))
-	h2.pack(fill='x', )
+	h2.pack(fill='y')
 
 	h3 = Label(fh, text="4", font=("", 20))
-	h3.pack(fill='x', )
+	h3.pack(fill='y')
 
 	h4 = Label(fh, text="2", font=("", 20))
-	h4.pack(fill='x', )
+	h4.pack(fill='y')
 
 	h5 = Label(fh, text="1", font=("", 20))
-	h5.pack(fill='x', )
+	h5.pack(fill='y')
 
 	fh.pack()
 
