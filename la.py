@@ -71,31 +71,31 @@ def start():
 	h4.pack(side='left', fill='x', expand=True)
 
 	h5 = Label(fh, text="1", bg="red", font=("", 20))
-	h5.pack(side='left', fill='x', expand=True)
+	h5.pack(side='left', fill='both', expand=True)
 
-	fh.pack(fill='x', expand=True)
+	fh.pack(fill='both', expand=True)
 
 	fm = Frame(base)
 
-	m = Label(fh, text="32", bg="red", font=("", 20))
+	m = Label(fm, text="32", bg="red", font=("", 20))
 	m.pack(side='left', fill='x', expand=True)
 
-	m1 = Label(fh, text="16", bg="blue", font=("", 20))
+	m1 = Label(fm, text="16", bg="blue", font=("", 20))
 	m1.pack(side='left', fill='x', expand=True)
 	
-	m2 = Label(fh, text="8", bg="red", font=("", 20))
+	m2 = Label(fm, text="8", bg="red", font=("", 20))
 	m2.pack(side='left', fill='x', expand=True)
 
-	m3 = Label(fh, text="4", bg="red", font=("", 20))
+	m3 = Label(fm, text="4", bg="red", font=("", 20))
 	m3.pack(side='left', fill='x', expand=True)
 
-	m4 = Label(fh, text="2", bg="red", font=("", 20))
+	m4 = Label(fm, text="2", bg="red", font=("", 20))
 	m4.pack(side='left', fill='x', expand=True)
 
-	m5 = Label(fh, text="1", bg="red", font=("", 20))
+	m5 = Label(fm, text="1", bg="red", font=("", 20))
 	m5.pack(side='left', fill='x', expand=True)
 
-	fh.pack(fill='x', expand=True)
+	fm.pack(fill='x', expand=True)
 
 	# hs = [h, h1, h2, h3, h4, h5]
 	# ms = [m, m1, m2, m3, m4, m5]
