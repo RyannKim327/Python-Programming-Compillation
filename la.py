@@ -56,19 +56,19 @@ def start():
 	fh = Frame(base)
 
 	h = Label(fh, text="32", bg="red", font=("", 20))
-	h.pack(side='left', fill='x', expand=True)
+	h.pack(side='left', fill='both', expand=True)
 
 	h1 = Label(fh, text="16", bg="blue", font=("", 20))
-	h1.pack(side='left', fill='x', expand=True)
+	h1.pack(side='left', fill='both', expand=True)
 	
 	h2 = Label(fh, text="8", bg="red", font=("", 20))
-	h2.pack(side='left', fill='x', expand=True)
+	h2.pack(side='left', fill='both', expand=True)
 
 	h3 = Label(fh, text="4", bg="red", font=("", 20))
-	h3.pack(side='left', fill='x', expand=True)
+	h3.pack(side='left', fill='both', expand=True)
 
 	h4 = Label(fh, text="2", bg="red", font=("", 20))
-	h4.pack(side='left', fill='x', expand=True)
+	h4.pack(side='left', fill='both', expand=True)
 
 	h5 = Label(fh, text="1", bg="red", font=("", 20))
 	h5.pack(side='left', fill='both', expand=True)
@@ -78,30 +78,52 @@ def start():
 	fm = Frame(base)
 
 	m = Label(fm, text="32", bg="red", font=("", 20))
-	m.pack(side='left', fill='x', expand=True)
+	m.pack(side='left', fill='both', expand=True)
 
 	m1 = Label(fm, text="16", bg="blue", font=("", 20))
-	m1.pack(side='left', fill='x', expand=True)
+	m1.pack(side='left', fill='both', expand=True)
 	
 	m2 = Label(fm, text="8", bg="red", font=("", 20))
-	m2.pack(side='left', fill='x', expand=True)
+	m2.pack(side='left', fill='both', expand=True)
 
 	m3 = Label(fm, text="4", bg="red", font=("", 20))
-	m3.pack(side='left', fill='x', expand=True)
+	m3.pack(side='left', fill='both', expand=True)
 
 	m4 = Label(fm, text="2", bg="red", font=("", 20))
-	m4.pack(side='left', fill='x', expand=True)
+	m4.pack(side='left', fill='both', expand=True)
 
 	m5 = Label(fm, text="1", bg="red", font=("", 20))
-	m5.pack(side='left', fill='x', expand=True)
+	m5.pack(side='left', fill='both', expand=True)
 
-	fm.pack(fill='x', expand=True)
+	fm.pack(fill='both', expand=True)
 
-	# hs = [h, h1, h2, h3, h4, h5]
-	# ms = [m, m1, m2, m3, m4, m5]
-	# ss = [s, s1, s2, s3, s4, s5]
+	fs = Frame(base)
 
-	# run()
+	s = Label(fs, text="32", bg="red", font=("", 20))
+	s.pack(side='left', fill='both', expand=True)
+
+	s1 = Label(fs, text="16", bg="blue", font=("", 20))
+	s1.pack(side='left', fill='both', expand=True)
+	
+	s2 = Label(fs, text="8", bg="red", font=("", 20))
+	s2.pack(side='left', fill='both', expand=True)
+
+	s3 = Label(fs, text="4", bg="red", font=("", 20))
+	s3.pack(side='left', fill='both', expand=True)
+
+	s4 = Label(fs, text="2", bg="red", font=("", 20))
+	s4.pack(side='left', fill='both', expand=True)
+
+	s5 = Label(fs, text="1", bg="red", font=("", 20))
+	s5.pack(side='left', fill='both', expand=True)
+
+	fs.pack(fill='both', expand=True)
+
+	hs = [h, h1, h2, h3, h4, h5]
+	ms = [m, m1, m2, m3, m4, m5]
+	ss = [s, s1, s2, s3, s4, s5]
+
+	run()
 
 	base.mainloop()
 
