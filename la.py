@@ -28,7 +28,7 @@ def algo(a, w):
 	for e in range(len(c)):
 		# d += f"[{e}]"
 		if c[e] == 1:
-			w[e].config(bg="green")
+			w[e].config(bg="#aaaaaa")
 		else:
 			w[e].config(bg="#131320")
 
