@@ -154,12 +154,6 @@ def start2():
 	fh.pack(padx=1, pady=1, fill='both', expand=True)
 	fm = Frame(base)
 
-	s2 = Label(fm, text="08", bg="red", font=("", 20))
-	s2.pack(padx=1, pady=1, side='left', fill='both', expand=True)
-
-	s3 = Label(fm, text="04", bg="red", font=("", 20))
-	s3.pack(padx=1, pady=1, side='left', fill='both', expand=True)
-
 	m2 = Label(fm, text="08", bg="red", font=("", 20))
 	m2.pack(padx=1, side='left', fill='both', expand=True)
 
@@ -171,6 +165,12 @@ def start2():
 
 	h3 = Label(fm, text="04", bg="red", font=("", 20))
 	h3.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+
+	s3 = Label(fm, text="04", bg="red", font=("", 20))
+	s3.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+
+	s4 = Label(fm, text="02", bg="red", font=("", 20))
+	s4.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
 	fm.pack(padx=1, fill='both', expand=True)
 	fs = Frame(base)
@@ -187,8 +187,10 @@ def start2():
 	h5 = Label(fs, text="01", bg="red", font=("", 20))
 	h5.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
+	s2 = Label(fm, text="08", bg="red", font=("", 20))
+	s2.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
-	s5 = Label(fs, text="01", bg="red", font=("", 20))
+	s5 = Label(fm, text="01", bg="red", font=("", 20))
 	s5.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
 	fs.pack(padx=1, pady=1, fill='both', expand=True)
