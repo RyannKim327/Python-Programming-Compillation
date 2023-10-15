@@ -175,24 +175,23 @@ def start2():
 	fm.pack(padx=1, fill='both', expand=True)
 	fs = Frame(base)
 
-	h4 = Label(fh, text="02", bg="red", font=("", 20))
-	h4.pack(padx=1, pady=1, side='left', fill='both', expand=True)
-
-	h5 = Label(fh, text="01", bg="red", font=("", 20))
-	h5.pack(padx=1, pady=1, side='left', fill='both', expand=True)
-
-	
-	m4 = Label(fm, text="02", bg="red", font=("", 20))
-	m4.pack(padx=1, side='left', fill='both', expand=True)
-
-	m5 = Label(fm, text="01", bg="red", font=("", 20))
-	m5.pack(padx=1, side='left', fill='both', expand=True)
-
 	s4 = Label(fs, text="02", bg="red", font=("", 20))
 	s4.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
 	s5 = Label(fs, text="01", bg="red", font=("", 20))
 	s5.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+	
+	m4 = Label(fs, text="02", bg="red", font=("", 20))
+	m4.pack(padx=1, side='left', fill='both', expand=True)
+
+	m5 = Label(fs, text="01", bg="red", font=("", 20))
+	m5.pack(padx=1, side='left', fill='both', expand=True)
+
+	h4 = Label(fs, text="02", bg="red", font=("", 20))
+	h4.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+
+	h5 = Label(fs, text="01", bg="red", font=("", 20))
+	h5.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
 	fs.pack(padx=1, pady=1, fill='both', expand=True)
 	
