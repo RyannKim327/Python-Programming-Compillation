@@ -146,12 +146,18 @@ def start2():
 	h1 = Label(fm, text="16", bg="blue", font=("", 20))
 	h1.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
+	h4 = Label(fm, text="02", bg="red", font=("", 20))
+	h4.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+
 	fm.pack(padx=1, fill="both", expand=True)
 
 	fb = Frame(base)
 	
 	h2 = Label(fb, text="08", bg="red", font=("", 20))
 	h2.pack(padx=1, pady=1, side='left', fill='both', expand=True)
+
+	h5 = Label(fb, text="01", bg="red", font=("", 20))
+	h5.pack(padx=1, pady=1, side='left', fill='both', expand=True)
 
 	fb.pack(padx=1, pady=1, fill="both", expand=True)
 
