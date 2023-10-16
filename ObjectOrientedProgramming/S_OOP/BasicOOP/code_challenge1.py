@@ -53,7 +53,7 @@ def start():
 					if len(books) <= 0:
 						print("There's no books yet.")
 					else:
-						books_ = [i. for i in books]
+						books_ = [i.getBookName() for i in books]
 						another_choice = input("Enter a book you want to borrow: ")
 
 			if it:
