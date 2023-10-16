@@ -15,7 +15,7 @@ def insert(text, password=False, timer=0.05):
 	if not text.endswith(": "):
 		text += ": "
 	if password:
-		return getpass.getpass()
+		return getpass.getpass("")
 	return input()
 
 def insertlists(lists: list, prompt="Enter your choice: ", timer=0.1):
