@@ -11,7 +11,7 @@ def enterBook(librarian):
 	author = insert("Enter the book author: ")
 	publisher = insert("Enter the publisher name: ")
 	date = insert("Enter the publishing date: ")
-	
+	stocks = insert("Enter the number of stocks: ")
 	book = Books({
 		"ID": id,
 		"title": name,
