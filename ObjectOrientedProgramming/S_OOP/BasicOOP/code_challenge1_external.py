@@ -67,9 +67,12 @@ class Books:
 		return self.__stocks__ > 0:
 	
 	def doBorrow(self, studentName):
-		self.__stocks__ -= 1
-		print(f"The book was borrowed by {studentName}")
-	
+		if self.canBorrow:
+			self.__stocks__ -= 1
+			print(f"The book was borrowed by {studentName}")
+		else:
+			print(f"There's no ")
+
 	def doReturn(self, studentName):
 		self.__stocks__ += 1
 		print(f"The book was returned by {studentName}")
