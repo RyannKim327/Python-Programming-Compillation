@@ -14,6 +14,7 @@ def enterBook(librarian):
 	stocks = insert("Enter the number of stocks: ")
 	while not stocks.isdigit():
 		stocks = input("Enter the number of stocks: ")
+		
 	book = Books({
 		"ID": id,
 		"title": name,
