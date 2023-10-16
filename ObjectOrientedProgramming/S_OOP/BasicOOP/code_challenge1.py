@@ -69,7 +69,9 @@ def start():
 					books_ = [i.getBookName() for i in books]
 					another_choice = insertlists(books_, "Enter a book you want to borrow: ")
 					while not another_choice.isdigit():
-						another_choice = insertlists("Enter a book you want to borrow: ")
+						another_choice = input("Enter a book you want to borrow: ")
+
+					books[int(another_choice) - 1].do
 
 				students.append(student)
 				if not "Exit" in menu:
