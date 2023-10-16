@@ -12,6 +12,8 @@ def enterBook(librarian):
 	publisher = insert("Enter the publisher name: ")
 	date = insert("Enter the publishing date: ")
 	stocks = insert("Enter the number of stocks: ")
+	while not stocks.isdigit():
+		stocks:
 	book = Books({
 		"ID": id,
 		"title": name,
