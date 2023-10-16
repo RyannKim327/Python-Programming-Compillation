@@ -71,7 +71,7 @@ class Books:
 			self.__stocks__ -= 1
 			print(f"The book was borrowed by {studentName}")
 		else:
-			print(f"There's no ")
+			print(f"There's no books for now. Please wait until they return the books to us.")
 
 	def doReturn(self, studentName):
 		self.__stocks__ += 1
