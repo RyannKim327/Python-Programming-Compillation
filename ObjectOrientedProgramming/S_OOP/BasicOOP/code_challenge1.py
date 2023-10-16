@@ -13,14 +13,14 @@ def enterBook(librarian):
 	date = insert("Enter the publishing date: ")
 	stocks = insert("Enter the number of stocks: ")
 	while not stocks.isdigit():
-		stocks:
+		stocks = input("Enter the number of stocks: ")
 	book = Books({
 		"ID": id,
 		"title": name,
 		"author": author,
 		"publisher": publisher,
 		"date": date,
-		"stocks": stocks
+		"stocks": int(stocks)
 	})
 	
 
