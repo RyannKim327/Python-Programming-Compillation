@@ -1,5 +1,4 @@
 from code_challenge1_external import *
-import getpass
 
 students= []
 librarians = []
