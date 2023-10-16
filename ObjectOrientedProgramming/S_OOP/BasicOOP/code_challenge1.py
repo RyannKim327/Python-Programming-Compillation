@@ -54,7 +54,7 @@ def start():
 						print("There's no books yet.")
 					else:
 						books_ = [i.getBookName() for i in books]
-						another_choice = input("Enter a book you want to borrow: ")
+						another_choice = insertlists("Enter a book you want to borrow: ")
 
 			if it:
 				student = Student({
