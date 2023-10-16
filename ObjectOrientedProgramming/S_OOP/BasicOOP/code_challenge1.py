@@ -66,7 +66,8 @@ def start():
 				if len(books) <= 0:
 					print("There's no books yet.")
 				else:
-					another_choice = input("Enter a book you want to borrow: ")
+					books_ = [i.getBookName() for i in books]
+					another_choice = insertlists(books_, "Enter a book you want to borrow: ")
 
 				students.append(student)
 				if not "Exit" in menu:
