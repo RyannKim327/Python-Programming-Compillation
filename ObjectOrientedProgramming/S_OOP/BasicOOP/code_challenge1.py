@@ -14,7 +14,7 @@ def enterBook(librarian):
 	stocks = insert("Enter the number of stocks: ")
 	while not stocks.isdigit():
 		stocks = input("Enter the number of stocks: ")
-		
+
 	book = Books({
 		"ID": id,
 		"title": name,
@@ -23,7 +23,8 @@ def enterBook(librarian):
 		"date": date,
 		"stocks": int(stocks)
 	})
-	
+
+	books.append(book)
 
 def start():
 	global books, librarians, students
@@ -52,7 +53,7 @@ def start():
 					if len(books) <= 0:
 						print("There's no books yet.")
 					else:
-
+						
 						another_choice = input("Enter a book you want to borrow: ")
 
 			if it:

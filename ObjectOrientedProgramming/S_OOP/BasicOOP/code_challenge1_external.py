@@ -64,7 +64,7 @@ class Books:
 		return self.__name__
 	
 	def canBorrow(self):
-		return self.__stocks__ > 0:
+		return self.__stocks__ > 0
 	
 	def doBorrow(self, studentName):
 		if self.canBorrow:
