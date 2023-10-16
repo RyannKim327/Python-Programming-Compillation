@@ -18,9 +18,9 @@ def enterBook(librarian):
 		"author": author,
 		"publisher": publisher,
 		"date": date,
-		"isBorrowed": False
+		"stocks": stocks
 	})
-	pass
+	
 
 def start():
 	global books, librarians, students
