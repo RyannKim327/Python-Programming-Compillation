@@ -58,14 +58,18 @@ class Books:
 		self.__author__ = book['author']
 		self.__publisher__ = book['publisher']
 		self.__date__ = book['date']
-		self.__isBorrowed__ = book['isBorrowed']
+		self.__stocks__ = book['stocks']
 	
 	def  getBookName(self):
 		return self.__name__
 	
 	def canBorrow(self):
-		return self.__isBorrowed__
+		return self.__stocks__ > 0:
 	
 	def doBorrow(self, studentName):
-		self.__isBorrowed__ = not self.__isBorrowed__
+		self.__stocks__ -= 1
 		print(f"The book was borrowed by {studentName}")
+	
+	def doReturn(self, studentName):
+		self.__stocks__ += 1
+		
