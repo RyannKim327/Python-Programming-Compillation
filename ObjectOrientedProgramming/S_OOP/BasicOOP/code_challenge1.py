@@ -50,12 +50,6 @@ def start():
 				if name == i.getStudentName():
 					typing(f"Welcome back to Library Mr/Ms. {i.getStudentName()}")
 					it = False
-					if len(books) <= 0:
-						print("There's no books yet.")
-					else:
-						books_ = [i.getBookName() for i in books]
-						another_choice = insertlists(books_, "Enter a book you want to borrow: ")
-
 			if it:
 				student = Student({
 					"ID": id,
