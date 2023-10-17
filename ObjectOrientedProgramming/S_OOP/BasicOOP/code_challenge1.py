@@ -112,7 +112,7 @@ def start():
 			ask = insertlists(_b_, "What do you want to do? ")
 
 			while not ask in _c_:
-				ask = input(_b_, "What do you want to do? ")
+				ask = input("What do you want to do? ")
 
 
 			enterBook(librarian)
