@@ -140,8 +140,8 @@ if __name__ == "__main__":
 	a = "Please Wait"
 	b = 0
 	while True:
-		c += a[b]
-		print(f"{c}{x[y]}", end="\r")
+		z += a[b]
+		print(f"{z}{x[y]}", end="\r")
 		y += 1
 		time.sleep(.5)
 		if y >= len(x):
