@@ -106,21 +106,23 @@ def start():
 					"password": password
 				})
 				librarians.append(librarian)
+			
+			loop = True
+			while loop:
+				_b_ = ["Enter a book", "Modify a book", "Exit"]
+				_c_ = ["1", "2", "3"]
+				ask = insertlists(_b_, "What do you want to do? ")
 
-			_b_ = ["Enter a book", "Modify a book", "Exit"]
-			_c_ = ["1", "2", "3"]
-			ask = insertlists(_b_, "What do you want to do? ")
+				while not ask in _c_:
+					ask = input("What do you want to do? ")
 
-			while not ask in _c_:
-				ask = input("What do you want to do? ")
-
-			match ask:
-				case "1":
-					enterBook(librarian)
-				case "2":
-					pass
-				case "3":
-					pass
+				match ask:
+					case "1":
+						enterBook(librarian)
+					case "2":
+						pass
+					case "3":
+						loop = False
 
 			if not "Exit" in menu:
 				menu.append("Exit")
