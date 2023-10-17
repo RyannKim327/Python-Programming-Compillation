@@ -1,5 +1,7 @@
 import time, getpass
 
+def loaa
+
 def typing(text, timer=0.05):
 	for i in text:
 		print(i, end="", flush=True)
