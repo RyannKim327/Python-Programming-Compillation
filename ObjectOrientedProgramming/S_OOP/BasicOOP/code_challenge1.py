@@ -136,8 +136,10 @@ if __name__ == "__main__":
 	import time
 	x = "\\|/-"
 	y = 0
+	z  = ""
+	a = "Please Wait"
 	while True:
-		print(f"Please wait {x[y]}", end="\r")
+		print(f"{a}{x[y]}", end="\r")
 		y += 1
 		time.sleep(.5)
 		if y >= len(x):
