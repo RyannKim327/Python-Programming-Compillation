@@ -107,6 +107,8 @@ def start():
 				})
 				librarians.append(librarian)
 
+			inset
+
 			enterBook(librarian)
 			if not "Exit" in menu:
 				menu.append("Exit")
