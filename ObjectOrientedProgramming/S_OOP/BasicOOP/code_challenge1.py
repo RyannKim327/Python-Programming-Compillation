@@ -133,21 +133,6 @@ def start():
 		start()
 
 if __name__ == "__main__":
-	import time
-	x = "\\|/-"
-	y = 0
-	z  = ""
-	a = "Please Wait for a moment that this part is just a simple loading "
-	b = 0
-	while True:
-		print(f"{z}  {x[y]}", end="\r")
-		y += 1
-		time.sleep(.15)
-		if y >= len(x):
-			y = 0
-		
-		if b < len(a) - 1:
-			z += a[b]
-			b += 1
+	loading()
 
 	start()
