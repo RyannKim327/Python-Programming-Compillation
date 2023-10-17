@@ -140,7 +140,6 @@ if __name__ == "__main__":
 	a = "Please Wait for a moment that this part is just a simple loading "
 	b = 0
 	while True:
-		z += a[b]
 		print(f"{z}  {x[y]}", end="\r")
 		y += 1
 		time.sleep(.5)
@@ -148,6 +147,7 @@ if __name__ == "__main__":
 			y = 0
 		
 		if b < len(a) - 1:
+			z += a[b]
 			b += 1
 
 	start()
