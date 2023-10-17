@@ -1,6 +1,6 @@
 import time, getpass
 
-def loading(msg, timer=.25, delay=1.5):
+def loading(msg="Please wait for a moment", timer=.25, delay=1.5):
 	a = ""
 	b = 0
 	c = "\\|/-"
@@ -14,6 +14,8 @@ def loading(msg, timer=.25, delay=1.5):
 		
 		if b < len(msg):
 			a += msg[b]
+			b += 1
+
 	print()
 
 def typing(text, timer=0.05):
