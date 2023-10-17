@@ -50,6 +50,8 @@ def start():
 				if name == i.getStudentName():
 					typing(f"Welcome back to Library Mr/Ms. {i.getStudentName()}")
 					it = False
+					student = i
+
 			if it:
 				student = Student({
 					"ID": id,
@@ -67,7 +69,7 @@ def start():
 				while not another_choice.isdigit():
 					another_choice = input("Enter a book you want to borrow: ")
 
-				books[int(another_choice) - 1].doBorrow()
+				books[int(another_choice) - 1].doBorrow(student.getStudentName())
 
 			if not "Exit" in menu:
 				menu.append("Exit")
