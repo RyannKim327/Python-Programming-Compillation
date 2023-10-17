@@ -25,7 +25,7 @@ def insertlists(lists: list, prompt="Enter your choice: ", timer=0.1):
 	
 	if prompt.endswith(":") or prompt.endswith("?"):
 		prompt += " "
-	if not prompt.endswith(": ") or not prompt.endswith("? "):
+	if not prompt.endswith(": ") and not prompt.endswith("? "):
 		prompt += ": "
 	return insert(prompt)
 
