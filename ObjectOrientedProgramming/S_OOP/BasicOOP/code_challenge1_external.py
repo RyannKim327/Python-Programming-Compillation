@@ -77,3 +77,6 @@ class Books:
 	def doReturn(self, studentName):
 		self.__stocks__ += 1
 		print(f"The book was returned by {studentName}")
+
+	def getStocks(self):
+		return self.__stocks__
