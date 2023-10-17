@@ -133,5 +133,7 @@ def start():
 		start()
 
 if __name__ == "__main__":
-	while
+	import time
+	while True:
+		print()
 	start()
