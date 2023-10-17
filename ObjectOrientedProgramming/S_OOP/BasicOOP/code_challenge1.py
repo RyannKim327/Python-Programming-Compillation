@@ -134,7 +134,8 @@ def start():
 
 if __name__ == "__main__":
 	import time
-	x = "\|"
+	x = "\\|/-"
+	y = 0
 	while True:
 		print("Please wait ...", end="\r")
 
