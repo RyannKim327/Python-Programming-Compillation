@@ -147,7 +147,7 @@ if __name__ == "__main__":
 		if y >= len(x):
 			y = 0
 		
-		if b < len(a):
+		if b < len(a) - 1:
 			b += 1
 
 	start()
