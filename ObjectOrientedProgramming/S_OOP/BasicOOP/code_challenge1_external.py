@@ -5,6 +5,7 @@ def loading(msg="Please wait for a moment", timer=.25, delay=1.5):
 	b = 0
 	c = "\\|/-"
 	d = 0
+	delay = de
 	while True:
 		print(f"{a} {c[d]}", end="\r")
 		d += 0
