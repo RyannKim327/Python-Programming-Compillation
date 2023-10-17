@@ -12,7 +12,8 @@ def loading(msg, timer=.25, delay=1.5):
 		if d >= len(c):
 			d = 0
 		
-		if b < 
+		if b < len(msg):
+			a += msg[b]
 	print()
 
 def typing(text, timer=0.05):
