@@ -80,7 +80,7 @@ def start():
 
 		case "2":
 			id = len(librarians) + 1
-			name = input("Enter your name: ")
+			name = insert("Enter your name: ")
 			it = True
 			for lib in librarians:
 				if name == lib.getName():
@@ -110,6 +110,10 @@ def start():
 			_b_ = ["Enter a book", "Modify a book", "Exit"]
 			_c_ = ["1", "2", "3"]
 			ask = insertlists(_b_, "What do you want to do? ")
+
+			while not ask in _c_:
+				ask = input(_b_, "What do you want to do? ")
+
 
 			enterBook(librarian)
 			if not "Exit" in menu:
