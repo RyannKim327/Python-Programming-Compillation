@@ -5,7 +5,7 @@ def loading(msg="Please wait for a moment", timer=.25, delay=1.5):
 	b = 0
 	c = "\\|/-"
 	d = 0
-	delay *= 100
+	delay *= 10
 	while True:
 		print(f"{a} {c[d]}", end="\r")
 		d += 1
@@ -16,8 +16,8 @@ def loading(msg="Please wait for a moment", timer=.25, delay=1.5):
 		if b < len(msg):
 			a += msg[b]
 			b += 1
-		
-		delay -= 1
+		else:
+			delay -= 1
 
 		if delay <= 0:
 			break
