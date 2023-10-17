@@ -3,7 +3,8 @@ import time, getpass
 def loading(msg, timer=.25):
 	a = ""
 	b = 0
-	c = "\\|"
+	c = "\\|/-"
+	
 
 def typing(text, timer=0.05):
 	for i in text:
