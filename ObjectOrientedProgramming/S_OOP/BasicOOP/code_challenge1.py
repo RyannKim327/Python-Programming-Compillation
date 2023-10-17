@@ -63,20 +63,21 @@ def start():
 				})
 
 				typing(f"Welcome to Library Mr/Ms. {student.getStudentName()}")
-				if len(books) <= 0:
-					print("There's no books yet.")
-				else:
-					books_ = [i.getBookName() for i in books]
-					another_choice = insertlists(books_, "Enter a book you want to borrow: ")
-					while not another_choice.isdigit():
-						another_choice = input("Enter a book you want to borrow: ")
-
-					books[int(another_choice) - 1].doBorrow()
-
 				students.append(student)
-				if not "Exit" in menu:
-					menu.append("Exit")
-					_a_.append("3")
+			
+			if len(books) <= 0:
+				print("There's no books yet.")
+			else:
+				books_ = [i.getBookName() for i in books]
+				another_choice = insertlists(books_, "Enter a book you want to borrow: ")
+				while not another_choice.isdigit():
+					another_choice = input("Enter a book you want to borrow: ")
+
+				books[int(another_choice) - 1].doBorrow()
+
+			if not "Exit" in menu:
+				menu.append("Exit")
+				_a_.append("3")
 
 		case "2":
 			id = len(librarians) + 1
