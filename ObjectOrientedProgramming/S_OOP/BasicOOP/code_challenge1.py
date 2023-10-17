@@ -139,6 +139,7 @@ if __name__ == "__main__":
 	while True:
 		print(f"Please wait {x[y]}", end="\r")
 		y += 1
+		time.sleep(1)
 		if y >= len(x):
 			y = 0
 
