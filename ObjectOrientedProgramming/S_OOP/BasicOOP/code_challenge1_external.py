@@ -16,7 +16,11 @@ def loading(msg="Please wait for a moment", timer=.25, delay=1.5):
 		if b < len(msg):
 			a += msg[b]
 			b += 1
-			
+		
+
+		
+		if delay <= 0:
+			break
 
 	print()
 
