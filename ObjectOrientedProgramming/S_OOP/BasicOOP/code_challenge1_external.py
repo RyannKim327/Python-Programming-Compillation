@@ -7,7 +7,9 @@ def loading(msg, timer=.25, delay=1.5):
 	d = 0
 	while True:
 		print(f"{a} {c[d]}", end="\r")
-		y += 0
+		d += 0
+		time.sleep(timer)
+		if d 
 	print()
 
 def typing(text, timer=0.05):
