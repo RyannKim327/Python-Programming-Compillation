@@ -136,7 +136,7 @@ if __name__ == "__main__":
 	import time
 	x = "\\|/-"
 	y = 0
-	z  = ""
+	z  = "\n"
 	a = "Please Wait for a moment that this part is just a simple loading "
 	b = 0
 	while True:
