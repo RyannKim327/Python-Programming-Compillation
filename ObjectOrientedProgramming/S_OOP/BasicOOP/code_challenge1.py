@@ -107,7 +107,8 @@ def start():
 				})
 				librarians.append(librarian)
 
-			_b_ = ["Enter a book"]
+			_b_ = ["Enter a book", "Modify a book", "Exit"]
+			_c_ = ["1"]
 			insert("What do you want to do? ")
 
 			enterBook(librarian)
