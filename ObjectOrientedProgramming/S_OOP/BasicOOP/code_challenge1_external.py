@@ -8,7 +8,7 @@ def loading(msg="Please wait for a moment", timer=.25, delay=1.5):
 	delay *= 100
 	while True:
 		print(f"{a} {c[d]}", end="\r")
-		d += 0
+		d += 1
 		time.sleep(timer)
 		if d >= len(c):
 			d = 0
