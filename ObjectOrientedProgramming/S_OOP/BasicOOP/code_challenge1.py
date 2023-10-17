@@ -141,7 +141,7 @@ if __name__ == "__main__":
 	b = 0
 	while True:
 		z += a[b]
-		print(f"{z}{x[y]}", end="\r")
+		print(f"{z}  {x[y]}", end="\r")
 		y += 1
 		time.sleep(.5)
 		if y >= len(x):
