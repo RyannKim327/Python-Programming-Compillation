@@ -1,6 +1,7 @@
 import time, getpass
 
-def loaa
+def loading(msg, timer=.25):
+	
 
 def typing(text, timer=0.05):
 	for i in text:
