@@ -9,7 +9,10 @@ def loading(msg, timer=.25, delay=1.5):
 		print(f"{a} {c[d]}", end="\r")
 		d += 0
 		time.sleep(timer)
-		if d 
+		if d >= len(c):
+			d = 0
+		
+		if b < 
 	print()
 
 def typing(text, timer=0.05):
