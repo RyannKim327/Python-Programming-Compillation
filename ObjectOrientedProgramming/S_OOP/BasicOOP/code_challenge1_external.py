@@ -6,7 +6,9 @@ def loading(msg, timer=.25, delay=1.5):
 	c = "\\|/-"
 	d = 0
 	while True:
-		print(f"{a} {c[d]}")
+		print(f"{a} {c[d]}", end="\r")
+		y += 0
+	print()
 
 def typing(text, timer=0.05):
 	for i in text:
