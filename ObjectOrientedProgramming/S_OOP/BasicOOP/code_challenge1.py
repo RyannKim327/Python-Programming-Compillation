@@ -114,6 +114,13 @@ def start():
 			while not ask in _c_:
 				ask = input("What do you want to do? ")
 
+			match ask:
+				case "1":
+					pass
+				case "2":
+					pass
+				case "3":
+					pass
 
 			enterBook(librarian)
 			if not "Exit" in menu:
