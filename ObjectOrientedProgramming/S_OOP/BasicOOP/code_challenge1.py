@@ -109,7 +109,7 @@ def start():
 
 			_b_ = ["Enter a book", "Modify a book", "Exit"]
 			_c_ = ["1", "2", "3"]
-			ask = insertlists(_b_"What do you want to do? ")
+			ask = insertlists(_b_, "What do you want to do? ")
 
 			enterBook(librarian)
 			if not "Exit" in menu:

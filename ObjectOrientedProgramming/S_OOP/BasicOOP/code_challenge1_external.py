@@ -22,9 +22,10 @@ def insertlists(lists: list, prompt="Enter your choice: ", timer=0.1):
 	for i in range(len(lists)):
 		print(f"[{i + 1}] {lists[i]}")
 		time.sleep(timer)
-	if prompt.endswith(":"):
+	
+	if prompt.endswith(":") or prompt.endswith("?"):
 		prompt += " "
-	if not prompt.endswith(": "):
+	if not prompt.endswith(": ") or not prompt.endswith(":"):
 		prompt += ": "
 	return insert(prompt)
 
