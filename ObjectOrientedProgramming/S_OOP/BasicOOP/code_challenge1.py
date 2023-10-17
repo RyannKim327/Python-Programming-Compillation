@@ -116,13 +116,12 @@ def start():
 
 			match ask:
 				case "1":
-					pass
+					enterBook(librarian)
 				case "2":
 					pass
 				case "3":
 					pass
 
-			enterBook(librarian)
 			if not "Exit" in menu:
 				menu.append("Exit")
 				_a_.append("3")
