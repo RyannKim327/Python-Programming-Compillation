@@ -142,7 +142,7 @@ if __name__ == "__main__":
 	while True:
 		print(f"{z}  {x[y]}", end="\r")
 		y += 1
-		time.sleep(.5)
+		time.sleep(.15)
 		if y >= len(x):
 			y = 0
 		
