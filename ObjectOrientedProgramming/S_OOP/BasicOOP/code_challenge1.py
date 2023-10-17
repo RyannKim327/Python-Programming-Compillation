@@ -133,4 +133,5 @@ def start():
 		start()
 
 if __name__ == "__main__":
+	while
 	start()
