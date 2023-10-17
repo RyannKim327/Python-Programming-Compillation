@@ -137,7 +137,7 @@ if __name__ == "__main__":
 	x = "\\|/-"
 	y = 0
 	z  = ""
-	a = "Please Wait"
+	a = "Please Wait for a moment that this part is just a simple loading "
 	b = 0
 	while True:
 		z += a[b]
