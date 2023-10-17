@@ -137,6 +137,8 @@ if __name__ == "__main__":
 	x = "\\|/-"
 	y = 0
 	while True:
-		print("Please wait ...", end="\r")
+		print(f"Please wait ...", end="\r")
+		if y >= len(x):
+			y = 0
 
 	start()
