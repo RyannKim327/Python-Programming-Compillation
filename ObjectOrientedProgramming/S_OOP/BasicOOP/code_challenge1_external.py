@@ -22,7 +22,7 @@ def loading(msg="Please wait for a moment", timer=.25, delay=1.5):
 		if delay <= 0:
 			break
 
-	print()
+	print(end="\r")
 
 def typing(text, timer=0.05):
 	for i in text:
