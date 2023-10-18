@@ -1,5 +1,5 @@
 class class_s:
-	def __init__(self, a, b):
+	def __init__(self, a: str, b):
 		print("Initated")
 
 	def __str__(self):
