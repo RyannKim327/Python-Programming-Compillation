@@ -22,3 +22,4 @@ print(s.a())
 
 a = class_a()
 s.addclass(a)
+print(s.a_class)
