@@ -8,7 +8,9 @@ class class_s:
 	def __str__(self):
 		return "This class is for something"
 
-class
+class class_a:
+	def __init__(self):
+		print("This is class a")
 
 s = class_s()
 print(s)
