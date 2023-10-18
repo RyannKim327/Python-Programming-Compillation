@@ -1,6 +1,6 @@
 from code_challenge1_external import *
 
-students= []
+students = []
 librarians = []
 books = []
 
