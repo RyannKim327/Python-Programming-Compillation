@@ -15,6 +15,7 @@ class class_s:
 class class_a:
 	def __init__(self):
 		print("This is class a")
+	
 
 s = class_s()
 print(s)
