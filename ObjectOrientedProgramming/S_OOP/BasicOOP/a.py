@@ -6,5 +6,5 @@ class class_s:
 	def __str__(self):
 		return "This class is for something"
 
-s = class_s(a,)
+s = 
 print(s)
