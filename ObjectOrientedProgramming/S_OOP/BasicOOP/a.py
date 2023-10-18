@@ -1,5 +1,6 @@
 class class_s:
 	def __init__(self):
+		self.a_class = []
 		print("Initated")
 
 	def a(self):
@@ -15,3 +16,5 @@ class class_a:
 s = class_s()
 print(s)
 print(s.a())
+
+a = class_a()
