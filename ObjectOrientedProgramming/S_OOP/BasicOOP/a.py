@@ -10,3 +10,4 @@ class class_s:
 
 s = class_s()
 print(s)
+print(s.a())
