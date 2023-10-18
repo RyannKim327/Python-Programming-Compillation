@@ -5,6 +5,9 @@ class class_s:
 
 	def a(self):
 		return 123
+	
+	def addclass(self, class_a):
+		self.a_class.append(class_a)
 
 	def __str__(self):
 		return "This class is for something"
