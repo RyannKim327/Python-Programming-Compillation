@@ -1,6 +1,5 @@
 class class_s:
-	def __init__(self, a: str, b):
-		"""Sample program 123"""
+	def __init__(self)
 		print("Initated")
 
 	def __str__(self):
