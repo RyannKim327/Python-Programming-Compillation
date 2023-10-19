@@ -14,7 +14,7 @@ students = []
 librarian = []
 books = []
 
-book1 = Book(1, "Sample", "Kim", "Jiro inc.", 10)
+book1 = Book(1, "Sample 123", "Kim", "Jiro inc.", 10)
 
 books.append(book1)
 
