@@ -15,7 +15,7 @@ librarian = []
 books = []
 
 book1 = Book(1, "Sample 123", "Kim", "Jiro inc.", 10)
-
+book1.__
 books.append(book1)
 
 for book in books:
