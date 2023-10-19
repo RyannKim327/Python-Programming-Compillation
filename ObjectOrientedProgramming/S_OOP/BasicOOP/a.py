@@ -12,12 +12,11 @@ class Book:
 
 
 class Librarian:
-	def __init__(self, ID, name, author, pub, stocks=0):
+	def __init__(self, ID, name, books_added):
 		self.ID = ID
 		self.name = name
-		self.author = author
-		self.pub = pub
-		self.stocks = stocks
+		self.books_added = books_added
+
 
 students = []
 librarian = []
