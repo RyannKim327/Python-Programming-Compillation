@@ -7,9 +7,11 @@ class Book:
 		self.pub = pub
 		self.stocks = stocks
 	
-	
+	def getBookname(self):
+		return self.name
 
 students = []
 librarian = []
 books = []
 
+book1 = Book()
