@@ -14,4 +14,6 @@ students = []
 librarian = []
 books = []
 
-book1 = Book()
+book1 = Book(1, "Sample", "Kim", "Jiro inc.", 10)
+
+
