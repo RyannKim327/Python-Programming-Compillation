@@ -32,7 +32,7 @@ def start():
 		"Student",
 		"Librarian"
 	]
-	# choice = insert("Login as:\n[1] Student\n[2] Librarian\n[3] Exit\nEnter your choice: ")
+	
 	typing("Welcome to my Library Management System. Would you like to LOGIN as: ")
 	_a_ = ["1", "2"]
 	choice = insertlists(menu, "Enter your choice:")
