@@ -19,4 +19,4 @@ book1 = Book(1, "Sample", "Kim", "Jiro inc.", 10)
 books.append(book1)
 
 for book in books:
-	print(b)
+	print(book.getBookname())
