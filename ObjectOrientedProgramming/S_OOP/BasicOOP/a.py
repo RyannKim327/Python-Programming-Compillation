@@ -6,6 +6,8 @@ class Book:
 		self.author = author
 		self.pub = pub
 		self.stocks = stocks
+	
+	
 
 students = []
 librarian = []
