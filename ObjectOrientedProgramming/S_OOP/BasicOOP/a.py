@@ -36,3 +36,5 @@ print("Librarian")
 librarian = Librarian(1, "Kim", 10)
 librarians.append(librarian)
 
+for librarian in librarians:
+	print(librarian.getName())
