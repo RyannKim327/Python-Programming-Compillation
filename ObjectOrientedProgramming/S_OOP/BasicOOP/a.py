@@ -21,7 +21,7 @@ class Librarian:
 		return self.name
 
 students = []
-librarian = []
+librarians = []
 books = []
 
 book1 = Book(1, "Sample 123", "Kim", "Jiro inc.", 10)
@@ -33,4 +33,4 @@ for book in books:
 
 print("Librarian")
 
-librarian
+librarian = Librarian(1, "Kim", )
