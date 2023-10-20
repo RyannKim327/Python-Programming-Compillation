@@ -17,6 +17,7 @@ class Librarian:
 		self.name = name
 		self.books_added = books_added
 
+	def getName(self):
 
 students = []
 librarian = []
