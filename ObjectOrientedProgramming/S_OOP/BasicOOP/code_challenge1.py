@@ -65,8 +65,6 @@ def start():
 				print("There's no books yet.")
 			else:
 				books_ = [f"{i.getBookName()}\n- Stocks: [{i.getStocks()}]" for i in books]
-				for i in books:
-					books_.append(f"{i.getBookName()}\n- Stocks: [{i.getStocks()}]")
 				another_choice = insertlists(books_, "Enter a book you want to borrow: ")
 				while not another_choice.isdigit():
 					another_choice = input("Enter a book you want to borrow: ")
