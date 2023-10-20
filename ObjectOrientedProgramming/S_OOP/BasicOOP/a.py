@@ -18,6 +18,7 @@ class Librarian:
 		self.books_added = books_added
 
 	def getName(self):
+		return self.name
 
 students = []
 librarian = []
@@ -31,3 +32,5 @@ for book in books:
 	print(book.name)
 
 print("Librarian")
+
+librarian
