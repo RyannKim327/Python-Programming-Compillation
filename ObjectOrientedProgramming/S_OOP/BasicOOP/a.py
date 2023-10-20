@@ -33,4 +33,6 @@ for book in books:
 
 print("Librarian")
 
-librarian = Librarian(1, "Kim", )
+librarian = Librarian(1, "Kim", 10)
+librarians.append(librarian)
+
