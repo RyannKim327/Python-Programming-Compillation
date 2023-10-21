@@ -9,6 +9,9 @@ class Student:
 	def setName(self, name):
 		self.name = name
 
+class Teacher:
+	def __init__(self name):
+		
 
 students = []
 
