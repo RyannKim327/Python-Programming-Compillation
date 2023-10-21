@@ -14,3 +14,4 @@ students = []
 
 while True:
 	
+	student = Student(input("Enter student name: "))
