@@ -16,7 +16,8 @@ class Teacher:
 	def getName(self):
 		return self.getName()
 	
-	def 
+	def setName(self, name):
+		self.name = name
 
 students = []
 
