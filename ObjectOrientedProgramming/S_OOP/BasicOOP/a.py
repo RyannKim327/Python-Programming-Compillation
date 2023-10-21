@@ -17,4 +17,6 @@ while True:
 	student = Student(name)
 	students.append(student)
 
-	if input("")
+	if input("Would you like to continue? ") == "n":
+		break
+
