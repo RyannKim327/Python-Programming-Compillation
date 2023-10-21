@@ -5,7 +5,8 @@ class Student:
 	def getName(self):
 		return self.name
 	
-	def setName(self, )
+	def setName(self, name):
+		self.name = name
 
 
 
