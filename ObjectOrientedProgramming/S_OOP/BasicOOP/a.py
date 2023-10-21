@@ -13,7 +13,10 @@ class Teacher:
 	def __init__(self name):
 		self.name = name
 	
-	def getName(self)
+	def getName(self):
+		return self.getName()
+	
+	def 
 
 students = []
 
