@@ -20,3 +20,4 @@ while True:
 	if input("Would you like to continue? ") == "n":
 		break
 
+student_names = [f"The name is {}"]
