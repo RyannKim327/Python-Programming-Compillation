@@ -20,5 +20,3 @@ while True:
 	if input("Would you like to continue? ") == "n":
 		break
 
-for student in students:
-	print(student.getName())
