@@ -1,6 +1,8 @@
 class Student:
-	def __init__(self, ):
-		self.name = ""
+	def __init__(self, name):
+		self.name = name
+	
+	def getName(self):
 
 
 
