@@ -13,5 +13,6 @@ class Student:
 students = []
 
 while True:
+	name  = input("Enter student name: ")
+	student = Student(name)
 	
-	student = Student(input("Enter student name: "))
