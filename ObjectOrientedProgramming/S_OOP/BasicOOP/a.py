@@ -7,5 +7,5 @@ class Student:
 
 
 
-student1 = Student()
+student1 = Student("Kim")
 print(student1.getName())
