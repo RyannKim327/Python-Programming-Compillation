@@ -10,8 +10,5 @@ class Student:
 		self.name = name
 
 
+students = []
 
-student1 = Student("Kim")
-print(student1.getName())
-student1.setName("Kimmy")
-print(student1.getName())
