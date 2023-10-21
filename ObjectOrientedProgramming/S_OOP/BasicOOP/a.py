@@ -15,4 +15,6 @@ students = []
 while True:
 	name  = input("Enter student name: ")
 	student = Student(name)
-	
+	students.append(student)
+
+	if input("")
