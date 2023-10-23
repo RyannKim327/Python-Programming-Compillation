@@ -31,4 +31,3 @@ while True:
 
 student_names = [f"The name is {student.getName()}" for student in students]
 print(student_names)
-print("End")
