@@ -10,7 +10,7 @@ class Student:
 		self.name = name
 
 class Teacher:
-	def __init__(self name):
+	def __init__(self, name):
 		self.name = name
 	
 	def getName(self):
