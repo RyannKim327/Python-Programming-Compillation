@@ -1,0 +1,1 @@
+n  = int(input("Enter numbers of squares: "))
