@@ -1,15 +1,7 @@
 n  = int(input("Enter numbers of squares: "))
 r = ""
-x =  True
-for i in range(n**2):
-	for j in range(n):
-		for k in range(n):
-			if i == 0 or k == 0 or k == n-1 or i == n-1 or x:
-				r += "*"
-			else:
-				r += " "
-			if k % n == 0:
-				x = not x
-	r += "\n"
+
+for i in range(n):
+	for j in 
 
 print(r)
