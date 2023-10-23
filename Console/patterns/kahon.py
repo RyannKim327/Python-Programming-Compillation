@@ -4,7 +4,10 @@ r = ""
 for i in range(n):
 	for j in range(n):
 		for k in range(n):
-			if i == 0 or k == 1 or k == 
+			if i == 0 or k == 1 or k == n-1 or i == n-1:
+				r += "*"
+			else:
+				r += " "
 	r += "\n"
 
 print(r)
