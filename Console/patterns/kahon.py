@@ -8,7 +8,8 @@ for i in range(n):
 				r += "*"
 			else:
 				r += " "
-			if k 
+			if k % n == 0:
+				x = not x
 	r += "\n"
 
 print(r)
