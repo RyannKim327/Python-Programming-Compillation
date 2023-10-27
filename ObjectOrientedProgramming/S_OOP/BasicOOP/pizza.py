@@ -51,4 +51,6 @@ menu = [
 ]
 menun = ["1", "2"]
 while True:
-	
+	print("Welcome to PizzaPY")
+	for i in range(menu):
+		print()
