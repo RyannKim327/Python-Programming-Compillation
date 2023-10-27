@@ -37,6 +37,7 @@ class Order:
 		desciptions = [i.get_description() for i in self.pizzas]
 		return f"You ordered {', '.join(desciptions)}"
 	
+def addPizza()
 
 if __name__ == "__main__":
 	pizzas = []
@@ -64,9 +65,9 @@ if __name__ == "__main__":
 
 		match choice:
 			case "Add Pizza":
-				pass
+				addPizza()
 			case "Get Order":
-				pass
+				getOrder()
 			case "Exit":
 				print("Thank you for choosing us.")
 				cont = False
