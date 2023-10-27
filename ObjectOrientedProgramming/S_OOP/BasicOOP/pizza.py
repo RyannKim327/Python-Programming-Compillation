@@ -49,7 +49,9 @@ def addPizza():
 		print(f"[{i + 1}]: {sizes[i]}")
 	size = input("Enter pizza size: ")
 	while not size in a:
-		 
+		size = input("Enter pizza size: ")
+	size = sizes[int(size) - 1]
+	
 
 def getOrder():
 	pass
