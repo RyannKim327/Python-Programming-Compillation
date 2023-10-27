@@ -52,3 +52,5 @@ order = Order()
 
 for piz in pizzas:
 	order.add_pizza(piz)
+
+(order.calculate_total())
