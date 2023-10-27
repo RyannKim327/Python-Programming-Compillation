@@ -57,6 +57,7 @@ def addPizza():
 		toppings.append(top)
 		top = input("Enter toppings: ")
 	
+	return Pizza(size, toppings)
 
 def getOrder():
 	pass
