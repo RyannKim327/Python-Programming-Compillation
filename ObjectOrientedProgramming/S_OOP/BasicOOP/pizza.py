@@ -66,5 +66,5 @@ while cont:
 		case "Get Order":
 			pass
 		case "Exit":
-			
+			print("Thank you for choosing us.")
 			cont = False
