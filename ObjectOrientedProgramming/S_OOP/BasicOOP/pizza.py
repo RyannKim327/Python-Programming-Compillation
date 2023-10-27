@@ -44,3 +44,6 @@ while True:
 	top = input("Enter topping: ")
 	if top == "":
 		break
+	toppings.append(top)
+
+pizza1 = 
