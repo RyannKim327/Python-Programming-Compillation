@@ -56,4 +56,5 @@ while True:
 		print(f"[{i + 1}]: {menu[i]}")
 	choice = input("Please enter your choice: ")
 	while not choice in menun:
-		
+		choice = input("You've entered invalid choice: ")
+	choice = 
