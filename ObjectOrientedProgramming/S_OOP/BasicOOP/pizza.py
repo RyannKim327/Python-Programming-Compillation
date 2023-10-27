@@ -63,7 +63,7 @@ def getOrder():
 	order = Order()
 	for piz in pizzas:
 		order.add_pizza(piz)
-	
+	print(f"{}")
 	
 
 if __name__ == "__main__":
@@ -86,6 +86,12 @@ if __name__ == "__main__":
 		match choice:
 			case "Add Pizza":
 				pizzas.append(addPizza())
+				menu = [
+					"Add Pizza",
+					"Get Order",
+					"Exit"
+				]
+				menun = ["1", "2", "3"]
 			case "Get Order":
 				getOrder()
 			case "Exit":
