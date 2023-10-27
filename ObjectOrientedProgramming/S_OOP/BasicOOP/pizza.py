@@ -16,4 +16,4 @@ class Pizza:
 			"m": 12,
 			"l": 15 
 		}
-		self.price = sizes[]
+		self.price = sizes[self.size[0]] + (len(self.toppings))
