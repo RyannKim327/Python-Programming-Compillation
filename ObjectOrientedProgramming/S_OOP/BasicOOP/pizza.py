@@ -47,4 +47,4 @@ while True:
 	toppings.append(top)
 
 pizza1 = Pizza("large", toppings)
-pizzas.
+pizzas.append(pizza1)
