@@ -37,10 +37,7 @@ class Order:
 		desciptions = [i.get_description() for i in self.pizzas]
 		return f"You ordered {', '.join(desciptions)}"
 	
-def addPizza()
-
-if __name__ == "__main__":
-	pizzas = []
+def addPizza():
 	toppings = []
 	sizes = [
 		"small",
@@ -48,6 +45,13 @@ if __name__ == "__main__":
 		"large"
 	]
 	a = ["1", "2", "3"]
+	
+
+def getOrder():
+	pass
+
+if __name__ == "__main__":
+	pizzas = []
 	menu = [
 		"Add Pizza",
 		"Exit"
@@ -65,7 +69,7 @@ if __name__ == "__main__":
 
 		match choice:
 			case "Add Pizza":
-				addPizza()
+				pizzas.append(addPizza())
 			case "Get Order":
 				getOrder()
 			case "Exit":
