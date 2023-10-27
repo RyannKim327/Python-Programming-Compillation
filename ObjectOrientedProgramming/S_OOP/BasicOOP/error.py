@@ -6,3 +6,5 @@ class Error:
 		for i in self.errors:
 			print(i)
 
+	def addError(self, error: str):
+		
