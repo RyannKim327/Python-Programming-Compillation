@@ -48,6 +48,8 @@ def addPizza():
 	for i in range(len(sizes)):
 		print(f"[{i + 1}]: {sizes[i]}")
 	size = input("Enter pizza size: ")
+	while not size in a:
+		 
 
 def getOrder():
 	pass
