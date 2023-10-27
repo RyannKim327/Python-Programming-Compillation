@@ -24,4 +24,7 @@ class Order:
 	def __init__(self):
 		self.pizzas = []
 	
-	def add_pizza(self, pizza: pizza)
+	def add_pizza(self, pizza: Pizza):
+		self.pizzas.append(pizza)
+	
+	
