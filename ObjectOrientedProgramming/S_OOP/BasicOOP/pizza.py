@@ -8,11 +8,12 @@ class Pizza:
 		toppings = ""
 		if len(self.toppings) > 0:
 			toppings = f"that has{', '.join(self.toppings)}"
-		return f"A {size} pizza {toppings}"
+		return f"A {self.size} pizza {toppings}"
 	
 	def get_price(self):
+		self
 		sizes = {
 			"s": 10,
 			"m": 12,
-			"l" 
+			"l": 15 
 		}
