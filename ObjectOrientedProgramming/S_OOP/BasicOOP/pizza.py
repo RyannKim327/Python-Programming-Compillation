@@ -46,7 +46,9 @@ sizes = [
 ]
 a = ["1", "2", "3"]
 menu = [
-	""
+	"Add Pizza",
+	"Exit"
 ]
+menun = ["1", "2"]
 while True:
 	
