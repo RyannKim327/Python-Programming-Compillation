@@ -41,4 +41,6 @@ pizzas = []
 toppings = []
 
 while True:
-	
+	top = input("Enter topping: ")
+	if top == "":
+		break
