@@ -22,4 +22,4 @@ class Pizza:
 
 class Order:
 	def __init__(self, pizza: Pizza):
-		self pizza = pizza
+		self.pizzas = []
