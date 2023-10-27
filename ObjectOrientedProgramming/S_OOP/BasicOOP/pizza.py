@@ -54,5 +54,5 @@ while True:
 	print("Welcome to PizzaPY")
 	for i in range(len(menu)):
 		print(f"[{i + 1}]: {menu[i]}")
-
-	
+	choice = input("Please enter your choice: ")
+	while 
