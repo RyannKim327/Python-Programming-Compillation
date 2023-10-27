@@ -50,7 +50,8 @@ menu = [
 	"Exit"
 ]
 menun = ["1", "2"]
-while True:
+cont = True
+while cont:
 	print("Welcome to PizzaPY")
 	for i in range(len(menu)):
 		print(f"[{i + 1}]: {menu[i]}")
@@ -65,4 +66,5 @@ while True:
 		case "Get Order":
 			pass
 		case "Exit":
-			pass
+			
+			cont = False
