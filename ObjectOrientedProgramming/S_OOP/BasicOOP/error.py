@@ -10,3 +10,5 @@ class Error:
 		self.errors.append(error)
 
 error = input("Enter a sample error: ")
+while not error == "":
+	
