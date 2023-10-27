@@ -6,5 +6,6 @@ class Pizza:
 	
 	def get_description(self):
 		toppings = ""
-		if (self.toppings)
+		if len(self.toppings) > 0:
+			toppings = "that has{}"
 		return f"A {size} pizza"
