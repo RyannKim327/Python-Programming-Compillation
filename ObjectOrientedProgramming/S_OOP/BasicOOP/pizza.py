@@ -63,7 +63,7 @@ def getOrder():
 	order = Order()
 	for piz in pizzas:
 		order.add_pizza(piz)
-	print(f"{order.get_order_summary()}")
+	print(f"{order.get_order_summary()} with the total of {order.calculate_total()}")
 	
 
 if __name__ == "__main__":
