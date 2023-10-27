@@ -46,7 +46,8 @@ def addPizza():
 	]
 	a = ["1", "2", "3"]
 	for i in range(len(sizes)):
-		print(f"[{i + 1}]")
+		print(f"[{i + 1}]: {sizes[i]}")
+	size = input("Enter pizza size: ")
 
 def getOrder():
 	pass
