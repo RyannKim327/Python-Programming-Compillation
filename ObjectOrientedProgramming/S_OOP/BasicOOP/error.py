@@ -12,6 +12,7 @@ class Error:
 error = input("Enter a sample error: ")
 err = Error()
 while not error == "":
-	err.addError()
+	err.addError(error)
 	error = input("Enter another sample error: ")
-	
+
+err.getAllErrors()
