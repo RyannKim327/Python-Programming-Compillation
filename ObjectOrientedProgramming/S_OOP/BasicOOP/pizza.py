@@ -7,5 +7,5 @@ class Pizza:
 	def get_description(self):
 		toppings = ""
 		if len(self.toppings) > 0:
-			toppings = "that has{}"
+			toppings = f"that has{', '.join(self.toppings)}"
 		return f"A {size} pizza"
