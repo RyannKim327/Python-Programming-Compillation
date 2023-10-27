@@ -37,4 +37,7 @@ class Order:
 		desciptions = [i.get_description() for i in self.pizzas]
 		summary = f"You ordered {', '.join(desciptions)}"
 	
-pi
+pizzas = []
+
+while True:
+	
