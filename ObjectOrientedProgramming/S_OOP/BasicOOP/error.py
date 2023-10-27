@@ -1,6 +1,6 @@
 class Error:
 	def __init__(self):
-		self.errors = []
+		self.errors = ()
 	
 	def getAllErrors(self):
 		for i in self.errors:
