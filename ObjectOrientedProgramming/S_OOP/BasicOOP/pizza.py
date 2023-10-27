@@ -60,4 +60,9 @@ while True:
 	choice = menu[int(choice) - 1]
 
 	match choice:
-		
+		case "Add Pizza":
+			pass
+		case "Get Order":
+			pass
+		case "Exit":
+			pass
