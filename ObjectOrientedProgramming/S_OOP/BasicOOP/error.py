@@ -7,4 +7,6 @@ class Error:
 			print(i)
 
 	def addError(self, error: str):
-		
+		self.errors.append(error)
+
+error = input("Enter a sample error: ")
