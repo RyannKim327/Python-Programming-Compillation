@@ -54,6 +54,7 @@ def addPizza():
 
 	top = input("Enter toppings: ")
 	while top != "":
+		toppings.append(top)
 		top = input("Enter toppings: ")
 	
 
