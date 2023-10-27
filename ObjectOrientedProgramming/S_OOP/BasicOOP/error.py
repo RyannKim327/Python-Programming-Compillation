@@ -10,5 +10,8 @@ class Error:
 		self.errors.append(error)
 
 error = input("Enter a sample error: ")
+err = Error()
 while not error == "":
+	err.addError()
+	error = input("Enter another sample error: ")
 	
