@@ -60,7 +60,11 @@ def addPizza():
 	return Pizza(size, toppings)
 
 def getOrder():
-	order = Order(pizzas)
+	order = Order()
+	for piz in pizzas:
+		order.add_pizza(piz)
+	
+	
 
 if __name__ == "__main__":
 	pizzas = []
