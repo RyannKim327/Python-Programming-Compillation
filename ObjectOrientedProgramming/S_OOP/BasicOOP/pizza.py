@@ -1,5 +1,3 @@
-# Ito pala ung sample nung naging sagot ko sa quiz, pero hindi eksaktong ganito, medyo tamad akong mag type e
-
 class Pizza:
 	def __init__(self, size: str, toppings=[]):
 		self.size = size.lower()
@@ -41,19 +39,4 @@ class Order:
 	
 pizzas = []
 toppings = []
-
-while True:
-	top = input("Enter topping: ")
-	if top == "":
-		break
-	toppings.append(top)
-
-pizza1 = Pizza("large", toppings)
-pizzas.append(pizza1)
-order = Order()
-
-for piz in pizzas:
-	order.add_pizza(piz)
-
-print(order.calculate_total())
-print(order.get_order_summary())
+si
