@@ -1,4 +1,4 @@
-
+# Ito pala ung sample nung naging sagot ko sa quiz, pero hindi eksaktong ganito, medyo tamad akong mag type e
 
 class Pizza:
 	def __init__(self, size: str, toppings=[]):
