@@ -7,7 +7,7 @@ class Pizza:
 	def get_description(self):
 		toppings = ""
 		if len(self.toppings) > 0:
-			toppings = f"that has{', '.join(self.toppings)}"
+			toppings = f"that has {', '.join(self.toppings)}"
 		return f"A {self.size} pizza {toppings}"
 	
 	def get_price(self):
@@ -35,7 +35,7 @@ class Order:
 	
 	def get_order_summary(self):
 		desciptions = [i.get_description() for i in self.pizzas]
-		summary = f"You ordered {', '.join(desciptions)}"
+		return f"You ordered {', '.join(desciptions)}"
 	
 pizzas = []
 toppings = []
