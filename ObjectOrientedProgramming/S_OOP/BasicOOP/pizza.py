@@ -52,5 +52,5 @@ menu = [
 menun = ["1", "2"]
 while True:
 	print("Welcome to PizzaPY")
-	for i in range(menu):
-		print()
+	for i in range(len(menu)):
+		print(f"[{i + 1}]: {menu[i]}")
