@@ -30,5 +30,5 @@ class Order:
 	def calculate_total(self):
 		total = 0
 		for i in self.pizzas:
-			total += i.get
-		return sum(total)
+			total += i.get_price()
+		return total
