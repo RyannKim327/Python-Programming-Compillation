@@ -27,4 +27,5 @@ class Order:
 	def add_pizza(self, pizza: Pizza):
 		self.pizzas.append(pizza)
 	
-	
+	def calculate_total(self):
+		total = []
