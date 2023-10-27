@@ -45,7 +45,8 @@ def addPizza():
 		"large"
 	]
 	a = ["1", "2", "3"]
-	for i in range()
+	for i in range(len(sizes)):
+		print(f"[{i + 1}]")
 
 def getOrder():
 	pass
