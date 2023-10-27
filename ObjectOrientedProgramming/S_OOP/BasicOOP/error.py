@@ -1,3 +1,5 @@
 class Error:
 	def __init__(self):
-		self
+		self.errors = []
+	
+	def getAllErrors(self)
