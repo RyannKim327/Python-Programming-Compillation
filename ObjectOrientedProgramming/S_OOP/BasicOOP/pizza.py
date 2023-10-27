@@ -32,3 +32,6 @@ class Order:
 		for i in self.pizzas:
 			total += i.get_price()
 		return total
+	
+	def get_order_summary(self):
+		
