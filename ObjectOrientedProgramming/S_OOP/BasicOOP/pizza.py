@@ -21,5 +21,7 @@ class Pizza:
 		return self.price
 
 class Order:
-	def __init__(self, pizza: Pizza):
+	def __init__(self):
 		self.pizzas = []
+	
+	def add_pizza(self, pizza: pizza)
