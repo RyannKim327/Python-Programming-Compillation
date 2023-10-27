@@ -28,5 +28,5 @@ class Order:
 		self.pizzas.append(pizza)
 	
 	def calculate_total(self):
-		total = [i.get_price for i in self.pizzas]
-		
+		total = [i.get_price() for i in self.pizzas]
+		return sum(total)
