@@ -34,5 +34,4 @@ class Order:
 		return total
 	
 	def get_order_summary(self):
-		summary = "You ordered "
-		
+		summary = f"You ordered {}"
