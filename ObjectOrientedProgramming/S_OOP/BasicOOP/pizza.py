@@ -38,6 +38,3 @@ class Order:
 		summary = f"You ordered {', '.join(desciptions)}"
 	
 pizzas = []
-
-while True:
-	
