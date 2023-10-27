@@ -47,3 +47,8 @@ while True:
 	toppings.append(top)
 
 pizza1 = Pizza("large", toppings)
+pizzas.append(pizza1)
+order = Order()
+
+for piz in pizzas:
+	order.add_pizza(piz)
