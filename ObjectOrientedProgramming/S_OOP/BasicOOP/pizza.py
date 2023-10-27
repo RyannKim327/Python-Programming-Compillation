@@ -39,4 +39,8 @@ class Order:
 	
 pizzas = []
 toppings = []
-si
+sizes = [
+	"small",
+	"medium",
+	"large"
+]
