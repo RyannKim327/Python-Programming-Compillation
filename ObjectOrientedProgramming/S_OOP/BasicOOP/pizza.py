@@ -5,4 +5,6 @@ class Pizza:
 		self.price = 0
 	
 	def get_description(self):
-		return f"A {size} pizza that"
+		toppings = ""
+		if (self.toppings)
+		return f"A {size} pizza"
