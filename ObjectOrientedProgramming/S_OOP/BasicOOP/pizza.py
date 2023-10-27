@@ -37,34 +37,36 @@ class Order:
 		desciptions = [i.get_description() for i in self.pizzas]
 		return f"You ordered {', '.join(desciptions)}"
 	
-pizzas = []
-toppings = []
-sizes = [
-	"small",
-	"medium",
-	"large"
-]
-a = ["1", "2", "3"]
-menu = [
-	"Add Pizza",
-	"Exit"
-]
-menun = ["1", "2"]
-cont = True
-while cont:
-	print("Welcome to PizzaPY")
-	for i in range(len(menu)):
-		print(f"[{i + 1}]: {menu[i]}")
-	choice = input("Please enter your choice: ")
-	while not choice in menun:
-		choice = input("You've entered invalid choice: ")
-	choice = menu[int(choice) - 1]
 
-	match choice:
-		case "Add Pizza":
-			pass
-		case "Get Order":
-			pass
-		case "Exit":
-			print("Thank you for choosing us.")
-			cont = False
+if __name__ == "__main__":
+	pizzas = []
+	toppings = []
+	sizes = [
+		"small",
+		"medium",
+		"large"
+	]
+	a = ["1", "2", "3"]
+	menu = [
+		"Add Pizza",
+		"Exit"
+	]
+	menun = ["1", "2"]
+	cont = True
+	while cont:
+		print("Welcome to PizzaPY")
+		for i in range(len(menu)):
+			print(f"[{i + 1}]: {menu[i]}")
+		choice = input("Please enter your choice: ")
+		while not choice in menun:
+			choice = input("You've entered invalid choice: ")
+		choice = menu[int(choice) - 1]
+
+		match choice:
+			case "Add Pizza":
+				pass
+			case "Get Order":
+				pass
+			case "Exit":
+				print("Thank you for choosing us.")
+				cont = False
