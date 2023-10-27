@@ -1,6 +1,6 @@
 class Pizza:
 	def __init__(self, size: str, toppings=[]):
-		self.size = size
+		self.size = size.lower()
 		self.toppings = toppings
 		self.price = 0
 	
