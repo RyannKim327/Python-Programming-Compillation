@@ -34,4 +34,4 @@ class Order:
 		return total
 	
 	def get_order_summary(self):
-		summary = f"You ordered {}"
+		summary = f"You ordered {', '.join(desciptions)}"
