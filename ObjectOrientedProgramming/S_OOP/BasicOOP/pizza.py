@@ -7,7 +7,7 @@ class Pizza:
 	def get_description(self):
 		toppings = ""
 		if len(self.toppings) > 0:
-			toppings = f"that has {', '.join(self.toppings)}"
+			toppings = f"that has {tuple(self.toppings)}"
 		return f"A {self.size} pizza {toppings}"
 	
 	def get_price(self):
