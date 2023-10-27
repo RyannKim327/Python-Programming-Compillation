@@ -11,4 +11,8 @@ class Pizza:
 		return f"A {size} pizza {toppings}"
 	
 	def get_price(self):
-		
+		sizes = {
+			"s": 10,
+			"m": 12,
+			"l" 
+		}
