@@ -53,7 +53,9 @@ def addPizza():
 	size = sizes[int(size) - 1]
 
 	top = input("Enter toppings: ")
-	top = input("Enter toppings: ")
+	while top != "":
+		top = input("Enter toppings: ")
+	
 
 def getOrder():
 	pass
