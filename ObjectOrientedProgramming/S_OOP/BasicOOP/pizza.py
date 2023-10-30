@@ -83,6 +83,10 @@ if __name__ == "__main__":
 			choice = input("You've entered invalid choice: ")
 		choice = menu[int(choice) - 1]
 
+		if choice == "Add Pizza":
+			pass
+		
+
 		match choice:
 			case "Add Pizza":
 				pizzas.append(addPizza())
