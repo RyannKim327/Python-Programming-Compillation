@@ -37,6 +37,7 @@ class Order:
 		desciptions = [i.get_description() for i in self.pizzas]
 		a = [1, 2, 3, 4]
 		"1, 2, 3, 4"
+		b = ", ".join(a)
 		return f"You ordered {', '.join(desciptions)}"
 	
 def addPizza():
