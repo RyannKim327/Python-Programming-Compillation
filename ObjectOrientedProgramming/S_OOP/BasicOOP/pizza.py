@@ -34,10 +34,7 @@ class Order:
 		return total
 	
 	def get_order_summary(self):
-		desciptions = [i.get_description() for i in self.pizzas]
-		desciptions = []
-		for i in self.pizzas:
-			desciptions.append(i.get_description())
+		desciptions = [pizza.get_description() for pizza in self.pizzas]
 		return f"You ordered {', '.join(desciptions)}"
 	
 def addPizza():
