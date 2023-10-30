@@ -36,7 +36,8 @@ class Order:
 	def get_order_summary(self):
 		desciptions = [i.get_description() for i in self.pizzas]
 		desciptions = []
-		
+		for i in self.pizzas:
+			desciptions.append(i.get)
 		return f"You ordered {', '.join(desciptions)}"
 	
 def addPizza():
