@@ -13,8 +13,10 @@ class Vehicle:
 		self.driver = driver
 	
 	def addCustomer(self, customer: Customer):
-		if len(self.customers) < 
-		self.customers.append(customer)
+		if len(self.customers) < self.capacity:
+			self.customers.append(customer)
+		else:
+			print("You exceed the limit, tama na kuya.")
 
 	def getDescrition(self):
 		return f"A {self.name} that has {len(self.customers)} customers inside, with a driver named {driver.getName()} with {self.fare} fare per kilometers."
