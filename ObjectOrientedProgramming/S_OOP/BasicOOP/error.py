@@ -3,7 +3,7 @@ class _:
 		_._ = __
 	
 	def __(_):
-		return _.__
+		return _._
 
 a = _("Test")
 print(a.__())
