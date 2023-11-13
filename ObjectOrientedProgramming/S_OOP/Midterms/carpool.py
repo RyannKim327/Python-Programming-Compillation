@@ -21,7 +21,6 @@ class Vehicle:
 	def getDescrition(self):
 		return f"A {self.name} that has {len(self.customers)} customers inside, with a driver named {driver.getName()} with {self.fare} fare per kilometers."
 	
-
 class Driver:
 	def __init__(self, name, license):
 		self.name = name
