@@ -19,7 +19,7 @@ class Vehicle:
 			print("You exceed the limit, tama na kuya.")
 
 	def getDescrition(self):
-		return f"A {self.name} that has {len(self.customers)} customers inside, with a driver named {driver.getName()} with {self.fare} fare per kilometers."
+		return f"A {self.name} that has {len(self.customers)} customers inside, with a driver named {driver.getName()} with license number {driver.getLicense()} and with {self.fare} fare per kilometers."
 	
 class Driver:
 	def __init__(self, name, license):
