@@ -13,7 +13,7 @@ class Vehicle:
 		self.driver = driver
 
 	def getDescrition(self):
-		return f"A {self.name} that has {len(self.customers)} customers inside, with a driver named {driver.getName()}"
+		return f"A {self.name} that has {len(self.customers)} customers inside, with a driver named {driver.getName()} with {self.fare}"
 	
 
 class Driver:
