@@ -8,6 +8,9 @@ class Vehicle:
 
 	def getCapacity(self):
 		return self.capacity
+
+	def getDescrition(self):
+		return f"A {self.name} that has {}"
 	
 
 class Driver:
