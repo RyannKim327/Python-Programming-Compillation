@@ -5,4 +5,5 @@ class _:
 	def _(_):
 		return _.__
 
-a = _()
+a = _("Test")
+print(a._())
