@@ -16,5 +16,8 @@ class Driver:
 		self.license = license
 	
 class Customer:
-	def __init__(self):
-		
+	def __init__(self, name, phone_number):
+		self.name = name
+		self.num = phone_number
+
+
