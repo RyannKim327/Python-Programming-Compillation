@@ -12,4 +12,8 @@ class Vehicle:
 
 class Driver:
 	def __init__(self, name, license):
-		pass
+		self.name = name
+		self.license = license
+	
+class Customer:
+	
