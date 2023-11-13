@@ -38,3 +38,4 @@ class Customer:
 		self.num = phone_number
 
 
+vehicleName = input("Enter vehicle name: ")
