@@ -1,3 +1,4 @@
+from builtins import *
 class Animal:
 	def __init__(self):
 		self.type = "Animal"
