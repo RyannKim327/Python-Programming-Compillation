@@ -1,5 +1,4 @@
 class Error:
-	@property
 	def __init__(self):
 		self.errors = []
 
