@@ -28,6 +28,9 @@ class Driver:
 	
 	def getName(self):
 		return self.name
+
+	def getLicense(self):
+		return self.license
 	
 class Customer:
 	def __init__(self, name, phone_number):
