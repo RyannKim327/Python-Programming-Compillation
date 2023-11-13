@@ -8,7 +8,8 @@ class Vehicle:
 
 	def getCapacity(self):
 		return self.capacity
+	
 
 class Driver:
-	def __init__(self):
+	def __init__(self, name, license):
 		pass
