@@ -13,7 +13,8 @@ class Vehicle:
 		self.driver = driver
 	
 	def addCustomer(self, customer: Customer):
-		self.customers.append()
+		if len(self.customers) < 
+		self.customers.append(customer)
 
 	def getDescrition(self):
 		return f"A {self.name} that has {len(self.customers)} customers inside, with a driver named {driver.getName()} with {self.fare} fare per kilometers."
