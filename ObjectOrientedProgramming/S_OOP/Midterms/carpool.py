@@ -16,4 +16,5 @@ class Driver:
 		self.license = license
 	
 class Customer:
-	
+	def __init__(self):
+		
