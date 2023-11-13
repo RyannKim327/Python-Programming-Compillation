@@ -10,7 +10,7 @@ class Vehicle:
 		return self.capacity
 
 	def getDescrition(self):
-		return f"A {self.name} that has {}"
+		return f"A {self.name} that has {len(self.customers)} customers inside, which "
 	
 
 class Driver:
