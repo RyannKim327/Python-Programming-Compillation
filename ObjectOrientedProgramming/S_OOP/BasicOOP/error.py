@@ -2,8 +2,8 @@ class _:
 	def __init__(_, __):
 		_._ = __
 	
-	def _(_):
+	def __(_):
 		return _.__
 
 a = _("Test")
-print(a._())
+print(a.__())
