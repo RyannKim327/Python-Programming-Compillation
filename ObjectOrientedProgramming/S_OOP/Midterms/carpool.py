@@ -6,6 +6,9 @@ class Vehicle:
 		self.fare = fare
 		self.customers = []
 
+	def getCapacity(self):
+		return self.capacity
+
 class Driver:
 	def __init__(self):
 		pass
