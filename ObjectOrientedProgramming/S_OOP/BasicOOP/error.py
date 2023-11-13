@@ -1,7 +1,8 @@
 class Error:
 	def __init__(self):
 		self.errors = ()
-	
+
+	@property	
 	def getAllErrors(self):
 		for i in self.errors:
 			print(i)
@@ -15,4 +16,4 @@ while not error == "":
 	err.addError(error)
 	error = input("Enter another sample error: ")
 
-err.getAllErrors()
+err.getAllErrors
