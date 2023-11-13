@@ -9,6 +9,9 @@ class Vehicle:
 	def getCapacity(self):
 		return self.capacity
 
+	def assignDriver(self, driver: Driver):
+		self.driver = driver
+
 	def getDescrition(self):
 		return f"A {self.name} that has {len(self.customers)} customers inside, with a driver named {driver.getName()}"
 	
@@ -18,7 +21,8 @@ class Driver:
 		self.name = name
 		self.license = license
 	
-	def 
+	def getName(self):
+		return self.name
 	
 class Customer:
 	def __init__(self, name, phone_number):
