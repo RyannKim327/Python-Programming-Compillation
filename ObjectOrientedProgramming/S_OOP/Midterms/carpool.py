@@ -41,30 +41,31 @@ class Customer:
 		self.num = phone_number
 
 while True:
-	
-vehicleName = input("Enter vehicle name: ")
-vehicleCapacity = int(input("Enter vehicle capacity: "))
-vehicleFare = float(input("Enter fair per kilometer: "))
-
-vehicle = Vehicle(vehicleName, vehicleCapacity, vehicleFare)
-
-driverName = input("Enter driver's name: ")
-driverLicense = input("Enter driver's license number: ")
-driver = Driver(driverName, driverLicense)
-
-vehicle.assignDriver(driver)
-
-onRide = True
-while onRide and vehicle.getCapacity() > vehicle.getCustomers():
-	customerName = input("Enter customer name: ")
-	if customerName == "":
-		onRide = False
+	vehicleName = input("Enter vehicle name: ")
+	if vehicleName == "":
 		break
-	customerNumber = input("Enter phone number: ")
-	customer = Customer(customerName, customerNumber)
-	vehicle.addCustomer(customer)
+	vehicleCapacity = int(input("Enter vehicle capacity: "))
+	vehicleFare = float(input("Enter fair per kilometer: "))
 
-if onRide:
-	print("You've exceed to the capacity of the vehicle")
+	vehicle = Vehicle(vehicleName, vehicleCapacity, vehicleFare)
 
-print(f"{vehicle.getDescrition()}")
+	driverName = input("Enter driver's name: ")
+	driverLicense = input("Enter driver's license number: ")
+	driver = Driver(driverName, driverLicense)
+
+	vehicle.assignDriver(driver)
+
+	onRide = True
+	while onRide and vehicle.getCapacity() > vehicle.getCustomers():
+		customerName = input("Enter customer name: ")
+		if customerName == "":
+			onRide = False
+			break
+		customerNumber = input("Enter phone number: ")
+		customer = Customer(customerName, customerNumber)
+		vehicle.addCustomer(customer)
+
+	if onRide:
+		print("You've exceed to the capacity of the vehicle")
+
+	print(f"{vehicle.getDescrition()}")
