@@ -12,8 +12,8 @@ class Vehicle:
 	def assignDriver(self, driver):
 		self.driver = driver
 	
-	def getCustomer(self):
-		return 
+	def getCustomers(self):
+		return len(self.customers)
 
 	def addCustomer(self, customer: Customer):
 		if len(self.customers) < self.capacity:
@@ -54,4 +54,5 @@ driver = Driver(driverName, driverLicense)
 vehicle.assignDriver(driver)
 
 onRide = True
-while onRide and vehicle.getCapacity()
+while onRide and vehicle.getCapacity() < vehicle.getCustomers():
+	
