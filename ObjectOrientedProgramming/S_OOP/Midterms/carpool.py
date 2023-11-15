@@ -55,12 +55,12 @@ vehicle.assignDriver(driver)
 
 onRide = True
 while onRide and vehicle.getCapacity() < vehicle.getCustomers():
-	name = input("Enter customer name: ")
-	if name == "":
+	customerName = input("Enter customer name: ")
+	if customerName == "":
 		onRide = False
 		break
-	number = input("Enter phone number: ")
-	customer = Customer(name, number)
+	customerNumber = input("Enter phone number: ")
+	customer = Customer(customerName, customerNumber)
 	vehicle.addCustomer()
 
 if onRide:
