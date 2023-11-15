@@ -12,6 +12,9 @@ class Vehicle:
 	def assignDriver(self, driver):
 		self.driver = driver
 	
+	def getCustomer(self):
+		return 
+
 	def addCustomer(self, customer: Customer):
 		if len(self.customers) < self.capacity:
 			self.customers.append(customer)
