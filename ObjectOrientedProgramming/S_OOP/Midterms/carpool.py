@@ -39,3 +39,4 @@ class Customer:
 
 
 vehicleName = input("Enter vehicle name: ")
+vehicleCapacity = int()
