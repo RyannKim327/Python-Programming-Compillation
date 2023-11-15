@@ -54,7 +54,7 @@ driver = Driver(driverName, driverLicense)
 vehicle.assignDriver(driver)
 
 onRide = True
-while onRide and vehicle.getCapacity() < vehicle.getCustomers():
+while onRide and vehicle.getCapacity() > vehicle.getCustomers():
 	customerName = input("Enter customer name: ")
 	if customerName == "":
 		onRide = False
