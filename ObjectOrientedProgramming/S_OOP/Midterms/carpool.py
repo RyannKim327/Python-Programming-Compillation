@@ -66,3 +66,4 @@ while onRide and vehicle.getCapacity() < vehicle.getCustomers():
 if onRide:
 	print("You've exceed to the capacity of the vehicle")
 
+print(f"{vehicle.getDescrition()}")
