@@ -61,7 +61,7 @@ while onRide and vehicle.getCapacity() > vehicle.getCustomers():
 		break
 	customerNumber = input("Enter phone number: ")
 	customer = Customer(customerName, customerNumber)
-	vehicle.addCustomer()
+	vehicle.addCustomer(customer)
 
 if onRide:
 	print("You've exceed to the capacity of the vehicle")
