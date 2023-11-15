@@ -40,7 +40,8 @@ class Customer:
 		self.name = name
 		self.num = phone_number
 
-
+while True:
+	
 vehicleName = input("Enter vehicle name: ")
 vehicleCapacity = int(input("Enter vehicle capacity: "))
 vehicleFare = float(input("Enter fair per kilometer: "))
