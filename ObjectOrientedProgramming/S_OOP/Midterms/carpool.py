@@ -40,6 +40,8 @@ class Customer:
 		self.name = name
 		self.num = phone_number
 
+vehicles = []
+
 while True:
 	vehicleName = input("Enter vehicle name: ")
 	if vehicleName == "":
@@ -69,3 +71,4 @@ while True:
 		print("You've exceed to the capacity of the vehicle")
 
 	print(f"{vehicle.getDescrition()}")
+	vehicles.append(vehicle)
