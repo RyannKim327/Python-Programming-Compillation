@@ -57,7 +57,10 @@ onRide = True
 while onRide and vehicle.getCapacity() < vehicle.getCustomers():
 	name = input("Enter customer name: ")
 	if name == "":
+		onRide = False
 		break
 	number = input("Enter phone number: ")
 	customer = Customer(name, number)
 	vehicle.addCustomer()
+
+
