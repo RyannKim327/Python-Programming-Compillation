@@ -63,4 +63,6 @@ while onRide and vehicle.getCapacity() < vehicle.getCustomers():
 	customer = Customer(name, number)
 	vehicle.addCustomer()
 
+if onRide:
+	print("You've exceed to the capacity of the vehicle")
 
