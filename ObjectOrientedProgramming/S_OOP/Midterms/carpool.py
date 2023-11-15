@@ -44,4 +44,7 @@ vehicleFare = float(input("Enter fair per kilometer: "))
 
 vehicle = Vehicle(vehicleName, vehicleCapacity, vehicleFare)
 
-driverName = input()
+driverName = input("Enter driver's name: ")
+driverLicense = input("Enter driver's license number: ")
+driver = Driver(driverName, driverLicense)
+
