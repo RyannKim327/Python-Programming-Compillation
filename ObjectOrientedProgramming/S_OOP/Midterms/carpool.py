@@ -40,3 +40,4 @@ class Customer:
 
 vehicleName = input("Enter vehicle name: ")
 vehicleCapacity = int(input("Enter vehicle capacity: "))
+vehicleFare = int(input("Enter fair per kilometer: "))
