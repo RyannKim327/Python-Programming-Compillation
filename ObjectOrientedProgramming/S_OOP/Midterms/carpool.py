@@ -9,7 +9,7 @@ class Vehicle:
 	def getCapacity(self):
 		return self.capacity
 
-	def assignDriver(self, driver: Driver):
+	def assignDriver(self, driver):
 		self.driver = driver
 	
 	def addCustomer(self, customer: Customer):
@@ -48,3 +48,4 @@ driverName = input("Enter driver's name: ")
 driverLicense = input("Enter driver's license number: ")
 driver = Driver(driverName, driverLicense)
 
+vehicle.assignDriver(driver)
