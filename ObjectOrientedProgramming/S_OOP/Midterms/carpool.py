@@ -50,4 +50,5 @@ driver = Driver(driverName, driverLicense)
 
 vehicle.assignDriver(driver)
 
-while 
+onRide = True
+while onRide and vehicle.getCapacity()
