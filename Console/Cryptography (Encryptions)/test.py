@@ -4,7 +4,6 @@ for i in range(1, 7):
 	for j in range(1, 7):
 		table.append((i * j) - i)
 
-n = input("Enter string: ")
 def encrypt(n):
 	o = ""
 	for i in range(len(n)):
@@ -19,4 +18,7 @@ def decrypt(n):
 		o += m
 	return o
 
+n = input("Enter string: ")
+print(encrypt(n))
+n = input("Enter string: ")
 print(decrypt(n))
