@@ -2,7 +2,7 @@ table = []
 
 for i in range(1, 7):
 	for j in range(1, 7):
-		table.append((i * j) - i)
+		table.append((i * j) - (i + j))
 
 def encrypt(n):
 	o = ""
