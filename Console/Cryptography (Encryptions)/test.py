@@ -7,8 +7,13 @@ for i in range(1, 7):
 n = input("Enter string: ")
 o = ""
 def encrypt(n):
-for i in range(len(n)):
-	m = chr(ord(n[i]) + table[i % 26])
-	o += m
+	for i in range(len(n)):
+		m = chr(ord(n[i]) + table[i % 26])
+		o += m
 
-print(o)
+def decrypt(n):
+	for i in range(len(n)):
+		m = chr(ord(n[i]) + table[i % 26])
+		o += m
+
+print(decrypt(o))
