@@ -7,4 +7,4 @@ for i in range(1, 7):
 n = input("Enter string: ")
 
 for i in range(n):
-	m = ord(n[i]) + 
+	m = ord(n[i]) + table[i % 26]
