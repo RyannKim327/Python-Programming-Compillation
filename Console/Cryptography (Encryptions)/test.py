@@ -6,7 +6,7 @@ for i in range(1, 7):
 
 n = input("Enter string: ")
 o = ""
-for i in range(n):
+for i in range(len(n)):
 	m = chr(ord(n[i]) + table[i % 26])
 	o += m
 
