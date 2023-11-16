@@ -13,7 +13,7 @@ def encrypt(n):
 
 def decrypt(n):
 	for i in range(len(n)):
-		m = chr(ord(n[i]) + table[i % 26])
+		m = chr(ord(n[i]) - table[i % 26])
 		o += m
 
 print(decrypt(o))
