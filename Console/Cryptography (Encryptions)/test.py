@@ -18,6 +18,8 @@ def decrypt(n):
 		o += m
 	return o
 
+print(table)
+
 n = input("Enter string: ")
 print(encrypt(n))
 n = input("Enter string: ")
