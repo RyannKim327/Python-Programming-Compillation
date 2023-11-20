@@ -7,5 +7,4 @@ students_data = [
 
 student = []
 
-for i in students_data:
-	
+	print(f"Name: " + students_data)
