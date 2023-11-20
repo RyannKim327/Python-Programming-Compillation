@@ -11,4 +11,6 @@ for i in students_data:
 	print(f"Name: " + i[0])
 	ave = 0
 	for j in i[1]:
-		
+		ave += j
+	ave /= len(i[1])
+	print(ave)
