@@ -17,7 +17,7 @@ def getStudents(arr: list):
 		ave *= 100
 		ave //= 1
 		ave /= 100
-		student.append([f"Name: {i[0]}", ave])
+		.append([f"Name: {i[0]}", ave])
 
 	# Sort
 	for i in range(len(student)):
