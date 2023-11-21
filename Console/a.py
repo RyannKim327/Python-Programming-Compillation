@@ -14,4 +14,7 @@ for i in students_data:
 	ave /= len(i[1])
 	ave *= 100
 	ave //= 1
+	ave /= 100
 	student.append([f"Name: {i[0]}", ave])
+
+print(student)
