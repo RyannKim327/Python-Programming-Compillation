@@ -16,4 +16,4 @@ for i in students_data:
 	ave *= 100
 	ave //= 1
 	print(ave / 100)
-	student.append()
+	student.append([])
