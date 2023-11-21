@@ -17,12 +17,12 @@ def getStudents(arr: list):
 		ave *= 100
 		ave //= 1
 		ave /= 100
-		student_arr.append([f"Name: {i[0]}", ave])
+		student.append(ave)
 
 	# Sort
 	for i in range(len(student)):
 		for j in range(len(student)):
-			if student[i][1] < student[j][1]:
+			if student[i][-1] < student[j][-1]:
 				student[i], student[j] = student[j], student[i]
 
 	return student
