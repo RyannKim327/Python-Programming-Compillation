@@ -13,4 +13,6 @@ for i in students_data:
 	for j in i[1]:
 		ave += j
 	ave /= len(i[1])
-	print((ave * 100))
+	ave *= 100
+	ave //= 1
+	print(ave / 100)
