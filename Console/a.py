@@ -11,8 +11,7 @@ def getStudents(arr: list):
 	# Traversal
 	for i in arr:
 		ave = 0
-		for j in i[1]:
-			ave += j
+		ave += j
 		ave /= len(i[1])
 		ave *= 100
 		ave //= 1
