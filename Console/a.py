@@ -45,4 +45,5 @@ print(english_scores)
 
 maths = []
 for i in range(len(students_data)):
-	
+	for j in range(len(students_data)):
+		
