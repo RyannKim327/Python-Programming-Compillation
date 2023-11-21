@@ -38,10 +38,14 @@ print(f"New sort with Eva: {students_data}")
 students_data.pop(0)
 print(f"Remove lowest average: {students_data}")
 
+print()
+
 english_scores = []
 for i in range(len(students_data)):
 	english_scores.append(students_data[i][1][1])
-print(english_scores)
+print(f"Sorted by English: {english_scores}")
+
+print()
 
 maths = [i for i in students_data]
 for i in range(len(maths)):
@@ -49,4 +53,4 @@ for i in range(len(maths)):
 		if maths[i] < maths[j]:
 			maths[i], maths[j] = maths[j], maths[i]
 
-print(maths)
+print(f"Sorted by Math: {maths}")
