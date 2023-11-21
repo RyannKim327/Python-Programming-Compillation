@@ -6,7 +6,7 @@ students_data = [
 ]
 
 def getStudents(arr: list):
-	student = []
+	student = arr
 
 	# Traversal
 	for i in arr:
@@ -17,7 +17,7 @@ def getStudents(arr: list):
 		ave *= 100
 		ave //= 1
 		ave /= 100
-		arr.append(ave)
+		student_arr.append([f"Name: {i[0]}", ave])
 
 	# Sort
 	for i in range(len(student)):
