@@ -42,8 +42,8 @@ print(f"New sort with Eva: {students_data}")
 
 print()
 
-new_students.pop(0)
-print(f"Remove lowest average: {new_students}")
+students_data.pop(0)
+print(f"Remove lowest average: {students_data}")
 
 print()
 
