@@ -7,6 +7,7 @@ students_data = [
 
 student = []
 
+# Traversal
 for i in students_data:
 	ave = 0
 	for j in i[1]:
