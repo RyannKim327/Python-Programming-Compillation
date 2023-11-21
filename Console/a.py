@@ -17,7 +17,11 @@ for i in students_data:
 	ave /= 100
 	student.append([f"Name: {i[0]}", ave])
 
+print(student)
+
 for i in range(len(student)):
 	for j in range(len(student)):
-		if i < j:
+		if  < j:
 			student[i], student[j] = student[j], student[i]
+
+print(student)
