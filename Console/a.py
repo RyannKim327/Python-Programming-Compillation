@@ -28,10 +28,10 @@ def getStudents(arr: list):
 	return student
 
 new_students = getStudents(students_data)
-print(new_students)
+print(f"Sorted by Average: {new_students}")
 
 students_data.append(["Eva", [95, 91, 88], ["Math", "English", "Science"]])
-print(students_data)
+print(f"{students_data}")
 
 new_students = getStudents(students_data)
 print(new_students)
