@@ -56,7 +56,7 @@ print()
 maths = [i for i in students_data]
 for i in range(len(maths)):
 	for j in range(len(maths)):
-		if maths[i] < maths[j]:
+		if maths[i] > maths[j]:
 			maths[i], maths[j] = maths[j], maths[i]
 
 print(f"Sorted by Math: {maths}")
