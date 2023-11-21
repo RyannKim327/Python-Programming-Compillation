@@ -18,4 +18,6 @@ for i in students_data:
 	student.append([f"Name: {i[0]}", ave])
 
 for i in range(len(student)):
-for i in range(len(student)):
+	for j in range(len(student)):
+		if i < j:
+			student[1]
