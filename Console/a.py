@@ -38,6 +38,6 @@ print(f"New sort with Eva: {new_students}")
 new_students.pop(0)
 print(f"Remove lowest average: {new_students}")
 
-english_scores = []
+english_scores = [1.1]
 for i in range(len(new_students)):
-	english_scores.append(f"{new_students[i][1][1]}")
+	english_scores.append(new_students[i][1][1])
