@@ -16,7 +16,7 @@ def getStudents(arr: list):
 		ave *= 100
 		ave //= 1
 		ave /= 100
-		if(len(i) ):
+		if(len(i) < 4):
 			i.append(ave)
 
 	# Sort
