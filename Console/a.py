@@ -39,5 +39,5 @@ new_students.pop(0)
 print(f"Remove lowest average: {new_students}")
 
 english_scores = []
-for i in new_students:
-	
+for i in range(len(new_students)):
+	print()
