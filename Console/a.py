@@ -40,4 +40,4 @@ print(f"Remove lowest average: {new_students}")
 
 english_scores = []
 for i in range(len(new_students)):
-	print()
+	english_scores.append(f"{new_students[i][1][1]}")
