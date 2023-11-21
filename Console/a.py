@@ -43,8 +43,8 @@ for i in range(len(students_data)):
 	english_scores.append(students_data[i][1][1])
 print(english_scores)
 
-maths = []
-for i in range(len(students_data)):
-	for j in range(len(students_data)):
-		if students_data[i] < students_data[j]:
-			students_data[i], students_data[j] = students_data[j], students_data[i]
+maths = [i for i in students_data]
+for i in range(len(maths)):
+	for j in range(len(maths)):
+		if maths[i] < maths[j]:
+			maths[i], maths[j] = maths[j], maths[i]
