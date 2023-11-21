@@ -6,7 +6,7 @@ students_data = [
 ]
 
 def getStudents(arr: list):
-	
+
 	# Traversal
 	for i in arr:
 		ave = 0
@@ -16,7 +16,8 @@ def getStudents(arr: list):
 		ave *= 100
 		ave //= 1
 		ave /= 100
-		i.append(ave)
+		if(len(i) ):
+			i.append(ave)
 
 	# Sort
 	for i in range(len(arr)):
