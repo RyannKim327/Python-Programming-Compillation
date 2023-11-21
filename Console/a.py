@@ -37,3 +37,6 @@ new_students = getStudents(students_data)
 print(f"New sort with Eva: {new_students}")
 new_students.pop(0)
 print(f"Remove lowest average: {new_students}")
+
+english_scores = []
+
