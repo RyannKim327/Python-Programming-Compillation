@@ -9,7 +9,7 @@ def getStudents(arr: list):
 	student = arr
 
 	# Traversal
-	for i in arr:
+	for i in student:
 		ave = 0
 		for j in i[1]:
 			ave += j
