@@ -6,11 +6,11 @@ students_data = [
 ]
 
 
-def getStudents:
+def getStudents(arr: list):
 	student = []
 
 	# Traversal
-	for i in students_data:
+	for i in arr:
 		ave = 0
 		for j in i[1]:
 			ave += j
