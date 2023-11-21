@@ -28,3 +28,5 @@ for i in range(len(student)):
 			student[i], student[j] = student[j], student[i]
 
 print(student)
+
+students_data
