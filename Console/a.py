@@ -20,10 +20,10 @@ def getStudents(arr: list):
 		student.append(ave)
 
 	# Sort
-	for i in range(len(arr)):
-		for j in range(len(arr)):
-			if arr[i][-1] < arr[j][-1]:
-				arr[i], arr[j] = arr[j], arr[i]
+	for i in range(len(student)):
+		for j in range(len(student)):
+			if student[i][1] < student[j][1]:
+				student[i], student[j] = student[j], student[i]
 
 	return student
 
