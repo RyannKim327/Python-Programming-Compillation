@@ -17,7 +17,7 @@ def getStudents(arr: list):
 		ave *= 100
 		ave //= 1
 		ave /= 100
-		i.append(ave)
+		i[len(i)] = ave
 
 	# Sort
 	for i in range(len(arr)):
