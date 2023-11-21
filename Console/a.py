@@ -25,7 +25,7 @@ def getStudents(arr: list):
 			if student[i][1] < student[j][1]:
 				student[i], student[j] = student[j], student[i]
 
-	return student
+	return arr
 
 new_students = getStudents(students_data)
 print(f"Sorted by Average: {new_students}")
