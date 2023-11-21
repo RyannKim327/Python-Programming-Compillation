@@ -30,11 +30,17 @@ def getStudents(arr: list):
 students_data = getStudents(students_data)
 print(f"Sorted by Average: {students_data}")
 
+print()
+
 students_data.append(["Eva", [95, 91, 88], ["Math", "English", "Science"]])
 print(f"Added Eva: {students_data}")
 
+print()
+
 students_data = getStudents(students_data)
 print(f"New sort with Eva: {students_data}")
+print()
+
 students_data.pop(0)
 print(f"Remove lowest average: {students_data}")
 
