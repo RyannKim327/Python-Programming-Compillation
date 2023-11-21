@@ -5,7 +5,6 @@ students_data = [
 	["David", [80, 85, 88], ["Math", "English", "Science"]],
 ]
 
-
 def getStudents(arr: list):
 	student = []
 
@@ -20,8 +19,6 @@ def getStudents(arr: list):
 		ave /= 100
 		student.append([f"Name: {i[0]}", ave])
 
-	print(student)
-
 	# Sort
 	for i in range(len(student)):
 		for j in range(len(student)):
@@ -30,6 +27,6 @@ def getStudents(arr: list):
 
 	return student
 
+print(getStudents(students_data))
 students_data.append(["Eva", [95, 91, 88], ["Math", "English", "Science"]])
 print(students_data)
-
