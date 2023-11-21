@@ -5,29 +5,30 @@ students_data = [
 	["David", [80, 85, 88], ["Math", "English", "Science"]],
 ]
 
-student = []
 
-# Traversal
-for i in students_data:
-	ave = 0
-	for j in i[1]:
-		ave += j
-	ave /= len(i[1])
-	ave *= 100
-	ave //= 1
-	ave /= 100
-	student.append([f"Name: {i[0]}", ave])
+def getStudents:
+	student = []
 
-print(student)
+	# Traversal
+	for i in students_data:
+		ave = 0
+		for j in i[1]:
+			ave += j
+		ave /= len(i[1])
+		ave *= 100
+		ave //= 1
+		ave /= 100
+		student.append([f"Name: {i[0]}", ave])
 
+	print(student)
 
-# Sort
-for i in range(len(student)):
-	for j in range(len(student)):
-		if student[i][1] < student[j][1]:
-			student[i], student[j] = student[j], student[i]
+	# Sort
+	for i in range(len(student)):
+		for j in range(len(student)):
+			if student[i][1] < student[j][1]:
+				student[i], student[j] = student[j], student[i]
 
-print(student)
+	return student
 
 students_data.append(["Eva", [95, 91, 88], ["Math", "English", "Science"]])
 print(students_data)
