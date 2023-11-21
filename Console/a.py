@@ -31,7 +31,8 @@ new_students = getStudents(students_data)
 print(f"Sorted by Average: {new_students}")
 
 students_data.append(["Eva", [95, 91, 88], ["Math", "English", "Science"]])
-print(f"Added Eva and sorted: {students_data}")
+print(f"Added Eva: {students_data}")
 
 new_students = getStudents(students_data)
-print(new_students)
+print(f"New sort with Eva: {new_students}")
+new_students.
