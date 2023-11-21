@@ -8,3 +8,4 @@
 ---
 ### Packages
 1. **Jupyter Notebook**
+> Just install the VSCode or download anaconda or 
