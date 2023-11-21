@@ -35,4 +35,5 @@ print(f"Added Eva: {students_data}")
 
 new_students = getStudents(students_data)
 print(f"New sort with Eva: {new_students}")
-new_students.
+new_students.shift()
+print(new_students)
