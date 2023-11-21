@@ -17,36 +17,47 @@ def getStudents(arr: list):
 		ave *= 100
 		ave //= 1
 		ave /= 100
-		student.append([f"Name: {i[0]}", ave])
+		student.append(ave)
 
 	# Sort
 	for i in range(len(student)):
 		for j in range(len(student)):
-			if student[i][1] < student[j][1]:
+			if student[i][-1] < student[j][-1]:
 				student[i], student[j] = student[j], student[i]
 
 	return student
 
-new_students = getStudents(students_data)
-print(f"Sorted by Average: {new_students}")
+students_data = getStudents(students_data)
+print(f"Sorted by Average: {students_data}")
+
+print()
 
 students_data.append(["Eva", [95, 91, 88], ["Math", "English", "Science"]])
 print(f"Added Eva: {students_data}")
 
-new_students = getStudents(students_data)
-print(f"New sort with Eva: {new_students}")
-new_students.pop(0)
-print(f"Remove lowest average: {new_students}")
+print()
+
+students_data = getStudents(students_data)
+print(f"New sort with Eva: {students_data}")
+
+print()
+
+students_data.pop(0)
+print(f"Remove lowest average: {students_data}")
+
+print()
 
 english_scores = []
 for i in range(len(students_data)):
 	english_scores.append(students_data[i][1][1])
 print(english_scores)
 
+print()
+
 maths = [i for i in students_data]
 for i in range(len(maths)):
 	for j in range(len(maths)):
-		if maths[i] < maths[j]:
+		if maths[i] > maths[j]:
 			maths[i], maths[j] = maths[j], maths[i]
 
-print(maths.rev)
+print(maths)
