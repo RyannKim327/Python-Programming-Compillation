@@ -29,4 +29,4 @@ for i in range(len(student)):
 
 print(student)
 
-students_data
+students_data.append(["Eva", [95, 91, 88])
