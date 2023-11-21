@@ -20,4 +20,4 @@ for i in students_data:
 for i in range(len(student)):
 	for j in range(len(student)):
 		if i < j:
-			student[1]
+			student[i], student[j] = student[j], student[i]
