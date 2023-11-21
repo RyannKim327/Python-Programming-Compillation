@@ -6,8 +6,7 @@ students_data = [
 ]
 
 def getStudents(arr: list):
-	student = []
-
+	
 	# Traversal
 	for i in arr:
 		ave = 0
@@ -34,9 +33,9 @@ students_data.append(["Eva", [95, 91, 88], ["Math", "English", "Science"]])
 print(f"Added Eva: {students_data}")
 
 students_data = getStudents(students_data)
-print(f"New sort with Eva: {new_students}")
-new_students.pop(0)
-print(f"Remove lowest average: {new_students}")
+print(f"New sort with Eva: {students_data}")
+students_data.pop(0)
+print(f"Remove lowest average: {students_data}")
 
 english_scores = []
 for i in range(len(students_data)):
