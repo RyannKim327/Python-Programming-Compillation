@@ -29,6 +29,5 @@ for i in range(len(student)):
 
 print(student)
 
-students_data.append(["Eva", [95, 91, 88], ["Math"
-,
-"English", "Science"]])
+students_data.append(["Eva", [95, 91, 88], ["Math", "English", "Science"]])
+print(students_data)
