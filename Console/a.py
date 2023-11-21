@@ -43,3 +43,6 @@ for i in range(len(students_data)):
 	english_scores.append(students_data[i][1][1])
 print(english_scores)
 
+maths = []
+for i in range(len(students_data)):
+	
