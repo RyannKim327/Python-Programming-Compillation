@@ -17,4 +17,4 @@ for i in students_data:
 	ave /= 100
 	student.append([f"Name: {i[0]}", ave])
 
-print(student)
+for i in st
