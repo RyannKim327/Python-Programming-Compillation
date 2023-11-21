@@ -49,7 +49,7 @@ print()
 english_scores = []
 for i in range(len(students_data)):
 	english_scores.append(students_data[i][1][1])
-print(f"Sorted by English: {english_scores}")
+print(f"Sorted by English: {students_data}")
 
 print()
 
