@@ -22,7 +22,7 @@ def getStudents(arr: list):
 	# Sort
 	for i in range(len(arr)):
 		for j in range(len(arr)):
-			if arr[i][1] < arr[j][1]:
+			if arr[i][-1] < arr[j]-1]:
 				arr[i], arr[j] = arr[j], arr[i]
 
 	return arr
