@@ -7,4 +7,4 @@
 
 ---
 ### Packages
-1. *Jupyter Notebook*
+1. **Jupyter Notebook**
