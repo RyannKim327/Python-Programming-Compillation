@@ -27,9 +27,11 @@ def getStudents(arr: list):
 
 	return student
 
-print(getStudents(students_data))
+new_students = getStudents(students_data)
+print(new_students)
 
 students_data.append(["Eva", [95, 91, 88], ["Math", "English", "Science"]])
 print(students_data)
 
-new_studentsgetStudents(students_data))
+new_students = getStudents(students_data)
+print(new_students)
