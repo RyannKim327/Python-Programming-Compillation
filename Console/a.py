@@ -21,7 +21,7 @@ print(student)
 
 for i in range(len(student)):
 	for j in range(len(student)):
-		if  < j:
+		if student[i][1] < student[j][1]:
 			student[i], student[j] = student[j], student[i]
 
 print(student)
