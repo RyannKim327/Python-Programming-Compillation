@@ -8,7 +8,7 @@
 ---
 ### Packages
 1. **Jupyter Notebook**
-> Just install the VSCode or download anaconda or the Jupyter Notebook itself.
+> Just install the VSCode or download anaconda or the Jupyter Notebook itself. You may also install it thru the `pip install notebook` and run `jupyter notebook`
 
 ---
 ### Installation in terminal of Jupyter Notebook
