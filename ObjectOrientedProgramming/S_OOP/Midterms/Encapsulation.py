@@ -4,4 +4,4 @@ class Payment:
 		self._final_price = price + (price * 0.05)
 
 pay = Payment(100)
-print(pay.final_price)
+print(pay._final_price)
