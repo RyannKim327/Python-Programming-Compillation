@@ -14,7 +14,8 @@
 ---
 ### How to install from Jupyter Notebook
 1. You need to run and execute the `jupyter notebook` to cmd once it is installed.
-2. Go 
+2. Go and copy the link given if the program didn't redirect to the browser
+3. 
 
 
 ---
