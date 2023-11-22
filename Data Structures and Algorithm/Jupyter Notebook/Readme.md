@@ -13,5 +13,18 @@
 ---
 ### Installation in terminal of Jupyter Notebook
 1. **Matplotlib**
+```Bash
+pip install matplotlib
 ```
+1. **Numpy**
+```Bash
+pip install numpy
+```
+1. **Pandas**
+```Bash
+pip install pandas
+```
+1. **Seaborn**
+```Bash
+pip install seaborn
 ```
