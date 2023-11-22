@@ -8,4 +8,5 @@ class Payment:
 
 pay = Payment(100)
 print(pay.final_price)
+print(pay.__inal_price)
 print(pay.getFinalPrice())
