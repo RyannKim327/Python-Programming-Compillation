@@ -15,7 +15,8 @@
 ### How to install from Jupyter Notebook
 1. You need to run and execute the `jupyter notebook` to cmd once it is installed.
 2. Go and copy the link given if the program didn't redirect to the browser
-3. Next is click the `View` and `Activate Command Pallete`
+3. Next is click the `View` and `Activate Command Pallete` then search for new terminal, if it isn't visible, click `New` then click `Terminal`.
+4. Then install the following
 
 
 ---
