@@ -10,3 +10,5 @@
 1. **Jupyter Notebook**
 > Just install the VSCode or download anaconda or the Jupyter Notebook itself.
 
+---
+### Installation in terminal of Jupyter Notebook
