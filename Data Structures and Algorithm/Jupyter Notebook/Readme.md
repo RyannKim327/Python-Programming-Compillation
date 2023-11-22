@@ -12,7 +12,9 @@
 
 
 ---
-### How to install 
+### How to install from Jupyter Notebook
+1. You need to run and execute the `jupyter notebook` to cmd once it is installed.
+2. Go 
 
 
 ---
