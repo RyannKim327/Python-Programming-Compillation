@@ -8,7 +8,10 @@
 ---
 ### Packages
 1. **Jupyter Notebook**
-> Just install the VSCode or download anaconda or the Jupyter Notebook itself. You may also install it thru the `pip install notebook` and run `jupyter notebook`
+> Just install the VSCode or download anaconda or the Jupyter Notebook itself. You may also install it thru the `pip install notebook` and run `jupyter notebook` on your terminal.
 
 ---
 ### Installation in terminal of Jupyter Notebook
+1. **Matplotlib**
+```
+```
