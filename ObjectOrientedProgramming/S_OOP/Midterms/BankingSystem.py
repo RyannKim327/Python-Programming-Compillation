@@ -6,4 +6,6 @@ class BackAccount:
 	def getBalance(self):
 		return self.__balance
 	
-	def get 
+	def deposit(self, amount: int):
+		self.__balance += amount
+
