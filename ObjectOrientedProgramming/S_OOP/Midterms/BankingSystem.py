@@ -9,3 +9,7 @@ class BackAccount:
 	def deposit(self, amount: int):
 		self.__balance += amount
 
+# Start
+if __name__ == "__main__":
+
+	#
