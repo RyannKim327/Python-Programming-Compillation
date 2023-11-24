@@ -7,8 +7,11 @@ class BackAccount:
 		return self._balance
 	
 	def deposit(self, amount: int):
-		if 0 < amount
+		if 0 < amount:
 			self._balance += amount
+
+	def widraw(self, amount: int = 0):
+		if 0 < self._balance <= amount
 
 # Start
 if __name__ == "__main__":
