@@ -22,14 +22,14 @@ class BackAccount:
 
 class TranscationHistory:
 	def __init__(self):
-		self._transactions = []
+		self.__transactions = []
 	
 	def addTransaction(self, transtaction):
 		if transtaction:
-			self._transactions.append(transtaction)
+			self.__transactions.append(transtaction)
 	
 	def getAllTransactions(self):
-		return self._transactions
+		return self.__transactions
 
 # Start
 if __name__ == "__main__":
