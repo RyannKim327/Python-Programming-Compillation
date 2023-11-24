@@ -21,3 +21,6 @@ if __name__ == "__main__":
 
 	acct1.deposit(500)
 	acct2.deposit(200)
+	
+	print(f"The {acct1._accountHolder}'s balance is {acct1.getBalance()}")
+	print(f"The {acct2._accountHolder}'s balance is {acct2.getBalance()}")
