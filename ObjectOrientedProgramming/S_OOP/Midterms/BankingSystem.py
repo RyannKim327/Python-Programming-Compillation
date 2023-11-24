@@ -40,11 +40,14 @@ if __name__ == "__main__":
 	acct1 = BackAccount("John Doe", 1000)
 	acct2 = BackAccount("John Smith")
 
-	print(f"The {acct1._accountHolder}'s balance is {acct1.getBalance()}")
-	print(f"The {acct2._accountHolder}'s balance is {acct2.getBalance()}")
+	# print(f"The {acct1._accountHolder}'s balance is {acct1.getBalance()}")
+	# print(f"The {acct2._accountHolder}'s balance is {acct2.getBalance()}")
 
 	transactions.addTransaction(acct1.deposit(500))
 	transactions.addTransaction(acct2.deposit(200))
 	
 	# print(f"The {acct1._accountHolder}'s balance is {acct1.getBalance()}")
 	# print(f"The {acct2._accountHolder}'s balance is {acct2.getBalance()}")
+
+	for i in transactions.getAllTransactions():
+		print(i)
