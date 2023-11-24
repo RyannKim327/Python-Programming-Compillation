@@ -34,6 +34,8 @@ class TranscationHistory:
 # Start
 if __name__ == "__main__":
 
+	transactions = TranscationHistory()
+
 	# Create 2 bank accounts
 	acct1 = BackAccount("John Doe", 1000)
 	acct2 = BackAccount("John Smith")
@@ -41,8 +43,8 @@ if __name__ == "__main__":
 	print(f"The {acct1._accountHolder}'s balance is {acct1.getBalance()}")
 	print(f"The {acct2._accountHolder}'s balance is {acct2.getBalance()}")
 
-	tra(acct1.deposit(500))
-	tra(acct2.deposit(200))
+	transactions.addTransaction(acct1.deposit(500))
+	transactions.addTransaction(acct2.deposit(200))
 	
-	print(f"The {acct1._accountHolder}'s balance is {acct1.getBalance()}")
-	print(f"The {acct2._accountHolder}'s balance is {acct2.getBalance()}")
+	# print(f"The {acct1._accountHolder}'s balance is {acct1.getBalance()}")
+	# print(f"The {acct2._accountHolder}'s balance is {acct2.getBalance()}")
