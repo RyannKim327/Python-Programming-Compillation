@@ -15,3 +15,5 @@ if __name__ == "__main__":
 	# Create 2 bank accounts
 	acct1 = BackAccount("John Doe", 1000)
 	acct2 = BackAccount("John Smith")
+
+	print(f"")
