@@ -11,7 +11,7 @@ class BackAccount:
 			self._balance += amount
 			return f"{self._accountHolder} deposited ${amount}"
 		else:
-			prinnt
+			print("Invalid input")
 
 	def widraw(self, amount: int = 0):
 		if 0 < amount <= self._balance:
@@ -19,6 +19,8 @@ class BackAccount:
 			return f"{self._accountHolder} widrew ${amount}"
 		else:
 			print("Inssuficient balance")
+
+class TranscationHistory:
 
 # Start
 if __name__ == "__main__":
