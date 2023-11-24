@@ -24,7 +24,10 @@ class TranscationHistory:
 	def __init__(self):
 		self._transactions = []
 	
-	def addTransaction(self, )
+	def addTransaction(self, transtaction):
+		if transtaction:
+			self._transactions.append(transtaction)
+		
 
 # Start
 if __name__ == "__main__":
