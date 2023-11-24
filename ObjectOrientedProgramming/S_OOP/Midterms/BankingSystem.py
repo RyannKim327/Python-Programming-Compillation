@@ -29,7 +29,7 @@ class TranscationHistory:
 			self._transactions.append(transtaction)
 	
 	def getAllTransactions(self):
-		return self._tra
+		return self._transactions
 
 # Start
 if __name__ == "__main__":
@@ -41,8 +41,8 @@ if __name__ == "__main__":
 	print(f"The {acct1._accountHolder}'s balance is {acct1.getBalance()}")
 	print(f"The {acct2._accountHolder}'s balance is {acct2.getBalance()}")
 
-	acct1.deposit(500)
-	acct2.deposit(200)
+	tra(acct1.deposit(500))
+	tra(acct2.deposit(200))
 	
 	print(f"The {acct1._accountHolder}'s balance is {acct1.getBalance()}")
 	print(f"The {acct2._accountHolder}'s balance is {acct2.getBalance()}")
