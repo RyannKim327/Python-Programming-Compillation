@@ -21,6 +21,10 @@ class BackAccount:
 			print("Inssuficient balance")
 
 class TranscationHistory:
+	def __init__(self):
+		self._transactions = []
+	
+	def addTransaction(self, )
 
 # Start
 if __name__ == "__main__":
