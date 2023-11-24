@@ -12,7 +12,7 @@ class BackAccount:
 
 	def widraw(self, amount: int = 0):
 		if 0 < amount <= self._balance:
-			
+			self._balance -= amount:
 
 # Start
 if __name__ == "__main__":
