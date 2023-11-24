@@ -16,4 +16,4 @@ if __name__ == "__main__":
 	acct1 = BackAccount("John Doe", 1000)
 	acct2 = BackAccount("John Smith")
 
-	print(f"{}")
+	print(f"The {acct1._accountHolder}'s balance is {acct1.getBalance()}")
