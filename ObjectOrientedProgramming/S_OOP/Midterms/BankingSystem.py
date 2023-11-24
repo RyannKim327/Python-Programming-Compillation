@@ -7,7 +7,8 @@ class BackAccount:
 		return self._balance
 	
 	def deposit(self, amount: int):
-		self._balance += amount
+		if 0 < amount <= self._balance:
+			self._balance += amount
 
 # Start
 if __name__ == "__main__":
