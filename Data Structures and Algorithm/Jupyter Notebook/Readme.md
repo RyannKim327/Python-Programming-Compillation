@@ -40,3 +40,4 @@ pip install seaborn
 
 ---
 ### How to run
+> To run Jupyter Notebook, you need to execute either of this 
