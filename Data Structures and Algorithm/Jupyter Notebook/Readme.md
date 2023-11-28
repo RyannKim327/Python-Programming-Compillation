@@ -40,4 +40,4 @@ pip install seaborn
 
 ---
 ### How to run
-> To run Jupyter Notebook, you need to execute either of this 
+> To run Jupyter Notebook, you need to execute either of this two commands in your terminal or command prompt: `jupyter notebook` or `python -m notebook`.
