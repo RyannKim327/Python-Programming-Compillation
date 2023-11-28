@@ -38,3 +38,5 @@ pip install pandas
 pip install seaborn
 ```
 
+---
+### How to run
