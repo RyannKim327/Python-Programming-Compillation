@@ -43,6 +43,9 @@ if __name__ == "__main__":
 	acct1 = BackAccount("John Doe", 1000)
 	acct2 = BackAccount("John Smith")
 
+	transactions.addTransaction(acct1)
+	transactions.addTransaction(acct2)
+
 	transactions.addTransaction(acct1.deposit(500))
 	transactions.addTransaction(acct2.deposit(200))
 
