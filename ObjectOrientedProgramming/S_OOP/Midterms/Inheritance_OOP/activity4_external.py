@@ -1,3 +1,3 @@
 class Animal:
-	def __init__(self, type, sound):
-		self.
+	def __init__(self, _type, sound):
+		self.type = _type
