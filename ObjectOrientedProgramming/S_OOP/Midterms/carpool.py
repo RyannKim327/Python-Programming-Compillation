@@ -1,3 +1,4 @@
+# Activity 1
 class Vehicle:
 	def __init__(self, name: str, capacity: int, fare: float):
 		self.name = name
