@@ -4,4 +4,7 @@ class Animal:
 		self.sound = sound
 	
 	def speak(self):
-		print(f"{self.name} is an {self.type} and makes a sound")
+		print(f"{self.name} is an {self.type} and makes a sound.")
+	
+class Dog(Animal):
+	
