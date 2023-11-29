@@ -2,6 +2,7 @@ class BackAccount:
 	def __init__(self, accountHolder: str, balance: int = 0):
 		self._accountHolder = accountHolder
 		self._balance = balance
+		self._initial_deposit = balance
 	
 	def getBalance(self):
 		return self._balance
@@ -22,8 +23,8 @@ class BackAccount:
 	
 	def __str__(self):
 		a = f"New account created for {self._accountHolder}"
-		if self._balance > 0:
-			a += f" with initial deposite of {self._balance}"
+		if self._initial_deposit > 0:
+			a += f" with initial deposite of {self._initial_deposit}"
 		return a
 	
 class TranscationHistory:
