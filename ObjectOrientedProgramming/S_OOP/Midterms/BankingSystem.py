@@ -19,6 +19,9 @@ class BackAccount:
 			return f"{self._accountHolder} widrew ${amount}"
 		else:
 			print("Inssuficient balance")
+	
+	def __str__(self):
+		return f"New account created for {self._accountHolder}"
 
 class TranscationHistory:
 	def __init__(self):
