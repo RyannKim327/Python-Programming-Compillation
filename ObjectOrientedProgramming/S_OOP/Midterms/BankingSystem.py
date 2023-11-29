@@ -53,5 +53,8 @@ if __name__ == "__main__":
 	transactions.addTransaction(acct1.deposit(500))
 	transactions.addTransaction(acct2.deposit(200))
 
+	transactions.addTransaction(acct1.widraw(500))
+	transactions.addTransaction(acct2.widraw(500))
+
 	for i in transactions.getAllTransactions():
 		print(i)
