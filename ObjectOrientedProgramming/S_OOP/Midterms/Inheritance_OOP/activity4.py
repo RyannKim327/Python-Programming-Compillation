@@ -1,1 +1,1 @@
-from * import activity4_external
+activity4_external
