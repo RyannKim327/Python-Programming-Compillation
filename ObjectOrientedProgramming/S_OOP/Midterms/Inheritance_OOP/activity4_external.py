@@ -12,4 +12,4 @@ class Dog(Animal):
 		self.breed = breed
 
 	def speak(self):
-		print(f"{self.name}")
+		print(f"{self.name}, is a type of {self.breed} and makes a sound.")
