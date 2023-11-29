@@ -1,7 +1,7 @@
 class Animal:
-	def __init__(self, _type, sound):
-		self.type = _type
+	def __init__(self, name, sound):
+		self.type = name
 		self.sound = sound
 	
 	def speak(self):
-		print(f"{self.sound} is an {self.type}")
+		print(f"{self.name} is an {self.type} and makes a sound")
