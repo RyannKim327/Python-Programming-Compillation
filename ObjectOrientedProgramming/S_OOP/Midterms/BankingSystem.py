@@ -12,14 +12,14 @@ class BackAccount:
 			self._balance += amount
 			return f"{self._accountHolder} deposited ${amount}"
 		else:
-			print("Invalid input")
+			return 
 
 	def widraw(self, amount: int = 0):
 		if 0 < amount <= self._balance:
 			self._balance -= amount
 			return f"{self._accountHolder} widrew ${amount}"
 		else:
-			return f"{self}"
+			return f"{self._accountHolder} can't widraw due to its insufficient balance"
 	
 	def __str__(self):
 		a = f"New account created for {self._accountHolder}"
