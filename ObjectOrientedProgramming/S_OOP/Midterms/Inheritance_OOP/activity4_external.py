@@ -6,6 +6,8 @@ class Animal:
 	def speak(self):
 		print(f"{self.name} is an {self.specie} and makes a sound.")
 	
+	def getType(self)
+	
 class Dog(Animal):
 	def __init__(self, name, breed):
 		super().__init__(name, "Dog")
