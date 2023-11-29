@@ -7,5 +7,6 @@ class Animal:
 		print(f"{self.name} is an {self.specie} and makes a sound.")
 	
 class Dog(Animal):
-	def __init__(self, name, sound):
-		super.__init__()
+	def __init__(self, name, specie):
+		super.__init__(name, specie)
+		
