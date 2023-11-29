@@ -12,7 +12,7 @@ class BackAccount:
 			self._balance += amount
 			return f"{self._accountHolder} deposited ${amount}"
 		else:
-			return f"The "
+			return f"The amount must be a positive value and not equal to zero [{self._accountHolder}]"
 
 	def widraw(self, amount: int = 0):
 		if 0 < amount <= self._balance:
