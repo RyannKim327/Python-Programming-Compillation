@@ -22,7 +22,8 @@ class BackAccount:
 	
 	def __str__(self):
 		a = f"New account created for {self._accountHolder}"
-		if self._
+		if self._balance > 0:
+			a += f""
 		return a
 	
 class TranscationHistory:
