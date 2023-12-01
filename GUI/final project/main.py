@@ -1,7 +1,7 @@
 import random
 from tkinter import *
 from tkinter import messagebox, simpledialog, ttk
-from playsound import playsound
+# from playsound import playsound
 import menu
 import setup
 from toPDF import toPDF
@@ -484,10 +484,10 @@ def go_time():
 		its_time -= 1
 		s_root.after(10, go_time)
 	else:
-		try:
-			playsound("gover.mp3")
-		except:
-			pass
+		# try:
+		# 	playsound("gover.mp3")
+		# except:
+		# 	pass
 		logout(s_root)
 		accounts()
 
