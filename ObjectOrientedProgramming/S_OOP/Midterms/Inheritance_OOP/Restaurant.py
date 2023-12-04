@@ -37,7 +37,6 @@ class PremiumFoodItem(FoodItem):
 			self.setPrice(price)
 	
 	def isPremium():
-		return true
 
 class Order:
 	def __init__(self):
