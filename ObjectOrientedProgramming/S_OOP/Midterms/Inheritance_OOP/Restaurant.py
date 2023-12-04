@@ -35,3 +35,5 @@ class Order:
 		total = 0
 		for i in self.__orders:
 			total += i.getPrice()
+		
+		return total
