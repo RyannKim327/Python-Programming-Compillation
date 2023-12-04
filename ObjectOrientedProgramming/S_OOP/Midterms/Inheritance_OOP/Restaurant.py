@@ -72,7 +72,7 @@ if __name__ == "__main__":
 			case "2":
 				print("You've chosen a drink item, we have here: ")
 				a = [
-					["Coke", 13], ["Pepsi", 15], ["Royal", 10], ["Mt. Dew", 25], ["Gatorade", 35], ["Water", 10]
+					["Coke", 13], ["Pepsi", 15], ["Royal", 15], ["Mt. Dew", 20], ["Gatorade", 35], ["Water", 10]
 				]
 				for i, j in enumerate(a):
 					print(f"[{i + 1}]: {j[0]} - {j[1]}")
@@ -80,7 +80,7 @@ if __name__ == "__main__":
 				while not c.isdigit():
 					c = input("Enter your choice: ")
 				d = a[(int(c) - 1) % len(a)]
-				_order = FoodItem(d[0], d[1])
+				_order = DrinkItem(d[0], d[1])
 			case "3":
 				pass
 			case "4":
