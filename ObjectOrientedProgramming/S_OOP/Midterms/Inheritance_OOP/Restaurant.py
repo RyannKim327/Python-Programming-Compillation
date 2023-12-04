@@ -25,7 +25,7 @@ class DrinkItem(MenuItem):
 		super().__init__(item_name, price, "This is Drink Item")
 
 	def pour(self):
-		print(f"Your {iter}")
+		print(f"Your {self.item_name} is on the way, please wait.")
 
 class PremiumFoodItem(FoodItem):
 	def __init__(self, item_name, price, addons):
