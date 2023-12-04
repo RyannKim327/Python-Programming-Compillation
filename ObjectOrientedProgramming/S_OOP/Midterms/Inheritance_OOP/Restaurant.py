@@ -15,14 +15,14 @@ class MenuItem:
 
 class FoodItem(MenuItem):
 	def __init__(self, item_name, price):
-		super().__init__(item_name, price, "This is Food Item")
+		super().__init__(item_name, price, "Food")
 	
 	def cook(self):
 		print(f"Please wait for your {self.item_name}, we still cooking it.")
 
 class DrinkItem(MenuItem):
 	def __init__(self, item_name, price):
-		super().__init__(item_name, price, "This is Drink Item")
+		super().__init__(item_name, price, "Drink")
 
 	def pour(self):
 		print(f"Your {self.item_name} is on the way, please wait.")
