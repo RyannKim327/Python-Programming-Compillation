@@ -38,7 +38,7 @@ class PremiumFoodItem(FoodItem):
 		self.item_name = item_name
 	
 	def getItem(self):
-		return f"{Ite}"
+		return f"{self.item_name}"
 
 class Order:
 	def __init__(self):
