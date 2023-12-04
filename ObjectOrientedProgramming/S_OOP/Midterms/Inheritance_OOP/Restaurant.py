@@ -17,7 +17,8 @@ class FoodItem(MenuItem):
 	def __init__(self, item_name, price):
 		super().__init__(item_name, price, "This is Food Item")
 	
-
+	def cook(self):
+		print("Cooking in process")
 
 class DrinkItem(MenuItem):
 	def __init__(self, item_name, price):
