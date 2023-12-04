@@ -30,6 +30,8 @@ class DrinkItem(MenuItem):
 class PremiumFoodItem(FoodItem):
 	def __init__(self, item_name, price):
 		super().__init__(item_name, price)
+	
+	def makeItToast(self, isToasted=False)
 
 class Order:
 	def __init__(self):
