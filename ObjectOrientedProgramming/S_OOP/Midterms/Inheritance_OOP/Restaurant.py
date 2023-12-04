@@ -36,11 +36,12 @@ class PremiumFoodItem(FoodItem):
 		price = self.getPrice() + (len(addons) * 2)
 		self.setPrice(price)
 		self.item_name = item_name
-		self.add
+		self.adds = addons
 	
 	def getItem(self):
 		a =  f"{self.item_name}"
-		if
+		if len(adds) > 0:
+			a += "with"
 		return a
 
 class Order:
