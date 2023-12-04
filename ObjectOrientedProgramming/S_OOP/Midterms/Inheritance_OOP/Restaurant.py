@@ -60,7 +60,7 @@ if __name__ == "__main__":
 			case "1":
 				print("You've chosen a food item, we have here: ")
 				a = [
-					"Pansit", "Spaghetti", "Rice", "Chicken", "Burger", "Eggs"
+					["Pansit"], "Spaghetti", "Rice", "Chicken", "Burger", "Eggs"
 				]
 				for i, j in enumerate(a):
 					print(f"[{i + 1}]: {j}")
@@ -68,7 +68,7 @@ if __name__ == "__main__":
 				while not c.isdigit():
 					c = input("Enter your choice: ")
 				d = a[(int(c) - 1) % len(a)]
-				
+				a = FoodItem(d)
 			case "2":
 				pass
 			case "3":
