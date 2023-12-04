@@ -82,7 +82,7 @@ if __name__ == "__main__":
 			case "3":
 				print("You've chosen a food item 16 ultra mega pro max, we have here: ")
 				a = [
-					["Pansit Palabok", 150], ["Pansit Lucban", 150], ["Spaghetti", 50], ["Rice", 10], ["Chicken", 25], ["Burger", 35], ["Eggs", 10]
+					["Pansit Palabok", 150], ["Pansit Lucban", 150], ["Spaghetti with ", 50], ["Imported Rice made in China", 1000], ["Chicken", 25], ["Burger", 35], ["Eggs", 10]
 				]
 				for i, j in enumerate(a):
 					print(f"[{i + 1}]: {j[0]} - {j[1]}")
