@@ -36,9 +36,12 @@ class PremiumFoodItem(FoodItem):
 		price = self.getPrice() + (len(addons) * 2)
 		self.setPrice(price)
 		self.item_name = item_name
+		self.add
 	
 	def getItem(self):
-		return f"{self.item_name}"
+		a =  f"{self.item_name}"
+		if
+		return a
 
 class Order:
 	def __init__(self):
