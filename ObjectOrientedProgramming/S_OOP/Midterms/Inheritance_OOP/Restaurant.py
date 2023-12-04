@@ -67,7 +67,6 @@ if __name__ == "__main__":
 				c = input("Enter your choice: ")
 				while not c.isdigit():
 					c = input("Enter your choice: ")
-				
 				d = a[c - 1]
 			case "2":
 				pass
