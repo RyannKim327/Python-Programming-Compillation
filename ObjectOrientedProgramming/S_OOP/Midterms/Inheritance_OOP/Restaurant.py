@@ -51,9 +51,10 @@ class Order:
 		return total
 
 
+if __name__ == "
 order = Order()
 while True:
-	a = input("Menu: \n[1] Food\n[2] Drinks\n\nEnter your choice:")
+	a = input("Menu: \n[1] Food\n[2] Drinks\n[3] Food Premium\nEnter your choice:")
 	match(a):
 		case "1":
 		case "2":
