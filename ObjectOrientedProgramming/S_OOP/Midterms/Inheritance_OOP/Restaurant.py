@@ -1,6 +1,9 @@
 class MenuItem:
-	def __init__(self):
+	def __init__(self, item_name, price):
 		pass
+
+	def getDescription():
+		
 
 class FoodItem(MenuItem):
 	def __init__(self):
