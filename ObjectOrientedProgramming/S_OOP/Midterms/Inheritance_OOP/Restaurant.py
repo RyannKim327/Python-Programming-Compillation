@@ -62,8 +62,8 @@ if __name__ == "__main__":
 				a = [
 					"Pansit", "Spaghetti", "Rice", "Chicken", "Burger", "Eggs"
 				]
-				for i, j in e
-
+				for i, j in enumerate(a):
+					print(f"{i}: {j}")
 			case "2":
 				pass
 			case "3":
