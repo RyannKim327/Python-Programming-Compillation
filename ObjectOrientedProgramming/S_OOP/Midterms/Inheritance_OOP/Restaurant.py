@@ -96,4 +96,4 @@ if __name__ == "__main__":
 			order.addOrder(_order)
 
 for i in order.getOrders():
-	print(f"You've purchase {i.getItem()} {i.getPrice()}")
+	print(f"You've purchase {i.getItem()} for {i.getPrice()}")
