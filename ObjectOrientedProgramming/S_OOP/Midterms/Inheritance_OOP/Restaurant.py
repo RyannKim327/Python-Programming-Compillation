@@ -28,12 +28,13 @@ class DrinkItem(MenuItem):
 		print("Pouring...")
 
 class PremiumFoodItem(FoodItem):
-	def __init__(self, item_name, price):
+	def __init__(self, item_name, price, addons):
 		super().__init__(item_name, price)
+		self.addons = addons
 	
 	def makeItToast(self, isToasted=False):
 		if isToasted:
-			price = self.getPrice() + 5
+			price = self.getPrice() + 
 			self.setPrice(price)
 	
 	def isPremium():
