@@ -63,7 +63,7 @@ if __name__ == "__main__":
 					["Pansit", 50], ["Spaghetti", 50], ["Rice", 10], ["Chicken", 25], ["Burger", 35], ["Eggs", 10]
 				]
 				for i, j in enumerate(a):
-					print(f"[{i + 1}]: {j} - {k}")
+					print(f"[{i + 1}]: {j[0]}")
 				c = input("Enter your choice: ")
 				while not c.isdigit():
 					c = input("Enter your choice: ")
