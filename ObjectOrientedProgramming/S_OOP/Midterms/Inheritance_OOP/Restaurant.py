@@ -91,8 +91,10 @@ if __name__ == "__main__":
 					c = input("Enter your choice: ")
 				d = a[(int(c) - 1) % len(a)]
 				addons = []
-				addon = input("Enter a  dditional toppings you want: ")
+				addon = input("Enter additional toppings you want: ")
 				while not addon == "": 
+					addons.append(addon)
+					addon = input("Enter additional toppings you want: ")
 				_order = FoodItem(d[0], d[1])
 			case "4":
 				break
