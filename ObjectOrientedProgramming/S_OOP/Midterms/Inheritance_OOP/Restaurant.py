@@ -56,5 +56,7 @@ while True:
 	a = input("Menu: \n[1] Food\n[2] Drinks\nEnter your choice:")
 	match(a):
 		case "1":
-			
-	
+			pass
+		case "2":
+			pass
+
