@@ -4,8 +4,10 @@ class MenuItem:
 		self.price = price
 		self.description = description
 		
-	def getDescription(self):
+	def getDetails(self):
 		return self.description
+
+	def setPrice(self, price)
 
 class FoodItem(MenuItem):
 	def __init__(self, item_name, price):
