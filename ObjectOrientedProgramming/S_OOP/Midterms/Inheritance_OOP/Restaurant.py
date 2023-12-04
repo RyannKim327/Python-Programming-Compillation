@@ -97,3 +97,5 @@ if __name__ == "__main__":
 
 for i in order.getOrders():
 	print(f"You've purchase {i.getItem()} for ${i.getPrice()}")
+
+print(f"With the total of {order.calculateTotalPrice()}")
