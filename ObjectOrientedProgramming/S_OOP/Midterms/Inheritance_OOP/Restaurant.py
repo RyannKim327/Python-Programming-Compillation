@@ -33,8 +33,8 @@ class PremiumFoodItem(FoodItem):
 	
 	def makeItToast(self, isToasted=False):
 		if isToasted:
-			
-			self.setPrice()
+			price = self.getPrice() + 5
+			self.setPrice(price)
 
 class Order:
 	def __init__(self):
