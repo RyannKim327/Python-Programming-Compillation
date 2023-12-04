@@ -12,6 +12,9 @@ class MenuItem:
 	
 	def getPrice(self):
 		return self.__price
+	
+	def getItem(self):
+		return self.item_name
 
 class FoodItem(MenuItem):
 	def __init__(self, item_name, price):
@@ -93,4 +96,4 @@ if __name__ == "__main__":
 			order.addOrder(_order)
 
 for i in order.getOrders():
-	print(i.getPrice())
+	print(f"{i.getPrice()}")
