@@ -51,7 +51,6 @@ class Order:
 		return total
 
 
-a = PremiumFoodItem("Pork", 100)
-print(a.getPrice())
-a.makeItToast(True)
-print(a.getPrice())
+order = Order()
+while True:
+	
