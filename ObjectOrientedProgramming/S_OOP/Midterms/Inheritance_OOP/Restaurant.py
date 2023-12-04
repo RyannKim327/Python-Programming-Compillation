@@ -15,4 +15,5 @@ class DrinkItem(MenuItem):
 	def __init__(self, item_name, price):
 		super().__init__(item_name, price, "This is Drink Item")
 
-a = F
+a = FoodItem("Kasuy", 100)
+print(a.getDescription())
