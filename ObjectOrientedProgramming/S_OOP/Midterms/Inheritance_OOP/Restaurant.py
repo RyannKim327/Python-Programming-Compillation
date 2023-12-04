@@ -22,5 +22,7 @@ class DrinkItem(MenuItem):
 		super().__init__(item_name, price, "This is Drink Item")
 
 a = FoodItem("Kasuy", 100)
-print(a.getDescription())
+print(a.getDetails())
+print(a.getPrice())
+a.setPrice(500)
 print(a.getPrice())
