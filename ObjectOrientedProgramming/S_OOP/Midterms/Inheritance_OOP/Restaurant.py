@@ -8,8 +8,8 @@ class MenuItem:
 		return self.description
 
 class FoodItem(MenuItem):
-	def __init__(self):
-		super().__init__(item_name, price)
+	def __init__(self, item_name, price):
+		super().__init__(item_name, price, "This is Food Item")
 
 class DrinkItem(MenuItem):
 	def __init__(self):
