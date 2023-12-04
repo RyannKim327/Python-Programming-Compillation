@@ -90,7 +90,8 @@ if __name__ == "__main__":
 				while not c.isdigit():
 					c = input("Enter your choice: ")
 				d = a[(int(c) - 1) % len(a)]
-				
+				addons = []
+				addon = input("Enter additional ")
 				_order = FoodItem(d[0], d[1])
 			case "4":
 				break
