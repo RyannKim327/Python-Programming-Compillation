@@ -30,8 +30,7 @@ class DrinkItem(MenuItem):
 class PremiumFoodItem(FoodItem):
 	def __init__(self, item_name, price, addons):
 		super().__init__(item_name, price)
-		self.addons = addons
-		price = self.getPrice() + (len(self.addons) * 2)
+		price = self.getPrice() + (len(addons) * 2)
 		self.setPrice(price)
 
 class Order:
