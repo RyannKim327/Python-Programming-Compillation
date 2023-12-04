@@ -53,4 +53,7 @@ class Order:
 
 order = Order()
 while True:
-	a = input("Menu: \n[1] Food\n\nEnter your choice:")
+	a = input("Menu: \n[1] Food\n[2] Drinks\nEnter your choice:")
+	if a == 1:
+		pass
+	elif 
