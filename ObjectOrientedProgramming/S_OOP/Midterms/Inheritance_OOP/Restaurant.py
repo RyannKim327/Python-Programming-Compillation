@@ -55,6 +55,7 @@ if __name__ == "__main__":
 	order = Order()
 	while True:
 		a = input("Menu: \n[1] Food\n[2] Drinks\n[3] Food Premium\nEnter your choice:")
+		b = True
 		match(a):
 			case "1":
 				pass
@@ -62,5 +63,6 @@ if __name__ == "__main__":
 				pass
 			case "3":
 				pass
-			def
+			case _:
+				print("Invalid choice")
 
