@@ -24,8 +24,8 @@ class DrinkItem(MenuItem):
 	def __init__(self, item_name, price):
 		super().__init__(item_name, price, "This is Drink Item")
 
-	def pour();
-		pass
+	def pour():
+		print("Pouring...")
 
 class Order:
 	def __init__(self):
