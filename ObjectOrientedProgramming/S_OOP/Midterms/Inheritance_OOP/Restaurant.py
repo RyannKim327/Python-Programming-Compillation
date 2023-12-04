@@ -80,4 +80,4 @@ if __name__ == "__main__":
 				print("Invalid choice")
 
 		if b:
-			print("Test")
+			order.addOrder(a)
