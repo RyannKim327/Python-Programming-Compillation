@@ -64,7 +64,8 @@ if __name__ == "__main__":
 				]
 				for i, j in enumerate(a):
 					print(f"[{i + 1}]: {j}")
-				
+				a = input("Enter your choice: ")
+				while not a.di
 			case "2":
 				pass
 			case "3":
