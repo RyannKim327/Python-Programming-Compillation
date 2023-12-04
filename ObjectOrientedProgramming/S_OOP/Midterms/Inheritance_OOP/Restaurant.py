@@ -34,7 +34,7 @@ class PremiumFoodItem(FoodItem):
 	
 	def makeItToast(self, isToasted=False):
 		if isToasted:
-			price = self.getPrice() + 
+			price = self.getPrice() + (len(self.addons) * 2)
 			self.setPrice(price)
 	
 	def isPremium():
