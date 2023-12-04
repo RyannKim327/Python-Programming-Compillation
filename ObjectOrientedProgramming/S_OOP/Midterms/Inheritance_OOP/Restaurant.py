@@ -91,3 +91,6 @@ if __name__ == "__main__":
 
 		if b:
 			order.addOrder(_order)
+
+for i in order.getOrders():
+	print(i.get)
