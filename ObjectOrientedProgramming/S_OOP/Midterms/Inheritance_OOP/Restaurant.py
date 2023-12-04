@@ -41,7 +41,7 @@ class PremiumFoodItem(FoodItem):
 	def getItem(self):
 		a =  f"{self.item_name}"
 		if len(adds) > 0:
-			a += "with"
+			a += f" with some {self.adds}"
 		return a
 
 class Order:
