@@ -31,11 +31,8 @@ class PremiumFoodItem(FoodItem):
 	def __init__(self, item_name, price, addons):
 		super().__init__(item_name, price)
 		self.addons = addons
-	
-	def makeItToast(self, isToasted=False):
-		if isToasted:
-			price = self.getPrice() + (len(self.addons) * 2)
-			self.setPrice(price)
+		price = self.getPrice() + (len(self.addons) * 2)
+		self.setPrice(price)
 
 class Order:
 	def __init__(self):
