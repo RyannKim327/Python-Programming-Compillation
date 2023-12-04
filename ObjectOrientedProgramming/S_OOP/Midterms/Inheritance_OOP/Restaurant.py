@@ -68,7 +68,7 @@ if __name__ == "__main__":
 				while not c.isdigit():
 					c = input("Enter your choice: ")
 				d = a[(int(c) - 1) % len(a)]
-				a = FoodItem(d)
+				a = FoodItem(d[0], d[1])
 			case "2":
 				pass
 			case "3":
