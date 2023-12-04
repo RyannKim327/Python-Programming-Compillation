@@ -47,10 +47,7 @@ class Order:
 		return self.__orders
 	
 	def calculateTotalPrice(self):
-		total = 0
-		for i in self.__orders:
-			total += i.getPrice()
-		return sum([])
+		return sum([i.getPrice() for i in self.__orders])
 
 if __name__ == "__main__":
 	order = Order()
