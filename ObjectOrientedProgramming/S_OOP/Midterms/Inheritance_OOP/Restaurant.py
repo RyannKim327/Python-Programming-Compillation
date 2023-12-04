@@ -3,7 +3,7 @@ class MenuItem:
 		pass
 
 	def getDescription():
-		
+		return f""
 
 class FoodItem(MenuItem):
 	def __init__(self):
