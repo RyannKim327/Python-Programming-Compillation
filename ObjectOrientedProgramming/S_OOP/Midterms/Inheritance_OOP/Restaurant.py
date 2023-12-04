@@ -70,9 +70,9 @@ if __name__ == "__main__":
 				d = a[(int(c) - 1) % len(a)]
 				_order = FoodItem(d[0], d[1])
 			case "2":
-				print("You've chosen a food item, we have here: ")
+				print("You've chosen a drink item, we have here: ")
 				a = [
-					["Pansit", 50], ["Spaghetti", 50], ["Rice", 10], ["Chicken", 25], ["Burger", 35], ["Eggs", 10]
+					["Coke", 50], ["Pepsi", 50], ["Royal", 10], ["Mt.", 25], ["Burger", 35], ["Eggs", 10]
 				]
 				for i, j in enumerate(a):
 					print(f"[{i + 1}]: {j[0]} - {j[1]}")
