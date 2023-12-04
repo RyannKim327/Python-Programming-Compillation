@@ -40,8 +40,8 @@ class PremiumFoodItem(FoodItem):
 	
 	def getItem(self):
 		a =  f"{self.item_name}"
-		if len(adds) > 0:
-			a += f" with some {self.adds}"
+		if len(self.adds) > 0:
+			a += f" with some {tuple(self.adds)}"
 		return a
 
 class Order:
