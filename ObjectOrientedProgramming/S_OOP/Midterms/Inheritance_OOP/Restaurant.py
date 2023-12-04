@@ -68,9 +68,19 @@ if __name__ == "__main__":
 				while not c.isdigit():
 					c = input("Enter your choice: ")
 				d = a[(int(c) - 1) % len(a)]
-				a = FoodItem(d[0], d[1])
+				_order = FoodItem(d[0], d[1])
 			case "2":
-				pass
+				print("You've chosen a food item, we have here: ")
+				a = [
+					["Pansit", 50], ["Spaghetti", 50], ["Rice", 10], ["Chicken", 25], ["Burger", 35], ["Eggs", 10]
+				]
+				for i, j in enumerate(a):
+					print(f"[{i + 1}]: {j[0]} - {j[1]}")
+				c = input("Enter your choice: ")
+				while not c.isdigit():
+					c = input("Enter your choice: ")
+				d = a[(int(c) - 1) % len(a)]
+				_order = FoodItem(d[0], d[1])
 			case "3":
 				pass
 			case "4":
@@ -80,4 +90,4 @@ if __name__ == "__main__":
 				print("Invalid choice")
 
 		if b:
-			order.addOrder(a)
+			order.addOrder(_order)
