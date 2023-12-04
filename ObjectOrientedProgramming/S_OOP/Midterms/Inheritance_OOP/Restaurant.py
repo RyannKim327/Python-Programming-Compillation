@@ -32,5 +32,6 @@ class Order:
 		return self.__orders
 	
 	def calculateTotalPrice(self):
+		total = 0
 		for i in self.__orders:
-			
+			total += i.getPrice()
