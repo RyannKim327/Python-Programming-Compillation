@@ -80,7 +80,7 @@ if __name__ == "__main__":
 				d = a[(int(c) - 1) % len(a)]
 				_order = DrinkItem(d[0], d[1])
 			case "3":
-				print("You've chosen a food item premium, we have here: ")
+				print("You've chosen a food item 16 ultra mega pro max, we have here: ")
 				a = [
 					["Pansit", 50], ["Spaghetti", 50], ["Rice", 10], ["Chicken", 25], ["Burger", 35], ["Eggs", 10]
 				]
