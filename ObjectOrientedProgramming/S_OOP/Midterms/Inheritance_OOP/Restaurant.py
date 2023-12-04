@@ -23,3 +23,4 @@ class DrinkItem(MenuItem):
 
 a = FoodItem("Kasuy", 100)
 print(a.getDescription())
+print(a.getPrice())
