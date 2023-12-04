@@ -27,7 +27,9 @@ class DrinkItem(MenuItem):
 	def pour(self):
 		print("Pouring...")
 
-
+class PremiumFoodItem(FoodItem):
+	def __init__(self, item_name, price):
+		super().__init__(item_name, price)
 
 class Order:
 	def __init__(self):
