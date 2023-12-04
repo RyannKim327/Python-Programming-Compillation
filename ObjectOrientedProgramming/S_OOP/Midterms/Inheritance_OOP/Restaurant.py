@@ -64,10 +64,11 @@ if __name__ == "__main__":
 				]
 				for i, j in enumerate(a):
 					print(f"[{i + 1}]: {j}")
-				a = input("Enter your choice: ")
-				while not a.isdigit():
-					a = input("Enter your choice: ")
-				c = 
+				c = input("Enter your choice: ")
+				while not c.isdigit():
+					c = input("Enter your choice: ")
+				
+				d = a[c - 1]
 			case "2":
 				pass
 			case "3":
