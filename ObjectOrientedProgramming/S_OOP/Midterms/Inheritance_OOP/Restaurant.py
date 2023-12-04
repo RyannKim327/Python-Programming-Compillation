@@ -35,9 +35,10 @@ class PremiumFoodItem(FoodItem):
 		super().__init__(item_name, price)
 		price = self.getPrice() + (len(addons) * 2)
 		self.setPrice(price)
+		self.item_name = item_name
 	
 	def getItem(self):
-		
+		return f"{Ite}"
 
 class Order:
 	def __init__(self):
