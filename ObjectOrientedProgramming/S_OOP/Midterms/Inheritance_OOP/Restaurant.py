@@ -54,11 +54,11 @@ class Order:
 if __name__ == "__main__":
 	order = Order()
 	while True:
-		a = input("Menu: \n[1] Food\n[2] Drinks\n[3] Food Premium[4] Close\nEnter your choice: ")
+		a = input("Menu: \n[1] Food\n[2] Drinks\n[3] Food Premium\n[4] Close\nEnter your choice: ")
 		b = True
 		match(a):
 			case "1":
-				pass
+				print("You've chosen a food item")
 			case "2":
 				pass
 			case "3":
