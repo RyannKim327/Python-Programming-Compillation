@@ -26,4 +26,10 @@ class Order:
 		self.__orders = []
 	
 	def addOrder(self, order):
-		self.__
+		self.__orders.append(order)
+	
+	def getOrders(self):
+		return self.__orders
+	
+	def calculateTotalPrice(self):
+		
