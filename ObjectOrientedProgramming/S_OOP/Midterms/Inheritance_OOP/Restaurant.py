@@ -60,7 +60,7 @@ if __name__ == "__main__":
 			case "1":
 				print("You've chosen a food item, we have here: ")
 				a = [
-					["Pansit", 50], ["Spaghetti"], ["Rice"], ["Chicken"], ["Burger"], ["Eggs"]
+					["Pansit", 50], ["Spaghetti", 50], ["Rice", 10], ["Chicken", 25], ["Burger", 35], ["Eggs", 10]
 				]
 				for i, j in enumerate(a):
 					print(f"[{i + 1}]: {j}")
