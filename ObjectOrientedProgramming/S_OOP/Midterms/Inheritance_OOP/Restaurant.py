@@ -1,7 +1,7 @@
 class MenuItem:
-	def __init__(self, item_name, price):
-		pass
-
+	def __init__(self, item_name, price, description):
+		self,
+		
 	def getDescription():
 		return f""
 
