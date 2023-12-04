@@ -53,4 +53,4 @@ class Order:
 
 order = Order()
 while True:
-	a = input("Enter your choice")
+	a = input("Menu: \n[1] Food\n\nEnter your choice:")
