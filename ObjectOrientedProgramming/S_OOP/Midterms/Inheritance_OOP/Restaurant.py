@@ -95,7 +95,7 @@ if __name__ == "__main__":
 				while not addon == "": 
 					addons.append(addon)
 					addon = input("Enter additional toppings you want: ")
-				_order = FoodItem(d[0], d[1])
+				_order = PremiumFoodItem(d[0], d[1], addons)
 			case "4":
 				break
 			case _:
