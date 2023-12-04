@@ -21,8 +21,9 @@ class DrinkItem(MenuItem):
 	def __init__(self, item_name, price):
 		super().__init__(item_name, price, "This is Drink Item")
 
-a = FoodItem("Kasuy", 100)
-print(a.getDetails())
-print(a.getPrice())
-a.setPrice(500)
-print(a.getPrice())
+class Order:
+	def __init__(self):
+		self.__orders = []
+	
+	def addOrder(self, order):
+		self.__
