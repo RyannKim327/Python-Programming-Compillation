@@ -58,7 +58,7 @@ if __name__ == "__main__":
 		b = True
 		match(a):
 			case "1":
-				print("You've chosen a food item")
+				print("You've chosen a food item, we have here:")
 			case "2":
 				pass
 			case "3":
