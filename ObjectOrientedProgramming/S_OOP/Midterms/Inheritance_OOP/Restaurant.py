@@ -9,6 +9,9 @@ class MenuItem:
 
 	def setPrice(self, price):
 		self.__price = price
+	
+	def getPrice(self):
+		return self.__price
 
 class FoodItem(MenuItem):
 	def __init__(self, item_name, price):
