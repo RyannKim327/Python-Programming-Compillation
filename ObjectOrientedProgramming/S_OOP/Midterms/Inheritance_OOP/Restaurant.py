@@ -72,7 +72,7 @@ if __name__ == "__main__":
 			case "2":
 				print("You've chosen a drink item, we have here: ")
 				a = [
-					["Coke", 50], ["Pepsi", 50], ["Royal", 10], ["Mt.", 25], ["Burger", 35], ["Eggs", 10]
+					["Coke", 13], ["Pepsi", 15], ["Royal", 10], ["Mt. Dew", 25], ["Gatorade", 35], ["Water", 10]
 				]
 				for i, j in enumerate(a):
 					print(f"[{i + 1}]: {j[0]} - {j[1]}")
