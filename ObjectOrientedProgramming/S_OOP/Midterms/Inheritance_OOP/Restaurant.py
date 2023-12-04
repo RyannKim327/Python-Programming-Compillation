@@ -18,14 +18,14 @@ class FoodItem(MenuItem):
 		super().__init__(item_name, price, "This is Food Item")
 	
 	def cook(self):
-		print(f"Please wait for your {}")
+		print(f"Please wait for your {self.item_name}, we still cooking it.")
 
 class DrinkItem(MenuItem):
 	def __init__(self, item_name, price):
 		super().__init__(item_name, price, "This is Drink Item")
 
 	def pour(self):
-		print("Pouring...")
+		print(f"Your {iter}")
 
 class PremiumFoodItem(FoodItem):
 	def __init__(self, item_name, price, addons):
