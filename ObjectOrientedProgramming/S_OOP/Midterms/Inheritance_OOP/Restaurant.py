@@ -4,12 +4,12 @@ class MenuItem:
 		self.price = price
 		self.description = description
 		
-	def getDescription():
-		return f""
+	def getDescription(self):
+		return self.description
 
 class FoodItem(MenuItem):
 	def __init__(self):
-		super().__init__()
+		super().__init__(item_name, price)
 
 class DrinkItem(MenuItem):
 	def __init__(self):
