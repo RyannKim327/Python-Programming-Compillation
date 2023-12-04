@@ -62,7 +62,8 @@ if __name__ == "__main__":
 				a = [
 					"Pansit", "Spaghetti", "Rice", "Chicken", "Burger", "Eggs"
 				]
-				
+				for i, j in e
+
 			case "2":
 				pass
 			case "3":
