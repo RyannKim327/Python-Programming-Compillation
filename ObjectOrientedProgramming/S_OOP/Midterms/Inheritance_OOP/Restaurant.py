@@ -1,13 +1,14 @@
 class MenuItem:
 	def __init__(self, item_name, price, description):
 		self.item_name = item_name
-		self.price = price
+		self.__price = price
 		self.description = description
 		
 	def getDetails(self):
 		return self.description
 
-	def setPrice(self, price)
+	def setPrice(self, price):
+		self.__price = price
 
 class FoodItem(MenuItem):
 	def __init__(self, item_name, price):
