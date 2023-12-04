@@ -36,8 +36,6 @@ class PremiumFoodItem(FoodItem):
 		if isToasted:
 			price = self.getPrice() + (len(self.addons) * 2)
 			self.setPrice(price)
-	
-	def isPremium():
 
 class Order:
 	def __init__(self):
