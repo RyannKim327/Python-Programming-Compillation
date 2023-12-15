@@ -10,4 +10,4 @@ pets.append(pusa)
 kim = Owner("Kim", pets)
 
 for i in kim.getAllPets():
-    print(i.getType())
+    i.getType()

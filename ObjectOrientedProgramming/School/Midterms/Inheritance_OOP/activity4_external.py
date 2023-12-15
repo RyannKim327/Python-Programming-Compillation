@@ -17,3 +17,27 @@ class Dog(Animal):
 
 	def speak(self):
 		print(f"{self.name}, is a type of {self.breed} and makes a sound.")
+
+class Cat(Animal):
+	def __init__(self, name, breed):
+		super().__init__(name, "Cat")
+		self.name = name
+		self.breed = breed
+	
+	def speak(self):
+		print(f"{self.name}, is a type of {self.breed} and makes a sound.")
+
+class Human:
+    def __init__(self, name):
+        self.name = name
+
+    def getName(self):
+        return self.name
+
+class Owner(Human):
+    def __init__(self, name, pets):
+        super().__init__(name)
+        self.pets = pets
+
+    def getAllPets(self):
+        return self.pets
