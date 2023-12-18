@@ -7,8 +7,8 @@ class CoffeeBean:
         return f"A {self.name} from {self.origin}"
 
 class ArabicaCoffee(CoffeeBean):
-    def __init__(self):
-        super().__init__("Arabica", "United Arab Emerates")
+    # def __init__(self):
+    #     super().__init__("Arabica", "United Arab Emerates")
 
     def acidity(self):
         return f"The {self.name} acidity is 99% with 1% alcohol"
@@ -17,8 +17,8 @@ class ArabicaCoffee(CoffeeBean):
         return f"A coffee na adik sayo"
 
 class RobustaCoffee(CoffeeBean):
-    def __init__(self):
-        super().__init__("Robusta", "Robust")
+    # def __init__(self):
+    #     super().__init__("Robusta", "Robust")
 
     def strength(self):
         return f"{self.name} is a very strong coffee na kaya kang ipaglaban"

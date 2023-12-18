@@ -1,3 +1,4 @@
+# Activity 5
 class MenuItem:
 	def __init__(self, item_name, price, description):
 		self.item_name = item_name
