@@ -25,6 +25,3 @@ class RobustaCoffee(CoffeeBean):
     
     def describe(self):
         return f"Ito ang kape na maaadik ka sa kanya"
-
-
-
