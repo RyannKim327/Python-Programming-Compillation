@@ -594,15 +594,3 @@ def welcome(isFirst):
 	select(choice)
 
 welcome(True)
-
-'''
-1. Printing in Py
-2. Variable Definition
-3. Operator in Py
-4. Conditional in py
-5. loop
-6. functions
-7. array
-8. dictionary
-9. exit
-'''
