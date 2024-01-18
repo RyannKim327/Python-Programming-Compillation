@@ -1,4 +1,4 @@
-import random, os
+import random, os, time
 def createBoard():
 	board = []
 	a = []
@@ -109,7 +109,8 @@ while gaming:
 					textboard += "| "
 			textboard += "\n"
 		print(textboard, end="\r")
-		input("Enter to continue: ")
+		# input("Enter to continue: ")
+		time.sleep(1)
 		dice = random.randint(1, 6)
 
 		playerscore[p] += dice
