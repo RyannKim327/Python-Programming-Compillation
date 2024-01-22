@@ -1,6 +1,8 @@
 import time, os
 from tkinter import *
 
+# Comment
+
 def getTime():
 	timer = time.ctime()
 	time1 = timer.split(" ")[3]
