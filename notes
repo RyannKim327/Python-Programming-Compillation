@@ -1,0 +1,12 @@
+:: for list
+for %%i in (1, 2, 3) do echo  %%i
+
+:: for range
+for /L %%i in (1, 1, 10) do echo %%in
+
+:: in files
+for %%i in (D:\*) do echo %%i
+
+:: in dir
+for /D %%i in (D:\*) do echo %%i
+
