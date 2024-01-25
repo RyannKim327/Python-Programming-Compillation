@@ -10,3 +10,28 @@ for %%i in (D:\*) do echo %%i
 :: in dir
 for /D %%i in (D:\*) do echo %%i
 
+
+:: Functions
+:: functions sample
+call :function_name
+ 
+ :: if tehere's a parameter
+ call :function_name sample
+ 
+ :: two arguments
+ call :function_name sample,sample1
+ :: or
+ call :function_name sample sample
+
+:: Required before you create a function
+EXIT /B 0
+
+ :: function part
+;function_name
+  :: No parameter
+  echo hello
+  :: if have parameter
+  echo %~1
+
+:: EOF looks like termination or end the program
+goto :EOF

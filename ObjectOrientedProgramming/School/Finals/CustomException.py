@@ -16,7 +16,7 @@ class Sample:
 	
 	def getAnswer(self):
 		if self.answer.lower() == "wala":
-			return("Buti alam mo")
+			return "Buti alam mo"
 		else:
 			raise BebeNotFoundException(self.answer)
 
