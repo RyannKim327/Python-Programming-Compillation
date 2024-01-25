@@ -35,3 +35,8 @@ EXIT /B 0
 
 :: EOF looks like termination or end the program
 goto :EOF
+
+:: goto vs call
+:: Call can have arguments
+:: goto can't have arguments
+
