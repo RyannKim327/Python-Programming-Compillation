@@ -1,15 +1,13 @@
-import json
-import hashlib
+import json, hashlib, getpass
 class Database:
 	def __init__(self):
 		try:
 			with open("passwords.json", "r") as file:
 				self.__data__ = json.loads(file.read())
+			print(self.__data__)
 		except:
-			print("JSON File not found, the system generated.")
 			self.__data__ = {}
-			with open("passwords.json", "w") as file:
-				file.write(json.dumps(self.__data__, indent=4))
+			self.saveData(self.__data__)
 		
 	def getData(self):
 		return self.__data__
@@ -18,21 +16,8 @@ class Database:
 		with open("passwords.json", "w") as file:
 				file.write(json.dumps(data, indent=4))
 
-class UserNotFound(Exception):
-	def __init__(self, name, password):
-		data = Database()
-		if name == "":
-			self.__error__ = "The name is blank"
-		elif data.getData().get(name) == None:
-			data[name][name] = hashlib.md5(password.encode()).hexdigest()
-			data.saveData(data)
-			self.__error__ = "User Not Found, the system created the user automatically."
-	
-	def __str__(self):
-		return self.__error__
-
-def AuthenticationError(Exception):
-	def __init__(self, name, password):
+class AuthenticationError(Exception):
+	def __init__(self, name: str, password: str):
 		self.__error__ = []
 		if name == "":
 			self.__error__.append("User's name is empty")
@@ -42,18 +27,33 @@ def AuthenticationError(Exception):
 			self.__error__.append("User's password is too short")
 	
 	def __str__(self):
-		return self.__error__.join(" and ")
+		return " and ".join(self.__error__)
+
+class UserNotFound(AuthenticationError):
+	def __init__(self, name, password):
+		super().__init__(name, password)
+		data = Database()
+		if name == "":
+			self.__error__ = "The name is blank"
+		elif data.getData().get(name) == None:
+			data.getData()[name][name] = hashlib.md5(password.encode()).hexdigest()
+			data.saveData(data)
+			self.__error__ = "User Not Found, the system created the user automatically."
+	
+	def __str__(self):
+		return self.__error__
 
 class UserAuthentication:
 	def __init__(self):
 		self.name = input("Please enter your name: ")
-		self.password = input("Please enter your password: ")
-		raise AuthenticationError(self.name, self.password)
-	
+		self.password = getpass.getpass("Please enter your password: ")
+		raise UserNotFound(self.name, self.password)
+
 	def checkUser(self):
+		db = Database()
+		print(db.getData())
 		try:
-			db = Database()
-			if db.getData().get(self.name):
+			if db.getData().get(self.name) != None:
 				if db.getData()[self.name] == hashlib.md5(self.password.encode()).hexdigest():
 					return {
 						"message": "We've found it",
@@ -69,7 +69,9 @@ class UserAuthentication:
 					"message": "There's no user found"
 				}
 		except Exception as e:
-			print(e)
+			return {
+				"message": e
+			}
 
 class Security:
 	def __init__(self, password: str):
