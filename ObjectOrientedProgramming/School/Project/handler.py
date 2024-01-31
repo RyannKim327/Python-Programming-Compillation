@@ -19,26 +19,44 @@ class Database:
 				file.write(json.dumps(data, indent=4))
 
 class UserNotFound(Exception):
-	def __init__(self, name):
+	def __init__(self, name, password):
 		data = Database()
 		if name == "":
 			self.__error__ = "The name is blank"
 		elif data.getData().get(name) == None:
-			data[name] = {}
+			data[name][name] = password
 			data.saveData(data)
 			self.__error__ = "User Not Found, the system created the user automatically."
 	
 	def __str__(self):
 		return self.__error__
 
+def AuthenticationError(Exception):
+	def __init__(self, name, password):
+		self.__error__ = []
+		if name == "":
+			self.__error__.append("User's name is empty")
+		if password == "":
+			self.__error__.append("User's password is empty")
+		elif len(password) < 8:
+			self.__error__.append("User's password is too short")
+	
+	def __str__(self):
+		return self.__error__.join(" and ")
+
 class UserAuthentication:
 	def __init__(self):
-		self.__authenticate__ = False
+		self.name = input("Please enter your name: ")
+		self.password = input("Please enter your password: ")
+		raise AuthenticationError(self.name, self.password)
+	
+	def UserInformation(self):
 		try:
-			self.name = input("Please enter your name: ")
-			self.password = input("Please enter your password: ")
-			self.__authenticate__ = True
-		except UserNotFound as e:
+			return {
+				"name": self.name,
+				"password": self.password
+			}
+		except AuthenticationError as e:
 			print(e)
 
 class Security:
