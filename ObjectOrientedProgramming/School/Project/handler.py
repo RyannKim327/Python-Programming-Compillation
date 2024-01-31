@@ -56,6 +56,7 @@ class UserAuthentication:
 			if db.getData().get(self.name):
 				if db.getData()[self.name] == hashlib.md5(self.password.encode()).hexdigest():
 					return {
+						"message": "We've found it",
 						"name": self.name,
 						"password": self.password
 					}
