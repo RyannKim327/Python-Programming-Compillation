@@ -1,4 +1,12 @@
 import json
+
+class MayErrorPre(Exception):
+	def __init__(self):
+		self.__errorprii__ = "Ginagawa mueh"
+	
+	def __str__(self):
+		return self.__errorprii__
+
 class StudentData:
 	def __init__(self):
 		self.file = "sample.json"
@@ -12,8 +20,8 @@ class StudentData:
 
 	def addStudent(self):
 		name = input("Enter student name: ")
-		while name == "":
-			name = input("Enter student name: ")
+		if name == "":
+			raise MayErrorPre()
 		grade = input("Enter student grade: ")
 		while not grade.isdigit():
 			grade = input("Enter student grade: ")
@@ -45,7 +53,10 @@ class StudentData:
 		
 
 if __name__ == "__main__":
-	student = StudentData()
-	student.addStudent()
-	student.viewGrades()
-	student.saveToJSON()
+	try:
+		student = StudentData()
+		student.addStudent()
+		student.viewGrades()
+		student.saveToJSON()
+	except Exception as e:
+		print(e)

@@ -67,7 +67,7 @@ def condition(score):
 players = []
 playerscore = []
 player = input("Enter player: ")
-while player != "" or len(players) < 2:
+while player != "" or len(players) < 2 and not len(players) > 6:
 	if(player != ""):
 		players.append(player)
 		playerscore.append(0)
