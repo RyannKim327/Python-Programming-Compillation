@@ -24,7 +24,7 @@ class UserNotFound(Exception):
 		if name == "":
 			self.__error__ = "The name is blank"
 		elif data.getData().get(name) == None:
-			data[name][name] = password
+			data[name][name] = hashlib.md5(password.encode()).hexdigest()
 			data.saveData(data)
 			self.__error__ = "User Not Found, the system created the user automatically."
 	
@@ -50,13 +50,24 @@ class UserAuthentication:
 		self.password = input("Please enter your password: ")
 		raise AuthenticationError(self.name, self.password)
 	
-	def UserInformation(self):
+	def checkUser(self):
 		try:
-			return {
-				"name": self.name,
-				"password": self.password
-			}
-		except AuthenticationError as e:
+			db = Database()
+			if db.getData().get(self.name):
+				if db.getData()[self.name] == hashlib.md5(self.password.encode()).hexdigest():
+					return {
+						"name": self.name,
+						"password": self.password
+					}
+				else:
+					return {
+						"message": "Wrong username or password"
+					}
+			else:
+				return {
+					"message": "There's no user found"
+				}
+		except Exception as e:
 			print(e)
 
 class Security:
