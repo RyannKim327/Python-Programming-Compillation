@@ -1,15 +1,19 @@
 import time
+from builtins import print as __print__, input as __input__
 
-def show(_str: str, speed: float = 0.1):
+def print(_str: str, speed: float = 0.1):
 	for i in range(len(_str)):
-		print(_str[i], end="", flush=True)
+		__print__(_str[i], end="", flush=True)
 		time.sleep(speed)
+	__print__()
 
-def have(_prompt: str, speed: float = 0.1):
+def input(_prompt: str, speed: float = 0.1):
 	for i in range(len(_prompt)):
-		print(_prompt[i], end="", flush=True)
+		__print__(_prompt[i], end="", flush=True)
 		time.sleep(speed)
-	if(_prompt.endswith(":  ")):
-		return input()
+	if _prompt.endswith(":  "):
+		return __input__()
+	elif _prompt.endswith(":"):
+		return __input__(" ")
 	else:
-		return input(": ")
+		return __input__(": ")
