@@ -9,7 +9,6 @@ class Selection(Button):
 	def setAction(self, action):
 		self.config(command=action)
 
-
 # -------------------------- Homepage -------------------------- #
 def homepage():
 	pass
@@ -18,6 +17,8 @@ def homepage():
 # ------------------------- Add Student ------------------------- #
 def add_student():
 	pass
+# -------------------------------------------------------------------#
+
 # ------------------------ Grade Student ------------------------ #
 def grade_student():
 	pass
@@ -53,6 +54,14 @@ def ui(a):
 		home = Selection(nav)
 		home.setText("Home")
 		home.setAction(lambda: homepage())
+
+		addStudent = Selection(nav)
+		addStudent.setText("Add Student")
+		addStudent.setAction(lambda: add_student())
+
+		gradeStudent = Selection(nav)
+		gradeStudent.setText("Grade Student")
+		gradeStudent.setAction(lambda: grade_student())
 
 		nav.pack(side='left', anchor="n", fill='y')
 		nav.pack_propagate(0)
