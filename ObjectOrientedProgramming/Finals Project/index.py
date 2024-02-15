@@ -9,6 +9,11 @@ class Selection(Button):
 	def setAction(self, action):
 		self.config(command=action)
 
+# ----------------------- Clear Current UI ---------------------- #
+def cls():
+	pass
+# -------------------------------------------------------------------#
+
 # -------------------------- Homepage -------------------------- #
 def homepage():
 	pass
