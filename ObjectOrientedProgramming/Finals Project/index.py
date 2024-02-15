@@ -1,31 +1,60 @@
 from tkinter import *
+from tkinter import ttk, messagebox
+import json
+
+class Database:
+	def __init__(self):
+		self.__file = "data.json"
+
+	def getData(self):
+		try:
+			with open(self.__file, "r") as file:
+				return json.load(file)
+		except:
+			messagebox.showwarning("Warning", "The database is not existed, so the system automatically generates it.")
+			data = {}
+			with open(self.__file, "w") as file:
+				file.write(json.dumps(data))
+			return data
+	
+	def saveData(self, data: dict):
+		with open(self.__file, "w") as file:
+			file.write(json.dumps(data))
+		messagebox.showinfo("Success", "The data was saved.")
+
+
 
 class Selection(Button):
 	"""This class is used for Navigation of the project"""
 	def setText(self, text: str):
 		self.config(text=text)
 		self.pack(side='top', fill='x')
-	
+
 	def setAction(self, action):
 		self.config(command=action)
 
 # ----------------------- Clear Current UI ---------------------- #
 def cls():
+	for i in layout.winfo_children():
+		i.destroy()
 	pass
 # -------------------------------------------------------------------#
 
 # -------------------------- Homepage -------------------------- #
 def homepage():
+	cls()
 	pass
 # -------------------------------------------------------------------#
 
 # ------------------------- Add Student ------------------------- #
 def add_student():
+	cls()
 	pass
 # -------------------------------------------------------------------#
 
 # ------------------------ Grade Student ------------------------ #
 def grade_student():
+	cls()
 	pass
 # -------------------------------------------------------------------#
 
@@ -39,10 +68,10 @@ def ui(a):
 	if bwidth != width or a:
 		# The changes happens
 		bwidth = width
-		
+
 		for i in base.winfo_children():
 			i.destroy()
-			
+
 		sec = Frame(base)
 		nav = Frame(base, width=0)
 		titleWidth = width
@@ -70,7 +99,7 @@ def ui(a):
 
 		nav.pack(side='left', anchor="n", fill='y')
 		nav.pack_propagate(0)
-	
+
 		title = Label(sec, text="Grade Management and Monitoring System", font=('Times New Roman', 25), justify='center', wraplength=titleWidth)
 		title.pack(fill='x', side='top')
 
@@ -94,7 +123,7 @@ def main():
 
 	# This is just to initiate the responsiveness of the UI
 	ui(True)
-	
+
 	# To detect the changes of the UI
 	base.bind("<Configure>", lambda e: ui(False))
 	base.mainloop()
