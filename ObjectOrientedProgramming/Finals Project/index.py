@@ -9,20 +9,29 @@ class Database:
 	def getData(self):
 		try:
 			with open(self.__file, "r") as file:
-				return json.load(file)
-		except:
-			messagebox.showwarning("Warning", "The database is not existed, so the system automatically generates it.")
-			data = {}
+				self.__data = json.load(file)
+		except Exception as e:
+			messagebox.showwarning("Warning", e) #"The database is not existed, so the system automatically generates it.")
+			self.__data = {
+				"data": []
+			}
 			with open(self.__file, "w") as file:
-				file.write(json.dumps(data))
-			return data
+				file.write(json.dumps(self.__data, indent=4))
+		return self.__data
 	
-	def saveData(self, data: dict):
+	def deleteData(self, key: str):
+		if messagebox.askyesno("Confirmation", "Are you sure you want to remove this data?"):
+			self.__data.pop(key)
+			messagebox.showinfo("Success", "Data Removed Successfully")
+	
+	def removeAllData(self):
+		if messagebox.askyesno("Confirmation", "All data will never be retribed once you proceed to this action."):
+			self.__data.clear()
+
+	def saveData(self):
 		with open(self.__file, "w") as file:
-			file.write(json.dumps(data))
+			file.write(json.dumps(self.__data, indent=4))
 		messagebox.showinfo("Success", "The data was saved.")
-
-
 
 class Selection(Button):
 	"""This class is used for Navigation of the project"""
@@ -43,19 +52,19 @@ def cls():
 # -------------------------- Homepage -------------------------- #
 def homepage():
 	cls()
-	pass
+	title.config(text="Grade Management and Monitoring System")
 # -------------------------------------------------------------------#
 
 # ------------------------- Add Student ------------------------- #
 def add_student():
 	cls()
-	pass
+	title.config(text="Add Student")
 # -------------------------------------------------------------------#
 
 # ------------------------ Grade Student ------------------------ #
 def grade_student():
 	cls()
-	pass
+	title.config(text="Add Grade to the student")
 # -------------------------------------------------------------------#
 
 # ------------------------ User Interface ------------------------ #
@@ -74,16 +83,18 @@ def ui(a):
 
 		sec = Frame(base)
 		nav = Frame(base, width=0)
+		hasNav = False
+
 		titleWidth = width
 		if width >= 500:
 			nav = Frame(base, width=width * 0.15)
-			titleWidth = width * 0.85
+			hasNav = True
 		if width >= 750:
 			nav = Frame(base, width=width * 0.20)
-			titleWidth = width * 0.80
+			hasNav = True
 		if width >= 1000:
 			nav = Frame(base, width=width * 0.25)
-			titleWidth = width * 0.75
+			hasNav = True
 
 		home = Selection(nav)
 		home.setText("Home")
@@ -100,8 +111,17 @@ def ui(a):
 		nav.pack(side='left', anchor="n", fill='y')
 		nav.pack_propagate(0)
 
-		title = Label(sec, text="Grade Management and Monitoring System", font=('Times New Roman', 25), justify='center', wraplength=titleWidth)
-		title.pack(fill='x', side='top')
+		titleSide = Frame(sec)
+
+		back = Selection(titleSide)
+		back.setText("←")
+		back.pack_forget()
+		if not hasNav:
+			back.pack(side="left", anchor='w')
+
+		title = Label(titleSide, text="Grade Management and Monitoring System", font=('Times New Roman', 20), justify='center', wraplength=titleWidth)
+		title.pack(fill='x', side='left', expand=True)
+		titleSide.pack(fill='x', side='top')
 
 		layout = Frame(sec)
 
