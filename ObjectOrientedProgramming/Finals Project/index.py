@@ -2,12 +2,8 @@ from tkinter import *
 from tkinter import ttk, messagebox
 import json
 
-class Information:
-	def __init__(self, info):
-		self.__info = info
-
-	def getInfo(self):
-		pass
+class Document:
+	pass
 
 class Database:
 	def __init__(self):
@@ -26,12 +22,12 @@ class Database:
 			with open(self.__file, "w") as file:
 				file.write(json.dumps(self.__data, indent=4))
 		return self.__data
-	
+
 	def deleteData(self, key: str):
-		if messagebox.askyesno("Confirmation", "Are you sure you want to remove this data?"):
+		if messagebox.askyesno("Confirmation", "Are you sure you want to remove this document?"):
 			self.__data.pop(key)
 			messagebox.showinfo("Success", "Data Removed Successfully")
-	
+
 	def removeAllData(self):
 		if messagebox.askyesno("Confirmation", "All data will never be retribed once you proceed to this action."):
 			self.__data.clear()
@@ -63,27 +59,27 @@ def homepage():
 	if not hasNav:
 		sec.pack(side='left', anchor='n', expand=True)
 		nav.pack_forget()
-	title.config(text="Grade Management and Monitoring System")
+	title.config(text="Document Management System")
 # -------------------------------------------------------------------#
 
-# ------------------------- Add Student ------------------------- #
-def add_student():
+# ------------------------ Add Document ----------------------- #
+def addDocument():
 	global nav
 	cls()
 	if not hasNav:
 		sec.pack(side='left', anchor='n', expand=True)
 		nav.pack_forget()
-	title.config(text="Add Student")
+	title.config(text="New Document")
 # -------------------------------------------------------------------#
 
-# ------------------------ Grade Student ------------------------ #
-def grade_student():
+# ---------------------- Check Document ---------------------- #
+def checkDocument():
 	global nav
 	cls()
 	if not hasNav:
 		sec.pack(side='left', anchor='n', expand=True)
 		nav.pack_forget()
-	title.config(text="Add Grade to the student")
+	title.config(text="Check Document")
 # ------------------------------------------------------------------- #
 
 # ------------------------ Navigate Me -------------------------- #
@@ -96,13 +92,13 @@ def navigateMe():
 	home.setText("Home")
 	home.setAction(lambda: homepage())
 
-	addStudent = Selection(nav)
-	addStudent.setText("Add Student")
-	addStudent.setAction(lambda: add_student())
+	newDocument = Selection(nav)
+	newDocument.setText("New Document")
+	newDocument.setAction(lambda: addDocument())
 
-	gradeStudent = Selection(nav)
-	gradeStudent.setText("Grade Student")
-	gradeStudent.setAction(lambda: grade_student())
+	checkDocu = Selection(nav)
+	checkDocu.setText("Check Document")
+	checkDocu.setAction(lambda: checkDocument())
 
 	sec.pack_forget()
 	nav.pack(anchor='n', fill='x')
@@ -111,7 +107,6 @@ def navigateMe():
 # ------------------------ User Interface ------------------------ #
 def ui(a):
 	"""This function makes the interface more responsive"""
-
 	global bwidth, layout, title, nav, sec, hasNav
 
 	width = base.winfo_width()
@@ -144,13 +139,13 @@ def ui(a):
 		home.setText("Home")
 		home.setAction(lambda: homepage())
 
-		addStudent = Selection(nav)
-		addStudent.setText("Add Student")
-		addStudent.setAction(lambda: add_student())
+		newDocument = Selection(nav)
+		newDocument.setText("New Document")
+		newDocument.setAction(lambda: addDocument())
 
-		gradeStudent = Selection(nav)
-		gradeStudent.setText("Grade Student")
-		gradeStudent.setAction(lambda: grade_student())
+		checkDocu = Selection(nav)
+		checkDocu.setText("Check Document")
+		checkDocu.setAction(lambda: checkDocument())
 
 		nav.pack(side='left', anchor="n", fill='y')
 		nav.pack_propagate(0)
@@ -164,7 +159,7 @@ def ui(a):
 		if not hasNav:
 			back.pack(side="left", anchor='w')
 
-		title = Label(titleSide, text="Grade Management and Monitoring System", font=('Times New Roman', 20), justify='center', wraplength=titleWidth)
+		title = Label(titleSide, text="Document Management System", font=('Times New Roman', 20), justify='center', wraplength=titleWidth * 0.9)
 		title.pack(fill='x', side='left', expand=True)
 		titleSide.pack(fill='x', side='top')
 
@@ -176,7 +171,6 @@ def ui(a):
 
 # ------------------------ Main Layout ------------------------- #
 def main():
-
 	# Globalizing the data
 	global base, bwidth, db
 
@@ -185,8 +179,8 @@ def main():
 
 	base = Tk()
 	base.title("")
-	base.geometry("300x300")
-	base.minsize(300, 300)
+	base.geometry("350x300")
+	base.minsize(350, 300)
 	bwidth = base.winfo_width()
 
 	# This is just to initiate the responsiveness of the UI
