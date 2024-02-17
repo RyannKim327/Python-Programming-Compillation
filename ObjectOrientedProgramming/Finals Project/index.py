@@ -2,8 +2,16 @@ from tkinter import *
 from tkinter import ttk, messagebox
 import json
 
+class Information:
+	def __init__(self, info):
+		self.__info = info
+
+	def getInfo(self):
+		pass
+
 class Database:
 	def __init__(self):
+		"""This class is used to create a database which is a json file to store data from the application."""
 		self.__file = "data.json"
 
 	def getData(self):
@@ -46,7 +54,6 @@ class Selection(Button):
 def cls():
 	for i in layout.winfo_children():
 		i.destroy()
-	pass
 # -------------------------------------------------------------------#
 
 # -------------------------- Homepage -------------------------- #
@@ -78,7 +85,7 @@ def grade_student():
 		nav.pack_forget()
 	title.config(text="Add Grade to the student")
 # ------------------------------------------------------------------- #
-	
+
 # ------------------------ Navigate Me -------------------------- #
 def navigateMe():
 	global nav
@@ -100,7 +107,7 @@ def navigateMe():
 	sec.pack_forget()
 	nav.pack(anchor='n', fill='x')
 # ------------------------------------------------------------------- #
-	
+
 # ------------------------ User Interface ------------------------ #
 def ui(a):
 	"""This function makes the interface more responsive"""
@@ -171,7 +178,10 @@ def ui(a):
 def main():
 
 	# Globalizing the data
-	global base, bwidth
+	global base, bwidth, db
+
+	# Database setup for one time call
+	db = Database()
 
 	base = Tk()
 	base.title("")
