@@ -2,9 +2,6 @@ from tkinter import *
 from tkinter import ttk, messagebox
 import json
 
-class Document:
-	pass
-
 class Database:
 	def __init__(self):
 		"""This class is used to create a database which is a json file to store data from the application."""
@@ -15,7 +12,7 @@ class Database:
 			with open(self.__file, "r") as file:
 				self.__data = json.load(file)
 		except Exception as e:
-			messagebox.showwarning("Warning", e) #"The database is not existed, so the system automatically generates it.")
+			messagebox.showwarning("Warning", "The database is not existed, so the system automatically generates it.")
 			self.__data = {
 				"data": []
 			}
@@ -37,6 +34,19 @@ class Database:
 			file.write(json.dumps(self.__data, indent=4))
 		messagebox.showinfo("Success", "The data was saved.")
 
+class Document(Database):
+	def checkDocument(self, title: str, author: str):
+		return self.__data[f"{title.lower()}_{author.lower()}"]
+
+	def addDocument(self, title: str, author: str, content: str):
+		self.__data[f"{title.lower()}_{author.lower()}"] = {
+			"title": title.capitalize(),
+			"author": author.capitalize(),
+			"content": content
+		}
+		with open(self.__file, "w") as file:
+			file.write(json.dumps(self.__data, indent=4))
+
 class Selection(Button):
 	"""This class is used for Navigation of the project"""
 	def setText(self, text: str):
@@ -54,28 +64,35 @@ def cls():
 
 # -------------------------- Homepage -------------------------- #
 def homepage():
-	global nav
+	global nav, layout
 	cls()
+
 	if not hasNav:
 		sec.pack(side='left', anchor='n', expand=True)
 		nav.pack_forget()
+	Label(layout, text="TEst").pack()
 	title.config(text="Document Management System")
 # -------------------------------------------------------------------#
 
 # ------------------------ Add Document ----------------------- #
 def addDocument():
-	global nav
+	global nav, layout
 	cls()
+
 	if not hasNav:
 		sec.pack(side='left', anchor='n', expand=True)
 		nav.pack_forget()
+
+	title_ = LabelFrame(layout, text="Title")
+	title_.pack(side="top")
 	title.config(text="New Document")
 # -------------------------------------------------------------------#
 
 # ---------------------- Check Document ---------------------- #
 def checkDocument():
-	global nav
+	global nav, layout
 	cls()
+
 	if not hasNav:
 		sec.pack(side='left', anchor='n', expand=True)
 		nav.pack_forget()
@@ -164,8 +181,8 @@ def ui(a):
 		titleSide.pack(fill='x', side='top')
 
 		layout = Frame(sec)
-
-		layout.pack(side='top', expand=True)		
+		layout.pack(side='top', expand=True)
+		homepage()
 		sec.pack(side='left', anchor='n', expand=True)
 # -------------------------------------------------------------------#
 
