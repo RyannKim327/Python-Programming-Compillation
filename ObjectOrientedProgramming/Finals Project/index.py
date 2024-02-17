@@ -36,7 +36,7 @@ class Database:
 class Selection(Button):
 	"""This class is used for Navigation of the project"""
 	def setText(self, text: str):
-		self.config(text=text)
+		self.config(text=text, bd=0, relief='solid')
 		self.pack(side='top', fill='x')
 
 	def setAction(self, action):
@@ -65,13 +65,34 @@ def add_student():
 def grade_student():
 	cls()
 	title.config(text="Add Grade to the student")
-# -------------------------------------------------------------------#
+# ------------------------------------------------------------------- #
+	
+# ------------------------ Navigate Me -------------------------- #
+def navigateMe():
+	cls()
+	nav = Frame(base)
 
+	home = Selection(nav)
+	home.setText("Home")
+	home.setAction(lambda: homepage())
+
+	addStudent = Selection(nav)
+	addStudent.setText("Add Student")
+	addStudent.setAction(lambda: add_student())
+
+	gradeStudent = Selection(nav)
+	gradeStudent.setText("Grade Student")
+	gradeStudent.setAction(lambda: grade_student())
+
+	sec.pack_forget()
+	nav.pack(fill='x')
+# ------------------------------------------------------------------- #
+	
 # ------------------------ User Interface ------------------------ #
 def ui(a):
 	"""This function makes the interface more responsive"""
 
-	global bwidth, layout, title
+	global bwidth, layout, title, nav, sec
 
 	width = base.winfo_width()
 	if bwidth != width or a:
@@ -88,6 +109,9 @@ def ui(a):
 		titleWidth = width
 		if width >= 500:
 			nav = Frame(base, width=width * 0.15)
+			hasNav = True
+		if width >= 600:
+			nav = Frame(base, width=width * 0.18)
 			hasNav = True
 		if width >= 750:
 			nav = Frame(base, width=width * 0.20)
@@ -115,6 +139,7 @@ def ui(a):
 
 		back = Selection(titleSide)
 		back.setText("←")
+		back.setAction(lambda: navigateMe())
 		back.pack_forget()
 		if not hasNav:
 			back.pack(side="left", anchor='w')
