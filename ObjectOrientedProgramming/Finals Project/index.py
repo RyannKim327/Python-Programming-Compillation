@@ -51,26 +51,39 @@ def cls():
 
 # -------------------------- Homepage -------------------------- #
 def homepage():
+	global nav
 	cls()
+	if not hasNav:
+		sec.pack(side='left', anchor='n', expand=True)
+		nav.pack_forget()
 	title.config(text="Grade Management and Monitoring System")
 # -------------------------------------------------------------------#
 
 # ------------------------- Add Student ------------------------- #
 def add_student():
+	global nav
 	cls()
+	if not hasNav:
+		sec.pack(side='left', anchor='n', expand=True)
+		nav.pack_forget()
 	title.config(text="Add Student")
 # -------------------------------------------------------------------#
 
 # ------------------------ Grade Student ------------------------ #
 def grade_student():
+	global nav
 	cls()
+	if not hasNav:
+		sec.pack(side='left', anchor='n', expand=True)
+		nav.pack_forget()
 	title.config(text="Add Grade to the student")
 # ------------------------------------------------------------------- #
 	
 # ------------------------ Navigate Me -------------------------- #
 def navigateMe():
+	global nav
 	cls()
-	nav = Frame(base)
+	nav = Frame(base, width=base.winfo_width())
 
 	home = Selection(nav)
 	home.setText("Home")
@@ -85,14 +98,14 @@ def navigateMe():
 	gradeStudent.setAction(lambda: grade_student())
 
 	sec.pack_forget()
-	nav.pack(fill='x')
+	nav.pack(anchor='n', fill='x')
 # ------------------------------------------------------------------- #
 	
 # ------------------------ User Interface ------------------------ #
 def ui(a):
 	"""This function makes the interface more responsive"""
 
-	global bwidth, layout, title, nav, sec
+	global bwidth, layout, title, nav, sec, hasNav
 
 	width = base.winfo_width()
 	if bwidth != width or a:
