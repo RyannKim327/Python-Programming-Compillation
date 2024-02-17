@@ -1,6 +1,41 @@
-from tkinter import *
+# from tkinter import *
 from tkinter import ttk, messagebox
+import tkinter as tk
 import json
+
+# --------------------- Class Modification ---------------------- #
+class Tk(tk.Tk):
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		self.config(bg="#fbfbfb")
+	
+	def setTitle(self, title: str):
+		self.title(title)
+
+class Label(tk.Label):
+	def __init__(self, master, *args, **kwargs):
+		super().__init__(master=master, *args, **kwargs)
+		self.config(bg="#fbfbfb", fg="#000000")
+
+class Frame(tk.Frame):
+	def __init__(self, master, *args, **kwargs):
+		super().__init__(master=master, *args, **kwargs)
+		self.config(bg="#fbfbfb")
+
+class Button(tk.Button):
+	def __init__(self, master, *args, **kwargs):
+		super().__init__(master=master, *args, **kwargs)
+		self.config(bg="#fbfbfb", fg="#000000")
+
+class LabelFrame(tk.LabelFrame):
+	def __init__(self, master, *args, **kwargs):
+		super().__init__(master=master, *args, **kwargs)
+		self.config(bg="#fbfbfb", fg="#000000")
+
+class Entry(tk.Entry):
+	def __init__(self, master, *args, **kwargs):
+		super().__init__(master=master, *args, **kwargs)
+		self.config(bg="#fbfbfb", fg="#000000")
 
 class Database:
 	def __init__(self):
@@ -56,29 +91,23 @@ class Selection(Button):
 	def setAction(self, action):
 		self.config(command=action)
 
-class Insert(LabelFrame):
+class LabelEntry(LabelFrame):
 	def __init__(self, master, text: str):
 		super().__init__(master=master)
 		self.config(text=text)
-		self.__entry = Entry(self, bd=0, borderwidth=0)
+		self.__entry = Entry(self, bd=0, borderwidth=0, border=0)
 		self.__entry.pack(fill='x')
-
-	def setBackground(self, bg: str):
-		self.__entry.config(bg=bg)
-		self.config(bg=bg)
-
-	def setTextColor(self, fg: str):
-		self.__entry.config(fg=fg)
-		self.config(fg=fg)
 
 	def get(self):
 		return self.__entry.get()
+# ------------------------------------------------------------------- #
+
 
 # ----------------------- Clear Current UI ---------------------- #
 def cls():
 	for i in layout.winfo_children():
 		i.destroy()
-# -------------------------------------------------------------------#
+# ------------------------------------------------------------------- #
 
 # -------------------------- Homepage -------------------------- #
 def homepage():
@@ -90,7 +119,7 @@ def homepage():
 		nav.pack_forget()
 	Label(layout, text="Test mode").pack()
 	title.config(text="Document Management System")
-# -------------------------------------------------------------------#
+# ------------------------------------------------------------------- #
 
 # ------------------------ Add Document ----------------------- #
 def addDocument():
@@ -101,12 +130,10 @@ def addDocument():
 		sec.pack(side='left', anchor='n', expand=True)
 		nav.pack_forget()
 
-	title_ = Insert(layout, text="Sample")
-	title_.setBackground(bg)
-	title_.setTextColor(fg)
+	title_ = LabelEntry(layout, text="Sample")
 	title_.pack(side="top")
 	title.config(text="New Document")
-# -------------------------------------------------------------------#
+# ------------------------------------------------------------------- #
 
 # ---------------------- Check Document ---------------------- #
 def checkDocument():
@@ -125,15 +152,15 @@ def navigateMe():
 	cls()
 	nav = Frame(base, width=base.winfo_width())
 
-	home = Selection(nav, bg=bg, fg=fg)
+	home = Selection(nav)
 	home.setText("Home")
 	home.setAction(lambda: homepage())
 
-	newDocument = Selection(nav, bg=bg, fg=fg)
+	newDocument = Selection(nav)
 	newDocument.setText("New Document")
 	newDocument.setAction(lambda: addDocument())
 
-	checkDocu = Selection(nav, bg=bg, fg=fg)
+	checkDocu = Selection(nav)
 	checkDocu.setText("Check Document")
 	checkDocu.setAction(lambda: checkDocument())
 
@@ -154,64 +181,61 @@ def ui(a):
 		for i in base.winfo_children():
 			i.destroy()
 
-		sec = Frame(base, bg=bg)
-		nav = Frame(base, bg=bg, width=0)
+		sec = Frame(base)
+		nav = Frame(base, width=0)
 		hasNav = False
 
 		titleWidth = width
 		if width >= 500:
-			nav = Frame(base, bg=bg, width=width * 0.25)
+			nav = Frame(base, width=width * 0.25)
 			hasNav = True
 
-		home = Selection(nav, bg=bg, fg=fg)
+		home = Selection(nav)
 		home.setText("Home")
 		home.setAction(lambda: homepage())
 
-		newDocument = Selection(nav, bg=bg, fg=fg)
+		newDocument = Selection(nav)
 		newDocument.setText("New Document")
 		newDocument.setAction(lambda: addDocument())
 
-		checkDocu = Selection(nav, bg=bg, fg=fg)
+		checkDocu = Selection(nav)
 		checkDocu.setText("Check Document")
 		checkDocu.setAction(lambda: checkDocument())
 
 		nav.pack(side='left', anchor="n", fill='y')
 		nav.pack_propagate(0)
 
-		titleSide = Frame(sec, bg=bg)
+		titleSide = Frame(sec)
 
-		back = Selection(titleSide, bg=bg, fg=fg)
+		back = Selection(titleSide)
 		back.setText("←")
 		back.setAction(lambda: navigateMe())
 		back.pack_forget()
 		if not hasNav:
 			back.pack(side="left", anchor='nw')
 
-		title = Label(titleSide, text="Document Management System", bg=bg, fg=fg, font=('Times New Roman', 20), justify='left', wraplength=titleWidth * 0.9, width=base.winfo_width())
+		title = Label(titleSide, text="Document Management System", font=('Times New Roman', 20), justify='left', wraplength=titleWidth * 0.9, width=base.winfo_width())
 		title.pack(fill='x', side='left')
 		titleSide.pack(fill='x', side='top')
 
-		layout = Frame(sec, bg=bg)
+		layout = Frame(sec)
 		layout.pack(side='top', expand=True)
 		homepage()
 		sec.pack(side='left', anchor='n', expand=True)
-# -------------------------------------------------------------------#
+# ------------------------------------------------------------------- #
 
 # ------------------------ Main Layout ------------------------- #
 def main():
 	# Globalizing the data
-	global base, bwidth, db, bg, fg
+	global base, bwidth, db
 
-	bg = "#fbfbfb"
-	fg = "#000000"
 	# Database setup for one time call
 	db = Database()
 
 	base = Tk()
-	base.title("Document Management System")
+	base.setTitle("Document Management System")
 	base.geometry("350x300")
 	base.minsize(350, 300)
-	base.config(background=bg)
 	bwidth = base.winfo_width()
 
 	# This is just to initiate the responsiveness of the UI
@@ -220,7 +244,7 @@ def main():
 	# To detect the changes of the UI
 	base.bind("<Configure>", lambda e: ui(False))
 	base.mainloop()
-# -------------------------------------------------------------------#
+# ------------------------------------------------------------------- #
 
 if __name__ == "__main__":
 	main()
