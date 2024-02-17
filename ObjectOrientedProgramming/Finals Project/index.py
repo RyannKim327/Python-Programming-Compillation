@@ -56,6 +56,11 @@ class Selection(Button):
 	def setAction(self, action):
 		self.config(command=action)
 
+class Input(Entry):
+	def __init__(self, master, *args, **kwargs):
+		super().__init__(self, master, *args, **kwargs)
+		self.config(bd=0)
+
 # ----------------------- Clear Current UI ---------------------- #
 def cls():
 	for i in layout.winfo_children():
@@ -70,7 +75,7 @@ def homepage():
 	if not hasNav:
 		sec.pack(side='left', anchor='n', expand=True)
 		nav.pack_forget()
-	Label(layout, text="TEst").pack()
+	Label(layout, text="Test mode").pack()
 	title.config(text="Document Management System")
 # -------------------------------------------------------------------#
 
@@ -84,6 +89,8 @@ def addDocument():
 		nav.pack_forget()
 
 	title_ = LabelFrame(layout, text="Title")
+	title__ = Input(title_)
+	title__.pack()
 	title_.pack(side="top")
 	title.config(text="New Document")
 # -------------------------------------------------------------------#
@@ -140,15 +147,6 @@ def ui(a):
 
 		titleWidth = width
 		if width >= 500:
-			nav = Frame(base, width=width * 0.15)
-			hasNav = True
-		if width >= 600:
-			nav = Frame(base, width=width * 0.18)
-			hasNav = True
-		if width >= 750:
-			nav = Frame(base, width=width * 0.20)
-			hasNav = True
-		if width >= 1000:
 			nav = Frame(base, width=width * 0.25)
 			hasNav = True
 
@@ -174,10 +172,10 @@ def ui(a):
 		back.setAction(lambda: navigateMe())
 		back.pack_forget()
 		if not hasNav:
-			back.pack(side="left", anchor='w')
+			back.pack(side="left", anchor='nw')
 
-		title = Label(titleSide, text="Document Management System", font=('Times New Roman', 20), justify='center', wraplength=titleWidth * 0.9)
-		title.pack(fill='x', side='left', expand=True)
+		title = Label(titleSide, text="Document Management System", font=('Times New Roman', 20), justify='left', wraplength=titleWidth * 0.9, width=base.winfo_width())
+		title.pack(fill='x', side='left')
 		titleSide.pack(fill='x', side='top')
 
 		layout = Frame(sec)
