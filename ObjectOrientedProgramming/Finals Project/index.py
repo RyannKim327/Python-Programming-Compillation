@@ -37,6 +37,26 @@ class Entry(tk.Entry):
 		super().__init__(master=master, *args, **kwargs)
 		self.config(bg="#fbfbfb", fg="#000000")
 
+class Selection(Button):
+	"""This class is used for Navigation of the project"""
+	def setText(self, text: str):
+		self.config(text=text, bd=0, relief='solid')
+		self.pack(side='top', fill='x')
+
+	def setAction(self, action):
+		self.config(command=action)
+
+class LabelEntry(LabelFrame):
+	def __init__(self, master, text: str):
+		super().__init__(master=master)
+		self.config(text=text)
+		self.__entry = Entry(self, bd=0, borderwidth=0, border=0)
+		self.__entry.pack(fill='x')
+
+	def get(self):
+		return self.__entry.get()
+# ------------------------------------------------------------------- #
+
 class Database:
 	def __init__(self):
 		"""This class is used to create a database which is a json file to store data from the application."""
@@ -82,27 +102,6 @@ class Document(Database):
 		with open(self.__file, "w") as file:
 			file.write(json.dumps(self.__data, indent=4))
 
-class Selection(Button):
-	"""This class is used for Navigation of the project"""
-	def setText(self, text: str):
-		self.config(text=text, bd=0, relief='solid')
-		self.pack(side='top', fill='x')
-
-	def setAction(self, action):
-		self.config(command=action)
-
-class LabelEntry(LabelFrame):
-	def __init__(self, master, text: str):
-		super().__init__(master=master)
-		self.config(text=text)
-		self.__entry = Entry(self, bd=0, borderwidth=0, border=0)
-		self.__entry.pack(fill='x')
-
-	def get(self):
-		return self.__entry.get()
-# ------------------------------------------------------------------- #
-
-
 # ----------------------- Clear Current UI ---------------------- #
 def cls():
 	for i in layout.winfo_children():
@@ -111,34 +110,38 @@ def cls():
 
 # -------------------------- Homepage -------------------------- #
 def homepage():
-	global nav, layout
+	global nav, layout, window
 	cls()
+	window = "home"
 
 	if not hasNav:
 		sec.pack(side='left', anchor='n', expand=True)
 		nav.pack_forget()
+
 	Label(layout, text="Test mode").pack()
 	title.config(text="Document Management System")
 # ------------------------------------------------------------------- #
 
 # ------------------------ Add Document ----------------------- #
 def addDocument():
-	global nav, layout
+	global nav, layout, window
 	cls()
+	window = "add"
 
 	if not hasNav:
 		sec.pack(side='left', anchor='n', expand=True)
 		nav.pack_forget()
 
 	title_ = LabelEntry(layout, text="Sample")
-	title_.pack(side="top")
+	title_.pack(side="top", fill='x', expand=True)
 	title.config(text="New Document")
 # ------------------------------------------------------------------- #
 
 # ---------------------- Check Document ---------------------- #
 def checkDocument():
-	global nav, layout
+	global nav, layout, window
 	cls()
+	window = "check"
 
 	if not hasNav:
 		sec.pack(side='left', anchor='n', expand=True)
@@ -171,7 +174,7 @@ def navigateMe():
 # ------------------------ User Interface ------------------------ #
 def ui(a):
 	"""This function makes the interface more responsive"""
-	global bwidth, layout, title, nav, sec, hasNav
+	global bwidth, layout, title, nav, sec, hasNav, window
 
 	width = base.winfo_width()
 	if bwidth != width or a:
@@ -220,14 +223,24 @@ def ui(a):
 
 		layout = Frame(sec)
 		layout.pack(side='top', expand=True)
-		homepage()
+
 		sec.pack(side='left', anchor='n', expand=True)
+
+		match window:
+			case "home":
+				homepage()
+			case "add":
+				addDocument()
+			case "check":
+				checkDocument()
+
 # ------------------------------------------------------------------- #
 
 # ------------------------ Main Layout ------------------------- #
 def main():
 	# Globalizing the data
-	global base, bwidth, db
+	global base, bwidth, db, window
+	window = "home"
 
 	# Database setup for one time call
 	db = Database()
