@@ -56,10 +56,23 @@ class Selection(Button):
 	def setAction(self, action):
 		self.config(command=action)
 
-class Input(Entry):
-	def __init__(self, master, *args, **kwargs):
-		super().__init__(self, master, *args, **kwargs)
-		self.config(bd=0)
+class Insert(LabelFrame):
+	def __init__(self, master, text: str):
+		super().__init__(master=master)
+		self.config(text=text)
+		self.__entry = Entry(self, bd=0, borderwidth=0)
+		self.__entry.pack(fill='x')
+
+	def setBackground(self, bg: str):
+		self.__entry.config(bg=bg)
+		self.config(bg=bg)
+
+	def setTextColor(self, fg: str):
+		self.__entry.config(fg=fg)
+		self.config(fg=fg)
+
+	def get(self):
+		return self.__entry.get()
 
 # ----------------------- Clear Current UI ---------------------- #
 def cls():
@@ -88,9 +101,9 @@ def addDocument():
 		sec.pack(side='left', anchor='n', expand=True)
 		nav.pack_forget()
 
-	title_ = LabelFrame(layout, text="Title")
-	title__ = Input(title_)
-	title__.pack()
+	title_ = Insert(layout, text="Sample")
+	title_.setBackground(bg)
+	title_.setTextColor(fg)
 	title_.pack(side="top")
 	title.config(text="New Document")
 # -------------------------------------------------------------------#
@@ -112,15 +125,15 @@ def navigateMe():
 	cls()
 	nav = Frame(base, width=base.winfo_width())
 
-	home = Selection(nav)
+	home = Selection(nav, bg=bg, fg=fg)
 	home.setText("Home")
 	home.setAction(lambda: homepage())
 
-	newDocument = Selection(nav)
+	newDocument = Selection(nav, bg=bg, fg=fg)
 	newDocument.setText("New Document")
 	newDocument.setAction(lambda: addDocument())
 
-	checkDocu = Selection(nav)
+	checkDocu = Selection(nav, bg=bg, fg=fg)
 	checkDocu.setText("Check Document")
 	checkDocu.setAction(lambda: checkDocument())
 
@@ -141,44 +154,44 @@ def ui(a):
 		for i in base.winfo_children():
 			i.destroy()
 
-		sec = Frame(base)
-		nav = Frame(base, width=0)
+		sec = Frame(base, bg=bg)
+		nav = Frame(base, bg=bg, width=0)
 		hasNav = False
 
 		titleWidth = width
 		if width >= 500:
-			nav = Frame(base, width=width * 0.25)
+			nav = Frame(base, bg=bg, width=width * 0.25)
 			hasNav = True
 
-		home = Selection(nav)
+		home = Selection(nav, bg=bg, fg=fg)
 		home.setText("Home")
 		home.setAction(lambda: homepage())
 
-		newDocument = Selection(nav)
+		newDocument = Selection(nav, bg=bg, fg=fg)
 		newDocument.setText("New Document")
 		newDocument.setAction(lambda: addDocument())
 
-		checkDocu = Selection(nav)
+		checkDocu = Selection(nav, bg=bg, fg=fg)
 		checkDocu.setText("Check Document")
 		checkDocu.setAction(lambda: checkDocument())
 
 		nav.pack(side='left', anchor="n", fill='y')
 		nav.pack_propagate(0)
 
-		titleSide = Frame(sec)
+		titleSide = Frame(sec, bg=bg)
 
-		back = Selection(titleSide)
+		back = Selection(titleSide, bg=bg, fg=fg)
 		back.setText("←")
 		back.setAction(lambda: navigateMe())
 		back.pack_forget()
 		if not hasNav:
 			back.pack(side="left", anchor='nw')
 
-		title = Label(titleSide, text="Document Management System", font=('Times New Roman', 20), justify='left', wraplength=titleWidth * 0.9, width=base.winfo_width())
+		title = Label(titleSide, text="Document Management System", bg=bg, fg=fg, font=('Times New Roman', 20), justify='left', wraplength=titleWidth * 0.9, width=base.winfo_width())
 		title.pack(fill='x', side='left')
 		titleSide.pack(fill='x', side='top')
 
-		layout = Frame(sec)
+		layout = Frame(sec, bg=bg)
 		layout.pack(side='top', expand=True)
 		homepage()
 		sec.pack(side='left', anchor='n', expand=True)
@@ -187,15 +200,18 @@ def ui(a):
 # ------------------------ Main Layout ------------------------- #
 def main():
 	# Globalizing the data
-	global base, bwidth, db
+	global base, bwidth, db, bg, fg
 
+	bg = "#fbfbfb"
+	fg = "#000000"
 	# Database setup for one time call
 	db = Database()
 
 	base = Tk()
-	base.title("")
+	base.title("Document Management System")
 	base.geometry("350x300")
 	base.minsize(350, 300)
+	base.config(background=bg)
 	bwidth = base.winfo_width()
 
 	# This is just to initiate the responsiveness of the UI
