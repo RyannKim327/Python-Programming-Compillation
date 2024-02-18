@@ -33,13 +33,18 @@ def addDocument():
 		sec.pack(side='left', anchor='n', expand=True, pady=3, padx=3)
 		nav.pack_forget()
 
+	def changeContent():
+		print("test")
+		reader = PDFExtractor(document.getText())
+		content.getInside().insert(tk.END, reader)
+
 	title_ = LabelEntry(layout, text="Sample")
 	title_.pack(side="top", fill='x', expand=True)
 	document = LabelFile(layout, text="Import file")
 	document.pack(fill='x')
+	document.getEntry().bind("<Return>", lambda e: changeContent())
 	content = LabelText(layout, text="Sample2")
 	content.pack()
-	document.onChange(print(document.getText()))
 	title.config(text="New Document")
 # ------------------------------------------------------------------- #
 

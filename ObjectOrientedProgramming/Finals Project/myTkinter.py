@@ -64,7 +64,13 @@ class LabelText(LabelFrame):
 		self.__text = Text(self, bd=0, borderwidth=0, border=0, relief="solid")
 		self.__text.pack(fill='x')
 
-	def get(self):
+	def setValidation(self, validate, action):
+		self.__text.config(validate=validate, validatecommand=action)
+
+	def getInside(self):
+		return self.__text
+
+	def getText(self):
 		return self.__text.get()
 
 class LabelEntry(LabelFrame):
@@ -74,6 +80,9 @@ class LabelEntry(LabelFrame):
 		self.config(text=text)
 		self.__entry = Entry(self, bd=0, borderwidth=0, border=0)
 		self.__entry.pack(fill='x')
+
+	def getEntry(self):
+		return self.__entry
 
 	def get(self):
 		return self.__entry.get()
@@ -87,7 +96,6 @@ class LabelFile(LabelFrame):
 			file = filedialog.askopenfilename(title=self.__titleFile, filetypes=self.__types)
 			self.__entry.delete(0, tk.END)
 			self.__entry.insert(0, file)
-			self.__action
 
 		self.__titleFile = "Select File"
 		if fileTitle != "":
@@ -96,12 +104,12 @@ class LabelFile(LabelFrame):
 		self.config(text=text)
 		self.__entry = Entry(self, bd=0, borderwidth=0, border=0)
 		self.__entry.pack(side='left', fill='both', expand=True)
-		button = Button(self, text="🗎")
-		button.config(command=lambda: getFile())
-		button.pack(side='left')
+		self.__button = Button(self, text="🗎")
+		self.__button.config(command=lambda: getFile())
+		self.__button.pack(side='left')
 
-	def onChange(self, action):
-		self.__action = action
+	def getEntry(self):
+		return self.__entry
 
 	def getText(self):
 		return self.__entry.get()

@@ -5,15 +5,20 @@ from PyPDF2 import PdfReader
 class PDFExtractor:
 	def __init__(self, filePath: str):
 		"""This is to get all the text from the pdf file"""
+
 		if os.path.exists(filePath):
 			reader = PdfReader(filePath)
-			self.__texts = []
-			for i in reader.pages:
-				self.__texts.append(i.extract_text())
-		else:
-			self.__texts = ["There is no file existed"]
+			self.__texts = "---- 1 ----\n\n"
+			for i in range(len(reader.pages)):
+				self.__texts += reader.pages[i].extract_text()
+				if i < len(reader.pages) -1:
+					self.__texts += f"\n\n---- {i + 2} ----\n\n"
 
-	def __iter__(self):
+		else:
+			self.__texts = ""
+			messagebox.showerror("File existence error", "There's no file existed.")
+
+	def __str__(self):
 		return self.__texts
 
 class Database:
