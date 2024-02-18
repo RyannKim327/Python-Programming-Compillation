@@ -2,6 +2,9 @@ import json, os
 from tkinter import messagebox
 from PyPDF2 import PdfReader
 
+
+
+# ----------------- Extracting PDF Document ---------------- #
 class PDFExtractor:
 	def __init__(self, filePath: str):
 		"""This is to get all the text from the pdf file"""
@@ -20,7 +23,9 @@ class PDFExtractor:
 
 	def __str__(self):
 		return self.__texts
+# ------------------------------------------------------------------- #
 
+# ---------------------- Setup of Database ---------------------- #
 class Database:
 	def __init__(self):
 		"""This class is used to create a database which is a json file to store data from the application."""
@@ -65,3 +70,4 @@ class Document(Database):
 		}
 		with open(self.__file, "w") as file:
 			file.write(json.dumps(self.__data, indent=4))
+# ------------------------------------------------------------------- #
