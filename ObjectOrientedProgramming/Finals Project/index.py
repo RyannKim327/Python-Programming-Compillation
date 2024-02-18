@@ -25,7 +25,7 @@ def homepage():
 
 # ------------------------ Add Document ----------------------- #
 def addDocument():
-	global nav, layout, window
+	global nav, layout, window, content
 	cls()
 	window = "add"
 
@@ -34,16 +34,18 @@ def addDocument():
 		nav.pack_forget()
 
 	def changeContent():
-		print("test")
-		reader = PDFExtractor(document.getText())
-		content.getInside().insert(tk.END, reader)
+		global content
+		print(content.getText())
+		if content.getText() == "":
+			reader = PDFExtractor(document.getText())
+			content.getInside().insert(tk.END, reader)
 
 	title_ = LabelEntry(layout, text="Sample")
 	title_.pack(side="top", fill='x', expand=True)
 	document = LabelFile(layout, text="Import file")
 	document.pack(fill='x')
-	document.getEntry().bind("<Return>", lambda e: changeContent())
 	content = LabelText(layout, text="Sample2")
+	content.getInside().bind("<Return>", lambda e: changeContent())
 	content.pack()
 	title.config(text="New Document")
 # ------------------------------------------------------------------- #

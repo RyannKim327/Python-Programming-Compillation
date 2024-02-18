@@ -71,7 +71,7 @@ class LabelText(LabelFrame):
 		return self.__text
 
 	def getText(self):
-		return self.__text.get()
+		return self.__text.get(tk.END)
 
 class LabelEntry(LabelFrame):
 	def __init__(self, master, text: str):
