@@ -25,7 +25,7 @@ def homepage():
 
 # ------------------------ Add Document ----------------------- #
 def addDocument():
-	global nav, layout, window, content
+	global nav, layout, window, content, db
 	cls()
 	window = "add"
 
@@ -36,8 +36,27 @@ def addDocument():
 	def changeContent():
 		global content
 		if content.getText() == "":
+			print("title")
 			reader = PDFExtractor(document.getText())
-			content.getInside().insert(tk.END, reader)
+			content.setText(reader)
+
+	def saveData():
+		global db
+		error = []
+		if title_.getText() == "":
+			error.append("No title")
+		if content.getText() == "":
+			error.append("No content")
+
+		if len(error) > 0:
+			messagebox.showerror("Empty Requirements", ", ".join(error))
+		else:
+			db.getData().append({
+				"title": title_.getText(),
+				"content": content.getText()
+			})
+
+			db.saveData()
 
 	title_ = LabelEntry(layout, text="Sample")
 	title_.pack(side="top", fill='x', expand=True)
@@ -59,6 +78,7 @@ def addDocument():
 	title.config(text="New Document")
 	save = Button(layout)
 	save.setText("Save")
+	save.setAction(lambda: saveData())
 	save.pack(side='top', fill='x', pady=3)
 
 # ------------------------------------------------------------------- #

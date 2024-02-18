@@ -35,6 +35,9 @@ class Button(tk.Button):
 	def getText(self):
 		return self.get()
 
+	def setAction(self, action):
+		self.config(command=action)
+
 class LabelFrame(tk.LabelFrame):
 	def __init__(self, master, *args, **kwargs):
 		"""A modified version of LabelFrame from tkinter"""
@@ -47,20 +50,29 @@ class Entry(tk.Entry):
 		super().__init__(master=master, *args, **kwargs)
 		self.config(bg="#fbfbfb", fg="#000000")
 
+	def getText(self):
+		return self.get()
+
+	def setText(self, text: str):
+		self.insert(0, text)
+
 class Text(tk.Text):
 	def __init__(self, master, *args, **kwargs):
 		"""A modified version of Text from tkinter"""
 		super().__init__(master, *args, **kwargs)
 		self.config(bg="#fbfbfb", fg="#000000")
 
+	def getText(self):
+		return self.get("1.0", "end-1c")
+
+	def setText(self, text: str):
+		return self.insert("1.0", text)
+
 class Selection(Button):
 	"""This class is used for Navigation of the project and make it special just for this project"""
 	def setText(self, text: str):
 		self.config(text=text, bd=0, relief='solid')
 		self.pack(side='top', fill='x')
-
-	def setAction(self, action):
-		self.config(command=action)
 
 class LabelText(LabelFrame):
 	def __init__(self, master, text: str):
@@ -70,17 +82,17 @@ class LabelText(LabelFrame):
 		self.__text = Text(self, bd=0, borderwidth=0, border=0, relief="solid")
 		self.__text.pack(side="left", fill='x', expand=True)
 
-	def setValidation(self, validate, action):
-		self.__text.config(validate=validate, validatecommand=action)
-
 	def getInside(self):
 		return self.__text
 
-	def getText(self):
-		return self.__text.get(tk.END)
-
 	def setHeight(self, height: float):
 		self.__text.config(height=height)
+
+	def getText(self):
+		return self.__text.getText()
+
+	def setText(self, text: str):
+		self.__text.setText(text=text)
 
 class LabelEntry(LabelFrame):
 	def __init__(self, master, text: str):
@@ -93,8 +105,8 @@ class LabelEntry(LabelFrame):
 	def getEntry(self):
 		return self.__entry
 
-	def get(self):
-		return self.__entry.get()
+	def getText(self):
+		return self.__entry.getText()
 
 class LabelFile(LabelFrame):
 	def __init__(self, master, text: str, fileTitle: str = "", fileTypes: list = []):
@@ -122,5 +134,4 @@ class LabelFile(LabelFrame):
 
 	def getText(self):
 		return self.__entry.get()
-
 # ------------------------------------------------------------------- #
