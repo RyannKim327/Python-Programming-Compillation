@@ -29,6 +29,12 @@ class Button(tk.Button):
 		super().__init__(master=master, *args, **kwargs)
 		self.config(bg="#fbfbfb", fg="#000000")
 
+	def setText(self, text: str):
+		self.config(text=text)
+
+	def getText(self):
+		return self.get()
+
 class LabelFrame(tk.LabelFrame):
 	def __init__(self, master, *args, **kwargs):
 		"""A modified version of LabelFrame from tkinter"""
@@ -62,7 +68,7 @@ class LabelText(LabelFrame):
 		super().__init__(master=master)
 		self.config(text=text)
 		self.__text = Text(self, bd=0, borderwidth=0, border=0, relief="solid")
-		self.__text.pack(fill='x')
+		self.__text.pack(side="left", fill='x', expand=True)
 
 	def setValidation(self, validate, action):
 		self.__text.config(validate=validate, validatecommand=action)
@@ -73,13 +79,16 @@ class LabelText(LabelFrame):
 	def getText(self):
 		return self.__text.get(tk.END)
 
+	def setHeight(self, height: float):
+		self.__text.config(height=height)
+
 class LabelEntry(LabelFrame):
 	def __init__(self, master, text: str):
 		"""A mixed of Entry and LabelFrame for looks like material css"""
 		super().__init__(master=master)
 		self.config(text=text)
 		self.__entry = Entry(self, bd=0, borderwidth=0, border=0)
-		self.__entry.pack(fill='x')
+		self.__entry.pack(side="left", fill='x', expand=True)
 
 	def getEntry(self):
 		return self.__entry

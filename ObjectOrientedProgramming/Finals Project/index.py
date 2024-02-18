@@ -35,7 +35,6 @@ def addDocument():
 
 	def changeContent():
 		global content
-		print(content.getText())
 		if content.getText() == "":
 			reader = PDFExtractor(document.getText())
 			content.getInside().insert(tk.END, reader)
@@ -43,11 +42,25 @@ def addDocument():
 	title_ = LabelEntry(layout, text="Sample")
 	title_.pack(side="top", fill='x', expand=True)
 	document = LabelFile(layout, text="Import file")
-	document.pack(fill='x')
+	document.pack(side="top", fill='x', expand=True)
 	content = LabelText(layout, text="Sample2")
+
+	if bheight <= 500:
+		content.setHeight(5)
+	elif bheight <= 600:
+		content.setHeight(18)
+	elif bheight <= 750:
+		content.setHeight(20)
+	else:
+		content.setHeight(20)
+
 	content.getInside().bind("<Return>", lambda e: changeContent())
-	content.pack()
+	content.pack(side="top", fill='x', expand=True)
 	title.config(text="New Document")
+	save = Button(layout)
+	save.setText("Save")
+	save.pack(side='top', fill='x', pady=3)
+
 # ------------------------------------------------------------------- #
 
 # ---------------------- Check Document ---------------------- #
@@ -87,14 +100,16 @@ def navigateMe():
 # ------------------------ User Interface ------------------------ #
 def ui(a):
 	"""This function makes the interface more responsive"""
-	global bwidth, layout, title, nav, sec, hasNav, window
+	global bwidth, bheight, layout, title, nav, sec, hasNav, window
 
 	# UI Detection
 	width = base.winfo_width()
-	if bwidth != width or a:
+	height = base.winfo_height()
+	if bwidth != width or a or bheight != height:
 
 		# The changes happens
 		bwidth = width
+		bheight = height
 
 		for i in base.winfo_children():
 			i.destroy()
@@ -154,7 +169,7 @@ def ui(a):
 # ------------------------ Main Layout ------------------------- #
 def main():
 	# Globalizing the data
-	global base, bwidth, db, window
+	global base, bwidth, bheight, db, window
 	window = "home"
 
 	# Database setup for one time call
@@ -165,6 +180,7 @@ def main():
 	base.geometry("350x300")
 	base.minsize(350, 300)
 	bwidth = base.winfo_width()
+	bheight = base.winfo_height()
 
 	# This is just to initiate the responsiveness of the UI
 	ui(True)
