@@ -4,6 +4,7 @@ from PyPDF2 import PdfReader
 
 class PDFExtractor:
 	def __init__(self, filePath: str):
+		"""This is to get all the text from the pdf file"""
 		if os.path.exists(filePath):
 			reader = PdfReader(filePath)
 			self.__texts = []
@@ -12,7 +13,7 @@ class PDFExtractor:
 		else:
 			self.__texts = ["There is no file existed"]
 
-	def getTexts(self):
+	def __iter__(self):
 		return self.__texts
 
 class Database:

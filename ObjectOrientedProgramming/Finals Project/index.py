@@ -39,6 +39,7 @@ def addDocument():
 	document.pack(fill='x')
 	content = LabelText(layout, text="Sample2")
 	content.pack()
+	document.onChange(print("Test"))
 	title.config(text="New Document")
 # ------------------------------------------------------------------- #
 
@@ -81,8 +82,10 @@ def ui(a):
 	"""This function makes the interface more responsive"""
 	global bwidth, layout, title, nav, sec, hasNav, window
 
+	# UI Detection
 	width = base.winfo_width()
 	if bwidth != width or a:
+
 		# The changes happens
 		bwidth = width
 
@@ -158,7 +161,7 @@ def main():
 
 	# This is just to initiate the responsiveness of the UI
 	ui(True)
-
+	
 	# To detect the changes of the UI
 	base.bind("<Configure>", lambda e: ui(False))
 	base.mainloop()
