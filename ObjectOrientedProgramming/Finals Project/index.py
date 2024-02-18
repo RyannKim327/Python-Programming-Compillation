@@ -85,7 +85,6 @@ def addDocument():
 	save.setText("Save")
 	save.setAction(lambda: saveData())
 	save.pack(side='top', fill='x', pady=3)
-
 # ------------------------------------------------------------------- #
 
 # ---------------------- Check Document ---------------------- #
