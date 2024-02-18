@@ -37,6 +37,11 @@ class Entry(tk.Entry):
 		super().__init__(master=master, *args, **kwargs)
 		self.config(bg="#fbfbfb", fg="#000000")
 
+class Text(tk.Text):
+	def __init__(self, master, *args, **kwargs):
+		super().__init__(master, *args, **kwargs)
+		self.config(bg="#fbfbfb", fg="#000000")
+
 class Selection(Button):
 	"""This class is used for Navigation of the project"""
 	def setText(self, text: str):
@@ -45,6 +50,23 @@ class Selection(Button):
 
 	def setAction(self, action):
 		self.config(command=action)
+
+class LabelEntry(LabelFrame):
+	def __init__(self, master, text: str):
+		super().__init__(master=master)
+		self.config(text=text)
+		self.__entry = Entry(self, bd=0, borderwidth=0, border=0)
+		self.__entry.pack(fill='x')
+
+class LabelText(LabelFrame):
+	def __init__(self, master, text: str):
+		super().__init__(master=master)
+		self.config(text=text)
+		self.__text = Text(self, bd=0, borderwidth=0, border=0)
+		self.__text.pack(fill='x')
+
+	def get(self):
+		return self.__text.get()
 
 class LabelEntry(LabelFrame):
 	def __init__(self, master, text: str):
@@ -134,6 +156,8 @@ def addDocument():
 
 	title_ = LabelEntry(layout, text="Sample")
 	title_.pack(side="top", fill='x', expand=True)
+	content = LabelText(layout, text="Sample2")
+	content.pack()
 	title.config(text="New Document")
 # ------------------------------------------------------------------- #
 
