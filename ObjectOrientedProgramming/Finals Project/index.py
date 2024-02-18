@@ -1,5 +1,5 @@
 # from tkinter import *
-from tkinter import ttk, messagebox
+from tkinter import ttk, messagebox, filedialog
 import tkinter as tk
 import json
 
@@ -8,7 +8,7 @@ class Tk(tk.Tk):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		self.config(bg="#fbfbfb")
-	
+
 	def setTitle(self, title: str):
 		self.title(title)
 
@@ -77,6 +77,25 @@ class LabelEntry(LabelFrame):
 
 	def get(self):
 		return self.__entry.get()
+
+class LabelFile(LabelFrame):
+	def __init__(self, master, text: str, fileTitle: str = "", fileTypes: list = []):
+		super().__init__(master=master)
+		self.__titleFile = "Select File"
+		if fileTitle != "":
+			self.__titleFile = fileTitle
+		self.__types = fileTypes
+		self.config(text=text)
+		self.__entry = Entry(self, bd=0, borderwidth=0, border=0)
+		self.__entry.pack(side='left', fill='x', expand=True)
+		button = Button(self, text="🗎")
+		button.config(command=lambda: self.getFile())
+		button.pack(side='left')
+
+	def getFile(self):
+		file = filedialog.askopenfilename(title=self.__titleFile, filetypes=self.__types)
+		self.__entry.delete(0, tk.END)
+		self.__entry.insert(0, file)
 # ------------------------------------------------------------------- #
 
 class Database:
@@ -137,7 +156,7 @@ def homepage():
 	window = "home"
 
 	if not hasNav:
-		sec.pack(side='left', anchor='n', expand=True)
+		sec.pack(side='left', anchor='n', expand=True, pady=3, padx=3)
 		nav.pack_forget()
 
 	Label(layout, text="Test mode").pack()
@@ -151,11 +170,13 @@ def addDocument():
 	window = "add"
 
 	if not hasNav:
-		sec.pack(side='left', anchor='n', expand=True)
+		sec.pack(side='left', anchor='n', expand=True, pady=3, padx=3)
 		nav.pack_forget()
 
 	title_ = LabelEntry(layout, text="Sample")
 	title_.pack(side="top", fill='x', expand=True)
+	document = LabelFile(layout, text="Import file")
+	document.pack(fill='x')
 	content = LabelText(layout, text="Sample2")
 	content.pack()
 	title.config(text="New Document")
@@ -168,7 +189,7 @@ def checkDocument():
 	window = "check"
 
 	if not hasNav:
-		sec.pack(side='left', anchor='n', expand=True)
+		sec.pack(side='left', anchor='n', expand=True, pady=3, padx=3)
 		nav.pack_forget()
 	title.config(text="Check Document")
 # ------------------------------------------------------------------- #
@@ -192,7 +213,7 @@ def navigateMe():
 	checkDocu.setAction(lambda: checkDocument())
 
 	sec.pack_forget()
-	nav.pack(anchor='n', fill='x')
+	nav.pack(anchor='n', fill='x', pady=3, padx=3)
 # ------------------------------------------------------------------- #
 
 # ------------------------ User Interface ------------------------ #
@@ -229,7 +250,7 @@ def ui(a):
 		checkDocu.setText("Check Document")
 		checkDocu.setAction(lambda: checkDocument())
 
-		nav.pack(side='left', anchor="n", fill='y')
+		nav.pack(side='left', anchor="n", fill='y', pady=3, padx=3)
 		nav.pack_propagate(0)
 
 		titleSide = Frame(sec)
@@ -239,16 +260,16 @@ def ui(a):
 		back.setAction(lambda: navigateMe())
 		back.pack_forget()
 		if not hasNav:
-			back.pack(side="left", anchor='nw')
+			back.pack(side="left", anchor='nw', pady=3, padx=3)
 
 		title = Label(titleSide, text="Document Management System", font=('Times New Roman', 20), justify='left', wraplength=titleWidth * 0.9, width=base.winfo_width())
 		title.pack(fill='x', side='left')
 		titleSide.pack(fill='x', side='top')
 
 		layout = Frame(sec)
-		layout.pack(side='top', expand=True)
+		layout.pack(side='top', expand=True, pady=3, padx=3)
 
-		sec.pack(side='left', anchor='n', expand=True)
+		sec.pack(side='left', anchor='n', expand=True, pady=3, padx=3)
 
 		match window:
 			case "home":
