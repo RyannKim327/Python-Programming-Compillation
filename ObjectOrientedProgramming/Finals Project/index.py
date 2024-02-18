@@ -39,7 +39,7 @@ def addDocument():
 	document.pack(fill='x')
 	content = LabelText(layout, text="Sample2")
 	content.pack()
-	document.onChange(print("Test"))
+	document.onChange(print(document.getText()))
 	title.config(text="New Document")
 # ------------------------------------------------------------------- #
 
@@ -162,8 +162,13 @@ def main():
 	# This is just to initiate the responsiveness of the UI
 	ui(True)
 	
+	def closeWindow():
+		if messagebox.askyesno("Confirmation", "Are you sure you want to close this application?"):
+			base.destroy()
+
 	# To detect the changes of the UI
 	base.bind("<Configure>", lambda e: ui(False))
+	base.protocol("WM_DELETE_WINDOW", lambda: closeWindow())
 	base.mainloop()
 # ------------------------------------------------------------------- #
 

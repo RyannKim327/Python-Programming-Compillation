@@ -61,7 +61,7 @@ class LabelText(LabelFrame):
 		"""A mixed of Text and LabelFrame for looks like material css"""
 		super().__init__(master=master)
 		self.config(text=text)
-		self.__text = Text(self, bd=0, borderwidth=0, border=0)
+		self.__text = Text(self, bd=0, borderwidth=0, border=0, relief="solid")
 		self.__text.pack(fill='x')
 
 	def get(self):
@@ -95,7 +95,7 @@ class LabelFile(LabelFrame):
 		self.__types = fileTypes
 		self.config(text=text)
 		self.__entry = Entry(self, bd=0, borderwidth=0, border=0)
-		self.__entry.pack(side='left', fill='x', expand=True)
+		self.__entry.pack(side='left', fill='both', expand=True)
 		button = Button(self, text="🗎")
 		button.config(command=lambda: getFile())
 		button.pack(side='left')
