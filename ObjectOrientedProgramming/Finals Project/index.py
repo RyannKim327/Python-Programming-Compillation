@@ -45,15 +45,20 @@ def addDocument():
 		error = []
 		if title_.getText() == "":
 			error.append("No title")
-		if content.getText() == "":
+		if content.getText() == "" and not os.path.exists(document.getText()):
 			error.append("No content")
 
 		if len(error) > 0:
 			messagebox.showerror("Empty Requirements", ", ".join(error))
 		else:
-			db.getData().append({
+			_data = content.getText()
+			if os.path.exists(document.getText()):
+				result = PDFExtractor(document.getText())
+				_data = str(result)
+
+			db.getData()['data'].append({
 				"title": title_.getText(),
-				"content": content.getText()
+				"content": _data
 			})
 
 			db.saveData()

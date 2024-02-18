@@ -4,9 +4,9 @@ from PyPDF2 import PdfReader
 
 # ----------------- Extracting PDF Document ---------------- #
 class PDFExtractor:
-	def __init__(self, filePath: str):
-		"""This is to get all the text from the pdf file"""
+	"""This is to get all the text from the pdf file"""
 
+	def __init__(self, filePath: str):
 		if os.path.exists(filePath):
 			reader = PdfReader(filePath)
 			self.__texts = "---- 1 ----\n\n"
@@ -30,8 +30,8 @@ class PDFExtractor:
 
 # ---------------------- Setup of Database ---------------------- #
 class Database:
+	"""This class is used to create a database which is a json file to store data from the application."""
 	def __init__(self):
-		"""This class is used to create a database which is a json file to store data from the application."""
 		self.__file = "data.json"
 
 	def getData(self):
