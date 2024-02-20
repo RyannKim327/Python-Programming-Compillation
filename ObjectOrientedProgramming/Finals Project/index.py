@@ -56,10 +56,12 @@ def addDocument():
 				result = PDFExtractor(document.getText())
 				_data = str(result)
 
-			db.getData()['data'].append({
-				"title": title_.getText(),
-				"content": _data
-			})
+			_title = title_.getText().upper().strip().replace(" ", "_")
+			if db.isExistData(_title):
+				db.getData()['data'][_title].append(_data)
+			else:
+				db.getData()['data'][_title] = [_data]
+
 
 			db.saveData()
 

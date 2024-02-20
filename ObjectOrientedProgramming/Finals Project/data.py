@@ -36,18 +36,18 @@ class Database:
 	"""This class is used to create a database which is a json file to store data from the application."""
 	def __init__(self):
 		self.__file = "data.json"
-
-	def getData(self):
 		try:
 			with open(self.__file, "r") as file:
 				self.__data = json.load(file)
 		except Exception as e:
 			messagebox.showwarning("Warning", "The database is not existed, so the system automatically generates it.")
 			self.__data = {
-				"data": []
+				"data": {}
 			}
 			with open(self.__file, "w") as file:
 				file.write(json.dumps(self.__data, indent=4))
+
+	def getData(self):
 		return self.__data
 
 	def deleteData(self, key: str):
@@ -76,4 +76,22 @@ class Document(Database):
 		}
 		with open(self.__file, "w") as file:
 			file.write(json.dumps(self.__data, indent=4))
+
+	def getDocument(self, title):
+		try:
+			with open(self.__file, "r") as file:
+				__data = json.load(file)['data']
+			return __data[title.strip().upper().replace(" ", "_")]
+		except Exception as e:
+			return "There is no document existed to the system"
+
+	def isExistData(self, title: str):
+		"""Return true if existed"""
+		try:
+			with open(self.__file, "r") as file:
+				__data = json.load(file)['data']
+			return __data.get(title.strip().upper().replace(" ", "_")) != None
+		except Exception as e:
+			return False
+
 # ------------------------------------------------------------------- #
