@@ -1,4 +1,4 @@
-import json, os
+import json
 from tkinter import messagebox
 from PyPDF2 import PdfReader
 
