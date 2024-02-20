@@ -55,14 +55,7 @@ def addDocument():
 			if os.path.exists(document.getText()):
 				result = PDFExtractor(document.getText())
 				_data = str(result)
-
-			_title = title_.getText().upper().strip().replace(" ", "_")
-			if db.isExistData(_title):
-				db.getData()['data'][_title].append(_data)
-			else:
-				db.getData()['data'][_title] = [_data]
-
-
+			db.addDocument(title_.getText(), "Sample", _data)
 			db.saveData()
 
 	title_ = LabelEntry(layout, text="Sample")
@@ -199,7 +192,7 @@ def main():
 	window = "home"
 
 	# Database setup for one time call
-	db = Database()
+	db = Document()
 
 	base = Tk()
 	base.setTitle("Document Management System")
