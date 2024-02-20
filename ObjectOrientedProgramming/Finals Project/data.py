@@ -7,7 +7,7 @@ class PDFExtractor:
 	"""This is to get all the text from the pdf file"""
 
 	def __init__(self, filePath: str):
-		if os.path.exists(filePath):
+		try:
 			reader = PdfReader(filePath)
 			self.__texts = "---- 1 ----\n\n"
 			self.__results = []
@@ -16,10 +16,13 @@ class PDFExtractor:
 				if i < len(reader.pages) -1:
 					self.__texts += f"\n\n---- {i + 2} ----\n\n"
 					self.__results.append(reader.pages[i].extract_text())
-
-		else:
+		except FileNotFoundError as e:
 			self.__texts = ""
 			messagebox.showerror("File existence error", "There's no file existed.")
+		except Exception as e:
+			print(e)
+			self.__texts = ""
+			messagebox.showerror("File existence error", "This is not a PDF File.")
 
 	def __str__(self):
 		return self.__texts
