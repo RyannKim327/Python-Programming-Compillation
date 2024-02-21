@@ -72,6 +72,10 @@ def addDocument():
 	def changedContent(*args):
 		newContent = content.getText()
 		strContent.set(newContent)
+	
+	strTitle.trace_add("write", changedTitle)
+	strFile.trace_add("write", changedFile)
+	strContent.trace_add("write", changedContent)
 
 	title_ = LabelEntry(layout, text="Sample")
 	title_.setVariable(strTitle)
@@ -80,8 +84,8 @@ def addDocument():
 	document.setVariable(strFile)
 	document.pack(side="top", fill='x', expand=True)
 	content = LabelText(layout, text="Sample2")
-	content.setVariable(strContent)
-
+	# content.setVariable(strContent)
+	content.setText(strContent.get())
 
 	if bheight <= 500:
 		content.setHeight(5)

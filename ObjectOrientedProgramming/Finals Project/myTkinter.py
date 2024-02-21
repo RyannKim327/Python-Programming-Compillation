@@ -71,8 +71,8 @@ class Text(tk.Text):
 	def setText(self, text: str):
 		return self.insert("1.0", text)
 
-	def setVariable(self, var):
-		self.config(textvariabtextle=var)
+	# def setVariable(self, var):
+	# 	self.config(variable=var)
 
 class Selection(Button):
 	"""This class is used for Navigation of the project and make it special just for this project"""
@@ -100,8 +100,8 @@ class LabelText(LabelFrame):
 	def setText(self, text: str):
 		self.__text.setText(text=text)
 
-	def setVariable(self, var):
-		self.__text.setVariable(var)
+	# def setVariable(self, var):
+	# 	self.__text.setVariable(var)
 
 class LabelEntry(LabelFrame):
 	def __init__(self, master, text: str):
