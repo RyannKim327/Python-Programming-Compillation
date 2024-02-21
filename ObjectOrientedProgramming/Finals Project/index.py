@@ -20,7 +20,7 @@ def homepage():
 		sec.pack(side='left', anchor='n', expand=True, pady=3, padx=3)
 		nav.pack_forget()
 
-	Label(layout, text="Test mode").pack()
+	Label(layout, text="This is Document Manage System, a simple GUI Project developed to store documents from PDF to normal text/raw information. This may help you to check whether the data you gathered is already published by someone or not.", justify='center', wraplength=bwidth * 0.65).pack()
 	title.config(text="Document Management System")
 # ------------------------------------------------------------------- #
 
@@ -102,11 +102,11 @@ def addDocument():
 	content.bind("<KeyPress>", lambda e: strContent.set(content.getText()))
 
 	if bheight <= 500:
-		content.setHeight(5)
+		content.setHeight(3)
 	elif bheight <= 600:
-		content.setHeight(18)
+		content.setHeight(16)
 	elif bheight <= 750:
-		content.setHeight(20)
+		content.setHeight(18)
 	else:
 		content.setHeight(20)
 

@@ -8,13 +8,11 @@ class PDFExtractor:
 
 	def __init__(self, filePath: str):
 		try:
-			reader = PdfReader(filePath)
-			self.__texts = "---- 1 ----\n\n"
+			reader = PdfReader(filePath) "
 			self.__results = []
 			for i in range(len(reader.pages)):
 				self.__texts += reader.pages[i].extract_text()
 				if i < len(reader.pages) -1:
-					self.__texts += f"\n\n---- {i + 2} ----\n\n"
 					self.__results.append(reader.pages[i].extract_text())
 		except FileNotFoundError as e:
 			self.__texts = ""
@@ -25,7 +23,7 @@ class PDFExtractor:
 			messagebox.showerror("File existence error", "This is not a PDF File.")
 
 	def __str__(self):
-		return self.__texts
+		return self.__texts.replace("\n", " ")
 
 	def __iter__(self):
 		return self.__results
@@ -96,13 +94,13 @@ class Document(Database):
 		"""Return true if there's a data exists"""
 		_title = title.upper().strip().replace(" ", "_")
 		with open(self._file, "r") as file:
-				__data = json.load(file)['data']
+			__data = json.load(file)['data']
 		if self.isExistData(title):
 			conts = pandas.DataFrame(__data[_title])
-			data = [content in conts['content'].values]
-			print(data)
-			return len(data) > 0
+			data = [conts['content'].str.strip().str.contains(content.strip(), na=False, case=False)]
+			return True in data[0].values
 		return False
+
 	def isExistData(self, title: str):
 		"""Return true if existed"""
 		_title = title.upper().strip().replace(" ", "_")
