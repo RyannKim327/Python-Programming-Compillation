@@ -68,11 +68,13 @@ class Document(Database):
 	def addDocument(self, title: str, author: str, content: str):
 		_title = title.upper().strip().replace(" ", "_")
 		if self.isExistData(_title):
-			if self.checkDocumentExistence(title, content):
+			if not self.checkDocumentExistence(title, content):
 				self.getData()['data'][_title].append({
 					"author": author,
 					"content": content
 				})
+			else:
+				messagebox.showwarning("WARNING", "The system found out the that this data is in the previous data of the system's database")
 		else:
 			self.getData()['data'][_title] = [{
 				"author": author,
@@ -82,23 +84,25 @@ class Document(Database):
 			file.write(json.dumps(self._data, indent=4))
 
 	def getDocument(self, title):
+		_title = title.upper().strip().replace(" ", "_")
 		try:
 			with open(self._file, "r") as file:
 				__data = json.load(file)['data']
-			return __data[title.strip().upper().replace(" ", "_")]
+			return __data[_title]
 		except Exception as e:
 			return "There is no document existed to the system"
 
 	def checkDocumentExistence(self, title: str, content: str):
-		"""This will destroy my life"""
+		"""Return true if there's a data exists"""
+		_title = title.upper().strip().replace(" ", "_")
 		with open(self._file, "r") as file:
 				__data = json.load(file)['data']
 		if self.isExistData(title):
-			data = pandas.DataFrame(content in __data[title]["content"])
+			conts = pandas.DataFrame(__data[_title])
+			data = [content in conts['content'].values]
 			print(data)
-			return True
-		print("END")
-
+			return len(data) > 0
+		return False
 	def isExistData(self, title: str):
 		"""Return true if existed"""
 		_title = title.upper().strip().replace(" ", "_")
