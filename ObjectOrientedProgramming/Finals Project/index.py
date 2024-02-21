@@ -48,7 +48,7 @@ def addDocument():
 		error = []
 		if title_.getText() == "":
 			error.append("No title")
-		if author.getText() == "":
+		if author_.getText() == "":
 			error.append("No author")
 		if content.getText() == "" and not os.path.exists(document.getText()):
 			error.append("No content")
@@ -60,21 +60,30 @@ def addDocument():
 			if os.path.exists(document.getText()):
 				result = PDFExtractor(document.getText())
 				_data = str(result)
-			db.addDocument(title_.getText(), "Sample", _data)
+			db.addDocument(title_.getText(), author_.getText(), _data)
 			db.saveData()
 
 	def changedTitle(*args):
-		newTitle = title_.getText()
-		strTitle.set(newTitle)
+		try:
+			newTitle = title_.getText()
+			strTitle.set(newTitle)
+		except:
+			pass
 
 	def changedFile(*args):
-		newFile = document.getText()
-		strFile.set(newFile)
+		try:
+			newFile = document.getText()
+			strFile.set(newFile)
+		except:
+			pass
 
 	def changedAuthor(*args):
-		newAuthor = author.getText()
-		strAuthor.set(newAuthor)
-	
+		try:
+			newAuthor = author_.getText()
+			strAuthor.set(newAuthor)
+		except:
+			pass
+
 	strTitle.trace_add("write", changedTitle)
 	strFile.trace_add("write", changedFile)
 	strAuthor.trace_add("write", changedAuthor)
@@ -82,16 +91,15 @@ def addDocument():
 	title_ = LabelEntry(layout, text="Title")
 	title_.setVariable(strTitle)
 	title_.pack(side="top", fill='x', expand=True)
-	author = LabelEntry(layout, text="Author")
-	author.setVariable(strAuthor)
-	author.pack(side="top", fill='x', expand=True)
+	author_ = LabelEntry(layout, text="Author")
+	author_.setVariable(strAuthor)
+	author_.pack(side="top", fill='x', expand=True)
 	document = LabelFile(layout, text="Import file")
 	document.setVariable(strFile)
 	document.pack(side="top", fill='x', expand=True)
 	content = LabelText(layout, text="Content")
-	# content.setVariable(strContent)
 	content.setText(strContent.get())
-	content.bind("<KeyPress>", changeContent)
+	content.bind("<KeyPress>", lambda e: strContent.set(content.getText()))
 
 	if bheight <= 500:
 		content.setHeight(5)

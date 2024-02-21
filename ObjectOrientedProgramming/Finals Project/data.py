@@ -1,4 +1,4 @@
-import json
+import json, pandas
 from tkinter import messagebox
 from PyPDF2 import PdfReader
 
@@ -68,10 +68,11 @@ class Document(Database):
 	def addDocument(self, title: str, author: str, content: str):
 		_title = title.upper().strip().replace(" ", "_")
 		if self.isExistData(_title):
-			self.getData()['data'][_title].append({
-				"author": author,
-				"content": content
-			})
+			if self.checkDocumentExistence(title, content):
+				self.getData()['data'][_title].append({
+					"author": author,
+					"content": content
+				})
 		else:
 			self.getData()['data'][_title] = [{
 				"author": author,
@@ -83,17 +84,28 @@ class Document(Database):
 	def getDocument(self, title):
 		try:
 			with open(self._file, "r") as file:
-				__data = json.load(self._file)['data']
+				__data = json.load(file)['data']
 			return __data[title.strip().upper().replace(" ", "_")]
 		except Exception as e:
 			return "There is no document existed to the system"
 
+	def checkDocumentExistence(self, title: str, content: str):
+		"""This will destroy my life"""
+		with open(self._file, "r") as file:
+				__data = json.load(file)['data']
+		if self.isExistData(title):
+			data = pandas.DataFrame(content in __data[title]["content"])
+			print(data)
+			return True
+		print("END")
+
 	def isExistData(self, title: str):
 		"""Return true if existed"""
+		_title = title.upper().strip().replace(" ", "_")
 		try:
 			with open(self._file, "r") as file:
-				__data = json.load(self._file)['data']
-			return __data.get(title.strip().upper().replace(" ", "_")) != None
+				__data = json.load(file)['data']
+			return __data.get(_title) != None
 		except Exception as e:
 			return False
 # ------------------------------------------------------------------- #
