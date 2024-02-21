@@ -1,7 +1,8 @@
 # from tkinter import *
-from tkinter import ttk, messagebox, filedialog
+from tkinter import ttk, messagebox, filedialog, StringVar
 from myTkinter import *
 from data import *
+import os
 
 # ----------------------- Clear Current UI ---------------------- #
 def cls():
@@ -26,6 +27,8 @@ def homepage():
 # ------------------------ Add Document ----------------------- #
 def addDocument():
 	global nav, layout, window, content, db
+	global strTitle, strAuthor, strContent, strFile
+
 	cls()
 	window = "add"
 
@@ -58,11 +61,27 @@ def addDocument():
 			db.addDocument(title_.getText(), "Sample", _data)
 			db.saveData()
 
+	def changedTitle(*args):
+		newTitle = title_.getText()
+		strTitle.set(newTitle)
+
+	def changedFile(*args):
+		newFile = document.getText()
+		strFile.set(newFile)
+
+	def changedContent(*args):
+		newContent = content.getText()
+		strContent.set(newContent)
+
 	title_ = LabelEntry(layout, text="Sample")
+	title_.setVariable(strTitle)
 	title_.pack(side="top", fill='x', expand=True)
 	document = LabelFile(layout, text="Import file")
+	document.setVariable(strFile)
 	document.pack(side="top", fill='x', expand=True)
 	content = LabelText(layout, text="Sample2")
+	content.setVariable(strContent)
+
 
 	if bheight <= 500:
 		content.setHeight(5)
@@ -189,6 +208,7 @@ def ui(a):
 def main():
 	# Globalizing the data
 	global base, bwidth, bheight, db, window
+	global strTitle, strAuthor, strContent, strFile
 	window = "home"
 
 	# Database setup for one time call
@@ -201,12 +221,18 @@ def main():
 	bwidth = base.winfo_width()
 	bheight = base.winfo_height()
 
+	strTitle = StringVar(base)
+	strAuthor = StringVar(base)
+	strContent = StringVar(base)
+	strFile = StringVar(base)
+
 	# This is just to initiate the responsiveness of the UI
 	ui(True)
 	
 	def closeWindow():
 		if messagebox.askyesno("Confirmation", "Are you sure you want to close this application?"):
 			base.destroy()
+
 
 	# To detect the changes of the UI
 	base.bind("<Configure>", lambda e: ui(False))

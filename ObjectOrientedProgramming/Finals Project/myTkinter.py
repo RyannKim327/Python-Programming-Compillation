@@ -56,6 +56,9 @@ class Entry(tk.Entry):
 	def setText(self, text: str):
 		self.insert(0, text)
 
+	def setVariable(self, var):
+		self.config(textvariable=var)
+
 class Text(tk.Text):
 	def __init__(self, master, *args, **kwargs):
 		"""A modified version of Text from tkinter"""
@@ -67,6 +70,9 @@ class Text(tk.Text):
 
 	def setText(self, text: str):
 		return self.insert("1.0", text)
+
+	def setVariable(self, var):
+		self.config(textvariabtextle=var)
 
 class Selection(Button):
 	"""This class is used for Navigation of the project and make it special just for this project"""
@@ -94,6 +100,9 @@ class LabelText(LabelFrame):
 	def setText(self, text: str):
 		self.__text.setText(text=text)
 
+	def setVariable(self, var):
+		self.__text.setVariable(var)
+
 class LabelEntry(LabelFrame):
 	def __init__(self, master, text: str):
 		"""A mixed of Entry and LabelFrame for looks like material css"""
@@ -107,6 +116,12 @@ class LabelEntry(LabelFrame):
 
 	def getText(self):
 		return self.__entry.getText()
+
+	def setText(self, text: str):
+		self.__entry.setText(text)
+
+	def setVariable(self, var):
+		self.__entry.setVariable(var)
 
 class LabelFile(LabelFrame):
 	def __init__(self, master, text: str, fileTitle: str = "", fileTypes: list = []):
@@ -134,4 +149,10 @@ class LabelFile(LabelFrame):
 
 	def getText(self):
 		return self.__entry.get()
+
+	def setText(self, text: str):
+		self.__entry.setText(text)
+
+	def setVariable(self, var):
+		self.__entry.setVariable(var)
 # ------------------------------------------------------------------- #
