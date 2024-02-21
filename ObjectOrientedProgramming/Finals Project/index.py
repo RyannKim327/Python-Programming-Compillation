@@ -48,6 +48,8 @@ def addDocument():
 		error = []
 		if title_.getText() == "":
 			error.append("No title")
+		if author.getText() == "":
+			error.append("No author")
 		if content.getText() == "" and not os.path.exists(document.getText()):
 			error.append("No content")
 
@@ -69,23 +71,27 @@ def addDocument():
 		newFile = document.getText()
 		strFile.set(newFile)
 
-	def changedContent(*args):
-		newContent = content.getText()
-		strContent.set(newContent)
+	def changedAuthor(*args):
+		newAuthor = author.getText()
+		strAuthor.set(newAuthor)
 	
 	strTitle.trace_add("write", changedTitle)
 	strFile.trace_add("write", changedFile)
-	strContent.trace_add("write", changedContent)
+	strAuthor.trace_add("write", changedAuthor)
 
-	title_ = LabelEntry(layout, text="Sample")
+	title_ = LabelEntry(layout, text="Title")
 	title_.setVariable(strTitle)
 	title_.pack(side="top", fill='x', expand=True)
+	author = LabelEntry(layout, text="Author")
+	author.setVariable(strAuthor)
+	author.pack(side="top", fill='x', expand=True)
 	document = LabelFile(layout, text="Import file")
 	document.setVariable(strFile)
 	document.pack(side="top", fill='x', expand=True)
-	content = LabelText(layout, text="Sample2")
+	content = LabelText(layout, text="Content")
 	# content.setVariable(strContent)
 	content.setText(strContent.get())
+	content.bind("<KeyPress>", changeContent)
 
 	if bheight <= 500:
 		content.setHeight(5)
@@ -205,7 +211,6 @@ def ui(a):
 				addDocument()
 			case "check":
 				checkDocument()
-
 # ------------------------------------------------------------------- #
 
 # ------------------------ Main Layout ------------------------- #
@@ -236,7 +241,6 @@ def main():
 	def closeWindow():
 		if messagebox.askyesno("Confirmation", "Are you sure you want to close this application?"):
 			base.destroy()
-
 
 	# To detect the changes of the UI
 	base.bind("<Configure>", lambda e: ui(False))
