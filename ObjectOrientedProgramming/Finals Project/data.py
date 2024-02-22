@@ -5,7 +5,6 @@ from PyPDF2 import PdfReader
 # ----------------- Extracting PDF Document ---------------- #
 class PDFExtractor:
 	"""This is to get all the text from the pdf file"""
-
 	def __init__(self, filePath: str):
 		self.__texts = ""
 		try:
