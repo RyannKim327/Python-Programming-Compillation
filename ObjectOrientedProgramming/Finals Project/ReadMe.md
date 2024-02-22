@@ -6,7 +6,7 @@
 2. Json
 3. PyPDF2 > `pip install PyPDF2`
 
-### Plans
+### Success Plans
 1. To create a simple Document Management System
 2. As an Operating System gives me an idea, I'd tried to make it responsible as I can
 3. To store all the data from PDF files
@@ -14,3 +14,4 @@
 5. To check whether the data or string is already existed in the database (json)
 6. Fixed Tree (Table) for insertions
 7. Fixed Title
+8. Fixed Content clear in responsive
