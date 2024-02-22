@@ -122,7 +122,7 @@ def addDocument():
 
 # ---------------------- Check Document ---------------------- #
 def checkDocument():
-	global nav, layout, window, strSearch
+	global nav, layout, window, strSearch, search
 	cls()
 	window = "check"
 
@@ -131,9 +131,14 @@ def checkDocument():
 		nav.pack_forget()
 
 	def search(event):
-		pass
+		global strSearch
+		tree.remove()
+		docu = db.getDocument(strSearch.get())
+		for j in docu:
+			tree.add((i, j['author'], j['content']))
 
 	def changedSearch(*args):
+		global strSearch
 		try:
 			newSearch = search.getText()
 			strSearch.set(newSearch)
@@ -143,14 +148,17 @@ def checkDocument():
 	search = LabelEntry(layout, text="Search")
 	search.setVariable(strSearch)
 	strAuthor.trace_add("write", changedSearch)
-	search.pack(side="top", fill='x')
 	search.getEntry().bind("<Return>", search)
+	search.pack(side="top", fill='x')
 	tree = Table(layout, ["Title", "Author", "Content"], [33])
 	if len(db.getAllTitles()) > 0:
 		for i in db.getAllTitles():
 			docu = db.getDocument(i)
 			for j in docu:
-				tree.add((i, j['author'], j['content']))
+				content = j['content']
+				if len(content) > 15:
+					content = f"{j['content'][:15]}..."
+				tree.add((i.capitalize(), j['author'], content))
 	tree.pack(side="top", fill='both', expand=True)
 # ------------------------------------------------------------------- #
 
