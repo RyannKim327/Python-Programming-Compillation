@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import filedialog, messagebox
+from tkinter import filedialog, messagebox, ttk
 
 # --------------------- Class Modification ---------------------- #
 class Tk(tk.Tk):
@@ -155,4 +155,19 @@ class LabelFile(LabelFrame):
 
 	def setVariable(self, var):
 		self.__entry.setVariable(var)
+
+class Treeview(ttk.Treeview):
+	def __init__(self, master, columns: list, width: list):
+		super().__init__(master=master, show='headings')
+		self['columns'] = columns
+		for i in range(len(columns)):
+			self.heading(columns[i], text=columns[i])
+			self.column(columns[i], width=width[i])
+
+	def add(self, item: tuple):
+		self.insert("", index=tk.END, values=item)
+
+	def replace(self, items: [tuple]):
+		self.delete(*self.get_children())
+		self.insert("", index=tk.END, values=items)
 # ------------------------------------------------------------------- #

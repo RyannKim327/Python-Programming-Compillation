@@ -128,7 +128,15 @@ def checkDocument():
 	if not hasNav:
 		sec.pack(side='left', anchor='n', expand=True, pady=3, padx=3)
 		nav.pack_forget()
-	title.config(text="Check Document")
+
+	def search(event):
+		pass
+
+	search = LabelEntry(layout, text="Search")
+	search.pack(side="top", fill='x', expand=True)
+	search.getEntry().bind("<Return>", search)
+	tree = Treeview(layout, ["Title", "Author"], [50, 50])
+	tree.pack(side="top", fill='x', expand=True)
 # ------------------------------------------------------------------- #
 
 # ------------------------ Navigate Me -------------------------- #
