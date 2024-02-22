@@ -94,9 +94,11 @@ class Document(Database):
 		try:
 			with open(self._file, "r") as file:
 				__data = json.load(file)['data']
-			return __data.keys()
+			if len(list(__data.keys())) <= 0:
+				return []
+			return list(__data.keys())
 		except Exception as e:
-			return "There is no document existed to the system"
+			return []
 
 	def checkDocumentExistence(self, title: str, content: str):
 		"""Return true if there's a data exists"""

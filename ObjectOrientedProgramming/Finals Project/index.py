@@ -1,5 +1,5 @@
 # from tkinter import *
-from tkinter import ttk, messagebox, filedialog, StringVar
+from tkinter import messagebox, StringVar
 from myTkinter import *
 from data import *
 import os
@@ -90,15 +90,15 @@ def addDocument():
 
 	title_ = LabelEntry(layout, text="Title")
 	title_.setVariable(strTitle)
-	title_.pack(side="top", fill='x', expand=True)
+	title_.pack(side="top", fill='x')
 
 	author_ = LabelEntry(layout, text="Author")
 	author_.setVariable(strAuthor)
-	author_.pack(side="top", fill='x', expand=True)
+	author_.pack(side="top", fill='x')
 
 	document = LabelFile(layout, text="Import file")
 	document.setVariable(strFile)
-	document.pack(side="top", fill='x', expand=True)
+	document.pack(side="top", fill='x')
 
 	content = LabelText(layout, text="Content")
 	content.setText(strContent.get())
@@ -115,14 +115,14 @@ def addDocument():
 	save = Button(layout)
 	save.setText("Save")
 	save.setAction(lambda: saveData())
-	save.pack(side='top', fill='x', pady=3, expand=True)
+	save.pack(side='top', fill='x', pady=3)
 
 	title.config(text="New Document")
 # ------------------------------------------------------------------- #
 
 # ---------------------- Check Document ---------------------- #
 def checkDocument():
-	global nav, layout, window
+	global nav, layout, window, strSearch
 	cls()
 	window = "check"
 
@@ -133,11 +133,25 @@ def checkDocument():
 	def search(event):
 		pass
 
+	def changedSearch(*args):
+		try:
+			newSearch = search.getText()
+			strSearch.set(newSearch)
+		except:
+			pass
+
 	search = LabelEntry(layout, text="Search")
-	search.pack(side="top", fill='x', expand=True)
+	search.setVariable(strSearch)
+	strAuthor.trace_add("write", changedSearch)
+	search.pack(side="top", fill='x')
 	search.getEntry().bind("<Return>", search)
-	tree = Treeview(layout, ["Title", "Author"], [50, 50])
-	tree.pack(side="top", fill='x', expand=True)
+	tree = Table(layout, ["Title", "Author", "Content"], [33])
+	if len(db.getAllTitles()) > 0:
+		for i in db.getAllTitles():
+			docu = db.getDocument(i)
+			for j in docu:
+				tree.add((i, j['author'], j['content']))
+	tree.pack(side="top", fill='both', expand=True)
 # ------------------------------------------------------------------- #
 
 # ------------------------ Navigate Me -------------------------- #
@@ -234,7 +248,7 @@ def ui(a):
 def main():
 	# Globalizing the data
 	global base, bwidth, bheight, db, window
-	global strTitle, strAuthor, strContent, strFile
+	global strTitle, strAuthor, strContent, strFile, strSearch
 	window = "home"
 
 	# Database setup for one time call
@@ -251,6 +265,7 @@ def main():
 	strAuthor = StringVar(base)
 	strContent = StringVar(base)
 	strFile = StringVar(base)
+	strSearch = StringVar(base)
 
 	# This is just to initiate the responsiveness of the UI
 	ui(True)

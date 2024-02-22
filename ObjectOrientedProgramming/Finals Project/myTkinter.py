@@ -156,9 +156,13 @@ class LabelFile(LabelFrame):
 	def setVariable(self, var):
 		self.__entry.setVariable(var)
 
-class Treeview(ttk.Treeview):
-	def __init__(self, master, columns: list, width: list):
+class Table(ttk.Treeview):
+	"""A modified version of tk.Treeview of tkinter"""
+	def __init__(self, master, columns: [str], width: [int]):
 		super().__init__(master=master, show='headings')
+		if len(columns) > len(width):
+			for i in range(len(width) - 1, len(columns)):
+				width.append(width[i - 1])
 		self['columns'] = columns
 		for i in range(len(columns)):
 			self.heading(columns[i], text=columns[i])
@@ -166,6 +170,14 @@ class Treeview(ttk.Treeview):
 
 	def add(self, item: tuple):
 		self.insert("", index=tk.END, values=item)
+
+	def bulk(self, items: [tuple]):
+		for i in items:
+			self.add(i)
+
+	def replaceBulk(self, items: [tuple]):
+		self.delete(*self.get_children())
+		self.bulk(items)
 
 	def replace(self, items: [tuple]):
 		self.delete(*self.get_children())
