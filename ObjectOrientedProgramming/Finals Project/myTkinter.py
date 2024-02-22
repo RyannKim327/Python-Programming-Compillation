@@ -170,4 +170,7 @@ class Treeview(ttk.Treeview):
 	def replace(self, items: [tuple]):
 		self.delete(*self.get_children())
 		self.insert("", index=tk.END, values=items)
+
+	def remove(self):
+		self.delete(*self.get_children())
 # ------------------------------------------------------------------- #
