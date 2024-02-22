@@ -7,8 +7,9 @@ class PDFExtractor:
 	"""This is to get all the text from the pdf file"""
 
 	def __init__(self, filePath: str):
+		self.__texts = ""
 		try:
-			reader = PdfReader(filePath) "
+			reader = PdfReader(filePath)
 			self.__results = []
 			for i in range(len(reader.pages)):
 				self.__texts += reader.pages[i].extract_text()
