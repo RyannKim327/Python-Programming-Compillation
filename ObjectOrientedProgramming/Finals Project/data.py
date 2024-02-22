@@ -90,6 +90,14 @@ class Document(Database):
 		except Exception as e:
 			return "There is no document existed to the system"
 
+	def getAllTitles(self):
+		try:
+			with open(self._file, "r") as file:
+				__data = json.load(file)['data']
+			return __data.keys()
+		except Exception as e:
+			return "There is no document existed to the system"
+
 	def checkDocumentExistence(self, title: str, content: str):
 		"""Return true if there's a data exists"""
 		_title = title.upper().strip().replace(" ", "_")
