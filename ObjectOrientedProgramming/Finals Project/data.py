@@ -88,7 +88,7 @@ class Document(Database):
 				__data = json.load(file)['data']
 			return __data[_title]
 		except Exception as e:
-			return "There is no document existed to the system"
+			return []
 
 	def getAllTitles(self):
 		try:

@@ -77,6 +77,13 @@ def addDocument():
 		except:
 			pass
 
+	def changedContent():
+		try:
+			newContent = content.getText()
+			strContent.set(newContent)
+		except:
+			pass
+
 	def changedAuthor(*args):
 		try:
 			newAuthor = author_.getText()
@@ -102,15 +109,9 @@ def addDocument():
 
 	content = LabelText(layout, text="Content")
 	content.setText(strContent.get())
-	if bheight <= 500:
-		content.setHeight(3)
-	elif bheight <= 600:
-		content.setHeight(16)
-	elif bheight <= 750:
-		content.setHeight(18)
-	else:
-		content.setHeight(20)
-	content.pack(side="top", fill='both', expand=True)
+	content.setVariable(strContent)
+	content.setReaction("<KeyRelease>", lambda e: changedContent())
+	content.pack(side="top", fill='both')
 
 	save = Button(layout)
 	save.setText("Save")
@@ -122,7 +123,7 @@ def addDocument():
 
 # ---------------------- Check Document ---------------------- #
 def checkDocument():
-	global nav, layout, window, strSearch, search
+	global nav, layout, window, strSearch
 	cls()
 	window = "check"
 
@@ -130,12 +131,15 @@ def checkDocument():
 		sec.pack(side='left', anchor='n', expand=True, pady=3, padx=3)
 		nav.pack_forget()
 
-	def search(event):
+	def searchEvent():
 		global strSearch
 		tree.remove()
-		docu = db.getDocument(strSearch.get())
-		for j in docu:
-			tree.add((i, j['author'], j['content']))
+		docu = db.getDocument(search.getText())
+		if len(docu) > 0:
+			for j in docu:
+				tree.add((i.capitalize(), j['author'], j['content']))
+		else:
+			messagebox.showwarning("WARNING", "No data found.")
 
 	def changedSearch(*args):
 		global strSearch
@@ -147,9 +151,12 @@ def checkDocument():
 
 	search = LabelEntry(layout, text="Search")
 	search.setVariable(strSearch)
+
 	strAuthor.trace_add("write", changedSearch)
-	search.getEntry().bind("<Return>", search)
+
+	search.getEntry().bind("<Return>", lambda e: searchEvent())
 	search.pack(side="top", fill='x')
+
 	tree = Table(layout, ["Title", "Author", "Content"], [33])
 	if len(db.getAllTitles()) > 0:
 		for i in db.getAllTitles():

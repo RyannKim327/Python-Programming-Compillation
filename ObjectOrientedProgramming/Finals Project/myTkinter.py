@@ -59,6 +59,9 @@ class Entry(tk.Entry):
 	def setVariable(self, var):
 		self.config(textvariable=var)
 
+	def setReaction(self, seq: str, function):
+		self.bind(seq, function)
+
 class Text(tk.Text):
 	def __init__(self, master, *args, **kwargs):
 		"""A modified version of Text from tkinter"""
@@ -71,8 +74,11 @@ class Text(tk.Text):
 	def setText(self, text: str):
 		return self.insert("1.0", text)
 
-	# def setVariable(self, var):
-	# 	self.config(variable=var)
+	def setVariable(self, var):
+		self.insert("1.0", var.get())
+
+	def setReaction(self, seq: str, function):
+		self.bind(seq, function)
 
 class Selection(Button):
 	"""This class is used for Navigation of the project and make it special just for this project"""
@@ -86,7 +92,7 @@ class LabelText(LabelFrame):
 		super().__init__(master=master)
 		self.config(text=text)
 		self.__text = Text(self, bd=0, borderwidth=0, border=0, relief="solid")
-		self.__text.pack(side="left", fill='x', expand=True)
+		self.__text.pack(side="top", fill='both')
 
 	def getInside(self):
 		return self.__text
@@ -100,8 +106,11 @@ class LabelText(LabelFrame):
 	def setText(self, text: str):
 		self.__text.setText(text=text)
 
-	# def setVariable(self, var):
-	# 	self.__text.setVariable(var)
+	def setVariable(self, var):
+		self.__text.setVariable(var)
+
+	def setReaction(self, seq: str, function):
+		self.__text.setReaction(seq, function)
 
 class LabelEntry(LabelFrame):
 	def __init__(self, master, text: str):
@@ -122,6 +131,9 @@ class LabelEntry(LabelFrame):
 
 	def setVariable(self, var):
 		self.__entry.setVariable(var)
+
+	def setReaction(self, seq: str, function):
+		self.__entry.setReaction(seq, function)
 
 class LabelFile(LabelFrame):
 	def __init__(self, master, text: str, fileTitle: str = "", fileTypes: list = []):
@@ -155,6 +167,9 @@ class LabelFile(LabelFrame):
 
 	def setVariable(self, var):
 		self.__entry.setVariable(var)
+
+	def setReaction(self, seq: str, function):
+		self.__entry.setReaction(seq, function)
 
 class Table(ttk.Treeview):
 	"""A modified version of tk.Treeview of tkinter"""

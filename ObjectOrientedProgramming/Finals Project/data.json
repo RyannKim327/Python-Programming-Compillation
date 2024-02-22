@@ -1,0 +1,20 @@
+{
+    "data": {
+        "SAMPLE": [
+            {
+                "author": "kim",
+                "content": "hehe"
+            },
+            {
+                "author": "kim",
+                "content": "haha"
+            }
+        ],
+        "SAMPLE1": [
+            {
+                "author": "kim",
+                "content": "haha"
+            }
+        ]
+    }
+}

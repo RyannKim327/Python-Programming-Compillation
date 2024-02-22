@@ -12,4 +12,5 @@
 3. To store all the data from PDF files
 4. To store all the data by copy and pasting it from document (docx) to content
 5. To check whether the data or string is already existed in the database (json)
-6. Fixed Minor issue for content
+6. Fixed Tree (Table) for insertions
+7. Fixed Title
