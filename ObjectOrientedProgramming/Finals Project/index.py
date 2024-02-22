@@ -91,16 +91,17 @@ def addDocument():
 	title_ = LabelEntry(layout, text="Title")
 	title_.setVariable(strTitle)
 	title_.pack(side="top", fill='x', expand=True)
+
 	author_ = LabelEntry(layout, text="Author")
 	author_.setVariable(strAuthor)
 	author_.pack(side="top", fill='x', expand=True)
+
 	document = LabelFile(layout, text="Import file")
 	document.setVariable(strFile)
 	document.pack(side="top", fill='x', expand=True)
+
 	content = LabelText(layout, text="Content")
 	content.setText(strContent.get())
-	content.bind("<KeyPress>", lambda e: strContent.set(content.getText()))
-
 	if bheight <= 500:
 		content.setHeight(3)
 	elif bheight <= 600:
@@ -109,14 +110,14 @@ def addDocument():
 		content.setHeight(18)
 	else:
 		content.setHeight(20)
+	content.pack(side="top", fill='both', expand=True)
 
-	content.getInside().bind("<Return>", lambda e: changeContent())
-	content.pack(side="top", fill='x', expand=True)
-	title.config(text="New Document")
 	save = Button(layout)
 	save.setText("Save")
 	save.setAction(lambda: saveData())
-	save.pack(side='top', fill='x', pady=3)
+	save.pack(side='top', fill='x', pady=3, expand=True)
+
+	title.config(text="New Document")
 # ------------------------------------------------------------------- #
 
 # ---------------------- Check Document ---------------------- #
@@ -216,9 +217,9 @@ def ui(a):
 		titleSide.pack(fill='x', side='top')
 
 		layout = Frame(sec)
-		layout.pack(side='top', expand=True, pady=3, padx=3)
+		layout.pack(side='top', fill="both", expand=True, pady=3, padx=3)
 
-		sec.pack(side='left', anchor='n', expand=True, pady=3, padx=3)
+		sec.pack(side='left', fill='both', anchor='n', expand=True, pady=3, padx=3)
 
 		match window:
 			case "home":
