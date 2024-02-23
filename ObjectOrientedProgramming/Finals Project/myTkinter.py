@@ -91,8 +91,8 @@ class LabelText(LabelFrame):
 		"""A mixed of Text and LabelFrame for looks like material css"""
 		super().__init__(master=master)
 		self.config(text=text)
-		self.__text = Text(self, bd=0, borderwidth=0, border=0, relief="solid")
-		self.__text.pack(side="top", fill='both')
+		self.__text = Text(self, bd=0, borderwidth=0, border=0, relief="solid", wrap='word')
+		self.__text.pack(side='top', fill='both')
 
 	def getInside(self):
 		return self.__text
@@ -135,26 +135,18 @@ class LabelEntry(LabelFrame):
 	def setReaction(self, seq: str, function):
 		self.__entry.setReaction(seq, function)
 
-class LabelFile(LabelFrame):
-	def __init__(self, master, text: str, fileTitle: str = "", fileTypes: list = []):
+class LabelEntryButton(LabelFrame):
+	def __init__(self, master):
 		"""A special class to get the file directory with LabelFrame and Entry and Button"""
 		super().__init__(master=master)
 
-		def getFile():
-			file = filedialog.askopenfilename(title=self.__titleFile, filetypes=self.__types)
-			self.__entry.delete(0, tk.END)
-			self.__entry.insert(0, file)
-
-		self.__titleFile = "Select File"
-		if fileTitle != "":
-			self.__titleFile = fileTitle
-		self.__types = fileTypes
-		self.config(text=text)
 		self.__entry = Entry(self, bd=0, borderwidth=0, border=0)
-		self.__entry.pack(side='left', fill='both', expand=True)
-		self.__button = Button(self, text="🗎")
-		self.__button.config(command=lambda: getFile())
+		self.__entry.pack(side='left', fill='x', expand=True)
+		self.__button = Button(self)
 		self.__button.pack(side='left')
+
+	def setTitle(self, text: str):
+		self.config(text=text)
 
 	def getEntry(self):
 		return self.__entry
@@ -165,11 +157,45 @@ class LabelFile(LabelFrame):
 	def setText(self, text: str):
 		self.__entry.setText(text)
 
+	def clearText(self):
+		self.__entry.delete(0, tk.END)
+
 	def setVariable(self, var):
 		self.__entry.setVariable(var)
 
+	def setButtonAction(self, action):
+		self.__button.config(command=action)
+
+	def setButtonText(self, text: str):
+		self.__button.config(text=text)
+
 	def setReaction(self, seq: str, function):
 		self.__entry.setReaction(seq, function)
+
+
+class LabelFile(LabelEntryButton):
+	def __init__(self, master, fileTitle: str = "", fileTypes: list = []):
+		"""A special class to get the file directory with LabelFrame and Entry and Button"""
+		super().__init__(master=master)
+
+		def getFile():
+			file = filedialog.askopenfilename(title=self.__titleFile, filetypes=self.__types)
+			self.clearText()
+			self.setText(file)
+
+		self.setButtonAction(lambda: getFile())
+		self.setButtonText("🗎")
+
+		self.__titleFile = "Select File"
+		if fileTitle != "":
+			self.__titleFile = fileTitle
+		self.__types = fileTypes
+		# self.config(text=text)
+		# self.__entry = Entry(self, bd=0, borderwidth=0, border=0)
+		# self.__entry.pack(side='left', fill='x', expand=True)
+		# self.__button = Button(self, text="🗎")
+		# self.__button.config(command=lambda: getFile())
+		# self.__button.pack(side='left')
 
 class Table(ttk.Treeview):
 	"""A modified version of tk.Treeview of tkinter"""

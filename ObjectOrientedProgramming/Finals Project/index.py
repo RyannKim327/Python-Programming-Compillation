@@ -103,7 +103,8 @@ def addDocument():
 	author_.setVariable(strAuthor)
 	author_.pack(side="top", fill='x')
 
-	document = LabelFile(layout, text="Import file")
+	document = LabelFile(layout)
+	document.setTitle("Import file")
 	document.setVariable(strFile)
 	document.pack(side="top", fill='x')
 
@@ -111,12 +112,14 @@ def addDocument():
 	content.setText(strContent.get())
 	content.setVariable(strContent)
 	content.setReaction("<KeyRelease>", lambda e: changedContent())
-	content.pack(side="top", fill='both')
+	print(base.winfo_height() * (layout.winfo_height() * 0.015))
+	content.setHeight(base.winfo_height() * (layout.winfo_height() * 0.015))
+	content.pack(side="top", fill='both', expand=True)
 
 	save = Button(layout)
 	save.setText("Save")
 	save.setAction(lambda: saveData())
-	save.pack(side='top', fill='x', pady=3)
+	save.pack(side='top', fill='both', pady=3)
 
 	title.config(text="New Document")
 # ------------------------------------------------------------------- #
