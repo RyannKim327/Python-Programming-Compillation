@@ -38,8 +38,8 @@ class Button(tk.Button):
 	def getText(self):
 		return self.get()
 
-	def setAction(self, action):
-		self.config(command=action)
+	def setAction(self, action, *args):
+		self.config(command=lambda: action(*args))
 
 class LabelFrame(tk.LabelFrame):
 	def __init__(self, master, *args, **kwargs):
@@ -103,19 +103,28 @@ class Dialog(tk.Toplevel):
 		self.title(title)
 
 	def setMessage(self, message: str, font=("Times New Roman", 15)):
-		Label(self, text=message, font=font, justify='center', height=10, wraplength=500).pack(side='top', fill="x", padx=5, pady=5)
+		Label(self, text=message, font=font, justify='center', wraplength=500).pack(side='top', fill="x", padx=5, pady=5)
 
-	def setPositiveButton(self, text, action, *args):
+	def setPositiveButton(self, text, action = None, *args):
 		self.__positive = True
-		self.__bpos = Button(self.__buttons, text=text, command=lambda: action(*args))
+		self.__bpos = Button(self.__buttons)
+		self.__bpos.setText(text)
+		if action != None:
+			self.__bpos.setAction(action(*args))
 
-	def setNegativeButton(self, text, action, *args):
+	def setNegativeButton(self, text, action = None, *args):
 		self.__negative = True
-		self.__bneg = Button(self.__buttons, text=text, command=lambda: action(*args))
+		self.__bneg = Button(self.__buttons, text=text)
+		self.__bneu.setText(text)
+		if action != None:
+			self.__bneu.setAction(action(*args))
 
-	def setNeutralButton(self, text, action, *args):
+	def setNeutralButton(self, text, action = None, *args):
 		self.__neutral = True
-		self.__bneg = Button(self.__buttons, text=text, command=lambda: action(*args))
+		self.__bneg = Button(self.__buttons)
+		self.__bneg.setText(text)
+		if action != None:
+			self.__bneg.setAction(action(*args))
 
 	def show(self):
 		if self.__positive:
@@ -206,7 +215,7 @@ class LabelEntryButton(LabelFrame):
 		self.__entry.setVariable(var)
 
 	def setButtonAction(self, action):
-		self.__button.config(command=action)
+		self.__button.setAction(action)
 
 	def setButtonText(self, text: str):
 		self.__button.config(text=text)
@@ -239,7 +248,7 @@ class LabelFile(LabelEntryButton):
 			self.setText(file)
 		if self.__titleFile == "":
 			self.__titleFile = "Select File"
-		self.setButtonAction(lambda: getFile())
+		self.setButtonAction(getFile)
 		self.setButtonText("🗎")
 
 class Table(ttk.Treeview):

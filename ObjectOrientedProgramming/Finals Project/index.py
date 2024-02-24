@@ -165,7 +165,7 @@ def checkDocument():
 		def deleteItem():
 			dialog = Dialog()
 			dialog.setTitle("Sample")
-			dialog.setMessage("Lorem")
+			dialog.setMessage("Kindly choose and app")
 			dialog.setPositiveButton("Sample", None)
 			dialog.setNegativeButton("Sample2", None)
 
@@ -201,15 +201,15 @@ def navigateMe():
 
 	home = Selection(nav)
 	home.setText("Home")
-	home.setAction(lambda: homepage())
+	home.setAction(homepage)
 
 	newDocument = Selection(nav)
 	newDocument.setText("New Document")
-	newDocument.setAction(lambda: addDocument())
+	newDocument.setAction(addDocument)
 
 	checkDocu = Selection(nav)
 	checkDocu.setText("Check Document")
-	checkDocu.setAction(lambda: checkDocument())
+	checkDocu.setAction(checkDocument)
 
 	sec.pack_forget()
 	nav.pack(anchor='n', fill='x', pady=3, padx=3)
@@ -243,15 +243,15 @@ def ui(a):
 
 		home = Selection(nav)
 		home.setText("Home")
-		home.setAction(lambda: homepage())
+		home.setAction(homepage)
 
 		newDocument = Selection(nav)
 		newDocument.setText("New Document")
-		newDocument.setAction(lambda: addDocument())
+		newDocument.setAction(addDocument)
 
 		checkDocu = Selection(nav)
 		checkDocu.setText("Check Document")
-		checkDocu.setAction(lambda: checkDocument())
+		checkDocu.setAction(checkDocument)
 
 		nav.pack(side='left', anchor="n", fill='y', pady=3, padx=3)
 		nav.pack_propagate(0)
@@ -260,7 +260,7 @@ def ui(a):
 
 		back = Selection(titleSide)
 		back.setText("←")
-		back.setAction(lambda: navigateMe())
+		back.setAction(navigateMe)
 		back.pack_forget()
 		if not hasNav:
 			back.pack(side="left", anchor='nw', pady=3, padx=3)
