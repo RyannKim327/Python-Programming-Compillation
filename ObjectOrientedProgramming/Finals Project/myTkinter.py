@@ -106,7 +106,6 @@ class Dialog(tk.Toplevel):
 		Label(self, text=message, font=font, justify='center', wraplength=500).pack(side='top', fill="x", padx=5, pady=5)
 
 	def __destroy(self, action, *args):
-		print("test")
 		self.destroy()
 		action(*args)
 
