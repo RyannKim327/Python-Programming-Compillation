@@ -162,6 +162,15 @@ def checkDocument():
 			except:
 				pass
 
+		def deleteItem():
+			dialog = Dialog()
+			dialog.setTitle("Sample")
+			dialog.setMessage("Lorem")
+			dialog.setPositiveButton("Sample", None)
+			dialog.setNegativeButton("Sample2", None)
+
+			dialog.show()
+
 		search = LabelEntry(layout, text="Search")
 		search.setVariable(strSearch)
 
@@ -180,7 +189,7 @@ def checkDocument():
 						content = f"{j['content'][:15]}..."
 					tree.add((i.capitalize(), j['author'], content))
 		tree.setSingleSelection()
-
+		tree.setOnClick(deleteItem)
 		tree.pack(side="top", fill='both', expand=True)
 # ------------------------------------------------------------------- #
 
@@ -307,7 +316,7 @@ def main():
 	# To detect the changes of the UI
 	base.bind("<Configure>", lambda e: ui(False))
 	base.protocol("WM_DELETE_WINDOW", lambda: closeWindow())
-	base.mainloop()
+	base.show()
 # ------------------------------------------------------------------- #
 
 if __name__ == "__main__":

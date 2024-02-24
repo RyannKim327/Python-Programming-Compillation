@@ -11,6 +11,9 @@ class Tk(tk.Tk):
 	def setTitle(self, title: str):
 		self.title(title)
 
+	def show(self):
+		self.mainloop()
+
 class Label(tk.Label):
 	def __init__(self, master, *args, **kwargs):
 		"""A modified version of Label from tkinter"""
@@ -85,6 +88,45 @@ class Selection(Button):
 	def setText(self, text: str):
 		self.config(text=text, bd=0, relief='solid')
 		self.pack(side='top', fill='x')
+
+class Dialog(tk.Toplevel):
+	def __init__(self):
+		super().__init__()
+		self.config(background="#fbfbfb")
+		self.resizable(False, False)
+		self.__buttons = Frame(self)
+		self.__positive = False
+		self.__neutral = False
+		self.__negative = False
+
+	def setTitle(self, title: str):
+		self.title(title)
+
+	def setMessage(self, message: str, font=("Times New Roman", 15)):
+		Label(self, text=message, font=font, justify='center', height=10, wraplength=500).pack(side='top', fill="x", padx=5, pady=5)
+
+	def setPositiveButton(self, text, action, *args):
+		self.__positive = True
+		self.__bpos = Button(self.__buttons, text=text, command=lambda: action(*args))
+
+	def setNegativeButton(self, text, action, *args):
+		self.__negative = True
+		self.__bneg = Button(self.__buttons, text=text, command=lambda: action(*args))
+
+	def setNeutralButton(self, text, action, *args):
+		self.__neutral = True
+		self.__bneg = Button(self.__buttons, text=text, command=lambda: action(*args))
+
+	def show(self):
+		if self.__positive:
+			self.__bpos.pack(side='left', fill='x', expand=True)
+		if self.__neutral:
+			self.__bneu.pack(side='left', fill='x', expand=True)
+		if self.__negative:
+			self.__bneg.pack(side='left', fill='x', expand=True)
+
+		self.__buttons.pack(side='top', fill='x', padx=5, pady=5)
+		self.mainloop()
 
 class LabelText(LabelFrame):
 	def __init__(self, master, text: str):
@@ -237,13 +279,15 @@ class Table(ttk.Treeview):
 
 	def getSelection(self):
 		if self.__singleSelection:
-			return self.item(0)
+			for i in self.selection():
+				return self.item(i)
 		else:
 			sets = []
 			for i in self.selection():
 				sets.append(self.item(i))
 			return sets
 
-	def setOnClick(self, action):
-		self.bind("<<TreeviewSelect>>", action)
+	def setOnClick(self, function, *args):
+		"""This will execute the function you set: setOnClick(functionName). If there's parameters use: setOnClick(functionName, arguments)"""
+		self.bind("<<TreeviewSelect>>", lambda e: function(*args))
 # ------------------------------------------------------------------- #
