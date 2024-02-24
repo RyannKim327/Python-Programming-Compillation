@@ -26,12 +26,14 @@
 > As I saw the User Interface of an Operating System, it comes the idea that I also want to do a responsive design with `Tkinter`. The first project I've implemented was Grade Management and Monitoring System, but I've changed it because I'm not satisfied on it becausse we have already an activity, related to this, so I tried to look for more ideas until I saw a Document in my files, so I've planned to use `Document Management System`. I've also planned to add anti plagiarism checker, but I've removed it due to lack of time to take some study about it. The main idea here is just to save the Document as text into the JSON database, which they may still look for the data if it using the scroll text it maybe `Text` Widget of tkinter. As of `February 23, 2024`, the development is still in the range of 75%, which has primary options which incliudes `Create` and `Read` and `Update` (by appending) the data. For now, I'm thinking if I use archive or delete function for the document, for the data deprication. As od `February 24, 2024` while writing this document, I'm still planning more although its already due, but still trying to fix and figure more about this.
 
 ### Journey and Timeline
+> Hoping that github won't banned my account again because of this, this is just the videos for the exploration within this project.
 1. https://www.facebook.com/61555199001800/videos/916348489896029/
 2. https://www.facebook.com/61555199001800/videos/700275658939688/
 3. https://www.facebook.com/61555199001800/videos/399762696040536/
 4. https://www.facebook.com/61555199001800/videos/1462158931326102/
 5. https://www.facebook.com/61555199001800/videos/375499152087202/
 6. https://www.facebook.com/61555199001800/videos/709436834688218/
+7. https://www.facebook.com/61555199001800/videos/1185197759530121/
 
 ### Credits
 1. Stackoverflow
