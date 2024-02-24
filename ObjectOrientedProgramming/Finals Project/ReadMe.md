@@ -18,7 +18,8 @@
 - [x] Fixed Title
 - [x] Fixed Content clear in responsive
 - [x] Make simple Tkinter Widget Modifications
-- [x] Can check whether the data is existed to avoid doubling the content.
+- [x] Can check whether the data is existed to avoid doubling the content
+- [x] Last window open if no database has no document yet
 - [ ] Upload the initial finish output until February 24, 2024 ends
 
 ### Ideas and Inspration

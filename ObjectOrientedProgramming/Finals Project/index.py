@@ -128,50 +128,60 @@ def addDocument():
 def checkDocument():
 	global nav, layout, window, strSearch
 	cls()
-	window = "check"
+	if len(db.getAllTitles()) <= 0:
+		messagebox.showwarning("NO DATA FOUND", "There is no document existed on the system")
+		match window:
+			case "home":
+				homepage()
+			case "add":
+				addDocument()
+			case "check":
+				checkDocument()
+	else:
+		window = "check"
 
-	if not hasNav:
-		sec.pack(side='left', anchor='n', expand=True, pady=3, padx=3)
-		nav.pack_forget()
+		if not hasNav:
+			sec.pack(side='left', anchor='n', expand=True, pady=3, padx=3)
+			nav.pack_forget()
 
-	def searchEvent():
-		global strSearch
-		tree.remove()
-		docu = db.getDocument(search.getText())
-		if len(docu) > 0:
-			for j in docu:
-				tree.add((i.capitalize(), j['author'], j['content']))
-		else:
-			messagebox.showwarning("WARNING", "No data found.")
+		def searchEvent():
+			global strSearch
+			tree.remove()
+			docu = db.getDocument(search.getText())
+			if len(docu) > 0:
+				for j in docu:
+					tree.add((i.capitalize(), j['author'], j['content']))
+			else:
+				messagebox.showwarning("WARNING", "No data found.")
 
-	def changedSearch(*args):
-		global strSearch
-		try:
-			newSearch = search.getText()
-			strSearch.set(newSearch)
-		except:
-			pass
+		def changedSearch(*args):
+			global strSearch
+			try:
+				newSearch = search.getText()
+				strSearch.set(newSearch)
+			except:
+				pass
 
-	search = LabelEntry(layout, text="Search")
-	search.setVariable(strSearch)
+		search = LabelEntry(layout, text="Search")
+		search.setVariable(strSearch)
 
-	strAuthor.trace_add("write", changedSearch)
+		strAuthor.trace_add("write", changedSearch)
 
-	search.getEntry().bind("<Return>", lambda e: searchEvent())
-	search.pack(side="top", fill='x')
+		search.getEntry().bind("<Return>", lambda e: searchEvent())
+		search.pack(side="top", fill='x')
 
-	tree = Table(layout, ["Title", "Author", "Content"], [33])
-	if len(db.getAllTitles()) > 0:
-		for i in db.getAllTitles():
-			docu = db.getDocument(i)
-			for j in docu:
-				content = j['content']
-				if len(content) > 15:
-					content = f"{j['content'][:15]}..."
-				tree.add((i.capitalize(), j['author'], content))
-	tree.setSingleSelection()
-	
-	tree.pack(side="top", fill='both', expand=True)
+		tree = Table(layout, ["Title", "Author", "Content"], [33])
+		if len(db.getAllTitles()) > 0:
+			for i in db.getAllTitles():
+				docu = db.getDocument(i)
+				for j in docu:
+					content = j['content']
+					if len(content) > 15:
+						content = f"{j['content'][:15]}..."
+					tree.add((i.capitalize(), j['author'], content))
+		tree.setSingleSelection()
+
+		tree.pack(side="top", fill='both', expand=True)
 # ------------------------------------------------------------------- #
 
 # ------------------------ Navigate Me -------------------------- #
