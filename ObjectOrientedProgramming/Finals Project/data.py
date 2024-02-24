@@ -40,7 +40,8 @@ class Database:
 		except Exception as e:
 			messagebox.showwarning("Warning", "The database is not existed, so the system automatically generates it.")
 			self._data = {
-				"data": {}
+				"data": {},
+				"archive": {}
 			}
 			with open(self._file, "w") as file:
 				file.write(json.dumps(self._data, indent=4))
@@ -107,9 +108,12 @@ class Document(Database):
 		with open(self._file, "r") as file:
 			__data = json.load(file)['data']
 		if self.isExistData(title):
-			conts = pandas.DataFrame(__data[_title])
-			data = [conts['content'].str.strip().str.contains(content.strip(), na=False, case=False)]
-			return True in data[0].values
+			try:
+				conts = pandas.DataFrame(__data[_title])
+				data = [conts['content'].str.strip().str.contains(content.strip(), na=False, regex=True, case=False)]
+				return True in data[0].values
+			except Exception as e:
+				messagebox.showwarning("Warning", "The data is too big to check.")
 		return False
 
 	def isExistData(self, title: str):

@@ -98,7 +98,7 @@ def addDocument():
 	title_ = LabelEntryButton(layout)
 	title_.setTitle("Title")
 	title_.setButtonText("✔")
-	title_.setButtonAction(lambda: saveData())
+	title_.setButtonAction(saveData)
 	title_.setVariable(strTitle)
 	title_.pack(side="top", fill='x')
 
@@ -139,6 +139,7 @@ def checkDocument():
 				checkDocument()
 	else:
 		window = "check"
+		title.config(text="Check Document")
 
 		if not hasNav:
 			sec.pack(side='left', anchor='n', expand=True, pady=3, padx=3)
@@ -149,8 +150,7 @@ def checkDocument():
 			tree.remove()
 			docu = db.getDocument(search.getText())
 			if len(docu) > 0:
-				for j in docu:
-					tree.add((i.capitalize(), j['author'], j['content']))
+				tree.add((strSearch.get().capitalize(), "\n\nFrom - ".join(docu['author']), "\n\n".join(docu['content'])))
 			else:
 				messagebox.showwarning("WARNING", "No data found.")
 
@@ -165,12 +165,22 @@ def checkDocument():
 		def deleteData(title: str):
 			db.deleteData(title)
 
-		def deleteItem():
+		def viewText(title: str):
+			documentText = db.getDocument(title)
+			dialog = DialogText()
+			dialog.setTitle(f"{title}")
+			text = ""
+			for i in documentText:
+				text += f"from: {i['author']} - {i['content']}\n\n"
+			dialog.setText(text)
+
+		def itemAction():
 			_title = str(tree.getSelection()['values'][0]).upper().strip().replace(" ", "_")
 			dialog = Dialog()
 			dialog.setTitle("Sample")
 			dialog.setMessage("Choose an actioon")
 			dialog.setPositiveButton("Delete Data", deleteData, _title)
+			dialog.setNeutralButton("View Text", viewText, _title)
 			dialog.setNegativeButton("Cancel", None)
 
 			dialog.show()
@@ -185,15 +195,18 @@ def checkDocument():
 
 		tree = Table(layout, ["Title", "Author", "Content"], [33])
 		if len(db.getAllTitles()) > 0:
+			lastTitle = ""
 			for i in db.getAllTitles():
 				docu = db.getDocument(i)
 				for j in docu:
 					content = j['content']
 					if len(content) > 15:
 						content = f"{j['content'][:15]}..."
-					tree.add((i.capitalize(), j['author'], content))
+					if i != lastTitle:
+						tree.add((i.capitalize(), j['author'], content))
+					i = lastTitle
 		tree.setSingleSelection()
-		tree.setOnClick(deleteItem)
+		tree.setOnClick(itemAction)
 		tree.pack(side="top", fill='both', expand=True)
 # ------------------------------------------------------------------- #
 

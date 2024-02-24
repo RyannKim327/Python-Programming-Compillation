@@ -141,6 +141,29 @@ class Dialog(tk.Toplevel):
 		self.__buttons.pack(side='top', fill='x', padx=5, pady=5)
 		self.mainloop()
 
+class DialogText(tk.Toplevel):
+	def __init__(self):
+		super().__init__()
+		self.config(background="#fbfbfb")
+		self.resizable(False, False)
+		self.geometry("500x500")
+		self.__text = Text(self)
+		self.__text.pack(side='top', fill='both', expand=True)
+
+		self.__close = Button(self)
+		self.__close.setText("Close")
+		self.__close.setAction(self.destroy)
+		self.__close.pack(side='top', fill='x')
+
+	def setTitle(self, title):
+		self.title(title)
+
+	def setText(self, text: str):
+		self.__text.setText(text)
+
+	def show(self):
+		self.mainloop()
+
 class LabelText(LabelFrame):
 	def __init__(self, master, text: str):
 		"""A mixed of Text and LabelFrame for looks like material css"""
