@@ -169,6 +169,8 @@ def checkDocument():
 				if len(content) > 15:
 					content = f"{j['content'][:15]}..."
 				tree.add((i.capitalize(), j['author'], content))
+	tree.setSingleSelection()
+	
 	tree.pack(side="top", fill='both', expand=True)
 # ------------------------------------------------------------------- #
 

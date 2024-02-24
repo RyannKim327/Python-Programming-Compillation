@@ -172,7 +172,6 @@ class LabelEntryButton(LabelFrame):
 	def setReaction(self, seq: str, function):
 		self.__entry.setReaction(seq, function)
 
-
 class LabelFile(LabelEntryButton):
 	def __init__(self, master):
 		"""A special class to get the file directory with LabelFrame and Entry and Button"""
@@ -205,6 +204,7 @@ class Table(ttk.Treeview):
 	"""A modified version of tk.Treeview of tkinter"""
 	def __init__(self, master, columns: [str], width: [int]):
 		super().__init__(master=master, show='headings')
+		self.__singleSelection = False
 		if len(columns) > len(width):
 			for i in range(len(width) - 1, len(columns)):
 				width.append(width[i - 1])
@@ -230,4 +230,20 @@ class Table(ttk.Treeview):
 
 	def remove(self):
 		self.delete(*self.get_children())
+
+	def setSingleSelection(self):
+		self.__singleSelection = True
+		self.config(selectmode="browse")
+
+	def getSelection(self):
+		if self.__singleSelection:
+			return self.item(0)
+		else:
+			sets = []
+			for i in self.selection():
+				sets.append(self.item(i))
+			return sets
+
+	def setOnClick(self, action):
+		self.bind("<<TreeviewSelect>>", action)
 # ------------------------------------------------------------------- #
