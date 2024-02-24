@@ -50,12 +50,13 @@ class Database:
 
 	def deleteData(self, key: str):
 		if messagebox.askyesno("Confirmation", "Are you sure you want to remove this document?"):
-			self._data.pop(key)
+			self._data['data'].pop(key)
 			messagebox.showinfo("Success", "Data Removed Successfully")
+			self.saveData()
 
 	def removeAllData(self):
 		if messagebox.askyesno("Confirmation", "All data will never be retribed once you proceed to this action."):
-			self._data.clear()
+			self._data['data'].clear()
 
 	def saveData(self):
 		with open(self._file, "w") as file:

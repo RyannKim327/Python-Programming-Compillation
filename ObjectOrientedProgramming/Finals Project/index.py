@@ -162,12 +162,16 @@ def checkDocument():
 			except:
 				pass
 
+		def deleteData(title: str):
+			db.deleteData(title)
+
 		def deleteItem():
+			_title = str(tree.getSelection()['values'][0]).upper().strip().replace(" ", "_")
 			dialog = Dialog()
 			dialog.setTitle("Sample")
-			dialog.setMessage("Kindly choose and app")
-			dialog.setPositiveButton("Sample", None)
-			dialog.setNegativeButton("Sample2", None)
+			dialog.setMessage("Choose an actioon")
+			dialog.setPositiveButton("Delete Data", deleteData, _title)
+			dialog.setNegativeButton("Cancel", None)
 
 			dialog.show()
 
@@ -280,7 +284,7 @@ def ui(a):
 			case "add":
 				addDocument()
 			case "check":
-				checkDocument()
+				homepage()
 # ------------------------------------------------------------------- #
 
 # ------------------------ Main Layout ------------------------- #

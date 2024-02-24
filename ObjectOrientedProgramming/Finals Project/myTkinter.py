@@ -102,29 +102,34 @@ class Dialog(tk.Toplevel):
 	def setTitle(self, title: str):
 		self.title(title)
 
-	def setMessage(self, message: str, font=("Times New Roman", 15)):
+	def setMessage(self, message: str, font=("Times New Roman", 10)):
 		Label(self, text=message, font=font, justify='center', wraplength=500).pack(side='top', fill="x", padx=5, pady=5)
+
+	def __destroy(self, action, *args):
+		print("test")
+		self.destroy()
+		action(*args)
 
 	def setPositiveButton(self, text, action = None, *args):
 		self.__positive = True
 		self.__bpos = Button(self.__buttons)
 		self.__bpos.setText(text)
 		if action != None:
-			self.__bpos.setAction(action(*args))
+			self.__bpos.setAction(self.__destroy, action, *args)
 
 	def setNegativeButton(self, text, action = None, *args):
 		self.__negative = True
 		self.__bneg = Button(self.__buttons, text=text)
-		self.__bneu.setText(text)
+		self.__bneg.setText(text)
 		if action != None:
-			self.__bneu.setAction(action(*args))
+			self.__bneg.setAction(self.__destroy, action, *args)
 
 	def setNeutralButton(self, text, action = None, *args):
 		self.__neutral = True
-		self.__bneg = Button(self.__buttons)
-		self.__bneg.setText(text)
+		self.__bneu = Button(self.__buttons)
+		self.__bneu.setText(text)
 		if action != None:
-			self.__bneg.setAction(action(*args))
+			self.__bneu.setAction(self.__destroy, action, *args)
 
 	def show(self):
 		if self.__positive:
