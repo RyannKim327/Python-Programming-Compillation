@@ -118,7 +118,7 @@ class LabelEntry(LabelFrame):
 		super().__init__(master=master)
 		self.config(text=text)
 		self.__entry = Entry(self, bd=0, borderwidth=0, border=0)
-		self.__entry.pack(side="left", fill='x', expand=True)
+		self.__entry.pack(side="left", fill='both', expand=True)
 
 	def getEntry(self):
 		return self.__entry
@@ -141,9 +141,9 @@ class LabelEntryButton(LabelFrame):
 		super().__init__(master=master)
 
 		self.__entry = Entry(self, bd=0, borderwidth=0, border=0)
-		self.__entry.pack(side='left', fill='x', expand=True)
+		self.__entry.pack(side='left', fill='both', expand=True)
 		self.__button = Button(self)
-		self.__button.pack(side='left')
+		self.__button.pack(side='left', fill='both')
 
 	def setTitle(self, text: str):
 		self.config(text=text)
@@ -174,28 +174,32 @@ class LabelEntryButton(LabelFrame):
 
 
 class LabelFile(LabelEntryButton):
-	def __init__(self, master, fileTitle: str = "", fileTypes: list = []):
+	def __init__(self, master):
 		"""A special class to get the file directory with LabelFrame and Entry and Button"""
 		super().__init__(master=master)
+		self.pdf = ("PDF", "*.pdf")
+		self.docx = ("Document", "*.docx")
+		self.xlsx = ("Excel", "*.xlsx")
+		self.all = ("All Files", "*.*")
+		self.__types = []
+		self.__titleFile = ""
 
+	def setDataType(self, fileTypes: list = [(tuple)]):
+		self.__types.append(fileTypes)
+
+	def setDialogTitle(self, title: str = ""):
+		if title != "":
+			self.__titleFile = title
+
+	def getFile(self):
 		def getFile():
 			file = filedialog.askopenfilename(title=self.__titleFile, filetypes=self.__types)
 			self.clearText()
 			self.setText(file)
-
+		if self.__titleFile == "":
+			self.__titleFile = "Select File"
 		self.setButtonAction(lambda: getFile())
 		self.setButtonText("🗎")
-
-		self.__titleFile = "Select File"
-		if fileTitle != "":
-			self.__titleFile = fileTitle
-		self.__types = fileTypes
-		# self.config(text=text)
-		# self.__entry = Entry(self, bd=0, borderwidth=0, border=0)
-		# self.__entry.pack(side='left', fill='x', expand=True)
-		# self.__button = Button(self, text="🗎")
-		# self.__button.config(command=lambda: getFile())
-		# self.__button.pack(side='left')
 
 class Table(ttk.Treeview):
 	"""A modified version of tk.Treeview of tkinter"""

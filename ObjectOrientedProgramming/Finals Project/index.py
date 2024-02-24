@@ -95,7 +95,10 @@ def addDocument():
 	strFile.trace_add("write", changedFile)
 	strAuthor.trace_add("write", changedAuthor)
 
-	title_ = LabelEntry(layout, text="Title")
+	title_ = LabelEntryButton(layout)
+	title_.setTitle("Title")
+	title_.setButtonText("✔")
+	title_.setButtonAction(lambda: saveData())
 	title_.setVariable(strTitle)
 	title_.pack(side="top", fill='x')
 
@@ -105,21 +108,18 @@ def addDocument():
 
 	document = LabelFile(layout)
 	document.setTitle("Import file")
+	document.setDialogTitle("Select PDF File")
+	document.setDataType(document.pdf)
 	document.setVariable(strFile)
+	document.getFile()
 	document.pack(side="top", fill='x')
 
 	content = LabelText(layout, text="Content")
 	content.setText(strContent.get())
 	content.setVariable(strContent)
 	content.setReaction("<KeyRelease>", lambda e: changedContent())
-	print(base.winfo_height() * (layout.winfo_height() * 0.015))
 	content.setHeight(base.winfo_height() * (layout.winfo_height() * 0.015))
 	content.pack(side="top", fill='both', expand=True)
-
-	save = Button(layout)
-	save.setText("Save")
-	save.setAction(lambda: saveData())
-	save.pack(side='top', fill='both', pady=3)
 
 	title.config(text="New Document")
 # ------------------------------------------------------------------- #
