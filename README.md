@@ -19,7 +19,7 @@ pip install <package>
 * [File Handling (read)](File%20Handling/read/)
 * [File Handling (write)](File%20Handling/write/)
 * [Graphical User Interface](GUI/)
-* [Jupyter Notebook](Jupyter/)
+* [Jupyter Notebook](https://github.com/RyannKim327/Jupyter-Notebook)
 * [Machine Learning](Machine%20Learning/)
 * [Object Oriented Programming](ObjectOrientedProgramming/)
 * [Turtle](GUI/_Turtle/)
